@@ -22,11 +22,11 @@ async function main() {
     });
 
     // Route de récupération des données.
-    app.post('/data', async function(req, res) {
+    app.post('/outputs', async function(req, res) {
         let id = uuid();
 
         // Ouverture du fichier en mode append.
-        let file = await fs.open(__dirname + '/data/' + id + '.json', 'a');
+        let file = await fs.open(__dirname + '/outputs/' + id + '.json', 'a');
 
         // Ajout d'une ligne.
         file.write(JSON.stringify(req.body, undefined, 4));
@@ -38,7 +38,7 @@ async function main() {
     // Création du dossier où les données seront stockées.
     try {
 
-        await fs.mkdir(__dirname + '/data');
+        await fs.mkdir(__dirname + '/outputs');
 
     } catch (err) {
         // Si une erreur existe autre que "le dossier existe déjà", on stoppe le serveur.

@@ -432,7 +432,7 @@ function animate() {
         // Création de la requête HTTP à envoyer au serveur.
         let xhr = new XMLHttpRequest();
         // Préparation de la requête pour l'envoi en POST vers l'url.
-        xhr.open('POST', '/data');
+        xhr.open('POST', '/outputs');
         // Si on envoie les données de manière classique, il faut configurer le header de cette façon.
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         // Ajout du listener pour déclencer la suite lorsque la requête sera terminée.
