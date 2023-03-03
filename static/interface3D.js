@@ -316,22 +316,21 @@ function init_data(){
     ctx.fillStyle = "rgb(255, 255, 255)"
     // Data 2D
     imgs = {}
-    imgs["droite"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/Fleches_jolie/fleche_droite.png')//new_image("graphics/fleche_droite.png")
-    imgs["gauche"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/Fleches_jolie/fleche_gauche.png') //new_image("graphics/fleche_gauche.png")
-    imgs["bas"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/Fleches_jolie/fleche_bas.png') //new_image("graphics/fleche_bas.png")
-    imgs["haut"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/Fleches_jolie/fleche_haut.png') //new_image("graphics/fleche_haut.png")
-    imgs["croix"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/Autres_jolie/croix.png')
-    //imgs["tmp"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/Autres_jolie/tmp.jpg')
-    imgs["check"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/Autres_jolie/check.png')
-    imgs["checkbox"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/Autres_jolie/empty_checkbox.png')
+    imgs["droite"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Arrows/fleche_droite.png')
+    imgs["gauche"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Arrows/fleche_gauche.png') 
+    imgs["bas"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Arrows/fleche_bas.png')
+    imgs["haut"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Arrows/fleche_haut.png')
+    imgs["croix"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Choices/croix.png')
+    imgs["check"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Choices/check.png')
+    imgs["checkbox"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Choices/empty_checkbox.png')
     // /// Boutons
     boutons = {}
-    boutons["reinitialiser"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/Boutons_jolie/bouton_reinitialiser.png')
-    boutons["valider"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/Boutons_jolie/bouton_valider.png')
-    boutons["choix_pose"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/Boutons_jolie/bouton_pose.png')
-    boutons["retirer"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/Boutons_jolie/bouton_retirer.png')
-    boutons["commencer"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/Boutons_jolie/bouton_commencer.png')
-    boutons["raz"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/Boutons_jolie/bouton_raz.png')
+    boutons["reinitialiser"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_reinitialiser.png')
+    boutons["valider"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_valider.png')
+    boutons["choix_pose"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_pose.png')
+    boutons["retirer"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_retirer.png')
+    boutons["commencer"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_commencer.png')
+    boutons["raz"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_raz.png')
 
     // Mouse
     xyMouseMove = {"x": -1, "y": -1}
@@ -428,7 +427,9 @@ function animate() {
         ctx.fillText("Done, thx you :)", (window.innerWidth/2)-450, innerHeight/2 -100)
         console.log('Fin interface3DD')
 
-        // ecriture 
+        // ECRITURE DES RESULTATS
+        choix['Analyse'] = checkbox_clicked
+        choix['Interactions'] = interactions
         // Création de la requête HTTP à envoyer au serveur.
         let xhr = new XMLHttpRequest();
         // Préparation de la requête pour l'envoi en POST vers l'url.

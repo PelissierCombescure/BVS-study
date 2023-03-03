@@ -1,0 +1,95 @@
+{
+    "tache_N1": {
+        "obj_file": "dragon_update_user_study.obj",
+        "mesh": "dragon",
+        "position_init_idx_i": 7,
+        "position_init_idx_j": 1,
+        "theta_init": 0.7853981633974483,
+        "delta_init": 5.497787143782138,
+        "choix_poses": [
+            [
+                "choix1",
+                0.7853981633974483,
+                4.71238898038469,
+                6,
+                1
+            ],
+            [
+                "choix2",
+                0.7853981633974483,
+                3.9269908169872414,
+                5,
+                1
+            ],
+            [
+                "choix3",
+                0.7853981633974483,
+                3.141592653589793,
+                4,
+                1
+            ]
+        ]
+    },
+    "tache_N2": {
+        "obj_file": "camel_update_user_study_normed.obj",
+        "mesh": "camel",
+        "position_init_idx_i": 6,
+        "position_init_idx_j": 3,
+        "theta_init": -0.7853981633974483,
+        "delta_init": 4.71238898038469,
+        "choix_poses": [
+            [
+                "choix1",
+                -0.7853981633974483,
+                4.71238898038469,
+                6,
+                3
+            ],
+            [
+                "choix2",
+                -0.7853981633974483,
+                3.9269908169872414,
+                5,
+                3
+            ],
+            [
+                "choix3",
+                -0.7853981633974483,
+                3.141592653589793,
+                4,
+                3
+            ]
+        ]
+    },
+    "tache_N3": {
+        "obj_file": "gorgoile_update_user_study_centered_normed.obj",
+        "mesh": "gorgoile",
+        "position_init_idx_i": 7,
+        "position_init_idx_j": 1,
+        "theta_init": 0.7853981633974483,
+        "delta_init": 5.497787143782138,
+        "choix_poses": [
+            [
+                "choix1",
+                0.7853981633974483,
+                5.497787143782138,
+                7,
+                1
+            ],
+            [
+                "choix2",
+                0.7853981633974483,
+                4.71238898038469,
+                6,
+                1
+            ],
+            [
+                "choix3",
+                0.7853981633974483,
+                3.9269908169872414,
+                5,
+                1
+            ]
+        ]
+    }
+}
