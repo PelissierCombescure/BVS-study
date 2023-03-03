@@ -19,7 +19,7 @@ function init_variable_fonction(dict_boutons, dict_imgs ){
     // progress bar
     x_progress_bar = 0
     y_progress_bar = 0
-    w_progress_bar = window.innerWidth - W_3D*0.1
+    w_progress_bar = window.innerWidth //- W_3D*0.1
     h_progress_bar = H_3D*0.04  
     // image recap
     dx = 20
@@ -98,11 +98,11 @@ function progress_bar(N_tache, N_mesh){
         // bar
         w_bar = ((N_tache-1)/N_mesh)*w_progress_bar
         draw_rectangle(x_progress_bar, y_progress_bar, w_bar, h_progress_bar, "rgb(17, 138, 178)", 1)
-        // numero de tache
-        ctx.strokeStyle = "rgb(255, 255, 255)" // Pour que le contour soit rouge
-        ctx.fillStyle = "rgb(255, 255, 255)" // Pour que l'intérieur soit bleu
-        ctx.font = "18pt Courier";
-        ctx.fillText((N_tache)+"/"+(N_mesh), x_progress_bar+w_progress_bar+10, h_progress_bar)
+        // // numero de tache
+        // ctx.strokeStyle = "rgb(255, 255, 255)" // Pour que le contour soit rouge
+        // ctx.fillStyle = "rgb(255, 255, 255)" // Pour que l'intérieur soit bleu
+        // ctx.font = "18pt Courier";
+        // ctx.fillText((N_tache)+"/"+(N_mesh), x_progress_bar+w_progress_bar+10, h_progress_bar)
     }
 }
 
