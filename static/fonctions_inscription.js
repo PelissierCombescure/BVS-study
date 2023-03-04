@@ -5,7 +5,7 @@ function affichage_inscription(){
     draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1) // ou + clair 4, 38, 48
     ctx.strokeStyle = "rgb(255, 255, 255)" // Pour que le contour soit rouge
     ctx.fillStyle = "rgb(255, 255, 255)" // Pour que l'intérieur soit bleu
-    texte = "Are you ready ??????"
+    texte = "Give me your personal information"
     font = "58pt Courier"
     ctx.font = font
     largeur = ctx.measureText(texte).width
@@ -15,14 +15,13 @@ function affichage_inscription(){
     ctx.strokeStyle = "rgb(255, 255, 255)" 
     ctx.fillStyle = "rgb(255, 255, 255)" 
     ctx.font = "28pt Courier"
-    ctx.fillText("Firstname:", x_texte_zone, parseInt(document.getElementById("Firstname").style.top) -10)
-    ctx.fillText("Name:", x_texte_zone, parseInt(document.getElementById("Name").style.top) - 10)
-    ctx.fillText("Age:", x_texte_zone, parseInt(document.getElementById("Age").style.top) - 10)
-    ctx.fillText("Sexe:", parseInt(document.getElementById("SexeM").style.left), parseInt(document.getElementById("SexeM").style.top) - 10)
-    ctx.fillText("Sexe:", parseInt(document.getElementById("SexeM").style.left), parseInt(document.getElementById("SexeM").style.top) - 10)
+    ctx.fillText("Firstname:", x_texte_zone, parseInt(document.getElementById("Firstname").style.top) -12)
+    ctx.fillText("Name:", x_texte_zone, parseInt(document.getElementById("Name").style.top) - 12)
+    ctx.fillText("Age:", x_texte_zone, parseInt(document.getElementById("Age").style.top) - 12)
+    ctx.fillText("Sexe:", parseInt(document.getElementById("SexeM").style.left), parseInt(document.getElementById("SexeM").style.top) - 22)
     ctx.font = "24pt Courier"
-    ctx.fillText("Male", parseInt(document.getElementById("SexeM").style.left)+40, parseInt(document.getElementById("SexeM").style.top)+34)
-    ctx.fillText("Female", parseInt(document.getElementById("SexeF").style.left)+40, parseInt(document.getElementById("SexeM").style.top)+34)
+    ctx.fillText("Male", parseInt(document.getElementById("SexeM").style.left)+40, parseInt(document.getElementById("SexeM").style.top)+24)
+    ctx.fillText("Female", parseInt(document.getElementById("SexeF").style.left)+40, parseInt(document.getElementById("SexeM").style.top)+24)
 }
 
 
@@ -43,7 +42,7 @@ function afficher_bouton_commencer(){
 function action_bouton_commencer(s){
     page_inscription = false 
     page_vues = true 
-    interactions.push({"time": new Date().getTime(), "type": "bouton commencer"+s})
+    interactions.push({"time": new Date().getTime(), "type": "bouton commencer d'inscription"+s})
     
 }
 
@@ -142,8 +141,9 @@ function afficher_champs_inscription() {
     // style 
     input4.style.position = 'fixed';   
     input4.style.left = x_texte_zone + 250;
-    input4.style.top = 2*ecart_texte_zone + y_texte_zone+'px';
-    input4.style.height = h_text_zone
+    input4.style.top = 10+ 2*ecart_texte_zone + y_texte_zone+'px';
+    input4.style.height = 20
+    input4.style.width = 20
     document.body.appendChild(input4);
     input4.focus();
 
@@ -155,8 +155,9 @@ function afficher_champs_inscription() {
     // style 
     input5.style.position = 'fixed';   
     input5.style.left = x_texte_zone + 400;
-    input5.style.top = 2*ecart_texte_zone + y_texte_zone+'px';
-    input5.style.height = h_text_zone
+    input5.style.top = 10 + 2*ecart_texte_zone + y_texte_zone+'px';
+    input5.style.height = 20
+    input5.style.width = 20
     document.body.appendChild(input5);
     input5.focus();
 

@@ -80,7 +80,8 @@ function init_variable(premier_appel){
     R = 2.5
 
     // Enchainement des pages
-    page_inscription = true // true
+    page_contexte = true
+    page_inscription = false // true
     page_vues = false // false
     page_analyse = false
 
@@ -89,6 +90,7 @@ function init_variable(premier_appel){
     all_canvasMins = {}
 
     // pour initialiser les claviers à chaque page
+    premier_tour_page_contexte = true
     premier_tour_page_inscription = true 
     premier_tour_page_vues = true
     premier_tour_page_analyse = true 
@@ -223,6 +225,19 @@ function setUp_3D(idx_mesh){
 ////////////////////////////////////////
 //            CLAVIER
 
+function action_clavier_contexte(event){
+    switch (event.key){
+        // selectionner pose
+        case ' ' :
+            action_bouton_commencer_contexte('clavier')
+        break;
+        // valider
+        case  'Enter':
+            action_bouton_commencer_contexte('clavier')          
+        break;
+    }
+}
+
 function action_clavier_inscription(event){
     switch (event.key){
         // selectionner pose
@@ -304,7 +319,9 @@ function action_clavier_analyse(event){
     }
 }
 
-
+function init_clavier_contexte(){
+    document.addEventListener("keydown", action_clavier_contexte)
+}
 
 function init_clavier_inscription(){
     document.addEventListener("keydown", action_clavier_inscription)
@@ -335,7 +352,7 @@ function init_data(){
     imgs["croix"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Choices/croix.png')
     imgs["check"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Choices/check.png')
     imgs["checkbox"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Choices/empty_checkbox.png')
-    // /// Boutons
+    imgs["marie"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/Autres/marie.png')
     boutons = {}
     boutons["reinitialiser"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_reinitialiser.png')
     boutons["valider"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_valider.png')
@@ -363,8 +380,20 @@ function animate() {
     // Temps à chaque animate
     time_animate = new Date().getTime()
 
+    if (page_contexte){
+        //init touche clavier
+        if (premier_tour_page_contexte){
+            init_clavier_contexte()
+            premier_tour_page_contexte = false
+        }
+        traitement_contexte()
+    }
+
     // page inscription
     if (page_inscription){
+        // on enlève les touches du clavier associé à la page inscription
+        document.removeEventListener("keydown", init_clavier_contexte)
+        //init touche clavier
         if (premier_tour_page_inscription){
             init_clavier_inscription()
             afficher_champs_inscription()
@@ -434,7 +463,7 @@ function animate() {
         traitement_fin()
     }
     // page fin
-    if (!page_inscription && !page_vues && !page_analyse){
+    if (!page_contexte && !page_inscription && !page_vues && !page_analyse){
         // on enlève les touches du clavier associé à la page vues
         document.removeEventListener("keydown", action_clavier_analyse)
         ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
