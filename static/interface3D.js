@@ -4,7 +4,13 @@
 // initialisation des variables
 init_variable(true)
 // initialisation du canvas : load des images
-setUp_3D(indice_mesh)
+//setUp_3D(indice_mesh)
+
+canvas = document.getElementById("canvas")
+canvas.width  = window.innerWidth;
+canvas.height = window.innerHeight;
+ctx = canvas.getContext("2d")
+
 init_data()
 //init_clavier()
 // action
@@ -42,7 +48,7 @@ function init_variable(premier_appel){
     indice_mesh = 0 // indice du premier mesh à visionner
     mesh_courant = "nope" // nom des mesh 
     // nombre de mesh a visionner AU TOTAL
-    nb_mesh = 3
+    nb_mesh = 2 //3
 
     // Choix des N poses demandé pour les mesh courant
     choix_courant = {}
@@ -74,7 +80,7 @@ function init_variable(premier_appel){
     R = 2.5
 
     // Enchainement des pages
-    page_tuto = true // true
+    page_inscription = true // true
     page_vues = false // false
     page_analyse = false
 
@@ -83,9 +89,13 @@ function init_variable(premier_appel){
     all_canvasMins = {}
 
     // pour initialiser les claviers à chaque page
-    premier_tour_page_tuto = true 
+    premier_tour_page_inscription = true 
     premier_tour_page_vues = true
     premier_tour_page_analyse = true 
+
+    // message de fin 
+    message_fin = "> Sending data in progress ..."
+    envoie_termine = false
 
 }
 
@@ -213,15 +223,17 @@ function setUp_3D(idx_mesh){
 ////////////////////////////////////////
 //            CLAVIER
 
-function action_clavier_tuto(event){
+function action_clavier_inscription(event){
     switch (event.key){
         // selectionner pose
         case ' ' :
-            action_bouton_commencer('clavier')
+            if (champs_remplis_correctment()){
+            action_bouton_commencer('clavier')}
             break;
         // valider
         case  'Enter':
-            action_bouton_commencer('clavier')             
+            if (champs_remplis_correctment()){
+            action_bouton_commencer('clavier')}            
             break;
     }
 }
@@ -294,8 +306,8 @@ function action_clavier_analyse(event){
 
 
 
-function init_clavier_tuto(){
-    document.addEventListener("keydown", action_clavier_tuto)
+function init_clavier_inscription(){
+    document.addEventListener("keydown", action_clavier_inscription)
 }
 
 function init_clavier_vues(){
@@ -351,21 +363,27 @@ function animate() {
     // Temps à chaque animate
     time_animate = new Date().getTime()
 
-    // page tuto
-    if (page_tuto){
-        if (premier_tour_page_tuto){
-            init_clavier_tuto()
-            premier_tour_page_tuto=false}
-        traitement_tuto()
+    // page inscription
+    if (page_inscription){
+        if (premier_tour_page_inscription){
+            init_clavier_inscription()
+            afficher_champs_inscription()
+            premier_tour_page_inscription=false}
+        traitement_inscription()
     }
 
     // page de choix
     if (page_vues && num_tache <= nb_mesh){
-        // on enlève les touches du clavier associé à la page tuto
-        document.removeEventListener("keydown", action_clavier_tuto)
+        // on enlève les touches du clavier associé à la page inscription
+        document.removeEventListener("keydown", action_clavier_inscription)
         //init touche clavier
         if(premier_tour_page_vues){
+            //gestion des données personnelle de l'utilisateur
+            gestion_donnees_personnelles()
+            // init clavier pour les vues
             init_clavier_vues()
+            // affichage ecran 3D
+            setUp_3D(indice_mesh)
             premier_tour_page_vues = false
         }
         // Variable pour les fonctions
@@ -403,7 +421,7 @@ function animate() {
         which_clicked_fleche = -1
         which_clicked_bouton = -1 
     }
-
+    // page analyse
     if (page_analyse){
         // on enlève les touches du clavier associé à la page vues
         document.removeEventListener("keydown", action_clavier_vues)
@@ -415,18 +433,14 @@ function animate() {
         init_variable_analyse()
         traitement_fin()
     }
-    // page finale
-    if (!page_tuto && !page_vues && !page_analyse){
+    // page fin
+    if (!page_inscription && !page_vues && !page_analyse){
         // on enlève les touches du clavier associé à la page vues
         document.removeEventListener("keydown", action_clavier_analyse)
         ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
         draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1)
-        ctx.strokeStyle = "rgb(255, 255, 255)" // Pour que le contour soit rouge
-        ctx.fillStyle = "rgb(255, 255, 255)" // Pour que l'intérieur soit bleu
-        ctx.font = "bold 58pt Courier";
-        ctx.fillText("Done, thx you :)", (window.innerWidth/2)-450, innerHeight/2 -100)
-        console.log('Fin interface3DD')
-
+        // Texte 
+        affichage_texte_fin(message_fin, envoie_termine)
         // ECRITURE DES RESULTATS
         choix['Analyse'] = checkbox_clicked
         choix['Interactions'] = interactions
@@ -441,12 +455,19 @@ function animate() {
             // Si la requête est terminée, et que la réponse n'est pas une erreur.
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                 console.log(xhr.responseText);
+                message_fin = "> It's done."
+                //print_text(handle_text(message_fin, (window.innerWidth/2)-450, innerHeight/2+150 , "26pt Courier", 1000))
+                envoie_termine = true
+                affichage_texte_fin(message_fin, envoie_termine)
+                return;
             }
         }
         // Envoi de la requête vers le serveur, avec les données.
         xhr.send(JSON.stringify(choix));
 
-        return;
+        return
+
+        
     }
 
     // Boucle sur animate

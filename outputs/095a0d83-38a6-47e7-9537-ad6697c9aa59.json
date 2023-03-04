@@ -1,0 +1,17 @@
+{
+    "Analyse": {},
+    "Interactions": [
+        {
+            "time": 1677933160714,
+            "type": "start"
+        },
+        {
+            "time": 1677933160753,
+            "type": "Affichage Mesh random : dragon en idx_i, idx_j : (2, 3)"
+        },
+        {
+            "time": 1677933160753,
+            "type": "Affichage Mesh random : dragon en theta, delta : (-0.7853981633974483, 1.5707963267948966)"
+        }
+    ]
+}

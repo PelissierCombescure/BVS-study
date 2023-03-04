@@ -32,7 +32,7 @@ async function main() {
         file.write(JSON.stringify(req.body, undefined, 4));
 
         // Envoi de la réponse pour terminer la requête.
-        res.send('Ok');
+        res.send('Enregistrement terminé.');
     });
 
     // Création du dossier où les données seront stockées.

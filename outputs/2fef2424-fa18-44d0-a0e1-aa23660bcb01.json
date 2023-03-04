@@ -1,0 +1,114 @@
+{
+    "tache_N1": {
+        "obj_file": "dragon_update_user_study.obj",
+        "mesh": "dragon",
+        "position_init_idx_i": 4,
+        "position_init_idx_j": 4,
+        "theta_init": -1.5707963267948966,
+        "delta_init": 3.141592653589793,
+        "choix_poses": [
+            [
+                "choix1",
+                -1.5707963267948966,
+                2.356194490192345,
+                3,
+                4
+            ],
+            [
+                "choix2",
+                -1.5707963267948966,
+                1.5707963267948966,
+                2,
+                4
+            ],
+            [
+                "choix3",
+                -1.5707963267948966,
+                0.7853981633974483,
+                1,
+                4
+            ]
+        ]
+    },
+    "Analyse": {
+        "analyse_N1": {
+            "mesh": "dragon",
+            "idx": [
+                0
+            ],
+            "mots": [
+                "1. De face"
+            ]
+        }
+    },
+    "Interactions": [
+        {
+            "time": 1677933651027,
+            "type": "start"
+        },
+        {
+            "time": 1677933651516,
+            "type": "bouton commencerclavier"
+        },
+        {
+            "time": 1677933651551,
+            "type": "Affichage Mesh random : dragon en idx_i, idx_j : (4, 4)"
+        },
+        {
+            "time": 1677933651551,
+            "type": "Affichage Mesh random : dragon en theta, delta : (-1.5707963267948966, 3.141592653589793)"
+        },
+        {
+            "time": 1677933652003,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1677933652114,
+            "type": "bouton pose n°1"
+        },
+        {
+            "time": 1677933652211,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1677933652306,
+            "type": "bouton pose n°2"
+        },
+        {
+            "time": 1677933652404,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1677933652490,
+            "type": "bouton pose n°3"
+        },
+        {
+            "time": 1677933652611,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1677933652955,
+            "type": "bouton valider"
+        },
+        {
+            "time": 1677933652955,
+            "type": "fin des choix."
+        },
+        {
+            "time": 1677933652962,
+            "type": "Début analyse n°1"
+        },
+        {
+            "time": 1677933654098,
+            "type": "ajout check sur : analyse n°1, mot 1. De face"
+        },
+        {
+            "time": 1677933654571,
+            "type": "Bouton valider analyse."
+        },
+        {
+            "time": 1677933654579,
+            "type": "Fin analyse"
+        }
+    ]
+}

@@ -12,7 +12,7 @@ function init_variable_analyse(){
 
     // Analayse des choix avec les checkboxs
     keywords = ["1. De face", "2. De profil", "3. Debout", "4. Eyes contact", "5. toto"]
-    nb_analyse_demande = 3
+    nb_analyse_demande = 1//3
 
     w_valider = w_bouton*1.2
     h_valider = h_bouton*1.2
