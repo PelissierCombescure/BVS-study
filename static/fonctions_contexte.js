@@ -23,9 +23,11 @@ function action_bouton_commencer_contexte(){
 
 function traitement_contexte(){
     affichage_texte_contexte()
+    //clignotement_rectangle(1000, 10,10,100,100, "rgb(255,0,0)")
     afficher_bouton_commencer() // meme bouton que la page inscription 
     if (clicked && click_inside(xyMouseDown, x_bouton_commencer, y_bouton_commencer , w_bouton_commencer, h_bouton_commencer)){
         // on passe aux choix 
         action_bouton_commencer_contexte()     
     }         
 }
+

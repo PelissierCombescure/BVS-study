@@ -47,6 +47,18 @@ function draw_contour(originex, originey, largeur, hauteur, couleur, alpha=1){
     ctx.lineWidth = 1
 }
 
+function clignotement_rectangle(periode, originex, originey, largeur, hauteur, couleur){
+    // temps en milliseconde de la période de clignotement
+    t = 2*(new Date().getTime()%periode)/periode-1 // nombre entre -1 et 1
+    draw_rectangle(originex, originey, largeur, hauteur, couleur, Math.abs(t))
+}
+
+function clignotement_contour(periode, originex, originey, largeur, hauteur, couleur){
+    // temps en milliseconde de la période de clignotement
+    t = 2*(new Date().getTime()%periode)/periode-1 // nombre entre -1 et 1
+    draw_contour(originex, originey, largeur, hauteur, couleur, Math.abs(t))
+}
+
 function print_text(dialogue) {
 
     s = dialogue.texte

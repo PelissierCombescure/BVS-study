@@ -381,6 +381,7 @@ function animate() {
     time_animate = new Date().getTime()
 
     if (page_contexte){
+        console.log("boucle contexte")
         //init touche clavier
         if (premier_tour_page_contexte){
             init_clavier_contexte()
@@ -391,8 +392,9 @@ function animate() {
 
     // page inscription
     if (page_inscription){
+        console.log("boucle inscription")
         // on enlève les touches du clavier associé à la page inscription
-        document.removeEventListener("keydown", init_clavier_contexte)
+        document.removeEventListener("keydown", action_clavier_contexte)
         //init touche clavier
         if (premier_tour_page_inscription){
             init_clavier_inscription()
@@ -403,6 +405,7 @@ function animate() {
 
     // page de choix
     if (page_vues && num_tache <= nb_mesh){
+        console.log("boucle choix")
         // on enlève les touches du clavier associé à la page inscription
         document.removeEventListener("keydown", action_clavier_inscription)
         //init touche clavier
@@ -452,6 +455,7 @@ function animate() {
     }
     // page analyse
     if (page_analyse){
+        console.log("boucle analyse")
         // on enlève les touches du clavier associé à la page vues
         document.removeEventListener("keydown", action_clavier_vues)
         // inti clavier
@@ -464,8 +468,10 @@ function animate() {
     }
     // page fin
     if (!page_contexte && !page_inscription && !page_vues && !page_analyse){
+        console.log("boucle fin")
         // on enlève les touches du clavier associé à la page vues
         document.removeEventListener("keydown", action_clavier_analyse)
+        // clear la fenetre 
         ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
         draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1)
         // Texte 
