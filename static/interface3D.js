@@ -415,6 +415,7 @@ function animate() {
         if(premier_tour_page_explications){
             // init clavier pour les vues
             //init_clavier_vues()
+            init_explication()
             // affichage ecran 3D de manière aléatoire
             setUp_3D(indice_mesh, 2, 2)
             premier_tour_page_explications = false
