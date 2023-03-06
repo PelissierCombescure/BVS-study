@@ -100,8 +100,8 @@ function afficher_recap(){
     for (let i = 0 ; i < canvasMins.length; i++) {
         // Draw les images des contextes
         y_image = 100+(20+ H_3D/3.5)*i
-        ctx.drawImage(canvasMins[i],W_3D+ w_recap/2.5 +10, y_image, W_3D/3.5, H_3D/3.5)
-        //draw_contour(W_3D+ w_recap/2.5, 100+(20+ H_3D/3.5)*i, W_3D/3.5, H_3D/3.5, "rgb(255,0,0)")
+        ctx.drawImage(canvasMins[i],W_3D+ w_recap/2.5, y_image, H_3D/3.5, H_3D/3.5)
+        draw_contour(W_3D+ w_recap/2.5, 100+(20+ H_3D/3.5)*i, H_3D/3.5, H_3D/3.5, "rgb(255,0,0)")
         //Fleche pour Switch haut
         if (nb_choix_fait > 1 && i > 0 && i < nb_choix_fait) {
             y_fleche_h = (H_3D/3.5)*0.4 + y_image
@@ -357,7 +357,7 @@ function action_bouton_pose(){
     if (nb_choix_fait < nb_choix_demande && !(deja_choisie)){
         liste_poses.push(['choix'+(nb_choix_fait+1), theta, delta, idx_i, idx_j])
         // affichage de la vue sélectionnée dans le recap
-        ctxMins[nb_choix_fait].drawImage(canvasRenderer, 0.5*canvasRenderer.width-0.5*canvasRenderer.height, 0, canvasRenderer.height, canvasRenderer.height, 0, 0, canvasRenderer.height*0.3, canvasRenderer.height*0.25)
+        ctxMins[nb_choix_fait].drawImage(canvasRenderer, 0.5*canvasRenderer.width-0.5*canvasRenderer.height, 0, canvasRenderer.height, canvasRenderer.height, 0, 0, canvasMins[0].width, canvasMins[0].height)//canvasRenderer.height*0.3, canvasRenderer.height*0.25)
         nb_choix_fait = nb_choix_fait+1
     }
 }

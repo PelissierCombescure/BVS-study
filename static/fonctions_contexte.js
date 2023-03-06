@@ -18,7 +18,7 @@ function affichage_texte_contexte(){
 function action_bouton_commencer_contexte(){
     page_contexte = false 
     page_inscription = true 
-    interactions.push({"time": new Date().getTime(), "type": "bouton commencer de contexte"+s})
+    interactions.push({"time": new Date().getTime(), "type": "bouton commencer de contexte"})
 }
 
 function traitement_contexte(){

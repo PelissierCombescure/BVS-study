@@ -1,0 +1,209 @@
+{
+    "identite": {
+        "Firstname": "marie",
+        "Name": "pelissier",
+        "Age": "1",
+        "Sexe": "M"
+    },
+    "tache_N1": {
+        "obj_file": "dragon_update_user_study.obj",
+        "mesh": "dragon",
+        "position_init_idx_i": 3,
+        "position_init_idx_j": 0,
+        "theta_init": 1.5707963267948966,
+        "delta_init": 2.356194490192345,
+        "choix_poses": [
+            [
+                "choix1",
+                1.5707963267948966,
+                2.356194490192345,
+                3,
+                0
+            ],
+            [
+                "choix2",
+                1.5707963267948966,
+                1.5707963267948966,
+                2,
+                0
+            ],
+            [
+                "choix3",
+                1.5707963267948966,
+                0.7853981633974483,
+                1,
+                0
+            ]
+        ]
+    },
+    "tache_N2": {
+        "obj_file": "camel_update_user_study_normed.obj",
+        "mesh": "camel",
+        "position_init_idx_i": 7,
+        "position_init_idx_j": 1,
+        "theta_init": 0.7853981633974483,
+        "delta_init": 5.497787143782138,
+        "choix_poses": [
+            [
+                "choix1",
+                0.7853981633974483,
+                5.497787143782138,
+                7,
+                1
+            ],
+            [
+                "choix2",
+                0.7853981633974483,
+                4.71238898038469,
+                6,
+                1
+            ],
+            [
+                "choix3",
+                0.7853981633974483,
+                3.9269908169872414,
+                5,
+                1
+            ]
+        ]
+    },
+    "Analyse": {
+        "analyse_N1": {
+            "mesh": "dragon",
+            "idx": [
+                0,
+                1
+            ],
+            "mots": [
+                "1. De face",
+                "2. De profil"
+            ]
+        }
+    },
+    "Interactions": [
+        {
+            "time": 1678106179856,
+            "type": "start"
+        },
+        {
+            "time": 1678106180577,
+            "type": "bouton commencer de contexte"
+        },
+        {
+            "time": 1678106185613,
+            "type": "bouton commencer d'inscriptiontiti"
+        },
+        {
+            "time": 1678106185648,
+            "type": "Affichage Mesh random : dragon en idx_i, idx_j : (3, 0)"
+        },
+        {
+            "time": 1678106185648,
+            "type": "Affichage Mesh random : dragon en theta, delta : (1.5707963267948966, 2.356194490192345)"
+        },
+        {
+            "time": 1678106188373,
+            "type": "bouton pose n°1"
+        },
+        {
+            "time": 1678106188981,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678106189060,
+            "type": "bouton pose n°2"
+        },
+        {
+            "time": 1678106189157,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678106189221,
+            "type": "bouton pose n°3"
+        },
+        {
+            "time": 1678106191269,
+            "type": "bouton valider"
+        },
+        {
+            "time": 1678106191289,
+            "type": "Affichage Mesh random : camel en idx_i, idx_j : (7, 1)"
+        },
+        {
+            "time": 1678106191289,
+            "type": "Affichage Mesh random : camel en theta, delta : (0.7853981633974483, 5.497787143782138)"
+        },
+        {
+            "time": 1678106191924,
+            "type": "bouton pose n°1"
+        },
+        {
+            "time": 1678106191989,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678106192084,
+            "type": "bouton pose n°2"
+        },
+        {
+            "time": 1678106192148,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678106192212,
+            "type": "bouton pose n°3"
+        },
+        {
+            "time": 1678106193092,
+            "type": "bouton valider"
+        },
+        {
+            "time": 1678106193092,
+            "type": "fin des choix."
+        },
+        {
+            "time": 1678106193102,
+            "type": "Début analyse n°1"
+        },
+        {
+            "time": 1678106200036,
+            "type": "ajout check sur : analyse n°1, mot 1. De face"
+        },
+        {
+            "time": 1678106200372,
+            "type": "ajout check sur : analyse n°1, mot 2. De profil"
+        },
+        {
+            "time": 1678106200789,
+            "type": "ajout check sur : analyse n°1, mot 3. Debout"
+        },
+        {
+            "time": 1678106201140,
+            "type": "retrait check sur : analyse n°1, mot 3. Debout"
+        },
+        {
+            "time": 1678106201492,
+            "type": "retrait check sur : analyse n°1, mot 2. De profil"
+        },
+        {
+            "time": 1678106201780,
+            "type": "retrait check sur : analyse n°1, mot 1. De face"
+        },
+        {
+            "time": 1678106202180,
+            "type": "ajout check sur : analyse n°1, mot 1. De face"
+        },
+        {
+            "time": 1678106202452,
+            "type": "ajout check sur : analyse n°1, mot 2. De profil"
+        },
+        {
+            "time": 1678106203061,
+            "type": "Bouton valider analyse."
+        },
+        {
+            "time": 1678106203077,
+            "type": "Fin analyse"
+        }
+    ]
+}

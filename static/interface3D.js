@@ -192,8 +192,8 @@ function setUp_3D(idx_mesh){
     ctxMins = []
     for (let i = 0; i < nb_choix_demande; i++) {
         let c = document.createElement("canvas")
-        c.width = 200
-        c.heigth = 200
+        c.setAttribute("width", 400);
+        c.setAttribute("height", 400);
         let ctx_c = c.getContext("2d")
         canvasMins.push(c)
         ctxMins.push(ctx_c)
@@ -381,7 +381,7 @@ function animate() {
     time_animate = new Date().getTime()
 
     if (page_contexte){
-        console.log("boucle contexte")
+        //console.log("boucle contexte")
         //init touche clavier
         if (premier_tour_page_contexte){
             init_clavier_contexte()
@@ -392,7 +392,7 @@ function animate() {
 
     // page inscription
     if (page_inscription){
-        console.log("boucle inscription")
+        //console.log("boucle inscription")
         // on enlève les touches du clavier associé à la page inscription
         document.removeEventListener("keydown", action_clavier_contexte)
         //init touche clavier
@@ -405,7 +405,7 @@ function animate() {
 
     // page de choix
     if (page_vues && num_tache <= nb_mesh){
-        console.log("boucle choix")
+        //console.log("boucle choix")
         // on enlève les touches du clavier associé à la page inscription
         document.removeEventListener("keydown", action_clavier_inscription)
         //init touche clavier
@@ -455,7 +455,7 @@ function animate() {
     }
     // page analyse
     if (page_analyse){
-        console.log("boucle analyse")
+        //console.log("boucle analyse")
         // on enlève les touches du clavier associé à la page vues
         document.removeEventListener("keydown", action_clavier_vues)
         // inti clavier
@@ -468,7 +468,7 @@ function animate() {
     }
     // page fin
     if (!page_contexte && !page_inscription && !page_vues && !page_analyse){
-        console.log("boucle fin")
+        //console.log("boucle fin")
         // on enlève les touches du clavier associé à la page vues
         document.removeEventListener("keydown", action_clavier_analyse)
         // clear la fenetre 

@@ -47,7 +47,7 @@ function affichage_analyse(idx_tache){
     canvasMins = all_canvasMins['tache_N'+idx_tache][1]
     for (let i=0; i<canvasMins.length; i++){
         affichage_legende(i)
-        ctx.drawImage(canvasMins[i], dx + (ecart_analyse+ W_3D/2.5)*i, 250, W_3D/2.5, H_3D/2.5)
+        ctx.drawImage(canvasMins[i], dx + (ecart_analyse+ W_3D/2.5)*i, 250, H_3D/2, H_3D/2)
         draw_contour(dx + (ecart_analyse+ W_3D/2.5)*i, 250,  W_3D/2.5, H_3D/2.5, "rgb(255,0,0)")
     }  
 }
