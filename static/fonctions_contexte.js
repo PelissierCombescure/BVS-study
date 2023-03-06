@@ -1,17 +1,17 @@
 function affichage_texte_contexte(){
     // Texte
     draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1) // ou + clair 4, 38, 48
-    // ctx.strokeStyle = "rgb(255, 255, 255)" // Pour que le contour soit rouge
-    // ctx.fillStyle = "rgb(255, 255, 255)" // Pour que l'intérieur soit bleu
+    ctx.strokeStyle = "rgb(255, 255, 255)" // Pour que le contour soit rouge
+    ctx.fillStyle = "rgb(255, 255, 255)" // Pour que l'intérieur soit bleu
     texte = "Hi, I'm Marie, do you want to participate in my study?"
-    // font = "58pt Courier"
-    // ctx.font = font
-    // largeur = ctx.measureText(texte).width
-    // ctx.fillText(texte, (window.innerWidth/2)- (largeur/2), 100)
+    font = "58pt Courier"
+    ctx.font = font
+    largeur = ctx.measureText(texte).width
+    ctx.fillText(texte, (window.innerWidth/2)- (largeur/2), 100)
 
-    print_text(handle_text(texte, (window.innerWidth/4), 100, "36pt Courier", (window.innerWidth/2)))    
+    //print_text(handle_text(texte, (window.innerWidth/4), 100, "42pt Courier", (window.innerWidth/1.8)))    
 
-    ctx.drawImage(imgs['marie'], (window.innerWidth/3), (window.innerHeight/4), imgs['marie'].width*0.7, imgs['marie'].height*0.7 )
+    ctx.drawImage(imgs['marie'], (window.innerWidth/2)-((imgs['marie'].width*0.7)/2), (window.innerHeight/4), imgs['marie'].width*0.7, imgs['marie'].height*0.7 )
 }
 
 
