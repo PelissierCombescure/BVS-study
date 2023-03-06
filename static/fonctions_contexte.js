@@ -4,7 +4,7 @@ function affichage_texte_contexte(){
     ctx.strokeStyle = "rgb(255, 255, 255)" // Pour que le contour soit rouge
     ctx.fillStyle = "rgb(255, 255, 255)" // Pour que l'intérieur soit bleu
     texte = "Hi, I'm Marie, do you want to participate in my study?"
-    font = "58pt Courier"
+    font = "42pt Courier"
     ctx.font = font
     largeur = ctx.measureText(texte).width
     ctx.fillText(texte, (window.innerWidth/2)- (largeur/2), 100)

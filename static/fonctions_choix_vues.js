@@ -101,7 +101,7 @@ function afficher_recap(){
         // Draw les images des contextes
         y_image = 100+(20+ H_3D/3.5)*i
         ctx.drawImage(canvasMins[i],W_3D+ w_recap/2.5, y_image, H_3D/3.5, H_3D/3.5)
-        draw_contour(W_3D+ w_recap/2.5, 100+(20+ H_3D/3.5)*i, H_3D/3.5, H_3D/3.5, "rgb(255,0,0)")
+        //draw_contour(W_3D+ w_recap/2.5, 100+(20+ H_3D/3.5)*i, H_3D/3.5, H_3D/3.5, "rgb(255,0,0)")
         //Fleche pour Switch haut
         if (nb_choix_fait > 1 && i > 0 && i < nb_choix_fait) {
             y_fleche_h = (H_3D/3.5)*0.4 + y_image
@@ -435,7 +435,8 @@ function action_bouton_valider(){
         // Mesh suivant
         indice_mesh = indice_mesh + 1
         num_tache = num_tache+1
-        setUp_3D(indice_mesh)  
+        idx_i_init = Math.floor(Math.random()*8); idx_j_init = Math.floor(Math.random()*5)
+        setUp_3D(indice_mesh, idx_i_init, idx_j_init)  
     }
 
     // Error : il reste des vues à sélectionner
@@ -471,7 +472,8 @@ function action_bouton_raz(){
     if (clicked && is_inside(xyMouseMove, (window.innerWidth-w_bouton*2.1)+w_bouton*0.15, window.innerHeight-h_bouton +10,  50,50)){
         
         init_variable(false); 
-        setUp_3D(indice_mesh)
+        idx_i_init = Math.floor(Math.random()*8); idx_j_init = Math.floor(Math.random()*5)
+        setUp_3D(indice_mesh, idx_i_init, idx_j_init)
         interactions.push({"time": new Date().getTime(), "type": "bouton raz check"})}
     // click sur la croix ou ailleurs : on clear
     //if (clicked && is_inside(xyMouseMove,W_3D*0.35+a+2*b+ecart*7 + w_bouton +400*1/2, H_3D+dy+ecart*2  + 100,  50,50)){

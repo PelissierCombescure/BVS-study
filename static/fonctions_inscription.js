@@ -39,11 +39,14 @@ function afficher_bouton_commencer(){
     }
 }
 
-function action_bouton_commencer(s){
+function action_bouton_commencer(){
     page_inscription = false 
-    page_vues = true 
-    interactions.push({"time": new Date().getTime(), "type": "bouton commencer d'inscription"+s})
-    
+    //page_vues = true 
+    page_explication = true
+    interactions.push({"time": new Date().getTime(), "type": "bouton commencer d'inscription"})
+    //gestion des données personnelle de l'utilisateur
+    gestion_donnees_personnelles()
+        
 }
 
 
@@ -51,9 +54,14 @@ function traitement_inscription(){
     affichage_inscription()
     if (champs_remplis_correctment()){
         afficher_bouton_commencer()
+        texte = "Are you ready for the explanations?"
+        font = "40pt Courier"
+        ctx.font = font
+        largeur = ctx.measureText(texte).width
+        ctx.fillText(texte, (window.innerWidth/2)- (largeur/2), y_bouton_commencer-20)
         if (clicked && click_inside(xyMouseDown, x_bouton_commencer, y_bouton_commencer , w_bouton_commencer, h_bouton_commencer)){
             // on passe aux choix 
-            action_bouton_commencer("titi")     
+            action_bouton_commencer()     
         }         
     }
 }
@@ -66,11 +74,19 @@ function champs_remplis_correctment(){
     name_ok = false
     age_ok = false
     sexe_ok = false
-    if (document.getElementById("Firstname").value.length >0){firstname_ok = true}
-    if (document.getElementById("Name").value.length >0){name_ok = true}
-    if (document.getElementById("Age").value.length >0){age_ok = true}
+    if ((document.getElementById("Firstname").value.length >0) && (value_non_vide(document.getElementById("Firstname").value))){firstname_ok = true}
+    if (document.getElementById("Name").value.length >0 && (value_non_vide(document.getElementById("Name").value))){name_ok = true}
+    if (document.getElementById("Age").value.length >0 && (value_non_vide(document.getElementById("Age").value))){age_ok = true}
     if (document.getElementById("SexeM").checked || document.getElementById("SexeF").checked){ sexe_ok= true}
     return firstname_ok && name_ok && age_ok && sexe_ok
+}
+
+function value_non_vide(V){
+    non_vide = false
+    for(let p=0;p<V.length; p++){
+        if (V[p] != ' '){return true}
+    }
+    return non_vide
 }
 
 function afficher_champs_inscription() {
