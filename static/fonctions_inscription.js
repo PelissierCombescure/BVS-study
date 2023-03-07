@@ -18,10 +18,11 @@ function affichage_inscription(){
     ctx.fillText("Firstname:", x_texte_zone, parseInt(document.getElementById("Firstname").style.top) -12)
     ctx.fillText("Name:", x_texte_zone, parseInt(document.getElementById("Name").style.top) - 12)
     ctx.fillText("Age:", x_texte_zone, parseInt(document.getElementById("Age").style.top) - 12)
-    ctx.fillText("Sexe:", parseInt(document.getElementById("SexeM").style.left), parseInt(document.getElementById("SexeM").style.top) - 22)
+    ctx.fillText("Sex:", parseInt(document.getElementById("SexeM").style.left), parseInt(document.getElementById("SexeM").style.top) - 22)
     ctx.font = "24pt Courier"
     ctx.fillText("Male", parseInt(document.getElementById("SexeM").style.left)+40, parseInt(document.getElementById("SexeM").style.top)+24)
     ctx.fillText("Female", parseInt(document.getElementById("SexeF").style.left)+40, parseInt(document.getElementById("SexeM").style.top)+24)
+    ctx.fillText("None of this above", parseInt(document.getElementById("SexeA").style.left)+40, parseInt(document.getElementById("SexeA").style.top)+24)
 }
 
 
@@ -43,7 +44,7 @@ function action_bouton_commencer(){
     page_inscription = false 
     //page_vues = true 
     page_explication = true
-    interactions.push({"time": new Date().getTime(), "type": "bouton commencer d'inscription"})
+    interactions.push({"time": new Date().getTime(), "type": "Fin inscription - Début explications"})
     //gestion des données personnelle de l'utilisateur
     gestion_donnees_personnelles()
         
@@ -76,8 +77,8 @@ function champs_remplis_correctment(){
     sexe_ok = false
     if ((document.getElementById("Firstname").value.length >0) && (value_non_vide(document.getElementById("Firstname").value))){firstname_ok = true}
     if (document.getElementById("Name").value.length >0 && (value_non_vide(document.getElementById("Name").value))){name_ok = true}
-    if (document.getElementById("Age").value.length >0 && (value_non_vide(document.getElementById("Age").value))){age_ok = true}
-    if (document.getElementById("SexeM").checked || document.getElementById("SexeF").checked){ sexe_ok= true}
+    if ((document.getElementById("Age").value >0) && (document.getElementById("Age").value.length >0) && (value_non_vide(document.getElementById("Age").value))){age_ok = true}
+    if (document.getElementById("SexeM").checked || document.getElementById("SexeF").checked || document.getElementById("SexeA").checked){ sexe_ok= true}
     return firstname_ok && name_ok && age_ok && sexe_ok
 }
 
@@ -177,6 +178,20 @@ function afficher_champs_inscription() {
     document.body.appendChild(input5);
     input5.focus();
 
+    var input6 = document.createElement('input');
+    input6.type = 'radio';
+    input6.id = 'SexeA';
+    input6.name = "sexe"
+    //input4.size = w_text_zone
+    // style 
+    input6.style.position = 'fixed';   
+    input6.style.left = x_texte_zone + 600;
+    input6.style.top = 10 + 2*ecart_texte_zone + y_texte_zone+'px';
+    input6.style.height = 20
+    input6.style.width = 20
+    document.body.appendChild(input6);
+    input6.focus();
+
 
 }
 
@@ -184,6 +199,7 @@ function gestion_donnees_personnelles(){
     // Sauvegarde des infos  
     if (document.getElementById("SexeM").checked){sexe = "M"}
     else if (document.getElementById("SexeF").checked){sexe = "F"}
+    else if (document.getElementById("SexeM").checked){sexe = "M"}
     else {sexe='None'}  
     choix['identite'] = {"Firstname":document.getElementById("Firstname").value,
                         "Name": document.getElementById("Name").value,
@@ -194,6 +210,7 @@ function gestion_donnees_personnelles(){
     document.getElementById("Age").style.display = 'none'
     document.getElementById("SexeM").style.display = 'none'
     document.getElementById("SexeF").style.display = 'none'
+    document.getElementById("SexeA").style.display = 'none'
 
 
                     

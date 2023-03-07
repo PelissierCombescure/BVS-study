@@ -23,6 +23,8 @@ function init_variable_fonction(dict_boutons, dict_imgs ){
     h_progress_bar = H_3D*0.04  
     // image recap
     dx = 20
+    ecart_recap  = 50
+    
     // Message pop up
     x_pop_up = W_3D*pos_bouton+w_bouton*2+ecart_bouton+30
     y_pop_up = H_3D +dy*4
@@ -80,10 +82,9 @@ function affichage_texte_recap(pos){
 }
 
 function afficher_recap(){
-    ecart_recap  = 50
     w_recap = window.innerWidth-W_3D
     // texte du haut
-    print_text(handle_text("Selected Viewpoints:",   W_3D +(window.innerWidth-W_3D)/4,  h_progress_bar + ecart_recap, "24pt Courier", 500))
+    //print_text(handle_text("Selected Viewpoints:",   W_3D +(window.innerWidth-W_3D)/4,  h_progress_bar + ecart_recap, "24pt Courier", 500))
     // fleche swap haut
     x_fleche_h = W_3D+ w_recap/2.5 - ecart_recap/2
     w_fleche_h = 20
@@ -279,6 +280,7 @@ function action_fleche_bas(){
 ///////////////////////////////////////////////////////////////
 ///////////////////// BOUTON
 function afficher_bouton(dict_boutons){
+    print_text(handle_text("Selected Viewpoints:",   W_3D +(window.innerWidth-W_3D)/4,  h_progress_bar + ecart_recap, "24pt Courier", 500))
     // image, posx, posy, W, H
     ctx.drawImage(dict_boutons["choix_pose"], W_3D*pos_bouton, H_3D+dy*2, w_bouton, h_bouton)
     ctx.drawImage(dict_boutons["retirer"], W_3D*pos_bouton+w_bouton+ecart_bouton, H_3D+dy*2, w_bouton, h_bouton)

@@ -33,31 +33,36 @@ function draw_rectangle(originex, originey, largeur, hauteur, couleur, alpha){
     ctx.globalAlpha = 1
 }
 
-function draw_contour(originex, originey, largeur, hauteur, couleur, alpha=1){
+function draw_contour(originex, originey, largeur, hauteur, couleur, alpha=1, epaisseur=5){
     ctx.beginPath()
     ctx.moveTo(originex, originey)
     ctx.lineTo(originex+largeur, originey)
     ctx.lineTo(originex+largeur, originey+hauteur)
     ctx.lineTo(originex, originey+hauteur)
     ctx.lineTo(originex, originey)
-    ctx.lineWidth = 5
+    ctx.lineWidth = epaisseur
     ctx.strokeStyle = couleur
     ctx.globalAlpha = alpha
     ctx.stroke()
     ctx.lineWidth = 1
 }
 
-function clignotement_rectangle(periode, originex, originey, largeur, hauteur, couleur){
+function clignotement_rectangle(periode, originex, originey, largeur, hauteur, couleur, alhpa_max=1){
     // temps en milliseconde de la période de clignotement
     t = 2*(new Date().getTime()%periode)/periode-1 // nombre entre -1 et 1
-    draw_rectangle(originex, originey, largeur, hauteur, couleur, Math.abs(t))
+    draw_rectangle(originex, originey, largeur, hauteur, couleur, Math.abs(t)*alhpa_max)
 }
 
-function clignotement_contour(periode, originex, originey, largeur, hauteur, couleur){
+function clignotement_contour(periode, originex, originey, largeur, hauteur, couleur, epaisseur = 5){
     // temps en milliseconde de la période de clignotement
     t = 2*(new Date().getTime()%periode)/periode-1 // nombre entre -1 et 1
-    draw_contour(originex, originey, largeur, hauteur, couleur, Math.abs(t))
+    draw_contour(originex, originey, largeur, hauteur, couleur, Math.abs(t), epaisseur)
 }
+
+function afficher_ecran(originex, originey, largeur, hauteur, couleur, alpha){
+    draw_rectangle(originex, originey, largeur, hauteur, couleur, alpha)
+}
+
 
 function print_text(dialogue) {
 
@@ -73,7 +78,7 @@ function print_text(dialogue) {
 
 }
 
-function handle_text(dialogue, x_start, y_start, font, l_max, color="#FFFFFF") {
+function handle_text(dialogue, x_start, y_start, font, l_max, color="#FFFFFF", interligne=40) {
     let s = dialogue
 
     let x = 0
@@ -95,7 +100,7 @@ function handle_text(dialogue, x_start, y_start, font, l_max, color="#FFFFFF") {
             if (x >= l_max) {
                
                 x = 0
-                y += 40
+                y += interligne
                 for (let i = 0; i < mot.length; i++) {
                     message[message.length-mot.length+i].x = x_start+x
                     message[message.length-mot.length+i].y = y
@@ -114,7 +119,7 @@ function handle_text(dialogue, x_start, y_start, font, l_max, color="#FFFFFF") {
 
     if (x >= l_max) {
         x = 0
-        y += 40
+        y += interligne
         for (let i = 0; i < mot.length; i++) {
             message[message.length-mot.length+i].x = x_start+x
             message[message.length-mot.length+i].y = y
@@ -124,6 +129,9 @@ function handle_text(dialogue, x_start, y_start, font, l_max, color="#FFFFFF") {
 
     return {"texte": message}
 }
+
+
+
 
 
 function progress_bar(N_tache, N_mesh){

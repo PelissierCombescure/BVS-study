@@ -21,7 +21,7 @@ function action_clavier_inscription(event){
         case ' ' :
             if (champs_remplis_correctment()){
             action_bouton_commencer('clavier')}
-            break;
+            break;idx_i, idx_j
         // valider
         case  'Enter':
             if (champs_remplis_correctment()){
@@ -29,6 +29,8 @@ function action_clavier_inscription(event){
             break;
     }
 }
+
+
 
 function action_clavier_vues(event){
     switch (event.key){
@@ -103,6 +105,12 @@ function init_clavier_contexte(){
 function init_clavier_inscription(){
     document.addEventListener("keydown", action_clavier_inscription)
 }
+
+
+function init_clavier_explication(){
+    document.addEventListener("keydown", action_clavier_explication)
+}
+
 
 function init_clavier_vues(){
     document.addEventListener("keydown", action_clavier_vues)

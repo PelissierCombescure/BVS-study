@@ -1,0 +1,585 @@
+{
+    "identite": {
+        "Firstname": "jean-michel",
+        "Name": "Connard",
+        "Age": "-25",
+        "Sexe": "M"
+    },
+    "tache_N1": {
+        "obj_file": "dragon_update_user_study.obj",
+        "mesh": "dragon",
+        "position_init_idx_i": 2,
+        "position_init_idx_j": 3,
+        "theta_init": -0.7853981633974483,
+        "delta_init": 1.5707963267948966,
+        "choix_poses": [
+            [
+                "choix1",
+                0.7853981633974483,
+                5.497787143782138,
+                7,
+                1
+            ],
+            [
+                "choix3",
+                0.7853981633974483,
+                0.7853981633974483,
+                1,
+                1
+            ],
+            [
+                "choix3",
+                0,
+                5.497787143782138,
+                7,
+                2
+            ]
+        ]
+    },
+    "tache_N2": {
+        "obj_file": "camel_update_user_study_normed.obj",
+        "mesh": "camel",
+        "position_init_idx_i": 2,
+        "position_init_idx_j": 2,
+        "theta_init": 0,
+        "delta_init": 1.5707963267948966,
+        "choix_poses": [
+            [
+                "choix1",
+                0.7853981633974483,
+                5.497787143782138,
+                7,
+                1
+            ],
+            [
+                "choix2",
+                0,
+                0.7853981633974483,
+                1,
+                2
+            ],
+            [
+                "choix3",
+                0.7853981633974483,
+                0,
+                0,
+                1
+            ]
+        ]
+    },
+    "Analyse": {
+        "analyse_N1": {
+            "mesh": "dragon",
+            "idx": [
+                2,
+                0
+            ],
+            "mots": [
+                "3. Debout",
+                "1. De face"
+            ]
+        }
+    },
+    "Interactions": [
+        {
+            "time": 1678206574894,
+            "type": "start"
+        },
+        {
+            "time": 1678206631316,
+            "type": "Fin contexte - Début inscription"
+        },
+        {
+            "time": 1678206686893,
+            "type": "Fin inscription - Début explications"
+        },
+        {
+            "time": 1678206686943,
+            "type": "Affichage Mesh random : dragon en idx_i, idx_j : (2, 1)"
+        },
+        {
+            "time": 1678206686943,
+            "type": "Affichage Mesh random : dragon en theta, delta : (0.7853981633974483, 1.5707963267948966)"
+        },
+        {
+            "time": 1678206794363,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206795581,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206798416,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206798416,
+            "type": "Affichage error à cause de fleche haut"
+        },
+        {
+            "time": 1678206814930,
+            "type": "fleche bas"
+        },
+        {
+            "time": 1678206818516,
+            "type": "fleche bas"
+        },
+        {
+            "time": 1678206822552,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206845774,
+            "type": "bouton pose n°1"
+        },
+        {
+            "time": 1678206869159,
+            "type": "Fin explication. Début des choix."
+        },
+        {
+            "time": 1678206869212,
+            "type": "Affichage Mesh random : dragon en idx_i, idx_j : (2, 3)"
+        },
+        {
+            "time": 1678206869212,
+            "type": "Affichage Mesh random : dragon en theta, delta : (-0.7853981633974483, 1.5707963267948966)"
+        },
+        {
+            "time": 1678206887103,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206887287,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206887437,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206888321,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206888505,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206888688,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206889538,
+            "type": "fleche bas"
+        },
+        {
+            "time": 1678206889957,
+            "type": "bouton renitialiser"
+        },
+        {
+            "time": 1678206889957,
+            "type": "Affichage error aucun choix fait donc pas de reinitialisation possible"
+        },
+        {
+            "time": 1678206893091,
+            "type": "bouton renitialiser"
+        },
+        {
+            "time": 1678206893092,
+            "type": "Affichage error aucun choix fait donc pas de reinitialisation possible"
+        },
+        {
+            "time": 1678206897179,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206898396,
+            "type": "fleche bas"
+        },
+        {
+            "time": 1678206898597,
+            "type": "fleche bas"
+        },
+        {
+            "time": 1678206898779,
+            "type": "fleche bas"
+        },
+        {
+            "time": 1678206899529,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206899714,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206900565,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206900748,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206901315,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206901465,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206901649,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206902299,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206902784,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206903167,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206904066,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206904635,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206904635,
+            "type": "Affichage error à cause de fleche haut"
+        },
+        {
+            "time": 1678206904818,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206904818,
+            "type": "Affichage error à cause de fleche haut"
+        },
+        {
+            "time": 1678206905720,
+            "type": "fleche bas"
+        },
+        {
+            "time": 1678206905853,
+            "type": "fleche bas"
+        },
+        {
+            "time": 1678206907169,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206909055,
+            "type": "bouton pose n°1"
+        },
+        {
+            "time": 1678206910523,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206911057,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206911223,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206912007,
+            "type": "fleche bas"
+        },
+        {
+            "time": 1678206912157,
+            "type": "fleche bas"
+        },
+        {
+            "time": 1678206912875,
+            "type": "fleche gauche"
+        },
+        {
+            "time": 1678206921931,
+            "type": "bouton pose n°2"
+        },
+        {
+            "time": 1678206923266,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206923433,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206923816,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206924134,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206924750,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206924901,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206926603,
+            "type": "bouton pose n°3"
+        },
+        {
+            "time": 1678206930939,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206931139,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206931322,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206932023,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206932906,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206933210,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206933610,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206933930,
+            "type": "fleche bas"
+        },
+        {
+            "time": 1678206934235,
+            "type": "fleche bas"
+        },
+        {
+            "time": 1678206934698,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206935050,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206935403,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206935787,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206936171,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206936859,
+            "type": "fleche bas"
+        },
+        {
+            "time": 1678206937370,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206937643,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206938043,
+            "type": "fleche gauche"
+        },
+        {
+            "time": 1678206938826,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206939146,
+            "type": "fleche bas"
+        },
+        {
+            "time": 1678206939419,
+            "type": "fleche bas"
+        },
+        {
+            "time": 1678206939834,
+            "type": "fleche gauche"
+        },
+        {
+            "time": 1678206940187,
+            "type": "fleche gauche"
+        },
+        {
+            "time": 1678206940586,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206940890,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206941371,
+            "type": "fleche bas"
+        },
+        {
+            "time": 1678206942029,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206943382,
+            "type": "bouton pose n°4"
+        },
+        {
+            "time": 1678206943382,
+            "type": "Affichage error 3 déjà fait"
+        },
+        {
+            "time": 1678206946935,
+            "type": "suppression de la pose n°2"
+        },
+        {
+            "time": 1678206947969,
+            "type": "bouton pose n°3"
+        },
+        {
+            "time": 1678206949238,
+            "type": "bouton valider"
+        },
+        {
+            "time": 1678206949274,
+            "type": "Affichage Mesh random : camel en idx_i, idx_j : (2, 2)"
+        },
+        {
+            "time": 1678206949274,
+            "type": "Affichage Mesh random : camel en theta, delta : (0, 1.5707963267948966)"
+        },
+        {
+            "time": 1678206950891,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206951259,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206951770,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206952107,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206953573,
+            "type": "bouton pose n°1"
+        },
+        {
+            "time": 1678206954170,
+            "type": "fleche gauche"
+        },
+        {
+            "time": 1678206954507,
+            "type": "fleche gauche"
+        },
+        {
+            "time": 1678206954970,
+            "type": "fleche bas"
+        },
+        {
+            "time": 1678206955858,
+            "type": "bouton pose n°2"
+        },
+        {
+            "time": 1678206956698,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206957482,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206958458,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206958971,
+            "type": "fleche gauche"
+        },
+        {
+            "time": 1678206959322,
+            "type": "fleche gauche"
+        },
+        {
+            "time": 1678206959979,
+            "type": "fleche bas"
+        },
+        {
+            "time": 1678206960490,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206960874,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206961770,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206962266,
+            "type": "fleche gauche"
+        },
+        {
+            "time": 1678206964811,
+            "type": "bouton pose n°3"
+        },
+        {
+            "time": 1678206980860,
+            "type": "bouton valider"
+        },
+        {
+            "time": 1678206980860,
+            "type": "fin des choix."
+        },
+        {
+            "time": 1678206980862,
+            "type": "Début analyse n°1"
+        },
+        {
+            "time": 1678207127579,
+            "type": "ajout check sur : analyse n°1, mot 3. Debout"
+        },
+        {
+            "time": 1678207129013,
+            "type": "ajout check sur : analyse n°1, mot 1. De face"
+        },
+        {
+            "time": 1678207130148,
+            "type": "Bouton valider analyse."
+        },
+        {
+            "time": 1678207130164,
+            "type": "Fin analyse"
+        }
+    ]
+}

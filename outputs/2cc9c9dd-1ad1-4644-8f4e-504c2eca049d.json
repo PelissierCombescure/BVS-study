@@ -1,0 +1,223 @@
+{
+    "identite": {
+        "Firstname": "marie",
+        "Name": "pelissier",
+        "Age": "1",
+        "Sexe": "M"
+    },
+    "tache_N1": {
+        "obj_file": "dragon_update_user_study.obj",
+        "mesh": "dragon",
+        "position_init_idx_i": 6,
+        "position_init_idx_j": 4,
+        "theta_init": -1.5707963267948966,
+        "delta_init": 4.71238898038469,
+        "choix_poses": [
+            [
+                "choix1",
+                -1.5707963267948966,
+                4.71238898038469,
+                6,
+                4
+            ],
+            [
+                "choix2",
+                -1.5707963267948966,
+                3.9269908169872414,
+                5,
+                4
+            ],
+            [
+                "choix3",
+                -1.5707963267948966,
+                3.141592653589793,
+                4,
+                4
+            ]
+        ]
+    },
+    "tache_N2": {
+        "obj_file": "camel_update_user_study_normed.obj",
+        "mesh": "camel",
+        "position_init_idx_i": 1,
+        "position_init_idx_j": 0,
+        "theta_init": 1.5707963267948966,
+        "delta_init": 0.7853981633974483,
+        "choix_poses": [
+            [
+                "choix1",
+                1.5707963267948966,
+                0.7853981633974483,
+                1,
+                0
+            ],
+            [
+                "choix2",
+                1.5707963267948966,
+                0,
+                0,
+                0
+            ],
+            [
+                "choix3",
+                1.5707963267948966,
+                5.497787143782138,
+                7,
+                0
+            ]
+        ]
+    },
+    "Analyse": {
+        "analyse_N1": {
+            "mesh": "dragon",
+            "idx": [
+                0
+            ],
+            "mots": [
+                "1. De face"
+            ]
+        }
+    },
+    "Interactions": [
+        {
+            "time": 1678206553994,
+            "type": "start"
+        },
+        {
+            "time": 1678206554671,
+            "type": "Fin contexte - Début inscription"
+        },
+        {
+            "time": 1678206559858,
+            "type": "Fin inscription - Début explications"
+        },
+        {
+            "time": 1678206559901,
+            "type": "Affichage Mesh random : dragon en idx_i, idx_j : (2, 1)"
+        },
+        {
+            "time": 1678206559901,
+            "type": "Affichage Mesh random : dragon en theta, delta : (0.7853981633974483, 1.5707963267948966)"
+        },
+        {
+            "time": 1678206564108,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206564459,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206564938,
+            "type": "fleche haut"
+        },
+        {
+            "time": 1678206564938,
+            "type": "Affichage error à cause de fleche haut"
+        },
+        {
+            "time": 1678206565323,
+            "type": "fleche bas"
+        },
+        {
+            "time": 1678206565901,
+            "type": "fleche bas"
+        },
+        {
+            "time": 1678206566250,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206567164,
+            "type": "bouton pose n°1"
+        },
+        {
+            "time": 1678206568363,
+            "type": "Fin explication. Début des choix."
+        },
+        {
+            "time": 1678206568389,
+            "type": "Affichage Mesh random : dragon en idx_i, idx_j : (6, 4)"
+        },
+        {
+            "time": 1678206568389,
+            "type": "Affichage Mesh random : dragon en theta, delta : (-1.5707963267948966, 4.71238898038469)"
+        },
+        {
+            "time": 1678206569419,
+            "type": "bouton pose n°1"
+        },
+        {
+            "time": 1678206569563,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206569691,
+            "type": "bouton pose n°2"
+        },
+        {
+            "time": 1678206569820,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206569930,
+            "type": "bouton pose n°3"
+        },
+        {
+            "time": 1678206570523,
+            "type": "bouton valider"
+        },
+        {
+            "time": 1678206570545,
+            "type": "Affichage Mesh random : camel en idx_i, idx_j : (1, 0)"
+        },
+        {
+            "time": 1678206570545,
+            "type": "Affichage Mesh random : camel en theta, delta : (1.5707963267948966, 0.7853981633974483)"
+        },
+        {
+            "time": 1678206571067,
+            "type": "bouton pose n°1"
+        },
+        {
+            "time": 1678206571211,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206571322,
+            "type": "bouton pose n°2"
+        },
+        {
+            "time": 1678206571436,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678206571563,
+            "type": "bouton pose n°3"
+        },
+        {
+            "time": 1678206572011,
+            "type": "bouton valider"
+        },
+        {
+            "time": 1678206572011,
+            "type": "fin des choix."
+        },
+        {
+            "time": 1678206572018,
+            "type": "Début analyse n°1"
+        },
+        {
+            "time": 1678206572938,
+            "type": "ajout check sur : analyse n°1, mot 1. De face"
+        },
+        {
+            "time": 1678206573290,
+            "type": "Bouton valider analyse."
+        },
+        {
+            "time": 1678206573303,
+            "type": "Fin analyse"
+        }
+    ]
+}

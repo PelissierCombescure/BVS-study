@@ -61,7 +61,7 @@ function init_variable(premier_appel){
     // Texte
     texte_temporaire = {}
     // temps de pop des messages
-    temps_pop = 1000
+    temps_pop = 2000
     // text qui correspond à des erreurs de bouton 
     longueur_max_error = 700
     // text 
@@ -77,9 +77,9 @@ function init_variable(premier_appel){
     R = 2.5
 
     // Enchainement des pages
-    page_contexte = false
+    page_contexte = true
     page_inscription = false // true
-    page_explication = true
+    page_explication = false
     page_vues = false // false
     page_analyse = false
 
@@ -247,6 +247,8 @@ function init_data(){
     boutons["retirer"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_retirer.png')
     boutons["commencer"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_commencer.png')
     boutons["raz"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_raz.png')
+    boutons["suivant"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_suivant.png')
+    boutons["avant"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_avant.png')
 
     // Mouse
     xyMouseMove = {"x": -1, "y": -1}
@@ -291,16 +293,18 @@ function animate() {
     }
 ////////////////////////////////////////////////////////////////////////////////
     if (page_explication){
-        console.log("boucle choix")
+        //console.log("boucle explication")
         // on enlève les touches du clavier associé à la page inscription
         document.removeEventListener("keydown", action_clavier_inscription)
         //init touche clavier
         if(premier_tour_page_explications){
             // init clavier pour les vues
-            //init_clavier_vues()
+            init_clavier_explication()
+            init_variable_fonction(boutons, imgs)
             init_explication()
             // affichage ecran 3D de manière aléatoire
-            setUp_3D(indice_mesh, 2, 2)
+            idx_i_explication = 2 , idx_j_explication = 1
+            setUp_3D(indice_mesh, idx_i_explication, idx_j_explication)
             premier_tour_page_explications = false
         }
         // Variable pour les fonctions
@@ -322,7 +326,7 @@ function animate() {
         afficher_bouton(boutons)
         if (canvasRenderer === null) {canvasRenderer = document.getElementById("renderer")}
         // traitement fleche (surval + click)
-        traitement_explications()
+        traitement_explications(idx_i_explication, idx_j_explication)
         // traitement bouton : (survol + click)
         //traitement_bouton() 
         // afficher + maj du recap de pose choisie : affichage des vue des poses
@@ -341,9 +345,9 @@ function animate() {
 ////////////////////////////////////////////////////////////////////////////////
     // page de choix
     if (page_vues && num_tache <= nb_mesh){
-        console.log("boucle choix")
+        //console.log("boucle choix")
         // on enlève les touches du clavier associé à la page inscription
-        document.removeEventListener("keydown", action_clavier_inscription)
+        document.removeEventListener("keydown", action_clavier_explication)
         //init touche clavier
         if(premier_tour_page_vues){
             // init clavier pour les vues
@@ -355,7 +359,7 @@ function animate() {
             premier_tour_page_vues = false
         }
         // Variable pour les fonctions
-        init_variable_fonction(boutons, imgs)
+        //init_variable_fonction(boutons, imgs)
         // Nettoyage fleche
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         // Affichage bouton RAZ
