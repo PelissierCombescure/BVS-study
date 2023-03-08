@@ -17,12 +17,13 @@ function affichage_texte_contexte(){
 
 function action_bouton_commencer_contexte(){
     page_contexte = false 
-    //page_inscription = true 
-    page_vues = true
+    page_inscription = true 
+    //page_vues = true
     interactions.push({"time": new Date().getTime(), "type": "Fin contexte - Début inscription"})
 }
 
 function traitement_contexte(){
+    //shortcuts(xyMouseMove, imgs['clavier_enter'], window.innerWidth/2 -(imgs['clavier_enter'].width/2), window.innerHeight/2 -(imgs['clavier_enter'].height/2), imgs['clavier_enter'].width, imgs['clavier_enter'].height, boutons['raccourcis'], x_Bshortcut, y_Bshortcut, w_Bshortcut, h_Bshortcut)
     affichage_texte_contexte()
     //clignotement_rectangle(1000, 10,10,100,100, "rgb(255,0,0)")
     afficher_bouton_commencer() // meme bouton que la page inscription 

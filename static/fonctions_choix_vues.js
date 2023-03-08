@@ -489,7 +489,7 @@ function action_bouton_raz(){
 
 function traitement_bouton(){
     // raccourcis bouton et fleche
-    shortcuts(xyMouseMove, imgs['clavier_vues'], window.innerWidth/2 -(imgs['clavier_vues'].width/2), window.innerHeight/2 -(imgs['clavier_vues'].height/2), imgs['clavier_vues'].width, imgs['clavier_vues'].height, boutons['raccourcis'], 10, window.innerHeight-0.5*h_bouton-10, 0.5*w_bouton, 0.5*h_bouton)
+    shortcuts(xyMouseMove, imgs['clavier_vues'], window.innerWidth/2 -(imgs['clavier_vues'].width/2), window.innerHeight/2 -(imgs['clavier_vues'].height/2), imgs['clavier_vues'].width, imgs['clavier_vues'].height, boutons['raccourcis'], x_Bshortcut, y_Bshortcut, w_Bshortcut, h_Bshortcut)
     // si on survol, on a les contours qui apparaissent
     survol_bouton()
     // si on click
