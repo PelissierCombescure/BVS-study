@@ -5,9 +5,9 @@
 function action_clavier_contexte(event){
     switch (event.key){
         // selectionner pose
-        case ' ' :
-            action_bouton_commencer_contexte('clavier')
-        break;
+        // case ' ' :
+        //     action_bouton_commencer_contexte('clavier')
+        // break;
         // valider
         case  'Enter':
             action_bouton_commencer_contexte('clavier')          
@@ -18,10 +18,10 @@ function action_clavier_contexte(event){
 function action_clavier_inscription(event){
     switch (event.key){
         // selectionner pose
-        case ' ' :
-            if (champs_remplis_correctment()){
-            action_bouton_commencer('clavier')}
-            break;idx_i, idx_j
+        // case ' ' :
+        //     if (champs_remplis_correctment()){
+        //     action_bouton_commencer('clavier')}
+        //     break;idx_i, idx_j
         // valider
         case  'Enter':
             if (champs_remplis_correctment()){
@@ -29,7 +29,6 @@ function action_clavier_inscription(event){
             break;
     }
 }
-
 
 
 function action_clavier_vues(event){

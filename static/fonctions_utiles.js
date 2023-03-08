@@ -131,9 +131,6 @@ function handle_text(dialogue, x_start, y_start, font, l_max, color="#FFFFFF", i
 }
 
 
-
-
-
 function progress_bar(N_tache, N_mesh){
     if (N_tache<=N_mesh){
         // background
@@ -147,4 +144,14 @@ function progress_bar(N_tache, N_mesh){
         // ctx.font = "18pt Courier";
         // ctx.fillText((N_tache)+"/"+(N_mesh), x_progress_bar+w_progress_bar+10, h_progress_bar)
     }
+}
+
+function shortcuts(xyMove, I_shortcut, x_shortcut, y_shortcut, w_shortcut, h_shortcut, I_bouton, xb, yb, wb, hb){
+    ctx.drawImage(I_bouton, xb, yb, wb, hb)
+    if (is_inside(xyMove, xb, yb, wb, hb)){
+        draw_rectangle(xb, yb, wb, hb, "rgb(200, 200, 200)", 0.6)
+        ctx.drawImage(I_shortcut, x_shortcut, y_shortcut, w_shortcut, h_shortcut)
+    }
+
+
 }

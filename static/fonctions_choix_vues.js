@@ -40,6 +40,7 @@ function bloquer_pose(L_poses){
         // Si on est en train de voir une pose déjà choisie
         if (idx_i== idx_i_p && idx_j==idx_j_p){
             draw_rectangle(0, h_progress_bar, W_3D, H_3D-h_progress_bar, "rgb(0, 0, 0)", alpha_bloque)
+            print_text(handle_text("Viewpoint already selected", 10, H_3D, "16pt Courier", H_3D, "#118AB2")) 
         }
     }
 }
@@ -176,21 +177,21 @@ function afficher_fleche(dict_imgs){
 function survol_fleche(){
     // Fleche GAUCHE
     if (xyMouseMove.x >= W_3D*0.2-b  && xyMouseMove.x <= W_3D*0.2 && xyMouseMove.y > H_3D+DY+b && xyMouseMove.y < H_3D+DY+b+a ){
-        draw_contour(W_3D*0.2-b, H_3D+DY+b, b, a, "rgb(17, 138, 178)", alpha_survol)
+        draw_rectangle(W_3D*0.2-b, H_3D+DY+b, b, a, "rgb(200, 200, 200)", alpha_survol)
     }
     // Fleche DROITE
     if (xyMouseMove.x >= W_3D*0.2+a  && xyMouseMove.x <= W_3D*0.2+a+b && xyMouseMove.y > H_3D+DY+b && xyMouseMove.y < H_3D+DY+b+a ){
-        draw_contour(W_3D*0.2+a, H_3D+DY+b, b, a, "rgb(17, 138, 178)", alpha_survol)
+        draw_rectangle(W_3D*0.2+a, H_3D+DY+b, b, a, "rgb(200, 200, 200)", alpha_survol)
     }
     // Fleche HAUT
     if (xyMouseMove.x >= W_3D*0.2  && xyMouseMove.x <= W_3D*0.2+a && xyMouseMove.y > H_3D+DY && xyMouseMove.y < H_3D+DY+b ){
         // l'image devient verte
-        draw_contour(W_3D*0.2, H_3D+DY, a, b, "rgb(17, 138, 178)", alpha_survol)
+        draw_rectangle(W_3D*0.2, H_3D+DY, a, b, "rgb(200, 200, 200)", alpha_survol)
     }
     // Fleche BAS
     if (xyMouseMove.x >=  W_3D*0.2  && xyMouseMove.x <=  W_3D*0.2+a && xyMouseMove.y > H_3D+DY+b+a && xyMouseMove.y < H_3D+DY+b+a+b ){
         // l'image devient verte
-        draw_contour(W_3D*0.2, H_3D+DY+b+a, a, b, "rgb(17, 138, 178)", alpha_survol)
+        draw_rectangle(W_3D*0.2, H_3D+DY+b+a, a, b, "rgb(200, 200, 200)", alpha_survol)
     }
 }
 
@@ -218,7 +219,7 @@ function get_clicked_fleche(){
 
 function traitement_fleche(){
     // Survol des fleches avec la souris
-    //survol_fleche()
+    survol_fleche()
     // click sur une fleche
     get_clicked_fleche()
     //console.log(which_clicked_fleche)
@@ -263,7 +264,7 @@ function action_fleche_droite(){
 function action_fleche_haut(){
     interactions.push({"time": new Date().getTime(), "type": "fleche haut"})
     if (idx_j == 0){
-        texte_temporaire = {"text": "You can't go any further, go back down.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
+        texte_temporaire = {"text": "You can't go any further, GO BACK DOWN.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
         interactions.push({"time": new Date().getTime(), "type": "Affichage error à cause de fleche haut"})
     }
     idx_j = Math.max(idx_j-1,0)
@@ -271,7 +272,7 @@ function action_fleche_haut(){
 function action_fleche_bas(){
     interactions.push({"time": new Date().getTime(), "type": "fleche bas"})
     if (idx_j == 4){
-        texte_temporaire = {"text": "You can't go any further, go up.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
+        texte_temporaire = {"text": "You can't go any further, GO UP.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
         interactions.push({"time": new Date().getTime(), "type": "Affichage error à cause de fleche bas"})
     }
     idx_j = Math.min(idx_j+1,4)
@@ -487,6 +488,8 @@ function action_bouton_raz(){
 }
 
 function traitement_bouton(){
+    // raccourcis bouton et fleche
+    shortcuts(xyMouseMove, imgs['clavier_vues'], window.innerWidth/2 -(imgs['clavier_vues'].width/2), window.innerHeight/2 -(imgs['clavier_vues'].height/2), imgs['clavier_vues'].width, imgs['clavier_vues'].height, boutons['raccourcis'], 10, window.innerHeight-0.5*h_bouton-10, 0.5*w_bouton, 0.5*h_bouton)
     // si on survol, on a les contours qui apparaissent
     survol_bouton()
     // si on click
