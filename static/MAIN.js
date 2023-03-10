@@ -77,9 +77,9 @@ function init_variable(premier_appel){
     R = 2.5
 
     // Enchainement des pages
-    page_contexte = true
+    page_contexte = false
     page_inscription = false // true
-    page_explication = false
+    page_explication = true
     page_vues = false // false
     page_analyse = false
 

@@ -26,12 +26,15 @@ function affichage_inscription(){
     ctx.fillText("None of these above", parseInt(document.getElementById("SexeA").style.left)+40, parseInt(document.getElementById("SexeA").style.top)+24)
 }
 
+//////////////////////////////////////////////////////////////
+/// BOUTON COMMENCER INSCRIPTION (POUUR ALLER VERS LE TUTO)
 
 function afficher_bouton_commencer_inscription(){
     w_bouton_commencer = scale_bouton_commencer*boutons["commencer_tuto"].width
     h_bouton_commencer = scale_bouton_commencer*boutons["commencer_tuto"].height
     x_bouton_commencer = (window.innerWidth/2)-(w_bouton_commencer/2)
     y_bouton_commencer =  (window.innerHeight/2)-(h_bouton_commencer/2)
+
     // Bouton commencer
     ctx.drawImage(boutons["commencer_tuto"], x_bouton_commencer, y_bouton_commencer , w_bouton_commencer, h_bouton_commencer)
 
@@ -40,7 +43,6 @@ function afficher_bouton_commencer_inscription(){
         draw_rectangle(x_bouton_commencer, y_bouton_commencer , w_bouton_commencer, h_bouton_commencer, "rgb(200, 200, 200)", 0.6)
     }
 }
-
 
 function action_bouton_commencer_inscription(){
     page_inscription = false 
@@ -52,6 +54,8 @@ function action_bouton_commencer_inscription(){
         
 }
 
+//////////////////////////////////////////////////////////////
+/// BOUTON SUIVANT INSCRIPTION
 function afficher_bouton_suivant_inscription(){
     w_bouton_suivant = scale_bouton_suivant*boutons["suivant_grand"].width
     h_bouton_suivant = scale_bouton_suivant*boutons["suivant_grand"].height
@@ -254,6 +258,7 @@ function traitement_inscription(){
         if (clicked && click_inside(xyMouseDown, x_bouton_commencer, y_bouton_commencer , w_bouton_commencer, h_bouton_commencer)){
             action_bouton_commencer_inscription()
         }
+        
 
 
     }

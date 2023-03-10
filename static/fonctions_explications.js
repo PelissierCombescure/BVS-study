@@ -4,83 +4,84 @@ function init_explication(){
 alpha_clignotement = 0.8
 color_ecran ="rgb(255,255,255)"
 color_texte = "rgb(0,0,0)"
-color_clignotement = "rgb(0,255,255)"
+color_clignotement = "rgb(255,0,255)"
+epaisseur_clignotement = 6
 font_texte = window.innerWidth
 ecart_x = 50
 l_texte_max = window.innerWidth-W_3D-2*ecart_x -50
-marge_texte_x = 20
-marge_texte_y = 50
 
+// marge du texte
+marge_texte_x = 20
+marge_texte_y = 100
+
+// deplacement pour ajouter un titre à l'ecran 
+dy_ecran = 50
+dh_ecran = 70
+
+// Position des boutons sur l'écran 
 w_bouton_suivant = boutons["suivant"].width*0.3
 h_bouton_suivant = boutons["suivant"].height*0.3
 
-temps_attente = 3000
+temps_attente = 0
 
-// actions = [
-//     {'ecran': {'x': W_3D + ecart_x, "y": H_3D*0.7, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45, "c":color_ecran,"a": alpha_ecran}, 
-//     'texte': , 
-//     'clignotement': {"x":0, "y":0, "w":100, "h":100, "c":color_clignotement,"a": alpha_clignotement, "t": new Date().getTime()+temps_attente},
-//     'bouton' :{"afficher": true, "x":  W_3D + ecart_x + window.innerWidth-W_3D-2*ecart_x - w_bouton_suivant - marge_texte_x, "y": H_3D*0.7 + H_3D*0.45 - h_bouton_suivant -marge_texte_x, "w": w_bouton_suivant, "h":h_bouton_suivant},
-//     'condition_suivant':{"x":  W_3D + ecart_x + window.innerWidth-W_3D-2*ecart_x - w_bouton_suivant - marge_texte_x, "y": H_3D*0.7 + H_3D*0.45 - h_bouton_suivant -marge_texte_x, "w": w_bouton_suivant, "h":h_bouton_suivant}}
-// ]
 
 ecrans = [
     // 0
-   {'x': W_3D + ecart_x, "y": H_3D*0.6, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45, "c":color_ecran,"a": alpha_ecran},
+   {'x': W_3D + ecart_x, "y": H_3D*0.6 - dy_ecran , "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
    // 1.1
-   {'x': W_3D + ecart_x, "y": H_3D*0.6, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45, "c":color_ecran,"a": alpha_ecran},
+   {'x': W_3D + ecart_x, "y": H_3D*0.6 - dy_ecran, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
    // 1.2,
-   {'x': W_3D + ecart_x, "y": H_3D*0.6, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45, "c":color_ecran,"a": alpha_ecran},
+   {'x': W_3D + ecart_x, "y": H_3D*0.6 - dy_ecran, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
    // 1.3
-   {'x': W_3D + ecart_x, "y": H_3D*0.6, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45, "c":color_ecran,"a": alpha_ecran},
+   {'x': W_3D + ecart_x, "y": H_3D*0.6 - dy_ecran, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
    // 2.1 : Selection 1er vues 
-   {'x': W_3D + ecart_x, "y": H_3D*0.6, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45, "c":color_ecran,"a": alpha_ecran},
+   {'x': W_3D + ecart_x, "y": H_3D*0.6 - dy_ecran, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
    // 2.2 : clique sur fleche droite
-   {'x': W_3D + ecart_x, "y": H_3D*0.6, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45, "c":color_ecran,"a": alpha_ecran},
+   {'x': W_3D + ecart_x, "y": H_3D*0.6 - dy_ecran, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
    // 2.3 : clique sur fleche haut
-   {'x': W_3D + ecart_x, "y": H_3D*0.6, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45, "c":color_ecran,"a": alpha_ecran},
+   {'x': W_3D + ecart_x, "y": H_3D*0.6 - dy_ecran, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
    // 2.4 : clique sur fleche haut
-   {'x': W_3D + ecart_x, "y": H_3D*0.6, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45, "c":color_ecran,"a": alpha_ecran},
+   {'x': W_3D + ecart_x, "y": H_3D*0.6 - dy_ecran, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
    // 2.5 :  PBL trop haut
-   {'x': W_3D + ecart_x, "y": H_3D*0.6, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45, "c":color_ecran,"a": alpha_ecran},
+   {'x': W_3D + ecart_x, "y": H_3D*0.6 - dy_ecran, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
    // 3.1 :  clique sur fleche bas
-   {'x': W_3D + ecart_x, "y": H_3D*0.6, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45, "c":color_ecran,"a": alpha_ecran},
+   {'x': W_3D + ecart_x, "y": H_3D*0.6 - dy_ecran, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
    // 3.2 :  clique sur fleche bas
-   {'x': W_3D + ecart_x, "y": H_3D*0.6, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45, "c":color_ecran,"a": alpha_ecran},
+   {'x': W_3D + ecart_x, "y": H_3D*0.6 - dy_ecran, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
    // 3.3 :  clique sur fleche droite
-   {'x': W_3D + ecart_x, "y": H_3D*0.6, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45, "c":color_ecran,"a": alpha_ecran},
+   {'x': W_3D + ecart_x, "y": H_3D*0.6 - dy_ecran, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
    // 4:  Selection de la vue
-   {'x': W_3D + ecart_x, "y": H_3D*0.6, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45, "c":color_ecran,"a": alpha_ecran}
-   
+   {'x': W_3D + ecart_x, "y": H_3D*0.6 - dy_ecran, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran}
 ]
+
 
 textes = [
     // 0
-    {"t":"Here is how the interface looks like.", "x": ecrans[0].x + marge_texte_x, "y": ecrans[0].y + marge_texte_y, "f":0.012, "l":l_texte_max, "c":color_texte, "i":50},
+    {"t":"Here is how the interface looks like. (PRESS NEXT BUTTON)", "x": ecrans[0].x + marge_texte_x, "y": ecrans[0].y + marge_texte_y, "f":0.010, "l":l_texte_max, "c":color_texte, "i":50},
     // 1.1 : ecran 3D
-    {"t":"You have: A screen to view the 3D object,", "x": ecrans[1].x + marge_texte_x, "y": ecrans[1].y + marge_texte_y, "f":0.012, "l":l_texte_max, "c":color_texte, "i":50},
+    {"t":"You have: A screen to view the 3D object. (PRESS NEXT BUTTON)", "x": ecrans[1].x + marge_texte_x, "y": ecrans[1].y + marge_texte_y, "f":0.010, "l":l_texte_max, "c":color_texte, "i":50},
     // 1.2 : fleche 
-    {"t":"You have: Arrows to move the 3D object,", "x": ecrans[2].x + marge_texte_x, "y": ecrans[2].y + marge_texte_y, "f":0.012, "l":l_texte_max, "c":color_texte, "i":50},
+    {"t":"You have: Arrows to move the 3D object. (PRESS NEXT BUTTON)", "x": ecrans[2].x + marge_texte_x, "y": ecrans[2].y + marge_texte_y, "f":0.010, "l":l_texte_max, "c":color_texte, "i":50},
     // 1.3 : bouton 
-    {"t":"You have: Buttons to make your selection.", "x": ecrans[3].x + marge_texte_x, "y": ecrans[3].y + marge_texte_y, "f":0.012, "l":l_texte_max, "c":color_texte, "i":50},
+    {"t":"You have: Buttons to make your selection. (PRESS NEXT BUTTON)", "x": ecrans[3].x + marge_texte_x, "y": ecrans[3].y + marge_texte_y, "f":0.010, "l":l_texte_max, "c":color_texte, "i":50},
     // 2.1 : Selection 1er vues 
-    {"t":"Let's try to select your first view. To do this, let's move the 3D model. (Follow the guide)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.012, "l":l_texte_max, "c":color_texte, "i":50},
+    {"t":"Let's try to select your first view. To do this, let's move the 3D model. (PRESS NEXT BUTTON) ", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.010, "l":l_texte_max, "c":color_texte, "i":50},
     // 2.2 : clique sur fleche droite 
-    {"t":"Let's try to select your first view. To do this, let's move the 3D model. (Follow the guide)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.012, "l":l_texte_max, "c":color_texte, "i":50},
+    {"t":"Let's try to select your first view. To do this, let's move the 3D model. (PRESS RIGHT ARROW)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.010, "l":l_texte_max, "c":color_texte, "i":50},
     // 2.3 : clique sur fleche haut
-    {"t":"Let's try to select your first view. To do this, let's move the 3D model. (Follow the guide)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.012, "l":l_texte_max, "c":color_texte, "i":50},
+    {"t":"Let's try to select your first view. To do this, let's move the 3D model. (PRESS UP ARROW)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.010, "l":l_texte_max, "c":color_texte, "i":50},
     // 2.4 : clique sur fleche haut 
-    {"t":"ArrowUp once again. (Follow the guide)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.012, "l":l_texte_max, "c":color_texte, "i":50},
+    {"t":"ArrowUp once again. (PRESS UP ARROW)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.010, "l":l_texte_max, "c":color_texte, "i":50},
     // 2.5 :  PBL trop haut
-    {"t":"You can't go further. Error messages may appear if you make impossible manipulations. Now let's try again to select our first view : GO DOWN. (Follow the guide)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
+    {"t":"You can't go further. Error messages may appear if you make impossible manipulations. Now let's try again to select our first view : GO DOWN. (PRESS DOWN ARROW)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
     // 3.1 :  clique sur fleche bas
-    {"t":"It's better. Once again. (Follow the guide)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.012, "l":l_texte_max, "c":color_texte, "i":50},
+    {"t":"It's better. Once again. (PRESS DOWN ARROW)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.010, "l":l_texte_max, "c":color_texte, "i":50},
     // 3.2 :  clique sur fleche bas
-    {"t":"It's better. Go to the right. (Follow the guide)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.012, "l":l_texte_max, "c":color_texte, "i":50},
+    {"t":"It's better. Go to the right. (PRESS RIGHT ARROW)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.010, "l":l_texte_max, "c":color_texte, "i":50},
     // 3.3 :  clique sur fleche bas
-    {"t":"Let's imagine that you choose this point of view. You have to select it with the button. (Follow the guide)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.011, "l":l_texte_max, "c":color_texte, "i":50},
+    {"t":"Let's imagine that you choose this point of view. You have to select it with the button. (PRESS SELECT BUTTON)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
     // 4 :  
-    {"t":"You have chosen your first viewpoint. It is displayed on your right. This one has become gray on the 3D screen. You can no longer select it.", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.011, "l":l_texte_max, "c":color_texte, "i":50},
+    {"t":"You have chosen your first viewpoint. It is displayed on your right. This one has become gray on the 3D screen. You can no longer select it. (PRESS NEXT BUTTON)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
 ]
 
 positions_bouton = [
@@ -120,7 +121,7 @@ clignotements = [
     {"type":"a_cliquer", "x":positions_bouton[1].x, "y":positions_bouton[1].y, "w":positions_bouton[1].w, "h":positions_bouton[1].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
     ],
     // 1.2 : fleche
-    [{"type":"a_regarder", "x": W_3D*0.2-b, "y":H_3D+DY, "w":b+a+b, "h":b+a+b, "c":color_clignotement,"a": alpha_clignotement, "t": new Date().getTime()+500},
+    [{"type":"a_regarder", "x": W_3D*0.2-b, "y":H_3D+DY, "w":b+a+b, "h":b+a+b, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
     {"type":"a_cliquer", "x":positions_bouton[2].x, "y":positions_bouton[2].y, "w":positions_bouton[2].w, "h":positions_bouton[2].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
     ],
     // 1.3
@@ -130,21 +131,21 @@ clignotements = [
     // 2.1 : Selection 1er vues 
     {"type":"a_cliquer", "x": positions_bouton[4].x, "y":positions_bouton[4].y, "w":positions_bouton[4].w, "h":positions_bouton[4].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
     // 2.2 : clique sur fleche droite
-    {"type":"a_cliquer", "x": W_3D*0.2+a, "y":H_3D+DY+b, "w":b, "h":a, "c":color_clignotement,"a":alpha_clignotement, "t": 500},
+    {"type":"a_cliquer", "x": W_3D*0.2+a, "y":H_3D+DY+b, "w":b, "h":a, "c":color_clignotement,"a":alpha_clignotement, "t": temps_attente},
     // 2.3 : clique sur fleche haut
-    {"type":"a_cliquer", "x": W_3D*0.2, "y":H_3D+DY, "w":a, "h":b, "c":color_clignotement,"a":alpha_clignotement, "t": 500},
+    {"type":"a_cliquer", "x": W_3D*0.2, "y":H_3D+DY, "w":a, "h":b, "c":color_clignotement,"a":alpha_clignotement, "t": temps_attente},
     // 2.4 : clique sur fleche haut
-    {"type":"a_cliquer", "x": W_3D*0.2, "y":H_3D+DY, "w":a, "h":b, "c":color_clignotement,"a":alpha_clignotement, "t": 500},
+    {"type":"a_cliquer", "x": W_3D*0.2, "y":H_3D+DY, "w":a, "h":b, "c":color_clignotement,"a":alpha_clignotement, "t": temps_attente},
     // 2.5 : PBL trop haut
-    {"type":"a_cliquer", "x": W_3D*0.2, "y":H_3D+DY+b+a, "w":a, "h":b, "c":color_clignotement,"a":alpha_clignotement, "t": 500},
+    {"type":"a_cliquer", "x": W_3D*0.2, "y":H_3D+DY+b+a, "w":a, "h":b, "c":color_clignotement,"a":alpha_clignotement, "t": temps_attente},
     // 3.1 :  clique sur fleche bas
-    {"type":"a_cliquer", "x": W_3D*0.2, "y":H_3D+DY+b+a, "w":a, "h":b, "c":color_clignotement,"a":alpha_clignotement, "t": 500},
+    {"type":"a_cliquer", "x": W_3D*0.2, "y":H_3D+DY+b+a, "w":a, "h":b, "c":color_clignotement,"a":alpha_clignotement, "t": temps_attente},
     // 3.2 :  clique sur fleche bas --> next step fleche droite
-    {"type":"a_cliquer", "x": W_3D*0.2+a, "y":H_3D+DY+b, "w":b, "h":a, "c":color_clignotement,"a":alpha_clignotement, "t": 500},
+    {"type":"a_cliquer", "x": W_3D*0.2+a, "y":H_3D+DY+b, "w":b, "h":a, "c":color_clignotement,"a":alpha_clignotement, "t": temps_attente},
     // 3.3 :  clique sur fleche drioite --> next step bouton pose
-    {"type":"a_cliquer", "x": W_3D*pos_bouton, "y": H_3D+dy*2, "w": w_bouton, "h": h_bouton, "c":color_clignotement,"a":alpha_clignotement, "t": 500},
+    {"type":"a_cliquer", "x": W_3D*pos_bouton, "y": H_3D+dy*2, "w": w_bouton, "h": h_bouton, "c":color_clignotement,"a":alpha_clignotement, "t": temps_attente},
     // 4
-    {"type":"a_cliquer", "x": positions_bouton[12].x, "y":positions_bouton[12].y, "w":positions_bouton[12].w, "h":positions_bouton[12].h, "c":color_clignotement,"a": alpha_clignotement, "t": new Date().getTime()}
+    {"type":"a_cliquer", "x": positions_bouton[12].x, "y":positions_bouton[12].y, "w":positions_bouton[12].w, "h":positions_bouton[12].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente}
 ]
 
 
@@ -193,7 +194,7 @@ function traitement_explications(idx_i_explication, idx_j_explication){
         idx_i = idx_i_explication
         idx_j = idx_j_explication
     }    
-    console.log("debut", idx_i, idx_j, num_action)
+    //console.log("debut", idx_i, idx_j, num_action)
     
     ctx.strokeStyle = "rgb(255, 255, 255)" // Pour que le contour soit rouge
     ctx.fillStyle = "rgb(255, 255, 255)" // Pour que l'intérieur soit bleu
@@ -205,9 +206,14 @@ function traitement_explications(idx_i_explication, idx_j_explication){
         position_bouton = positions_bouton[num_action]
         condition_suivant = conditions_suivant[num_action]
 
+        // ecran blanc
         afficher_ecran(ecran.x, ecran.y, ecran.w, ecran.h, ecran.c, ecran.a )
         print_text(handle_text(texte.t, texte.x, texte.y, texte.f*font_texte +"pt Courier", texte.l, texte.c, texte.i))
+        print_text(handle_text("Guidelines to follow:", ecran.x +marge_texte_x, ecran.y+52, 0.016*font_texte +"pt Courier", texte.l, "#EF476F", texte.i))
 
+
+
+        // survol de tous les boutons 
         survol_bouton()
 
         // s'il faut afficher le bouton next/previous
@@ -229,7 +235,7 @@ function traitement_explications(idx_i_explication, idx_j_explication){
         // 1 clignotement courant donc taille = 8 car 8 keys
         if (Object.keys(clignotement).length == 8){
             if (time_animate > time_clicke + clignotement.t && num_action!=12 && clignotement.type=="a_cliquer"){
-                clignotement_contour(2000, clignotement.x, clignotement.y, clignotement.w, clignotement.h, clignotement.c, 10)        
+                clignotement_contour(2000, clignotement.x, clignotement.y, clignotement.w, clignotement.h, clignotement.c, epaisseur_clignotement)        
             }                 
             if (time_animate > time_clicke + clignotement.t && clignotement.type=="a_regarder"){
                 clignotement_rectangle(2000, clignotement.x, clignotement.y, clignotement.w, clignotement.h, "rgb(17, 138, 178)", 0.6) 
@@ -240,7 +246,7 @@ function traitement_explications(idx_i_explication, idx_j_explication){
                 clignotement_p = clignotement[p]
                 // contour
                 if (time_animate > time_clicke + clignotement_p.t && num_action!=12 && clignotement_p.type=="a_cliquer"){
-                    clignotement_contour(2000, clignotement_p.x, clignotement_p.y, clignotement_p.w, clignotement_p.h, clignotement_p.c, 10)
+                    clignotement_contour(2000, clignotement_p.x, clignotement_p.y, clignotement_p.w, clignotement_p.h, clignotement_p.c, epaisseur_clignotement)
                 }
                 // rectangle
                 if (time_animate > time_clicke + clignotement_p.t && clignotement_p.type=="a_regarder"){
