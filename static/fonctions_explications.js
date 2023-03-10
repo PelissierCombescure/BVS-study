@@ -4,7 +4,7 @@ alpha_ecran = 0.9
 alpha_clignotement = 0.8
 color_ecran ="rgb(255,255,255)"
 color_texte = "rgb(0,0,0)"
-color_clignotement = "rgb(200,0,0)"
+color_clignotement = "rgb(0,255,255)"
 font_texte = window.innerWidth
 ecart_x = 50
 l_texte_max = window.innerWidth-W_3D-2*ecart_x -50
@@ -114,31 +114,37 @@ positions_bouton = [
 
 clignotements = [
     // 0
-    {"type":"a_cliquer", "x":positions_bouton[0].x, "y":positions_bouton[0].y, "w":positions_bouton[0].w, "h":positions_bouton[0].h, "c":color_clignotement,"a": alpha_clignotement, "t": new Date().getTime()+temps_attente},
+    {"type":"a_cliquer", "x":positions_bouton[0].x, "y":positions_bouton[0].y, "w":positions_bouton[0].w, "h":positions_bouton[0].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
     // 1.1 : ecran 3D
-    {"type":"a_regarder", "x":0, "y":h_progress_bar, "w":W_3D, "h":H_3D, "c":color_clignotement,"a": alpha_clignotement, "t": new Date().getTime()+500},
+    [{"type":"a_regarder", "x":0, "y":h_progress_bar, "w":W_3D, "h":H_3D, "c":color_clignotement,"a": alpha_clignotement, "t": 500},
+    {"type":"a_cliquer", "x":positions_bouton[1].x, "y":positions_bouton[1].y, "w":positions_bouton[1].w, "h":positions_bouton[1].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+    ],
     // 1.2 : fleche
-    {"type":"a_regarder", "x": W_3D*0.2-b, "y":H_3D+DY, "w":b+a+b, "h":b+a+b, "c":color_clignotement,"a": alpha_clignotement, "t": new Date().getTime()+500},
+    [{"type":"a_regarder", "x": W_3D*0.2-b, "y":H_3D+DY, "w":b+a+b, "h":b+a+b, "c":color_clignotement,"a": alpha_clignotement, "t": new Date().getTime()+500},
+    {"type":"a_cliquer", "x":positions_bouton[2].x, "y":positions_bouton[2].y, "w":positions_bouton[2].w, "h":positions_bouton[2].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+    ],
     // 1.3
-    {"type":"a_regarder", "x":W_3D*pos_bouton, "y":H_3D+dy*2, "w":w_bouton*2 + ecart_bouton, "h":h_bouton*2+ecart_bouton, "c":color_clignotement,"a": alpha_clignotement, "t": new Date().getTime()+500},
+    [{"type":"a_regarder", "x":W_3D*pos_bouton, "y":H_3D+dy*2, "w":w_bouton*2 + ecart_bouton, "h":h_bouton*2+ecart_bouton, "c":color_clignotement,"a": alpha_clignotement, "t": 500},
+    {"type":"a_cliquer", "x": positions_bouton[3].x, "y":positions_bouton[3].y, "w":positions_bouton[3].w, "h":positions_bouton[3].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+    ],
     // 2.1 : Selection 1er vues 
-    {"type":"a_cliquer", "x": positions_bouton[4].x, "y":positions_bouton[4].y, "w":positions_bouton[4].w, "h":positions_bouton[4].h, "c":color_clignotement,"a": alpha_clignotement, "t": new Date().getTime()+temps_attente},
+    {"type":"a_cliquer", "x": positions_bouton[4].x, "y":positions_bouton[4].y, "w":positions_bouton[4].w, "h":positions_bouton[4].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
     // 2.2 : clique sur fleche droite
-    {"type":"a_cliquer", "x": W_3D*0.2+a, "y":H_3D+DY+b, "w":b, "h":a, "c":color_clignotement,"a":alpha_clignotement, "t": new Date().getTime()+500},
+    {"type":"a_cliquer", "x": W_3D*0.2+a, "y":H_3D+DY+b, "w":b, "h":a, "c":color_clignotement,"a":alpha_clignotement, "t": 500},
     // 2.3 : clique sur fleche haut
-    {"type":"a_cliquer", "x": W_3D*0.2, "y":H_3D+DY, "w":a, "h":b, "c":color_clignotement,"a":alpha_clignotement, "t": new Date().getTime()+500},
+    {"type":"a_cliquer", "x": W_3D*0.2, "y":H_3D+DY, "w":a, "h":b, "c":color_clignotement,"a":alpha_clignotement, "t": 500},
     // 2.4 : clique sur fleche haut
-    {"type":"a_cliquer", "x": W_3D*0.2, "y":H_3D+DY, "w":a, "h":b, "c":color_clignotement,"a":alpha_clignotement, "t": new Date().getTime()+500},
+    {"type":"a_cliquer", "x": W_3D*0.2, "y":H_3D+DY, "w":a, "h":b, "c":color_clignotement,"a":alpha_clignotement, "t": 500},
     // 2.5 : PBL trop haut
-    {"type":"a_cliquer", "x": W_3D*0.2, "y":H_3D+DY+b+a, "w":a, "h":b, "c":color_clignotement,"a":alpha_clignotement, "t": new Date().getTime()+500},
+    {"type":"a_cliquer", "x": W_3D*0.2, "y":H_3D+DY+b+a, "w":a, "h":b, "c":color_clignotement,"a":alpha_clignotement, "t": 500},
     // 3.1 :  clique sur fleche bas
-    {"type":"a_cliquer", "x": W_3D*0.2, "y":H_3D+DY+b+a, "w":a, "h":b, "c":color_clignotement,"a":alpha_clignotement, "t": new Date().getTime()+500},
+    {"type":"a_cliquer", "x": W_3D*0.2, "y":H_3D+DY+b+a, "w":a, "h":b, "c":color_clignotement,"a":alpha_clignotement, "t": 500},
     // 3.2 :  clique sur fleche bas --> next step fleche droite
-    {"type":"a_cliquer", "x": W_3D*0.2+a, "y":H_3D+DY+b, "w":b, "h":a, "c":color_clignotement,"a":alpha_clignotement, "t": new Date().getTime()+500},
+    {"type":"a_cliquer", "x": W_3D*0.2+a, "y":H_3D+DY+b, "w":b, "h":a, "c":color_clignotement,"a":alpha_clignotement, "t": 500},
     // 3.3 :  clique sur fleche drioite --> next step bouton pose
-    {"type":"a_cliquer", "x": W_3D*pos_bouton, "y": H_3D+dy*2, "w": w_bouton, "h": h_bouton, "c":color_clignotement,"a":alpha_clignotement, "t": new Date().getTime()+500},
+    {"type":"a_cliquer", "x": W_3D*pos_bouton, "y": H_3D+dy*2, "w": w_bouton, "h": h_bouton, "c":color_clignotement,"a":alpha_clignotement, "t": 500},
     // 4
-    {"type":"a_cliquer", "x": positions_bouton[12].x, "y":positions_bouton[12].y, "w":positions_bouton[12].w, "h":positions_bouton[12].h, "c":color_clignotement,"a": alpha_clignotement, "t": new Date().getTime()+temps_attente}
+    {"type":"a_cliquer", "x": positions_bouton[12].x, "y":positions_bouton[12].y, "w":positions_bouton[12].w, "h":positions_bouton[12].h, "c":color_clignotement,"a": alpha_clignotement, "t": new Date().getTime()}
 ]
 
 
@@ -175,6 +181,9 @@ conditions_suivant = [
 nb_action = ecrans.length
 num_action = 0
 nb_click_explication = 0
+time_clicke = time_animate
+console.log('initttt')
+
 
 }
 
@@ -206,28 +215,46 @@ function traitement_explications(idx_i_explication, idx_j_explication){
             // bouton suivant
             ctx.drawImage(boutons['suivant'], position_bouton.x, position_bouton.y, position_bouton.w, position_bouton.h)
             if (is_inside(xyMouseMove, position_bouton.x, position_bouton.y, position_bouton.w, position_bouton.h)){
-                console.log('ttt')
+                //console.log('ttt')
                 draw_rectangle(position_bouton.x, position_bouton.y, position_bouton.w, position_bouton.h, "rgb(200, 200, 200)", 0.6)}
             // Bouton previous 
             if (num_action>0){ 
                 ctx.drawImage(boutons['avant'], position_bouton.x - w_bouton_suivant - marge_texte_x, position_bouton.y, position_bouton.w, position_bouton.h)
                 if (is_inside(xyMouseMove, position_bouton.x - w_bouton_suivant - marge_texte_x, position_bouton.y, position_bouton.w, position_bouton.h)){
-                    console.log("dedans")
+                    //console.log("dedans")
                     draw_rectangle(position_bouton.x - w_bouton_suivant - marge_texte_x, position_bouton.y, position_bouton.w, position_bouton.h, "rgb(200, 200, 200)", 0.6)}
             }
         }
 
-        // clignotement courant
-        if (time_animate > clignotement.t && num_action!=12 && clignotement.type=="a_cliquer"){
-            clignotement_contour(2000, clignotement.x, clignotement.y, clignotement.w, clignotement.h, clignotement.c, 5) }
-        
-        if (time_animate > clignotement.t && clignotement.type=="a_regarder"){
-            clignotement_rectangle(2000, clignotement.x, clignotement.y, clignotement.w, clignotement.h, "rgb(17, 138, 178)", 0.6) }
+        // 1 clignotement courant donc taille = 8 car 8 keys
+        if (Object.keys(clignotement).length == 8){
+            if (time_animate > time_clicke + clignotement.t && num_action!=12 && clignotement.type=="a_cliquer"){
+                clignotement_contour(2000, clignotement.x, clignotement.y, clignotement.w, clignotement.h, clignotement.c, 10)        
+            }                 
+            if (time_animate > time_clicke + clignotement.t && clignotement.type=="a_regarder"){
+                clignotement_rectangle(2000, clignotement.x, clignotement.y, clignotement.w, clignotement.h, "rgb(17, 138, 178)", 0.6) 
+            }
+        // on a plusieurs clignotement
+        } else {
+            for(let p=0; p<clignotement.length; p++){
+                clignotement_p = clignotement[p]
+                // contour
+                if (time_animate > time_clicke + clignotement_p.t && num_action!=12 && clignotement_p.type=="a_cliquer"){
+                    clignotement_contour(2000, clignotement_p.x, clignotement_p.y, clignotement_p.w, clignotement_p.h, clignotement_p.c, 10)
+                }
+                // rectangle
+                if (time_animate > time_clicke + clignotement_p.t && clignotement_p.type=="a_regarder"){
+                    clignotement_rectangle(2000, clignotement_p.x, clignotement_p.y, clignotement_p.w, clignotement_p.h, "rgb(17, 138, 178)", 0.6) 
+                }
+            }
+        }
+   
 
         // si on clique sur NEXT   
         if (condition_suivant.type =="bouton" && clicked && click_inside(xyMouseDown, condition_suivant.x, condition_suivant.y, condition_suivant.w, condition_suivant.h)){
             console.log("next")
             action_suivante()
+            
         }
         // Si on clique sur PREVIOUS
         //if (condition_suivant.type =="bouton" && num_action >0 && clicked && click_inside(xyMouseDown, condition_suivant.x- w_bouton_suivant - marge_texte_x, condition_suivant.y, condition_suivant.w, condition_suivant.h)){
@@ -311,10 +338,12 @@ function action_bas_explication(){
 
 function action_suivante(){
     num_action = num_action+1
+    time_clicke = time_animate
 }
 
 function action_precedente(){
     num_action = num_action-1
+    time_clicke = time_animate
 }
 
 function update_mesh(I,J){

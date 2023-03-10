@@ -19,7 +19,7 @@ function init_variable_fonction(dict_boutons, dict_imgs ){
     // progress bar
     x_progress_bar = 0
     y_progress_bar = 0
-    w_progress_bar = window.innerWidth //- W_3D*0.1
+    w_progress_bar = window.innerWidth - W_3D*0.1
     h_progress_bar = H_3D*0.04  
     // image recap
     dx = 20
@@ -177,21 +177,21 @@ function afficher_fleche(dict_imgs){
 function survol_fleche(){
     // Fleche GAUCHE
     if (xyMouseMove.x >= W_3D*0.2-b  && xyMouseMove.x <= W_3D*0.2 && xyMouseMove.y > H_3D+DY+b && xyMouseMove.y < H_3D+DY+b+a ){
-        draw_rectangle(W_3D*0.2-b, H_3D+DY+b, b, a, "rgb(200, 200, 200)", alpha_survol)
+        draw_contour(W_3D*0.2-b, H_3D+DY+b, b, a, "rgb(200, 200, 200)", alpha_survol)
     }
     // Fleche DROITE
     if (xyMouseMove.x >= W_3D*0.2+a  && xyMouseMove.x <= W_3D*0.2+a+b && xyMouseMove.y > H_3D+DY+b && xyMouseMove.y < H_3D+DY+b+a ){
-        draw_rectangle(W_3D*0.2+a, H_3D+DY+b, b, a, "rgb(200, 200, 200)", alpha_survol)
+        draw_contour(W_3D*0.2+a, H_3D+DY+b, b, a, "rgb(200, 200, 200)", alpha_survol)
     }
     // Fleche HAUT
     if (xyMouseMove.x >= W_3D*0.2  && xyMouseMove.x <= W_3D*0.2+a && xyMouseMove.y > H_3D+DY && xyMouseMove.y < H_3D+DY+b ){
         // l'image devient verte
-        draw_rectangle(W_3D*0.2, H_3D+DY, a, b, "rgb(200, 200, 200)", alpha_survol)
+        draw_contour(W_3D*0.2, H_3D+DY, a, b, "rgb(200, 200, 200)", alpha_survol)
     }
     // Fleche BAS
     if (xyMouseMove.x >=  W_3D*0.2  && xyMouseMove.x <=  W_3D*0.2+a && xyMouseMove.y > H_3D+DY+b+a && xyMouseMove.y < H_3D+DY+b+a+b ){
         // l'image devient verte
-        draw_rectangle(W_3D*0.2, H_3D+DY+b+a, a, b, "rgb(200, 200, 200)", alpha_survol)
+        draw_contour(W_3D*0.2, H_3D+DY+b+a, a, b, "rgb(200, 200, 200)", alpha_survol)
     }
 }
 

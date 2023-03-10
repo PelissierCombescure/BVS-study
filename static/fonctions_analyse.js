@@ -61,10 +61,10 @@ function progress_bar_analyse(N_analyse, N_analyse_total){
         console.log(w_bar)
         draw_rectangle(x_progress_bar, y_progress_bar, w_bar, h_progress_bar, "rgb(17, 138, 178)", 1)
         // numero de tache
-        // ctx.strokeStyle = "rgb(255, 255, 255)" // Pour que le contour soit rouge
-        // ctx.fillStyle = "rgb(255, 255, 255)" // Pour que l'intérieur soit bleu
-        // ctx.font = "18pt Courier";
-        // ctx.fillText((N_analyse+1)+"/"+(N_analyse_total), x_progress_bar+w_progress_bar+10, h_progress_bar)
+        ctx.strokeStyle = "rgb(255, 255, 255)" // Pour que le contour soit rouge
+        ctx.fillStyle = "rgb(255, 255, 255)" // Pour que l'intérieur soit bleu
+        ctx.font = "18pt Courier";
+        ctx.fillText((N_analyse)+"/"+(N_analyse_total), x_progress_bar+w_progress_bar+10, h_progress_bar)
     }
 }
 

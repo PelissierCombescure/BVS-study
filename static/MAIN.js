@@ -316,7 +316,7 @@ function animate() {
             init_variable_fonction(boutons, imgs)
             init_explication()
             // affichage ecran 3D de manière aléatoire
-            idx_i_explication = 2 , idx_j_explication = 1
+            idx_i_explication = 4 , idx_j_explication = 1
             setUp_3D(indice_mesh, idx_i_explication, idx_j_explication)
             premier_tour_page_explications = false
         }
@@ -332,7 +332,7 @@ function animate() {
             else{print_text(handle_text(texte_temporaire.text, texte_temporaire.x, texte_temporaire.y, "  18pt Courier", longueur_max_error, "#118AB2"))}
         }
         // progress bar
-        progress_bar(num_tache, nb_mesh)
+        progress_bar(0, 1)
         // Affichage fleche
         afficher_fleche(imgs)
         // affichage de sboutons
@@ -383,7 +383,7 @@ function animate() {
             else{print_text(handle_text(texte_temporaire.text, texte_temporaire.x, texte_temporaire.y, "  18pt Courier", longueur_max_error, "#118AB2"))}
         }
         // progress bar
-        progress_bar(num_tache, nb_mesh)
+        progress_bar(num_tache-1, nb_mesh)
         // Affichage fleche
         afficher_fleche(imgs)
         // affichage de sboutons
@@ -402,9 +402,9 @@ function animate() {
         // Les poses choisies sont grisées
         bloquer_pose(liste_poses)
         // RAZ
-        clicked = false
-        which_clicked_fleche = -1
-        which_clicked_bouton = -1 
+        // clicked = false
+        // which_clicked_fleche = -1
+        // which_clicked_bouton = -1 
     }
 ////////////////////////////////////////////////////////////////////////////////
     // page analyse
@@ -419,6 +419,7 @@ function animate() {
             premier_tour_page_analyse = false}
         init_variable_analyse()
         traitement_fin()
+        
     }
 ////////////////////////////////////////////////////////////////////////////////
     // page fin

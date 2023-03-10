@@ -45,6 +45,7 @@ function draw_contour(originex, originey, largeur, hauteur, couleur, alpha=1, ep
     ctx.globalAlpha = alpha
     ctx.stroke()
     ctx.lineWidth = 1
+    ctx.globalAlpha = 1
 }
 
 function clignotement_rectangle(periode, originex, originey, largeur, hauteur, couleur, alhpa_max=1){
@@ -136,13 +137,13 @@ function progress_bar(N_tache, N_mesh){
         // background
         draw_rectangle(x_progress_bar, y_progress_bar, w_progress_bar, h_progress_bar, "rgb(255,255,255)", 1)
         // bar
-        w_bar = ((N_tache-1)/N_mesh)*w_progress_bar
+        w_bar = ((N_tache)/N_mesh)*w_progress_bar
         draw_rectangle(x_progress_bar, y_progress_bar, w_bar, h_progress_bar, "rgb(17, 138, 178)", 1)
         // // numero de tache
-        // ctx.strokeStyle = "rgb(255, 255, 255)" // Pour que le contour soit rouge
-        // ctx.fillStyle = "rgb(255, 255, 255)" // Pour que l'intérieur soit bleu
-        // ctx.font = "18pt Courier";
-        // ctx.fillText((N_tache)+"/"+(N_mesh), x_progress_bar+w_progress_bar+10, h_progress_bar)
+        ctx.strokeStyle = "rgb(255, 255, 255)" // Pour que le contour soit rouge
+        ctx.fillStyle = "rgb(255, 255, 255)" // Pour que l'intérieur soit bleu
+        ctx.font = "18pt Courier";
+        ctx.fillText((N_tache)+"/"+(N_mesh), x_progress_bar+w_progress_bar+10, h_progress_bar)
     }
 }
 
