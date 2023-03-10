@@ -38,22 +38,22 @@ function action_clavier_inscription(event){
 function action_clavier_vues(event){
     switch (event.key){
         case  'ArrowLeft':
-            console.log("deplacement K-G")
+            //console.log("deplacement K-G")
             action_fleche_gauche()
             //idx_i = (idx_i+1)%8
             break;
         case 'ArrowRight' :
-            console.log("deplacement K-D")
+            //console.log("deplacement K-D")
             action_fleche_droite()
             //idx_i = (idx_i+7)%8
             break;
         case 'ArrowDown' :
-            console.log("deplacement K-B")
+            //console.log("deplacement K-B")
             action_fleche_bas()
             //idx_j = Math.min(idx_j+1,4)
             break;
         case 'ArrowUp' :
-            console.log("deplacement K-H")
+            //console.log("deplacement K-H")
             action_fleche_haut()
             //idx_j = Math.max(idx_j-1,0)
             break;

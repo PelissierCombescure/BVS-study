@@ -2,7 +2,8 @@
 checkbox_clicked_courant = {idx_checkbox:[], mots:[]}
 // nuemro init de l'analyse
 num_analyse = 0
-idx_tache = 1 // ATTENTION ça commence à 1
+idx_tache = 0 // ATTENTION ça commence à 1
+
 
 // Variable 
 function init_variable_analyse(){
@@ -12,8 +13,7 @@ function init_variable_analyse(){
 
     // Analayse des choix avec les checkboxs
     keywords = ["1. De face", "2. De profil", "3. Debout", "4. Eyes contact", "5. toto"]
-    nb_analyse_demande = 1//3
-
+    
     w_valider = w_bouton*1.2
     h_valider = h_bouton*1.2
     x_valider = (window.innerWidth/2)-w_valider/2
@@ -44,7 +44,7 @@ function affichage_texte(){
 function affichage_analyse(idx_tache){
     ecart_analyse = 50
     dx = (window.innerWidth - canvasMins.length*(W_3D/2.5) - (canvasMins.length-1)*(ecart_analyse))*0.5
-    canvasMins = all_canvasMins['tache_N'+idx_tache][1]
+    canvasMins = all_canvasMins['tache_N'+list_idx_tache[idx_tache]][1]
     for (let i=0; i<canvasMins.length; i++){
         affichage_legende(i)
         ctx.drawImage(canvasMins[i], dx + (ecart_analyse+ W_3D/2.5)*i, 250, H_3D/2, H_3D/2)
@@ -58,7 +58,6 @@ function progress_bar_analyse(N_analyse, N_analyse_total){
         draw_rectangle(x_progress_bar, y_progress_bar, w_progress_bar, h_progress_bar, "rgb(255,255,255)", 1)
         // bar
         w_bar = ((N_analyse)/N_analyse_total)*w_progress_bar
-        console.log(w_bar)
         draw_rectangle(x_progress_bar, y_progress_bar, w_bar, h_progress_bar, "rgb(17, 138, 178)", 1)
         // numero de tache
         ctx.strokeStyle = "rgb(255, 255, 255)" // Pour que le contour soit rouge
@@ -90,7 +89,7 @@ function action_bouton_valider_analyse(){
     // si au moins un mot est coché et qu'il reste des analyse à faire
     if (checkbox_clicked_courant.idx_checkbox.length>0){
         // sauvegarde des checkbox clikée et les mesh 
-        checkbox_clicked['analyse_N'+(num_analyse+1)] = {"mesh" : choix["tache_N"+idx_tache].mesh ,"idx" : checkbox_clicked_courant.idx_checkbox, "mots": checkbox_clicked_courant.mots}
+        checkbox_clicked['analyse_N'+(num_analyse+1)] = {"mesh" : choix["tache_N"+list_idx_tache[idx_tache]].mesh ,"idx" : checkbox_clicked_courant.idx_checkbox, "mots": checkbox_clicked_courant.mots}
         //RAZ pour la prochaine analyse
         checkbox_clicked_courant = {idx_checkbox:[], mots:[]}
         // analyse suivant

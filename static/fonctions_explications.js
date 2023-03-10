@@ -391,36 +391,35 @@ function traitement_explications(idx_i_explication, idx_j_explication){
 
         ///////// si on clique sur NEXT   
         if (condition_suivant.type =="bouton" && clicked && click_inside(xyMouseDown, condition_suivant.x, condition_suivant.y, condition_suivant.w, condition_suivant.h)){
-            console.log("next")
-            action_suivante()
-            
+            //console.log("next")
+            action_suivante()            
         }
 
         //////// Si on clique sur PREVIOUS
         //if (condition_suivant.type =="bouton" && num_action >0 && clicked && click_inside(xyMouseDown, condition_suivant.x- w_bouton_suivant - marge_texte_x, condition_suivant.y, condition_suivant.w, condition_suivant.h)){
         if (num_action >0 && clicked && click_inside(xyMouseDown, position_bouton.x- w_bouton_suivant - marge_texte_x, position_bouton.y, position_bouton.w, position_bouton.h)){    
-            console.log("previous")
+            //console.log("previous")
             action_previous_explication()
         }
         // Si on clique sur Fleche droite
         if (condition_suivant.type =="fleche_d" && num_action > 0 && clicked && click_inside(xyMouseDown, condition_suivant.x, condition_suivant.y, condition_suivant.w, condition_suivant.h)){
-            console.log("fleche_d")
+            //console.log("fleche_d")
             action_droite_explication()
         }
         // Si on clique sur Fleche Haut
         if (condition_suivant.type =="fleche_h" && num_action > 0 && clicked && click_inside(xyMouseDown, condition_suivant.x, condition_suivant.y, condition_suivant.w, condition_suivant.h)){
-            console.log("fleche_h")
+            //console.log("fleche_h")
             action_haut_explication()
         }
         // Si on clique sur Fleche bas
         if (condition_suivant.type =="fleche_b" && num_action > 0 && clicked && click_inside(xyMouseDown, condition_suivant.x, condition_suivant.y, condition_suivant.w, condition_suivant.h)){
-            console.log("fleche_b")
+            //console.log("fleche_b")
             texte_temporaire = {}
             action_bas_explication()
         }
         // Si on clique sur select
         if (condition_suivant.type =="bouton_pose" && num_action > 0 && clicked && click_inside(xyMouseDown, condition_suivant.x, condition_suivant.y, condition_suivant.w, condition_suivant.h)){
-            console.log("bouton_pose")
+            //console.log("bouton_pose")
             action_bouton_pose() 
             action_suivante()   
         }
@@ -518,7 +517,7 @@ function action_clavier_explication(event){
         // selectionner pose
         case ' ' :
             if (num_action==12){
-                console.log("pose clavier")
+                //console.log("pose clavier")
                 action_bouton_pose() 
                 action_suivante() }
             break;
@@ -538,26 +537,26 @@ function action_clavier_explication(event){
             if (num_action > 0){
                 if (num_action == 7){action_fleche_gauche(); update_mesh(idx_i, idx_j)}
                 if ((num_action == 8) ){action_fleche_bas(); update_mesh(idx_i, idx_j)}
-                console.log("previous clavier")
+                //console.log("previous clavier")
                 action_precedente()}                        
             break;
 
         case 'ArrowRight' :
             if (condition_suivant.type =="fleche_d"){
-                console.log("fleche_d clavier")
+                //console.log("fleche_d clavier")
                 action_droite_explication()
             }
             break
         case 'ArrowUp' :
             if (condition_suivant.type =="fleche_h"){
-                console.log("fleche_h clavier")
+                //console.log("fleche_h clavier")
                 action_haut_explication()
             }
             break
 
         case 'ArrowDown' :
             if (condition_suivant.type =="fleche_b"){
-                console.log("fleche_b clavier")
+                //console.log("fleche_b clavier")
                 action_bas_explication()
             }
             break

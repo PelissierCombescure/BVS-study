@@ -25,7 +25,6 @@ function init_variable(premier_appel){
     ///////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////
 
-
     // SOURIS
     // gestion de la souris : pour savoir si on a clické et sur quelle image on a clické
     clicked = false
@@ -33,9 +32,7 @@ function init_variable(premier_appel){
     which_clicked_fleche = -1
     bouton_raz_clicked = false
 
-    // TEMPS
-    // pour avoir un délai après le click
-    //time_click = new Date().getTime()
+    // Au premier appel on init : les interactions
     if (premier_appel){interactions = [{"time" : new Date().getTime(), "type": "start"}]}
 
     // Couleur
@@ -45,7 +42,15 @@ function init_variable(premier_appel){
     indice_mesh = 0 // indice du premier mesh à visionner
     mesh_courant = "nope" // nom des mesh 
     // nombre de mesh a visionner AU TOTAL
-    nb_mesh = 2 //3
+    nb_mesh = 4 //3
+    // random nom mesh 
+    obj_file = shuffle(['dragon_update_user_study_normed.obj', 'camel_update_user_study_normed.obj', 'gorgoile_update_user_study_centered_normed.obj', 'horse_update_user_study_normed.obj'])
+    
+    // nb analyse demandé
+    nb_analyse_demande = 3
+    list_idx_tache =[]
+    for (let p=0; p<nb_mesh; p++){list_idx_tache.push(p+1)}
+    list_idx_tache = shuffle(list_idx_tache)
 
     // Choix des N poses demandé pour les mesh courant
     choix_courant = {}
@@ -204,7 +209,7 @@ function setUp_3D(idx_mesh, idx_i_init, idx_j_init, explication=false){
     setUp_light(R)
 
     // Data 3D
-    obj_file = shuffle(['dragon_update_user_study_normed.obj', 'camel_update_user_study_normed.obj', 'gorgoile_update_user_study_centered_normed.obj', 'horse_update_user_study_normed.obj'])
+    //obj_file = shuffle(['dragon_update_user_study_normed.obj', 'camel_update_user_study_normed.obj', 'gorgoile_update_user_study_centered_normed.obj', 'horse_update_user_study_normed.obj'])
     const objLoader = new THREE.OBJLoader2();
 
         // Si on load le mesh 3d dans les explicationq, on imporse que ce soit le dragon

@@ -1,0 +1,311 @@
+{
+    "tache_N1": {
+        "obj_file": "horse_update_user_study_normed.obj",
+        "mesh": "horse",
+        "position_init_idx_i": 3,
+        "position_init_idx_j": 3,
+        "theta_init": -0.7853981633974483,
+        "delta_init": 2.356194490192345,
+        "choix_poses": [
+            [
+                "choix1",
+                -0.7853981633974483,
+                2.356194490192345,
+                3,
+                3
+            ],
+            [
+                "choix2",
+                -0.7853981633974483,
+                1.5707963267948966,
+                2,
+                3
+            ],
+            [
+                "choix3",
+                -0.7853981633974483,
+                0.7853981633974483,
+                1,
+                3
+            ]
+        ]
+    },
+    "tache_N2": {
+        "obj_file": "gorgoile_update_user_study_centered_normed.obj",
+        "mesh": "gorgoile",
+        "position_init_idx_i": 0,
+        "position_init_idx_j": 3,
+        "theta_init": -0.7853981633974483,
+        "delta_init": 0,
+        "choix_poses": [
+            [
+                "choix1",
+                -0.7853981633974483,
+                0,
+                0,
+                3
+            ],
+            [
+                "choix2",
+                -0.7853981633974483,
+                5.497787143782138,
+                7,
+                3
+            ],
+            [
+                "choix3",
+                -0.7853981633974483,
+                4.71238898038469,
+                6,
+                3
+            ]
+        ]
+    },
+    "tache_N3": {
+        "obj_file": "camel_update_user_study_normed.obj",
+        "mesh": "camel",
+        "position_init_idx_i": 1,
+        "position_init_idx_j": 0,
+        "theta_init": 1.5707963267948966,
+        "delta_init": 0.7853981633974483,
+        "choix_poses": [
+            [
+                "choix1",
+                1.5707963267948966,
+                0.7853981633974483,
+                1,
+                0
+            ],
+            [
+                "choix2",
+                1.5707963267948966,
+                0,
+                0,
+                0
+            ],
+            [
+                "choix3",
+                1.5707963267948966,
+                5.497787143782138,
+                7,
+                0
+            ]
+        ]
+    },
+    "tache_N4": {
+        "obj_file": "dragon_update_user_study_normed.obj",
+        "mesh": "dragon",
+        "position_init_idx_i": 5,
+        "position_init_idx_j": 0,
+        "theta_init": 1.5707963267948966,
+        "delta_init": 3.9269908169872414,
+        "choix_poses": [
+            [
+                "choix1",
+                1.5707963267948966,
+                3.9269908169872414,
+                5,
+                0
+            ],
+            [
+                "choix2",
+                1.5707963267948966,
+                3.141592653589793,
+                4,
+                0
+            ],
+            [
+                "choix3",
+                1.5707963267948966,
+                2.356194490192345,
+                3,
+                0
+            ]
+        ]
+    },
+    "Analyse": {
+        "analyse_N1": {
+            "mesh": "horse",
+            "idx": [
+                0
+            ],
+            "mots": [
+                "1. De face"
+            ]
+        }
+    },
+    "Interactions": [
+        {
+            "time": 1678465379722,
+            "type": "start"
+        },
+        {
+            "time": 1678465379752,
+            "type": "Affichage Mesh random : horse en idx_i, idx_j : (3, 3)"
+        },
+        {
+            "time": 1678465379752,
+            "type": "Affichage Mesh random : horse en theta, delta : (-0.7853981633974483, 2.356194490192345)"
+        },
+        {
+            "time": 1678465388781,
+            "type": "bouton pose n°1"
+        },
+        {
+            "time": 1678465388893,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678465389021,
+            "type": "bouton pose n°2"
+        },
+        {
+            "time": 1678465389085,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678465389181,
+            "type": "bouton pose n°3"
+        },
+        {
+            "time": 1678465389453,
+            "type": "bouton valider"
+        },
+        {
+            "time": 1678465389476,
+            "type": "Affichage Mesh random : gorgoile en idx_i, idx_j : (0, 3)"
+        },
+        {
+            "time": 1678465389476,
+            "type": "Affichage Mesh random : gorgoile en theta, delta : (-0.7853981633974483, 0)"
+        },
+        {
+            "time": 1678465390077,
+            "type": "bouton pose n°1"
+        },
+        {
+            "time": 1678465390126,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678465390285,
+            "type": "bouton pose n°2"
+        },
+        {
+            "time": 1678465390381,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678465390477,
+            "type": "bouton pose n°3"
+        },
+        {
+            "time": 1678465390877,
+            "type": "bouton valider"
+        },
+        {
+            "time": 1678465390901,
+            "type": "Affichage Mesh random : camel en idx_i, idx_j : (1, 0)"
+        },
+        {
+            "time": 1678465390901,
+            "type": "Affichage Mesh random : camel en theta, delta : (1.5707963267948966, 0.7853981633974483)"
+        },
+        {
+            "time": 1678465392973,
+            "type": "bouton pose n°1"
+        },
+        {
+            "time": 1678465393069,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678465393181,
+            "type": "bouton pose n°2"
+        },
+        {
+            "time": 1678465393245,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678465395965,
+            "type": "bouton pose n°3"
+        },
+        {
+            "time": 1678465396685,
+            "type": "bouton valider"
+        },
+        {
+            "time": 1678465396711,
+            "type": "Affichage Mesh random : dragon en idx_i, idx_j : (5, 0)"
+        },
+        {
+            "time": 1678465396711,
+            "type": "Affichage Mesh random : dragon en theta, delta : (1.5707963267948966, 3.9269908169872414)"
+        },
+        {
+            "time": 1678465397069,
+            "type": "bouton pose n°1"
+        },
+        {
+            "time": 1678465397165,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678465397261,
+            "type": "bouton pose n°2"
+        },
+        {
+            "time": 1678465397325,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678465397421,
+            "type": "bouton pose n°3"
+        },
+        {
+            "time": 1678465400957,
+            "type": "bouton pose n°4"
+        },
+        {
+            "time": 1678465400957,
+            "type": "Affichage error 3 déjà fait"
+        },
+        {
+            "time": 1678465401103,
+            "type": "fleche droite"
+        },
+        {
+            "time": 1678465401181,
+            "type": "bouton pose n°4"
+        },
+        {
+            "time": 1678465401181,
+            "type": "Affichage error 3 déjà fait"
+        },
+        {
+            "time": 1678465401533,
+            "type": "bouton valider"
+        },
+        {
+            "time": 1678465401533,
+            "type": "fin des choix."
+        },
+        {
+            "time": 1678465401534,
+            "type": "Début analyse n°1"
+        },
+        {
+            "time": 1678465403325,
+            "type": "ajout check sur : analyse n°1, mot 1. De face"
+        },
+        {
+            "time": 1678465403581,
+            "type": "Bouton valider analyse."
+        },
+        {
+            "time": 1678465403585,
+            "type": "Fin analyse"
+        }
+    ]
+}

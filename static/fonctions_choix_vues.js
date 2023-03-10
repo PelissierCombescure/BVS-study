@@ -208,23 +208,23 @@ function traitement_fleche(){
     //console.log(which_clicked_fleche)
     switch (which_clicked_fleche){
         case'gauche' :
-            console.log("deplacement G")
+            //console.log("deplacement G")
             action_fleche_gauche()
             //idx_i = (idx_i+1)%8
             break;
         case 'droite' :
-            console.log("deplacement D")
+            //console.log("deplacement D")
             //idx_i = (idx_i+7)%8
             action_fleche_droite()
             break;
         case'haut' :
-            console.log("deplacement H")
+            //console.log("deplacement H")
             action_fleche_haut()
             //idx_j = Math.max(idx_j-1,0)
                //idx_j = Math.max(idx_j-1,1)
             break;
         case 'bas' :
-            console.log("deplacement B")
+            //console.log("deplacement B")
             action_fleche_bas()
             //idx_j = Math.min(idx_j+1,4)
                  //idx_j = Math.min(idx_j+1,3)
@@ -329,13 +329,13 @@ function action_bouton_pose(){
     // on regarde si la pose sélectionnée n'a pas déjà été choisie avant
     pose_deja_choisie(liste_poses, idx_i, idx_j)
     if (deja_choisie && !(nb_choix_fait == nb_choix_demande)){
-        console.log("Cette pose a déjà été sélectionnée.")
+        //console.log("Cette pose a déjà été sélectionnée.")
         texte_temporaire = {"text": "This viewpoint has already been selected.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
         interactions.push({"time": new Date().getTime(), "type": "Affichage error pose déjà sélectionnée"})}
     
         // plus de choix possible
     if (nb_choix_fait == nb_choix_demande) {
-        console.log("Tu as déjà fait tes "+nb_choix_demande+" choix.")
+        //console.log("Tu as déjà fait tes "+nb_choix_demande+" choix.")
         texte_temporaire = {"text": "You have already selected your "+nb_choix_demande+" viewpoints.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
         interactions.push({"time": new Date().getTime(), "type": "Affichage error "+nb_choix_demande+" déjà fait"})}
     
@@ -362,7 +362,7 @@ function action_bouton_retirer(){
     }
     // S'il n'y a pas de pose choisie
     else {
-        console.log("Il n'y a pas de pose à retirer.")
+        //console.log("Il n'y a pas de pose à retirer.")
         texte_temporaire = {"text": "There are no selected viewpoints to remove.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
         interactions.push({"time": new Date().getTime(), "type": "Affichage error pas de pose à retirer"})
     }
@@ -378,7 +378,7 @@ function action_bouton_reinitialiser(){
             ctxMins[i].clearRect(0, 0, canvasMins[i].width, canvasMins[i].height)
         }
     }
-    else {console.log("Il n'y a pas de pose à reintialiser.")
+    else {//console.log("Il n'y a pas de pose à reintialiser.")
         texte_temporaire = {"text": "There are no selected viewpoints to resart.", "x":x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
     interactions.push({"time": new Date().getTime(), "type": "Affichage error aucun choix fait donc pas de reinitialisation possible"})}
 }
@@ -425,7 +425,7 @@ function action_bouton_valider(){
         //console.log("Tu n'as pas fait tes 3 choix")
         texte_temporaire = {"text": "You did not select your "+nb_choix_demande+" viewpoints.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
         interactions.push({"time": new Date().getTime(), "type": "Affichage error à cause du bouton valider"})
-        console.log("ccc")}
+    }
     // Error : un pbl à identifier
     else{
         console.log("PBL bouton valider")
@@ -492,7 +492,7 @@ function traitement_bouton(){
             break;
         case 'bouton_raz':
             bouton_raz_clicked = true
-            console.log("bouton raz")
+            //console.log("bouton raz")
             break;
     }
 }
