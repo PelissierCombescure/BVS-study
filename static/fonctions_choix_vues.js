@@ -59,7 +59,6 @@ function pose_deja_choisie(L_poses, i_choix, j_choix){
 }
 
 
-
 ///////////////////////////////////////////////////////////////
 ///////////////////// Recap 
 function swapElements(arr, i1, i2) {
@@ -394,11 +393,6 @@ function action_bouton_reinitialiser(){
         for (let i = 0; i < nb_choix_demande; i++) {
             ctxMins[i].clearRect(0, 0, canvasMins[i].width, canvasMins[i].height)
         }
-        // on reinitilaise les checbok box
-        //for (let i = 0 ; i < nb_choix_demande; i++){
-            //checkbox_clicked_courant[i].idx_checkbox = []
-            //checkbox_clicked_courant[i].mots = []
-        //}
     }
     else {console.log("Il n'y a pas de pose à reintialiser.")
         texte_temporaire = {"text": "There are no selected viewpoints to resart.", "x":x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
@@ -489,7 +483,7 @@ function action_bouton_raz(){
 
 function traitement_bouton(){
     // raccourcis bouton et fleche
-    shortcuts(xyMouseMove, imgs['clavier_vues'], window.innerWidth/2 -(imgs['clavier_vues'].width/2), window.innerHeight/2 -(imgs['clavier_vues'].height/2), imgs['clavier_vues'].width, imgs['clavier_vues'].height, boutons['raccourcis'], x_Bshortcut, y_Bshortcut, w_Bshortcut, h_Bshortcut)
+    //shortcuts(xyMouseMove, imgs['clavier_vues'], window.innerWidth/2 -(imgs['clavier_vues'].width/2), window.innerHeight/2 -(imgs['clavier_vues'].height/2), imgs['clavier_vues'].width, imgs['clavier_vues'].height, boutons['raccourcis'], x_Bshortcut, y_Bshortcut, w_Bshortcut, h_Bshortcut)
     // si on survol, on a les contours qui apparaissent
     survol_bouton()
     // si on click

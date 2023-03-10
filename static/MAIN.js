@@ -77,9 +77,10 @@ function init_variable(premier_appel){
     R = 2.5
 
     // Enchainement des pages
-    page_contexte = false
+    page_contexte = true
     page_inscription = false // true
-    page_explication = true
+    page_explication = false
+    page_explication_bis = false
     page_vues = false // false
     page_analyse = false
 
@@ -310,20 +311,20 @@ function animate() {
         //console.log("boucle explication")
         // on enlève les touches du clavier associé à la page inscription
         document.removeEventListener("keydown", action_clavier_inscription)
+        // Variable pour les fonctions
+        init_variable_fonction(boutons, imgs)
         //init touche clavier
         if(premier_tour_page_explications){
             // init clavier pour les vues
             init_clavier_explication()
-            init_variable_fonction(boutons, imgs)
+            //init_variable_fonction(boutons, imgs)
             init_explication()
             // affichage ecran 3D de manière aléatoire
             idx_i_explication = 4 , idx_j_explication = 1
             setUp_3D(indice_mesh, idx_i_explication, idx_j_explication)
             premier_tour_page_explications = false
         }
-        // Variable pour les fonctions
-        init_variable_fonction(boutons, imgs)
-        // Nettoyage fleche
+        // Nettoyage 
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         // Affichage bouton RAZ
         if (bouton_raz_clicked == true){action_bouton_raz()}
@@ -355,7 +356,11 @@ function animate() {
         clicked = false
         which_clicked_fleche = -1
         which_clicked_bouton = -1 
-        }
+    }
+    // bouton entr ele tutorial et l'étude
+    if (page_explication_bis){
+        commencer_etude()
+    }
 ////////////////////////////////////////////////////////////////////////////////
     // page de choix
     if (page_vues && num_tache <= nb_mesh){
@@ -402,10 +407,10 @@ function animate() {
         renderer.render( scene, camera );
         // Les poses choisies sont grisées
         bloquer_pose(liste_poses)
-        // RAZ
-        // clicked = false
-        // which_clicked_fleche = -1
-        // which_clicked_bouton = -1 
+        // raccourcis
+        // raccourcis bouton et fleche
+        shortcuts(xyMouseMove, imgs['clavier_vues'], window.innerWidth/2 -(imgs['clavier_vues'].width/2), window.innerHeight/2 -(imgs['clavier_vues'].height/2), imgs['clavier_vues'].width, imgs['clavier_vues'].height, boutons['raccourcis'], x_Bshortcut, y_Bshortcut, w_Bshortcut, h_Bshortcut)
+
     }
 ////////////////////////////////////////////////////////////////////////////////
     // page analyse
@@ -424,7 +429,7 @@ function animate() {
     }
 ////////////////////////////////////////////////////////////////////////////////
     // page fin
-    if (!page_contexte && !page_inscription && !page_explication && !page_vues && !page_analyse){
+    if (!page_contexte && !page_inscription && !page_explication && !page_explication_bis && !page_vues && !page_analyse){
         //console.log("boucle fin")
         // on enlève les touches du clavier associé à la page vues
         document.removeEventListener("keydown", action_clavier_analyse)
