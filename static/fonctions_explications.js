@@ -1,6 +1,6 @@
 function init_explication(){
 
-    alpha_ecran = 0.9
+    alpha_ecran = 1
     alpha_clignotement = 0.8
     color_ecran ="rgb(255,255,255)"
     color_texte = "rgb(0,0,0)"
@@ -16,7 +16,7 @@ function init_explication(){
 
     // deplacement pour ajouter un titre à l'ecran 
     dy_ecran = 50
-    dh_ecran = 70
+    dh_ecran = 55
 
     // Position des boutons sur l'écran 
     w_bouton_suivant = boutons["suivant"].width*0.3
@@ -53,7 +53,25 @@ function init_explication(){
     // 3.3 :  clique sur fleche droite
     {'x': W_3D + ecart_x, "y": H_3D*0.6 - dy_ecran, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
     // 4:  Selection de la vue
-    {'x': W_3D + ecart_x, "y": H_3D*0.6 - dy_ecran, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran}
+    {'x': W_3D + ecart_x, "y": H_3D*0.6 - dy_ecran, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
+    //5 : plus d'interaction
+    {'x': W_3D + ecart_x, "y": H_3D*0.6 - dy_ecran, "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
+    //6.1 : plus d'interaction
+    {'x': W_3D/2 - (window.innerWidth-W_3D-2*ecart_x)/2 , "y": H_3D/2 - (H_3D*0.45 + dh_ecran)/2 , "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
+    //6.2 :
+    {'x': W_3D/2 - (window.innerWidth-W_3D-2*ecart_x)/2 , "y": H_3D/2 - (H_3D*0.45 + dh_ecran)/2 , "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
+    //6.3 :
+    {'x': W_3D/2 - (window.innerWidth-W_3D-2*ecart_x)/2 , "y": H_3D/2 - (H_3D*0.45 + dh_ecran)/2 , "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
+    //6.4 :
+    {'x': W_3D/2 - (window.innerWidth-W_3D-2*ecart_x)/2 , "y": H_3D/2 - (H_3D*0.45 + dh_ecran)/2 , "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
+    //6.5 :
+    {'x': W_3D/2 - (window.innerWidth-W_3D-2*ecart_x)/2 , "y": H_3D/2 - (H_3D*0.45 + dh_ecran)/2 , "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
+    //6.6 :
+    {'x': W_3D/2 - (window.innerWidth-W_3D-2*ecart_x)/2 , "y": H_3D/2 - (H_3D*0.45 + dh_ecran)/2 , "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
+    //6.7 :
+    {'x': W_3D/2 - (window.innerWidth-W_3D-2*ecart_x)/2 , "y": H_3D/2 - (H_3D*0.45 + dh_ecran)/2 , "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran},
+    //7 :
+    {'x': W_3D/2 - (window.innerWidth-W_3D-2*ecart_x)/2 , "y": H_3D/2 - (H_3D*0.45 + dh_ecran)/2 , "w":window.innerWidth-W_3D-2*ecart_x, "h":H_3D*0.45 + dh_ecran, "c":color_ecran,"a": alpha_ecran}
     ]
 
 
@@ -86,6 +104,25 @@ function init_explication(){
         {"t":"Let's imagine that you choose this viewpoint. You have to select it with the button. (PRESS SELECT BUTTON)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
         // 4 :  
         {"t":"You have chosen your first viewpoint. It is displayed on your right. This one has become gray on the 3D screen. You can no longer select it. (PRESS NEXT BUTTON)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
+        //5
+        {"t":"To go faster, the interaction part with the tutorial interface is finished. Now, you can just look and press the next button when it says here. (PRESS NEXT BUTTON)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
+        // 6.1 
+        {"t":"Let's imagine that you have chosen these "+nb_choix_demande+" viewpoints. (PRESS NEXT BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
+        // 6.2
+        {"t":"With the little arrows, we can switch your selected viewpoints. (PRESS NEXT BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
+        // 6.3
+        {"t":"With the little red cross, we can remove your the selected viewpoint of your choice. (PRESS NEXT BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
+        // 6.4
+        {"t":"With the REMOVE button, we can remove the last selected viewpoint. (PRESS NEXT BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
+        // 6.5
+        {"t":"With the RESET SELECTION button, we can rmove all selected viewpoints. (PRESS NEXT BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
+        // 6.6
+        {"t":"With the RESET STUDY button, we can start from the beginning. (PRESS NEXT BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
+        // 6.7
+        {"t":"When you have chosen your "+nb_choix_demande+" viewpoints, the VALIDATE button appears. You can validate your selection and go to the next mesh. (PRESS NEXT BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
+        // 7
+        {"t":"The tutorial is finished, you now know the basic interactions of this interface. (PRESS NEXT BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
+   
     ]
 
     positions_bouton = [
@@ -116,7 +153,25 @@ function init_explication(){
         // 3.3 :  clique sur fleche droite
         {"afficher": true, "x":  ecrans[11].x + ecrans[11].w - w_bouton_suivant - marge_texte_x, "y": ecrans[11].y + ecrans[11].h - h_bouton_suivant - marge_texte_x/2, "w": w_bouton_suivant, "h":h_bouton_suivant},
         // 4 
-        {"afficher": true, "x":  ecrans[12].x + ecrans[12].w - w_bouton_suivant - marge_texte_x, "y": ecrans[12].y + ecrans[12].h - h_bouton_suivant - marge_texte_x/2, "w": w_bouton_suivant, "h":h_bouton_suivant}
+        {"afficher": true, "x":  ecrans[12].x + ecrans[12].w - w_bouton_suivant - marge_texte_x, "y": ecrans[12].y + ecrans[12].h - h_bouton_suivant - marge_texte_x/2, "w": w_bouton_suivant, "h":h_bouton_suivant},
+        // 5
+        {"afficher": true, "x":  ecrans[13].x + ecrans[13].w - w_bouton_suivant - marge_texte_x, "y": ecrans[13].y + ecrans[13].h - h_bouton_suivant - marge_texte_x/2, "w": w_bouton_suivant, "h":h_bouton_suivant},
+        // 6.1
+        {"afficher": true, "x":  ecrans[15].x + ecrans[15].w - w_bouton_suivant - marge_texte_x, "y": ecrans[15].y + ecrans[15].h - h_bouton_suivant - marge_texte_x/2, "w": w_bouton_suivant, "h":h_bouton_suivant},
+        // 6.2
+        {"afficher": true, "x":  ecrans[16].x + ecrans[16].w - w_bouton_suivant - marge_texte_x, "y": ecrans[16].y + ecrans[16].h - h_bouton_suivant - marge_texte_x/2, "w": w_bouton_suivant, "h":h_bouton_suivant},
+        // 6.3
+        {"afficher": true, "x":  ecrans[17].x + ecrans[17].w - w_bouton_suivant - marge_texte_x, "y": ecrans[17].y + ecrans[17].h - h_bouton_suivant - marge_texte_x/2, "w": w_bouton_suivant, "h":h_bouton_suivant},
+        // 6.4
+        {"afficher": true, "x":  ecrans[18].x + ecrans[18].w - w_bouton_suivant - marge_texte_x, "y": ecrans[18].y + ecrans[18].h - h_bouton_suivant - marge_texte_x/2, "w": w_bouton_suivant, "h":h_bouton_suivant},
+        // 6.5
+        {"afficher": true, "x":  ecrans[19].x + ecrans[19].w - w_bouton_suivant - marge_texte_x, "y": ecrans[19].y + ecrans[19].h - h_bouton_suivant - marge_texte_x/2, "w": w_bouton_suivant, "h":h_bouton_suivant},
+        // 6.6
+        {"afficher": true, "x":  ecrans[20].x + ecrans[20].w - w_bouton_suivant - marge_texte_x, "y": ecrans[20].y + ecrans[20].h - h_bouton_suivant - marge_texte_x/2, "w": w_bouton_suivant, "h":h_bouton_suivant},
+        // 6.7
+        {"afficher": true, "x":  ecrans[21].x + ecrans[21].w - w_bouton_suivant - marge_texte_x, "y": ecrans[21].y + ecrans[21].h - h_bouton_suivant - marge_texte_x/2, "w": w_bouton_suivant, "h":h_bouton_suivant},
+        //7
+        {"afficher": true, "x":  ecrans[22].x + ecrans[22].w - w_bouton_suivant - marge_texte_x, "y": ecrans[22].y + ecrans[22].h - h_bouton_suivant - marge_texte_x/2, "w": w_bouton_suivant, "h":h_bouton_suivant}
     ]
 
     clignotements = [
@@ -153,7 +208,38 @@ function init_explication(){
         // 3.3 :  clique sur fleche drioite --> next step bouton pose
         {"type":"a_cliquer", "x": W_3D*pos_bouton, "y": H_3D+dy*2, "w": w_bouton, "h": h_bouton, "c":color_clignotement,"a":alpha_clignotement, "t": temps_attente},
         // 4
-        {"type":"a_cliquer", "x": positions_bouton[12].x, "y":positions_bouton[12].y, "w":positions_bouton[12].w, "h":positions_bouton[12].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente}
+        {"type":"a_cliquer", "x": positions_bouton[12].x, "y":positions_bouton[12].y, "w":positions_bouton[12].w, "h":positions_bouton[12].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+        // 5
+        {"type":"a_cliquer", "x": positions_bouton[13].x, "y":positions_bouton[13].y, "w":positions_bouton[13].w, "h":positions_bouton[13].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+        // 6.1
+        {"type":"a_cliquer", "x": positions_bouton[15].x, "y":positions_bouton[15].y, "w":positions_bouton[15].w, "h":positions_bouton[15].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+        // 6.2
+        [{"type":"a_regarder", "x":  W_3D + (window.innerWidth-W_3D)/2.5 -5, "y": (H_3D/3.5)*0.6 + 100, "w":20 +10, "h": ((H_3D/3.5)*0.4 + 100+(20+ H_3D/3.5)*2 + 20) - ((H_3D/3.5)*0.6 + 100) , "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+        {"type":"a_cliquer", "x": positions_bouton[16].x, "y":positions_bouton[16].y, "w":positions_bouton[16].w, "h":positions_bouton[16].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente}
+        ],
+        //6.3
+        [{"type":"a_regarder", "x":   W_3D+ (window.innerWidth-W_3D)/2.5 + W_3D/3.5 +10 -5 , "y": (H_3D/3.5)*0.4 + 100, "w":20 +10, "h": ((H_3D/3.5)*0.4 + 100+(20+ H_3D/3.5)*2 + 20) - ((H_3D/3.5)*0.4 + 100) , "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+        {"type":"a_cliquer", "x": positions_bouton[17].x, "y":positions_bouton[17].y, "w":positions_bouton[17].w, "h":positions_bouton[17].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente}
+        ],
+        //6.4 remove
+        [{"type":"a_regarder", "x":   W_3D*pos_bouton+w_bouton+ecart_bouton, "y": H_3D+dy*2, "w":w_bouton, "h": h_bouton , "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+        {"type":"a_cliquer", "x": positions_bouton[18].x, "y":positions_bouton[18].y, "w":positions_bouton[18].w, "h":positions_bouton[18].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente}
+        ],
+        //6.5 reset selection 
+        [{"type":"a_regarder", "x": W_3D*pos_bouton+w_bouton/2, "y": H_3D+dy*2+h_bouton+ecart_bouton, "w":w_bouton, "h": h_bouton , "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+        {"type":"a_cliquer", "x": positions_bouton[19].x, "y":positions_bouton[19].y, "w":positions_bouton[19].w, "h":positions_bouton[19].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente}
+        ],
+        //6.6 raz
+        [{"type":"a_regarder", "x": window.innerWidth-w_bouton-10, "y": window.innerHeight-h_bouton-10, "w":w_bouton, "h": h_bouton , "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+        {"type":"a_cliquer", "x": positions_bouton[20].x, "y":positions_bouton[20].y, "w":positions_bouton[20].w, "h":positions_bouton[20].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente}
+        ],
+        //6.6 validate
+        [{"type":"a_regarder", "x": -(1.2*w_bouton)/4+W_3D, "y": H_3D+dy*2+h_bouton, "w":w_bouton*1.2, "h": h_bouton*1.2, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+        {"type":"a_cliquer", "x": positions_bouton[21].x, "y":positions_bouton[21].y, "w":positions_bouton[21].w, "h":positions_bouton[21].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente}
+        ],
+        // 7. fini
+        {"type":"a_cliquer", "x": positions_bouton[15].x, "y":positions_bouton[15].y, "w":positions_bouton[15].w, "h":positions_bouton[15].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+
     ]
 
 
@@ -185,7 +271,27 @@ function init_explication(){
         // 3.3 :  clique sur bouton pose
         {"type": "bouton_pose", "x": clignotements[12].x, "y": clignotements[12].y, "w": clignotements[12].w, "h": clignotements[12].h},
         // 4 :  clique sur next
-        {"type": "bouton", "x": positions_bouton[13].x, "y":positions_bouton[13].y, "w":positions_bouton[13].w, "h":positions_bouton[13].h}
+        {"type": "bouton", "x": positions_bouton[13].x, "y":positions_bouton[13].y, "w":positions_bouton[13].w, "h":positions_bouton[13].h},
+        // 5 :  clique sur next
+        {"type": "bouton", "x": positions_bouton[13].x, "y":positions_bouton[13].y, "w":positions_bouton[13].w, "h":positions_bouton[13].h},
+         // 6.1 :  clique sur next
+        {"type": "bouton", "x": positions_bouton[15].x, "y":positions_bouton[15].y, "w":positions_bouton[15].w, "h":positions_bouton[15].h},
+        // 6.2 :  clique sur next
+        {"type": "bouton", "x": positions_bouton[16].x, "y":positions_bouton[16].y, "w":positions_bouton[16].w, "h":positions_bouton[16].h},
+        // 6.3 :  clique sur next
+        {"type": "bouton", "x": positions_bouton[17].x, "y":positions_bouton[17].y, "w":positions_bouton[17].w, "h":positions_bouton[17].h},
+        // 6.4 :  clique sur next
+        {"type": "bouton", "x": positions_bouton[18].x, "y":positions_bouton[18].y, "w":positions_bouton[18].w, "h":positions_bouton[18].h},
+        // 6.5 :  clique sur next
+        {"type": "bouton", "x": positions_bouton[18].x, "y":positions_bouton[18].y, "w":positions_bouton[18].w, "h":positions_bouton[18].h},
+        // 6.5 :  clique sur next
+        {"type": "bouton", "x": positions_bouton[18].x, "y":positions_bouton[18].y, "w":positions_bouton[18].w, "h":positions_bouton[18].h},
+        // 6.6 :  clique sur next
+        {"type": "bouton", "x": positions_bouton[18].x, "y":positions_bouton[18].y, "w":positions_bouton[18].w, "h":positions_bouton[18].h},
+        // 6.7 :  clique sur next
+        {"type": "bouton", "x": positions_bouton[18].x, "y":positions_bouton[18].y, "w":positions_bouton[18].w, "h":positions_bouton[18].h},
+        // 7 :  clique sur next
+        {"type": "bouton", "x": positions_bouton[18].x, "y":positions_bouton[18].y, "w":positions_bouton[18].w, "h":positions_bouton[18].h}
     ]
 
 
@@ -196,14 +302,35 @@ function init_explication(){
 
 function traitement_explications(idx_i_explication, idx_j_explication){
     temps_pop = 8000
+
+    // Pour déplacer le mesh, il faut initialiser ces deux variables 
     if (num_action==0){
         idx_i = idx_i_explication
         idx_j = idx_j_explication
-    }    
-    // rectangle bleu pour cacher l'interface
+    }
+      // rectangle bleu pour cacher l'interface
     if (num_action == 0){
         draw_rectangle(0, 0, window.innerWidth, window.innerHeight, "rgb(3, 26, 33)", 1)
     }
+    // Rendre le recap inatif à partir de l'étape 14
+    if(num_action<= 14){
+        afficher_recap()
+        // Affichage texte recap
+        for (p=0; p<liste_poses.length; p++){affichage_texte_recap(p)}}
+
+    if(num_action>14){
+        afficher_recap_inactif()
+        for (p=0; p<liste_poses.length; p++){affichage_texte_recap(p)}}        
+
+    // remplir les canvasMins pour l'eemple quand on est a un num_action précis
+    if (num_action == 15){
+        nb_choix_fait = 3
+        liste_poses = [['choix1', 1.5707963267948966, 2.356194490192345, 3, 0],['choix2', 0.7853981633974483, 2.356194490192345, 3, 1],['choix3', 0.7853981633974483, 3.141592653589793, 4, 1]]
+        ctxMins[0].drawImage(imgs['recap1'], 0,0, imgs['recap1'].width, imgs['recap1'].height, 0, 0, canvasMins[0].width, canvasMins[0].height )
+        ctxMins[1].drawImage(imgs['recap2'], 0,0, imgs['recap2'].width, imgs['recap2'].height, 0, 0, canvasMins[0].width, canvasMins[0].height )
+        ctxMins[2].drawImage(imgs['recap3'], 0,0, imgs['recap3'].width, imgs['recap3'].height, 0, 0, canvasMins[0].width, canvasMins[0].height )
+    }
+        
     if (num_action < nb_action){
 
         // Données
@@ -240,11 +367,11 @@ function traitement_explications(idx_i_explication, idx_j_explication){
 
         ///////// 1 clignotement courant donc taille = 8 car 8 keys
         if (Object.keys(clignotement).length == 8){
-            if (time_animate > time_clicke + clignotement.t && num_action!=13 && clignotement.type=="a_cliquer"){
+            if (time_animate > time_clicke + clignotement.t  && clignotement.type=="a_cliquer"){
                 clignotement_contour(2000, clignotement.x, clignotement.y, clignotement.w, clignotement.h, clignotement.c, epaisseur_clignotement)        
             }                 
             if (time_animate > time_clicke + clignotement.t && clignotement.type=="a_regarder"){
-                clignotement_rectangle(2000, clignotement.x, clignotement.y, clignotement.w, clignotement.h, "rgb(17, 138, 178)", 0.6) 
+                clignotement_rectangle(2000, clignotement.x, clignotement.y, clignotement.w, clignotement.h, "rgb(17, 138, 178)", 0.8) 
             }
         // on a plusieurs clignotement
         } else {
@@ -256,7 +383,7 @@ function traitement_explications(idx_i_explication, idx_j_explication){
                 }
                 // rectangle
                 if (time_animate > time_clicke + clignotement_p.t && clignotement_p.type=="a_regarder"){
-                    clignotement_rectangle(2000, clignotement_p.x, clignotement_p.y, clignotement_p.w, clignotement_p.h, "rgb(17, 138, 178)", 0.6) 
+                    clignotement_rectangle(2000, clignotement_p.x, clignotement_p.y, clignotement_p.w, clignotement_p.h, "rgb(17, 138, 178)", 0.8) 
                 }
             }
         }
@@ -414,7 +541,7 @@ function action_clavier_explication(event){
                 console.log("previous clavier")
                 action_precedente()}                        
             break;
-            
+
         case 'ArrowRight' :
             if (condition_suivant.type =="fleche_d"){
                 console.log("fleche_d clavier")
@@ -460,6 +587,46 @@ function afficher_bouton_commencer_explication(){
 function action_bouton_commencer_explication(){
     page_explication_bis = false 
     page_vues = true 
-    interactions.push({"time": new Date().getTime(), "type": "Clique bouton commencer - Début étude"})
+    interactions.push({"time": new Date().getTime(), "type": "Début étude"})
         
+}
+
+function afficher_recap_inactif(){
+    w_recap = window.innerWidth-W_3D
+    // texte du haut
+    //print_text(handle_text("Selected Viewpoints:",   W_3D +(window.innerWidth-W_3D)/4,  h_progress_bar + ecart_recap, "24pt Courier", 500))
+    // fleche swap haut
+    x_fleche_h = W_3D+ w_recap/2.5 
+    w_fleche_h = 20
+    h_fleche_h = 20
+    // fleche swap bas
+    x_fleche_b = W_3D+ w_recap/2.5 
+    w_fleche_b = 20
+    h_fleche_b = 20
+    // croix
+    x_croix = W_3D+ w_recap/2.5 + W_3D/3.5 +10
+    w_croix = 20
+    h_croix = 20
+    // pour chaque recap
+    for (let i = 0 ; i < canvasMins.length; i++) {
+        // Draw les images des contextes
+        y_image = 100+(20+ H_3D/3.5)*i
+        ctx.drawImage(canvasMins[i],W_3D+ w_recap/2, y_image, H_3D/3.5, H_3D/3.5)
+        //Fleche pour Switch haut
+        if (nb_choix_fait > 1 && i > 0 && i < nb_choix_fait) {
+            y_fleche_h = (H_3D/3.5)*0.4 + y_image
+            ctx.drawImage(imgs["haut"], x_fleche_h, y_fleche_h, w_fleche_h, h_fleche_h)            
+        }
+        // Fleche pour Switch bas
+        if (nb_choix_fait > 1 && i < nb_choix_fait-1) {
+            y_fleche_b =  (H_3D/3.5)*0.6 + y_image
+            ctx.drawImage(imgs["bas"], x_fleche_b, y_fleche_b, w_fleche_b, h_fleche_b)            
+        }
+        // Croix
+        if (i < nb_choix_fait) {
+            // croix pour annuler
+            y_croix = (H_3D/3.5)*0.4 + y_image
+            ctx.drawImage(imgs["croix"], x_croix, y_croix, w_croix, h_croix)            
+        }
+    }
 }

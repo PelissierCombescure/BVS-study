@@ -77,11 +77,11 @@ function init_variable(premier_appel){
     R = 2.5
 
     // Enchainement des pages
-    page_contexte = false
+    page_contexte = true
     page_inscription = false // true
     page_explication = false
     page_explication_bis = false
-    page_vues = true // false
+    page_vues = false // false
     page_analyse = false
 
     // Pour afiicher les recap dans la partie analys,e on les conserve tous
@@ -98,8 +98,6 @@ function init_variable(premier_appel){
     // message de fin 
     message_fin = "> Sending data in progress ..."
     envoie_termine = false
-
- 
 
 }
 
@@ -138,7 +136,7 @@ function setUp_light(rayon){
 }
 
 // idx_mesh : position du premier mesh a visuionner --> version aléatoire ???
-function setUp_3D(idx_mesh, idx_i_init, idx_j_init){
+function setUp_3D(idx_mesh, idx_i_init, idx_j_init, explication=false){
     // Randommiser la première vue quand oon loed le mesh, pour éviter d'avoir de l'influence
     // idx_i_init = Math.floor(Math.random()*8)
     // idx_j_init = Math.floor(Math.random()*5)
@@ -208,11 +206,21 @@ function setUp_3D(idx_mesh, idx_i_init, idx_j_init){
     // Data 3D
     obj_file = shuffle(['dragon_update_user_study_normed.obj', 'camel_update_user_study_normed.obj', 'gorgoile_update_user_study_centered_normed.obj', 'horse_update_user_study_normed.obj'])
     const objLoader = new THREE.OBJLoader2();
-    //objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/3DMesh/'+obj_file[idx_mesh], (event) => {
-    objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/3DMesh/'+obj_file[idx_mesh], (event) => {    
-        const root = event.detail.loaderRootNode;
-        scene.add(root);
-    });
+
+        // Si on load le mesh 3d dans les explicationq, on imporse que ce soit le dragon
+    if (explication){
+        objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/3DMesh/dragon_update_user_study_normed.obj', (event) => {    
+            const root = event.detail.loaderRootNode;
+            scene.add(root);
+        });
+    // sinon on est dans l'étide dans on fait du random entre tous les mesh dispo sur le git
+    } else {
+        //objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/3DMesh/'+obj_file[idx_mesh], (event) => {
+        objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/3DMesh/'+obj_file[idx_mesh], (event) => {    
+            const root = event.detail.loaderRootNode;
+            scene.add(root);
+        });
+    }
     mesh_courant = obj_file[idx_mesh].split('_')[0]
     choix_courant['obj_file'] = obj_file[idx_mesh]
     choix_courant['mesh'] = mesh_courant
@@ -246,6 +254,9 @@ function init_data(){
     imgs["marie"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/Autres/marie.png')
     imgs["clavier_vues"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/clavier_vues.png')
     imgs["clavier_enter"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/clavier_enter.png')
+    imgs["recap1"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Tutorial/recap1.png')
+    imgs["recap2"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Tutorial/recap2.png')
+    imgs["recap3"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Tutorial/recap3.png')
     boutons = {}
     boutons["reinitialiser"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_reinitialiser.png')
     boutons["valider"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_valider.png')
@@ -271,7 +282,6 @@ function init_data(){
         clicked = true }, false)
     canvas.addEventListener("mouseup", function(event) { xyMouseUp = getMousePos(canvas, event)}, false)
 
-    console.log("fin init")
 }
 
 
@@ -321,7 +331,7 @@ function animate() {
             init_explication()
             // affichage ecran 3D de manière aléatoire
             idx_i_explication = 4 , idx_j_explication = 1
-            setUp_3D(indice_mesh, idx_i_explication, idx_j_explication)
+            setUp_3D(indice_mesh, idx_i_explication, idx_j_explication, explication=true)
             premier_tour_page_explications = false
         }
         // Nettoyage 
@@ -340,18 +350,12 @@ function animate() {
         // affichage de sboutons
         afficher_bouton(boutons)
         if (canvasRenderer === null) {canvasRenderer = document.getElementById("renderer")}
-        // traitement fleche (surval + click)
-        traitement_explications(idx_i_explication, idx_j_explication)
-        // traitement bouton : (survol + click)
-        //traitement_bouton() 
-        // afficher + maj du recap de pose choisie : affichage des vue des poses
-        afficher_recap()
-        // Affichage texte recap
-        for (p=0; p<liste_poses.length; p++){affichage_texte_recap(p)}
-        // affichage 3D
-        renderer.render( scene, camera );
         // Les poses choisies sont grisées
         bloquer_pose(liste_poses)
+        // traitement fleche (surval + click)
+        traitement_explications(idx_i_explication, idx_j_explication)
+        // affichage 3D
+        renderer.render( scene, camera );
         // RAZ
         clicked = false
         which_clicked_fleche = -1

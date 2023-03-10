@@ -86,11 +86,11 @@ function afficher_recap(){
     // texte du haut
     //print_text(handle_text("Selected Viewpoints:",   W_3D +(window.innerWidth-W_3D)/4,  h_progress_bar + ecart_recap, "24pt Courier", 500))
     // fleche swap haut
-    x_fleche_h = W_3D+ w_recap/2.5 - ecart_recap/2
+    x_fleche_h = W_3D+ w_recap/2.5 
     w_fleche_h = 20
     h_fleche_h = 20
     // fleche swap bas
-    x_fleche_b = W_3D+ w_recap/2.5 - ecart_recap/2
+    x_fleche_b = W_3D+ w_recap/2.5 
     w_fleche_b = 20
     h_fleche_b = 20
     // croix
@@ -101,8 +101,7 @@ function afficher_recap(){
     for (let i = 0 ; i < canvasMins.length; i++) {
         // Draw les images des contextes
         y_image = 100+(20+ H_3D/3.5)*i
-        ctx.drawImage(canvasMins[i],W_3D+ w_recap/2.5, y_image, H_3D/3.5, H_3D/3.5)
-        //draw_contour(W_3D+ w_recap/2.5, 100+(20+ H_3D/3.5)*i, H_3D/3.5, H_3D/3.5, "rgb(255,0,0)")
+        ctx.drawImage(canvasMins[i],W_3D+ w_recap/2, y_image, H_3D/3.5, H_3D/3.5)
         //Fleche pour Switch haut
         if (nb_choix_fait > 1 && i > 0 && i < nb_choix_fait) {
             y_fleche_h = (H_3D/3.5)*0.4 + y_image
@@ -111,9 +110,6 @@ function afficher_recap(){
                 swapElements(canvasMins, i, i-1)
                 swapElements(ctxMins, i, i-1)
                 swapElements(liste_poses, i, i-1)
-                //swapElements(checkbox_clicked_courant, i, i-1)
-                //checkbox_clicked_courant[i-1].recap = "n°"+i
-                //checkbox_clicked_courant[i].recap = "n°"+(i+1)
                 interactions.push({"time": new Date().getTime(), "type": "fleche switch haut de la pose n°"+(i+1)})
                 clicked = false
             }
@@ -126,18 +122,12 @@ function afficher_recap(){
                 swapElements(canvasMins, i, i+1)
                 swapElements(ctxMins, i, i+1)
                 swapElements(liste_poses, i, i+1)
-                // swapElements(checkbox_clicked_courant, i, i+1)
-                // checkbox_clicked_courant[i+1].recap = "n°"+(i+2)
-                // checkbox_clicked_courant[i].recap = "n°"+(i+1)
                 interactions.push({"time": new Date().getTime(), "type": "fleche switch bas de la pose n°"+(i+1)})
                 clicked = false
             }
         }
         // Croix
         if (i < nb_choix_fait) {
-            // checkbox 
-            //draw_empty_checkbox(25 + (5+0.3*canvasRenderer.height)*i, i)
-            //afficher_check(checkbox_clicked_courant, i, 25 + (5+0.3*canvasRenderer.height)*i)
             // croix pour annuler
             y_croix = (H_3D/3.5)*0.4 + y_image
             ctx.drawImage(imgs["croix"], x_croix, y_croix, w_croix, h_croix)
@@ -149,13 +139,7 @@ function afficher_recap(){
                 for (let j = i; j < nb_choix_demande-1; j++) {
                     swapElements(canvasMins, j, j+1)
                     swapElements(ctxMins, j, j+1)
-                    // swapElements(checkbox_clicked_courant, j, j+1)
-                    // checkbox_clicked_courant[j+1].recap = "n°"+(j+2)
-                    // checkbox_clicked_courant[j].recap = "n°"+(j+1)
                 }
-                // vider le dernier recap poru les checkbox 
-                // checkbox_clicked_courant[nb_choix_demande-1].idx_checkbox = []
-                // checkbox_clicked_courant[nb_choix_demande-1].mots = []
             }
         }
     }

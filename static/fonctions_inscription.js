@@ -48,7 +48,7 @@ function action_bouton_commencer_inscription(){
     page_inscription = false 
     //page_vues = true 
     page_explication = true
-    interactions.push({"time": new Date().getTime(), "type": "Fin inscription - Début explications"})
+    interactions.push({"time": new Date().getTime(), "type": "Début explications"})
     //gestion des données personnelle de l'utilisateur
     //gestion_donnees_personnelles()
         
@@ -74,6 +74,7 @@ function action_bouton_suivant_inscription(){
     inscription_finie = true 
     gestion_donnees_personnelles()
     ctx.clearRect(0, 0, canvas.width, canvas.height)
+    interactions.push({"time": new Date().getTime(), "type": "Fin inscription"})
 }
 
 
