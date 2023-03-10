@@ -77,11 +77,11 @@ function init_variable(premier_appel){
     R = 2.5
 
     // Enchainement des pages
-    page_contexte = true
+    page_contexte = false
     page_inscription = false // true
     page_explication = false
     page_explication_bis = false
-    page_vues = false // false
+    page_vues = true // false
     page_analyse = false
 
     // Pour afiicher les recap dans la partie analys,e on les conserve tous
@@ -151,9 +151,9 @@ function setUp_3D(idx_mesh, idx_i_init, idx_j_init){
 
       // Caméra
     camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 1000 );
-    camera.position.x = 2;
-    camera.position.y = 0;
-    camera.position.z = 0;
+    // camera.position.x = 2;
+    // camera.position.y = 0;
+    // camera.position.z = 0;
     camera.position.set(R*Math.cos(delta_init)*Math.cos(theta_init), R*Math.sin(theta_init), R*Math.sin(delta_init)*Math.cos(theta_init)) // repère JS
     camera.lookAt(0, 0, 0)
     //camera.lookAt (new THREE.Vector3(0,0,0))
@@ -206,10 +206,10 @@ function setUp_3D(idx_mesh, idx_i_init, idx_j_init){
     setUp_light(R)
 
     // Data 3D
-    obj_file = ['dragon_update_user_study.obj', 'camel_update_user_study_normed.obj', 'gorgoile_update_user_study_centered_normed.obj', 'horse_update_user_study_normed.obj']
+    obj_file = shuffle(['dragon_update_user_study_normed.obj', 'camel_update_user_study_normed.obj', 'gorgoile_update_user_study_centered_normed.obj', 'horse_update_user_study_normed.obj'])
     const objLoader = new THREE.OBJLoader2();
-    objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/3DMesh/'+obj_file[idx_mesh], (event) => {
-    //objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/3DMesh/'+obj_file[idx_mesh], (event) => {    
+    //objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/3DMesh/'+obj_file[idx_mesh], (event) => {
+    objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/3DMesh/'+obj_file[idx_mesh], (event) => {    
         const root = event.detail.loaderRootNode;
         scene.add(root);
     });
