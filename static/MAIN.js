@@ -205,9 +205,10 @@ function setUp_3D(idx_mesh, idx_i_init, idx_j_init){
     setUp_light(R)
 
     // Data 3D
-    obj_file = ['dragon_update_user_study.obj', 'camel_update_user_study_normed.obj', 'gorgoile_update_user_study_centered_normed.obj']
+    obj_file = ['dragon_update_user_study.obj', 'camel_update_user_study_normed.obj', 'gorgoile_update_user_study_centered_normed.obj', 'horse_update_user_study_normed.obj']
     const objLoader = new THREE.OBJLoader2();
     objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/3DMesh/'+obj_file[idx_mesh], (event) => {
+    //objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/3DMesh/'+obj_file[idx_mesh], (event) => {    
         const root = event.detail.loaderRootNode;
         scene.add(root);
     });

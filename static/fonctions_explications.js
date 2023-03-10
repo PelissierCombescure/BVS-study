@@ -1,6 +1,6 @@
 function init_explication(){
 
-alpha_ecran = 0.9
+    alpha_ecran = 0.9
 alpha_clignotement = 0.8
 color_ecran ="rgb(255,255,255)"
 color_texte = "rgb(0,0,0)"
