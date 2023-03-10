@@ -1,4 +1,5 @@
-scale_bouton_commencer = 0.6
+scale_bouton_commencer = 1
+scale_bouton_suivant = 0.6
 
 function affichage_inscription(){
     // Texte
@@ -26,13 +27,13 @@ function affichage_inscription(){
 }
 
 
-function afficher_bouton_commencer(){
-    w_bouton_commencer = scale_bouton_commencer*boutons["commencer"].width
-    h_bouton_commencer = scale_bouton_commencer*boutons["commencer"].height
+function afficher_bouton_commencer_inscription(){
+    w_bouton_commencer = scale_bouton_commencer*boutons["commencer_tuto"].width
+    h_bouton_commencer = scale_bouton_commencer*boutons["commencer_tuto"].height
     x_bouton_commencer = (window.innerWidth/2)-(w_bouton_commencer/2)
-    y_bouton_commencer = innerHeight*0.75
+    y_bouton_commencer =  (window.innerHeight/2)-(h_bouton_commencer/2)
     // Bouton commencer
-    ctx.drawImage(boutons["commencer"], x_bouton_commencer, y_bouton_commencer , w_bouton_commencer, h_bouton_commencer)
+    ctx.drawImage(boutons["commencer_tuto"], x_bouton_commencer, y_bouton_commencer , w_bouton_commencer, h_bouton_commencer)
 
     // Survol
     if(xyMouseMove.x >= x_bouton_commencer && xyMouseMove.x <= x_bouton_commencer + w_bouton_commencer && xyMouseMove.y > y_bouton_commencer && xyMouseMove.y < y_bouton_commencer + h_bouton_commencer){
@@ -40,32 +41,38 @@ function afficher_bouton_commencer(){
     }
 }
 
-function action_bouton_commencer(){
+
+function action_bouton_commencer_inscription(){
     page_inscription = false 
     //page_vues = true 
     page_explication = true
     interactions.push({"time": new Date().getTime(), "type": "Fin inscription - Début explications"})
     //gestion des données personnelle de l'utilisateur
-    gestion_donnees_personnelles()
+    //gestion_donnees_personnelles()
         
 }
 
+function afficher_bouton_suivant_inscription(){
+    w_bouton_suivant = scale_bouton_suivant*boutons["suivant_grand"].width
+    h_bouton_suivant = scale_bouton_suivant*boutons["suivant_grand"].height
+    x_bouton_suivant = (window.innerWidth/2)-(w_bouton_suivant/2)
+    y_bouton_suivant = innerHeight*0.75
+    // Bouton commencer
+    ctx.drawImage(boutons["suivant_grand"], x_bouton_suivant, y_bouton_suivant , w_bouton_suivant, h_bouton_suivant)
 
-function traitement_inscription(){
-    affichage_inscription()
-    if (champs_remplis_correctment()){
-        afficher_bouton_commencer()
-        texte = "Are you ready for the explanations?"
-        font = "40pt Courier"
-        ctx.font = font
-        largeur = ctx.measureText(texte).width
-        ctx.fillText(texte, (window.innerWidth/2)- (largeur/2), y_bouton_commencer-20)
-        if (clicked && click_inside(xyMouseDown, x_bouton_commencer, y_bouton_commencer , w_bouton_commencer, h_bouton_commencer)){
-            // on passe aux choix 
-            action_bouton_commencer()     
-        }         
+    // Survol
+    if(xyMouseMove.x >= x_bouton_suivant && xyMouseMove.x <= x_bouton_suivant + w_bouton_suivant && xyMouseMove.y > y_bouton_suivant && xyMouseMove.y < y_bouton_suivant + h_bouton_suivant){
+        draw_rectangle(x_bouton_suivant, y_bouton_suivant , w_bouton_suivant, h_bouton_suivant, "rgb(200, 200, 200)", 0.6)
     }
 }
+
+function action_bouton_suivant_inscription(){
+    inscription_finie = true 
+    gestion_donnees_personnelles()
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+}
+
+
 
 //////////////////////////////////////////////////////////////
 /// CHAMPS INSCRIPTION
@@ -91,6 +98,7 @@ function value_non_vide(V){
 }
 
 function afficher_champs_inscription() {
+    inscription_finie = false
     w_text_zone = 30
     h_text_zone = 42
     nb_caract_min = 1
@@ -211,7 +219,42 @@ function gestion_donnees_personnelles(){
     document.getElementById("SexeM").style.display = 'none'
     document.getElementById("SexeF").style.display = 'none'
     document.getElementById("SexeA").style.display = 'none'
-
-
                     
+}
+
+
+//////////////////////////////////////////////////////////////
+/// MAIN INSCRIPTION
+
+function traitement_inscription(){
+    if (!inscription_finie){
+        affichage_inscription()
+        if (champs_remplis_correctment()){
+            // affichage du bouton next
+            afficher_bouton_suivant_inscription()
+            // Si on clique sur le bouton Next
+            if (clicked && click_inside(xyMouseDown, x_bouton_suivant, y_bouton_suivant , w_bouton_suivant, h_bouton_suivant)){
+                action_bouton_suivant_inscription()                
+            }         
+        }
+    // les champs sont remplie et on a appuyé sur le bouton next
+    } else {
+        texte = "Are  you ready to start the tutorial to learn" 
+        texte2 = "how to use the interface of the study?"
+        font = "40pt Courier"
+        ctx.font = font
+        largeur = ctx.measureText(texte).width
+        largeur2 = ctx.measureText(texte2).width
+        ctx.fillText(texte, (window.innerWidth/2)- (largeur/2), 100)
+        ctx.fillText(texte2, (window.innerWidth/2)- (largeur2/2), 160)
+        //print_text(handle_text(texte, (window.innerWidth/2) - (window.innerWidth/2)/2,  (window.innerHeight/4), font, (window.innerWidth/2), color="#FFFFFF", interligne=50))
+        // affichager le bouton commencer
+        afficher_bouton_commencer_inscription()
+        // si on appuie 
+        if (clicked && click_inside(xyMouseDown, x_bouton_commencer, y_bouton_commencer , w_bouton_commencer, h_bouton_commencer)){
+            action_bouton_commencer_inscription()
+        }
+
+
+    }
 }

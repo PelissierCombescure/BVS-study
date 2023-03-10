@@ -24,8 +24,12 @@ function action_clavier_inscription(event){
         //     break;idx_i, idx_j
         // valider
         case  'Enter':
-            if (champs_remplis_correctment()){
-            action_bouton_commencer('clavier')}            
+            if (!inscription_finie){
+                if (champs_remplis_correctment()){
+                    action_bouton_suivant_inscription()} 
+            }else{
+                action_bouton_commencer_inscription()
+            }        
             break;
     }
 }

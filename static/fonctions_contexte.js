@@ -1,3 +1,5 @@
+scale_bouton_commencer_contexte = 0.6
+
 function affichage_texte_contexte(){
     // Texte
     draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1) // ou + clair 4, 38, 48
@@ -26,10 +28,25 @@ function traitement_contexte(){
     //shortcuts(xyMouseMove, imgs['clavier_enter'], window.innerWidth/2 -(imgs['clavier_enter'].width/2), window.innerHeight/2 -(imgs['clavier_enter'].height/2), imgs['clavier_enter'].width, imgs['clavier_enter'].height, boutons['raccourcis'], x_Bshortcut, y_Bshortcut, w_Bshortcut, h_Bshortcut)
     affichage_texte_contexte()
     //clignotement_rectangle(1000, 10,10,100,100, "rgb(255,0,0)")
-    afficher_bouton_commencer() // meme bouton que la page inscription 
+    afficher_bouton_commencer_contexte() // meme bouton que la page inscription 
     if (clicked && click_inside(xyMouseDown, x_bouton_commencer, y_bouton_commencer , w_bouton_commencer, h_bouton_commencer)){
         // on passe aux choix 
         action_bouton_commencer_contexte()     
     }         
+}
+
+
+function afficher_bouton_commencer_contexte(){
+    w_bouton_commencer = scale_bouton_commencer_contexte*boutons["commencer"].width
+    h_bouton_commencer = scale_bouton_commencer_contexte*boutons["commencer"].height
+    x_bouton_commencer = (window.innerWidth/2)-(w_bouton_commencer/2)
+    y_bouton_commencer = innerHeight*0.75
+    // Bouton commencer
+    ctx.drawImage(boutons["commencer"], x_bouton_commencer, y_bouton_commencer , w_bouton_commencer, h_bouton_commencer)
+
+    // Survol
+    if(xyMouseMove.x >= x_bouton_commencer && xyMouseMove.x <= x_bouton_commencer + w_bouton_commencer && xyMouseMove.y > y_bouton_commencer && xyMouseMove.y < y_bouton_commencer + h_bouton_commencer){
+        draw_rectangle(x_bouton_commencer, y_bouton_commencer , w_bouton_commencer, h_bouton_commencer, "rgb(200, 200, 200)", 0.6)
+    }
 }
 

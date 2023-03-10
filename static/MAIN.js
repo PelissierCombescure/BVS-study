@@ -250,7 +250,8 @@ function init_data(){
     boutons["valider"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_valider.png')
     boutons["choix_pose"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_pose.png')
     boutons["retirer"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_retirer.png')
-    boutons["commencer_choix"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_commencer.png')
+    boutons["commencer"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_commencer.png')
+    boutons["commencer_choix"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_commencer_choix.png')
     boutons["commencer_tuto"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_commencer_tuto.png')
     boutons["raz"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_raz.png')
     boutons["suivant"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_suivant.png')
@@ -289,9 +290,7 @@ function animate() {
             init_clavier_contexte()
             premier_tour_page_contexte = false
         }
-        traitement_contexte()
-        
-        
+        traitement_contexte()               
     }
 ////////////////////////////////////////////////////////////////////////////////
     // page inscription
@@ -304,8 +303,7 @@ function animate() {
             init_clavier_inscription()
             afficher_champs_inscription()
             premier_tour_page_inscription=false}
-        traitement_inscription()
-        
+        traitement_inscription()        
     }
 ////////////////////////////////////////////////////////////////////////////////
     if (page_explication){
