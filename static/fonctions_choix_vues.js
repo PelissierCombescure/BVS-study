@@ -440,24 +440,13 @@ function action_bouton_raz(){
     // affichage 
     ctx.drawImage(imgs['croix'], (window.innerWidth-w_bouton*2.1)+w_bouton*0.65, window.innerHeight-h_bouton +10,  60,50)
     ctx.drawImage(imgs['check'], (window.innerWidth-w_bouton*2.1)+w_bouton*0.15, window.innerHeight-h_bouton +10,  50,50)
-    // // survol croix
-    // if (is_inside(xyMouseMove,(window.innerWidth-w_bouton*2.5)+w_bouton*0.75, window.innerHeight-h_bouton +10,  50,50)){
-    //     draw_contour((window.innerWidth-w_bouton*2.5)+w_bouton*0.75, window.innerHeight-h_bouton +10,  50,50, "rgb(255, 0, 255)")
-    // } // survol check
-    // if (is_inside(xyMouseMove,(window.innerWidth-w_bouton*2.5)+w_bouton*0.25, window.innerHeight-h_bouton +10,  50,50)){
-    //     draw_contour((window.innerWidth-w_bouton*2.5)+w_bouton*0.25, window.innerHeight-h_bouton +10,  50,50, "rgb(255, 0, 255)")
-    // }
-
-    // click sur le check : on raz  
-    //draw_contour( (window.innerWidth-w_bouton*2.1)+w_bouton*0.15, window.innerHeight-h_bouton +10,  50,50)
+    // si on veut raz
     if (clicked && is_inside(xyMouseMove, (window.innerWidth-w_bouton*2.1)+w_bouton*0.15, window.innerHeight-h_bouton +10,  50,50)){
-        
         init_variable(false); 
         idx_i_init = Math.floor(Math.random()*8); idx_j_init = Math.floor(Math.random()*5)
         setUp_3D(indice_mesh, idx_i_init, idx_j_init)
         interactions.push({"time": new Date().getTime(), "type": "bouton raz check"})}
     // click sur la croix ou ailleurs : on clear
-    //if (clicked && is_inside(xyMouseMove,W_3D*0.35+a+2*b+ecart*7 + w_bouton +400*1/2, H_3D+dy+ecart*2  + 100,  50,50)){
     if(clicked){
         bouton_raz_clicked = false
         interactions.push({"time": new Date().getTime(), "type": "bouton raz croix"})}

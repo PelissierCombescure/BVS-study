@@ -19,7 +19,7 @@ function init_variable(premier_appel){
     ///////////////////////////////////////////////////////
     // CE QUE L'ON RECUPERE A LA FIN
     // dictionnaire avec les choix pour TOUS les mesh
-    choix = {}
+    if (premier_appel){choix = {}}
     // dictionnaire avec les checkbox pour TOUS les mesh
     checkbox_clicked = {}
     ///////////////////////////////////////////////////////
@@ -82,12 +82,22 @@ function init_variable(premier_appel){
     R = 2.5
 
     // Enchainement des pages
-    page_contexte = true
-    page_inscription = false // true
-    page_explication = false
-    page_explication_bis = false
-    page_vues = false // false
-    page_analyse = false
+    if (premier_appel){
+        page_contexte = true
+        page_inscription = false // true
+        page_explication = false
+        page_explication_bis = false
+        page_vues = false // false
+        page_analyse = false
+    // cas raz : on recommence juste la partie vues
+    } else {
+        page_contexte = false
+        page_inscription = false // true
+        page_explication = false
+        page_explication_bis = false
+        page_vues = true // false
+        page_analyse = false
+    }
 
     // Pour afiicher les recap dans la partie analys,e on les conserve tous
     all_ctxMins = {}
@@ -327,7 +337,7 @@ function animate() {
     }
 ////////////////////////////////////////////////////////////////////////////////
     if (page_explication){
-        //console.log("boucle explication")
+        console.log("boucle explication")
         // on enlève les touches du clavier associé à la page inscription
         document.removeEventListener("keydown", action_clavier_inscription)
         // Variable pour les fonctions
@@ -372,13 +382,15 @@ function animate() {
     }
     // bouton entr ele tutorial et l'étude
     if (page_explication_bis){
-        commencer_etude()
         ctx.clearRect(0, 0, canvas.width, canvas.height)
+        console.log("boucle explication2")
+        commencer_etude()
+        
     }
 ////////////////////////////////////////////////////////////////////////////////
     // page de choix
     if (page_vues && num_tache <= nb_mesh){
-        //console.log("boucle choix")
+        console.log("boucle choix")
         // on enlève les touches du clavier associé à la page inscription
         document.removeEventListener("keydown", action_clavier_explication)
         //init touche clavier

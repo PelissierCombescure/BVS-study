@@ -214,11 +214,22 @@ function init_explication(){
         // 6.1
         {"type":"a_cliquer", "x": positions_bouton[15].x, "y":positions_bouton[15].y, "w":positions_bouton[15].w, "h":positions_bouton[15].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
         // 6.2
-        [{"type":"a_regarder", "x":  W_3D + (window.innerWidth-W_3D)/2.5 -5, "y": (H_3D/3.5)*0.6 + 100, "w":20 +10, "h": ((H_3D/3.5)*0.4 + 100+(20+ H_3D/3.5)*2 + 20) - ((H_3D/3.5)*0.6 + 100) , "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+        // [{"type":"a_regarder", "x":  W_3D + (window.innerWidth-W_3D)/2.5 -5, "y": (H_3D/3.5)*0.6 + 100, "w":20 +10, "h": ((H_3D/3.5)*0.4 + 100+(20+ H_3D/3.5)*2 + 20) - ((H_3D/3.5)*0.6 + 100) , "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+        // {"type":"a_cliquer", "x": positions_bouton[16].x, "y":positions_bouton[16].y, "w":positions_bouton[16].w, "h":positions_bouton[16].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente}
+        // ],
+        [{"type":"a_regarder", "x":  W_3D + (window.innerWidth-W_3D)/2.5 -5, "y": (H_3D/3.5)*0.6 + 100, "w":20 +10, "h": 20 , "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+        {"type":"a_regarder", "x":  W_3D + (window.innerWidth-W_3D)/2.5 -5, "y": (H_3D/3.5)*0.6 + 100+(20+ H_3D/3.5), "w":20 +10, "h": 20 , "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+        {"type":"a_regarder", "x":  W_3D + (window.innerWidth-W_3D)/2.5 -5, "y": (H_3D/3.5)*0.4 + 100+(20+ H_3D/3.5), "w":20 +10, "h": 20 , "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+        {"type":"a_regarder", "x":  W_3D + (window.innerWidth-W_3D)/2.5 -5, "y": (H_3D/3.5)*0.4 + 100+(20+ H_3D/3.5)*2, "w":20 +10, "h": 20 , "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
         {"type":"a_cliquer", "x": positions_bouton[16].x, "y":positions_bouton[16].y, "w":positions_bouton[16].w, "h":positions_bouton[16].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente}
         ],
         //6.3
-        [{"type":"a_regarder", "x":   W_3D+ (window.innerWidth-W_3D)/2.5 + W_3D/3.5 +10 -5 , "y": (H_3D/3.5)*0.4 + 100, "w":20 +10, "h": ((H_3D/3.5)*0.4 + 100+(20+ H_3D/3.5)*2 + 20) - ((H_3D/3.5)*0.4 + 100) , "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+        // [{"type":"a_regarder", "x":   W_3D+ (window.innerWidth-W_3D)/2.5 + W_3D/3.5 +10 -5 , "y": (H_3D/3.5)*0.4 + 100, "w":20 +10, "h": ((H_3D/3.5)*0.4 + 100+(20+ H_3D/3.5)*2 + 20) - ((H_3D/3.5)*0.4 + 100) , "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+        // {"type":"a_cliquer", "x": positions_bouton[17].x, "y":positions_bouton[17].y, "w":positions_bouton[17].w, "h":positions_bouton[17].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente}
+        // ],
+        [{"type":"a_regarder", "x":   W_3D+ (window.innerWidth-W_3D)/2.5 + W_3D/3.5 +10 -5 , "y": (H_3D/3.5)*0.4 + 100, "w":20 +10, "h": 20 , "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+        {"type":"a_regarder", "x":   W_3D+ (window.innerWidth-W_3D)/2.5 + W_3D/3.5 +10 -5 , "y": (H_3D/3.5)*0.4 + 100 + (20+ H_3D/3.5), "w":20 +10, "h": 20 , "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
+        {"type":"a_regarder", "x":   W_3D+ (window.innerWidth-W_3D)/2.5 + W_3D/3.5 +10 -5 , "y": (H_3D/3.5)*0.4 + 100 + (20+ H_3D/3.5)*2, "w":20 +10, "h": 20 , "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente},
         {"type":"a_cliquer", "x": positions_bouton[17].x, "y":positions_bouton[17].y, "w":positions_bouton[17].w, "h":positions_bouton[17].h, "c":color_clignotement,"a": alpha_clignotement, "t": temps_attente}
         ],
         //6.4 remove
@@ -371,7 +382,7 @@ function traitement_explications(idx_i_explication, idx_j_explication){
                 clignotement_contour(2000, clignotement.x, clignotement.y, clignotement.w, clignotement.h, clignotement.c, epaisseur_clignotement)        
             }                 
             if (time_animate > time_clicke + clignotement.t && clignotement.type=="a_regarder"){
-                clignotement_rectangle(2000, clignotement.x, clignotement.y, clignotement.w, clignotement.h, "rgb(17, 138, 178)", 0.8) 
+                clignotement_rectangle(2000, clignotement.x, clignotement.y, clignotement.w, clignotement.h, "rgb(0, 255, 255)", 0.8) 
             }
         // on a plusieurs clignotement
         } else {
@@ -383,7 +394,7 @@ function traitement_explications(idx_i_explication, idx_j_explication){
                 }
                 // rectangle
                 if (time_animate > time_clicke + clignotement_p.t && clignotement_p.type=="a_regarder"){
-                    clignotement_rectangle(2000, clignotement_p.x, clignotement_p.y, clignotement_p.w, clignotement_p.h, "rgb(17, 138, 178)", 0.8) 
+                    clignotement_rectangle(2000, clignotement_p.x, clignotement_p.y, clignotement_p.w, clignotement_p.h, "rgb(0, 255, 255)", 0.8) 
                 }
             }
         }
