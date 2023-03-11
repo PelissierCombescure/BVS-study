@@ -259,6 +259,8 @@ function init_data(){
     imgs["marie"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/Autres/marie.png')
     imgs["clavier_vues"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/clavier_vues.png')
     imgs["clavier_enter"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/clavier_enter.png')
+    imgs["exemple1"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Tutorial/exemple1.png')
+    imgs["exemple2"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Tutorial/exemple2.png')
     imgs["recap1"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Tutorial/recap1.png')
     imgs["recap2"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Tutorial/recap2.png')
     imgs["recap3"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Tutorial/recap3.png')

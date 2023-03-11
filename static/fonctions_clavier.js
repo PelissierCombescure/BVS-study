@@ -9,10 +9,17 @@ function action_clavier_contexte(event){
         //     action_bouton_commencer_contexte('clavier')
         // break;
         // valider
-        case  'Enter':
-            if (fin_conexte){action_bouton_commencer_contexte()}   
-            else{action_bouton_suivant_commencer()}   
-        break;
+        case  'Enter':  
+        if (num_texte < ((textes_page_1.length + textes_page_2.length + textes_page_3.length +textes_page_4.length))-1){
+            action_bouton_suivant_contexte()}
+        else{
+            action_bouton_commencer_contexte()
+        }
+            break;
+        case 'Backspace':
+            if (num_texte>0){
+            action_bouton_avant_contexte()}
+            break;
     }
 }
 
