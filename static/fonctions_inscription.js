@@ -247,6 +247,8 @@ function traitement_inscription(){
         texte = "Are  you ready to start the tutorial to learn" 
         texte2 = "how to use the interface of the study?"
         font = "40pt Courier"
+        ctx.strokeStyle = "rgb(255, 255, 255)" // Pour que le contour soit rouge
+        ctx.fillStyle = "rgb(255, 255, 255)"
         ctx.font = font
         largeur = ctx.measureText(texte).width
         largeur2 = ctx.measureText(texte2).width

@@ -65,13 +65,14 @@ function afficher_ecran(originex, originey, largeur, hauteur, couleur, alpha){
 }
 
 
-function print_text(dialogue) {
+function print_text(dialogue, c= true) {
 
     s = dialogue.texte
     for (let i = 0; i < s.length; i++) {
         if (s[i].lettre !== undefined) {
+            if (c){
             ctx.strokeStyle = s[i].stroke
-            ctx.fillStyle = s[i].fill
+            ctx.fillStyle = s[i].fill}
             ctx.strokeText(s[i].lettre, s[i].x, s[i].y)
             ctx.fillText(s[i].lettre, s[i].x, s[i].y)
         }

@@ -304,9 +304,10 @@ function animate() {
         //init touche clavier
         if (premier_tour_page_contexte){
             init_clavier_contexte()
+            init_textes_contexte()
             premier_tour_page_contexte = false
         }
-        traitement_contexte()               
+        traitement_contexte()  
     }
 ////////////////////////////////////////////////////////////////////////////////
     // page inscription
@@ -369,6 +370,7 @@ function animate() {
     // bouton entr ele tutorial et l'étude
     if (page_explication_bis){
         commencer_etude()
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
     }
 ////////////////////////////////////////////////////////////////////////////////
     // page de choix

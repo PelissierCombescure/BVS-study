@@ -10,7 +10,8 @@ function action_clavier_contexte(event){
         // break;
         // valider
         case  'Enter':
-            action_bouton_commencer_contexte('clavier')          
+            if (fin_conexte){action_bouton_commencer_contexte()}   
+            else{action_bouton_suivant_commencer()}   
         break;
     }
 }
