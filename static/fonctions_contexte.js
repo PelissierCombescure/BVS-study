@@ -31,12 +31,12 @@ function action_bouton_commencer_contexte(){
 }
 
 function afficher_bouton_commencer_contexte(){
-    w_bouton_commencer = scale_bouton_commencer_contexte*boutons["commencer"].width
-    h_bouton_commencer = scale_bouton_commencer_contexte*boutons["commencer"].height
-    x_bouton_commencer = (window.innerWidth/2)-(w_bouton_commencer/2)
-    y_bouton_commencer = innerHeight*0.75
+    w_bouton_commencer = w_bouton_suivant
+    h_bouton_commencer = h_bouton_suivant
+    x_bouton_commencer = x_bouton_suivant
+    y_bouton_commencer = y_bouton_suivant
     // Bouton commencer
-    ctx.drawImage(boutons["commencer"], x_bouton_commencer, y_bouton_commencer , w_bouton_commencer, h_bouton_commencer)
+    ctx.drawImage(boutons["commencer_inscription"], x_bouton_commencer, y_bouton_commencer , w_bouton_commencer, h_bouton_commencer)
 
     // Survol
     if(xyMouseMove.x >= x_bouton_commencer && xyMouseMove.x <= x_bouton_commencer + w_bouton_commencer && xyMouseMove.y > y_bouton_commencer && xyMouseMove.y < y_bouton_commencer + h_bouton_commencer){
