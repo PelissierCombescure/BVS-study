@@ -473,7 +473,8 @@ function action_fin_explication(){
         ctxMins[i].clearRect(0, 0, canvasMins[i].width, canvasMins[i].height)
     }
     page_explication = false
-    page_explication_bis = true
+    //page_explication_bis = true
+    page_warning = true
     interactions.push({"time": new Date().getTime(), "type": "Fin explication"})
 }
 
@@ -532,8 +533,10 @@ function action_clavier_explication(event){
                 action_bouton_pose() 
                 action_suivante() }
             break;
+
         // valider
-        case  'Enter':  
+        case  'Enter': 
+        console.log('clavier') 
             if (num_action == nb_action && page_explication){
                 action_fin_explication()
             }   
@@ -541,7 +544,13 @@ function action_clavier_explication(event){
                 action_bouton_commencer_explication()
             }
             if (num_action < nb_action && condition_suivant.type =="bouton"){
-                action_suivante()} 
+                action_suivante()}
+
+            if (page_warning && num_warning < (warnings_page_1.length-1)){
+                action_bouton_suivant_warning()}
+            if (page_warning && num_warning == (warnings_page_1.length-1)){
+                action_bouton_commencer_warning()
+            }
                         
             break;
         case  'Backspace':

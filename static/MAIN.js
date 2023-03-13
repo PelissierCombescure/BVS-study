@@ -86,6 +86,7 @@ function init_variable(premier_appel){
         page_contexte = true
         page_inscription = false // true
         page_explication = false
+        page_warning = false
         page_explication_bis = false
         page_vues = false // false
         page_analyse = false
@@ -94,6 +95,7 @@ function init_variable(premier_appel){
         page_contexte = false
         page_inscription = false // true
         page_explication = false
+        page_warning = false
         page_explication_bis = false
         page_vues = true // false
         page_analyse = false
@@ -107,6 +109,7 @@ function init_variable(premier_appel){
     premier_tour_page_contexte = true
     premier_tour_page_inscription = true 
     premier_tour_page_explications = true
+    premier_tour_page_warning = true
     premier_tour_page_vues = true
     premier_tour_page_analyse = true 
 
@@ -380,12 +383,19 @@ function animate() {
         which_clicked_fleche = -1
         which_clicked_bouton = -1 
     }
-    // bouton entr ele tutorial et l'étude
+    // page warning
+    if(page_warning){
+        console.log("warning")
+        if (premier_tour_page_warning){
+            init_textes_warnings()
+            premier_tour_page_warning = false}
+        traitement_warnings()}
+
+    // bouton entr le tutorial et l'étude
     if (page_explication_bis){
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         //console.log("boucle explication2")
-        commencer_etude()
-        
+        commencer_etude()        
     }
 ////////////////////////////////////////////////////////////////////////////////
     // page de choix
@@ -455,7 +465,7 @@ function animate() {
     }
 ////////////////////////////////////////////////////////////////////////////////
     // page fin
-    if (!page_contexte && !page_inscription && !page_explication && !page_explication_bis && !page_vues && !page_analyse){
+    if (!page_contexte && !page_inscription && !page_explication && !page_warning && !page_explication_bis && !page_vues && !page_analyse){
         //console.log("boucle fin")
         // on enlève les touches du clavier associé à la page vues
         document.removeEventListener("keydown", action_clavier_analyse)
@@ -478,7 +488,7 @@ function animate() {
             // Si la requête est terminée, et que la réponse n'est pas une erreur.
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                 console.log(xhr.responseText);
-                message_fin = "> It's done."
+                message_fin = "> It's done. You can close the web page."
                 //print_text(handle_text(message_fin, (window.innerWidth/2)-450, innerHeight/2+150 , "26pt Courier", 1000))
                 envoie_termine = true
                 affichage_texte_fin(message_fin, envoie_termine)
