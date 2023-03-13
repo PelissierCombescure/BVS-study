@@ -31,6 +31,7 @@ function init_variable(premier_appel){
     which_clicked_bouton = -1
     which_clicked_fleche = -1
     bouton_raz_clicked = false
+    skiped = false
 
     // Au premier appel on init : les interactions
     if (premier_appel){interactions = [{"time" : new Date().getTime(), "type": "start"}]}
