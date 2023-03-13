@@ -291,6 +291,7 @@ function init_data(){
     boutons["suivant_grand"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_suivant_grand.png')
     boutons["avant"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_avant.png')
     boutons["raccourcis"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_raccourcis.png')
+    boutons["skip"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_skip_tutorial.png')
 
     // Mouse
     xyMouseMove = {"x": -1, "y": -1}

@@ -58,13 +58,13 @@ function action_bouton_commencer_inscription(){
 /// BOUTON COMMENCER SKIP (POUUR ALLER VERS LE TUTO)
 
 function afficher_bouton_skip_inscription(){
-    w_bouton_skip = scale_bouton_commencer*boutons["commencer_tuto"].width
-    h_bouton_skip = scale_bouton_commencer*boutons["commencer_tuto"].height
+    w_bouton_skip = scale_bouton_commencer*boutons["skip"].width
+    h_bouton_skip = scale_bouton_commencer*boutons["skip"].height
     x_bouton_skip = (window.innerWidth/2)-(w_bouton_skip/2)
     y_bouton_skip =  (window.innerHeight/2) + (h_bouton_skip/2) + 20
 
     // Bouton commencer
-    ctx.drawImage(boutons["commencer_tuto"], x_bouton_skip, y_bouton_skip , w_bouton_skip, h_bouton_skip)
+    ctx.drawImage(boutons["skip"], x_bouton_skip, y_bouton_skip , w_bouton_skip, h_bouton_skip)
 
     // Survol
     if(xyMouseMove.x >= x_bouton_skip && xyMouseMove.x <= x_bouton_skip + w_bouton_skip && xyMouseMove.y > y_bouton_skip && xyMouseMove.y < y_bouton_skip + h_bouton_skip){
@@ -284,6 +284,7 @@ function traitement_inscription(){
         ctx.fillText(texte2, (window.innerWidth/2)- (largeur2/2), 160)
         //print_text(handle_text(texte, (window.innerWidth/2) - (window.innerWidth/2)/2,  (window.innerHeight/4), font, (window.innerWidth/2), color="#FFFFFF", interligne=50))
         // affichager le bouton commencer tutorial
+        draw_rectangle(0,canvas.height/2,canvas.width, canvas.height/2, "rgb(3, 26, 33)", 1)
         afficher_bouton_commencer_inscription()
         // affichager le bouton skipi
         afficher_bouton_skip_inscription()
