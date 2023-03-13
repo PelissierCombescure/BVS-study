@@ -337,7 +337,7 @@ function animate() {
     }
 ////////////////////////////////////////////////////////////////////////////////
     if (page_explication){
-        console.log("boucle explication")
+        //console.log("boucle explication")
         // on enlève les touches du clavier associé à la page inscription
         document.removeEventListener("keydown", action_clavier_inscription)
         // Variable pour les fonctions
@@ -383,14 +383,14 @@ function animate() {
     // bouton entr ele tutorial et l'étude
     if (page_explication_bis){
         ctx.clearRect(0, 0, canvas.width, canvas.height)
-        console.log("boucle explication2")
+        //console.log("boucle explication2")
         commencer_etude()
         
     }
 ////////////////////////////////////////////////////////////////////////////////
     // page de choix
     if (page_vues && num_tache <= nb_mesh){
-        console.log("boucle choix")
+        //console.log("boucle choix")
         // on enlève les touches du clavier associé à la page inscription
         document.removeEventListener("keydown", action_clavier_explication)
         //init touche clavier
