@@ -401,8 +401,11 @@ function animate() {
     // page de choix
     if (page_vues && num_tache <= nb_mesh){
         //console.log("boucle choix")
-        // on enlève les touches du clavier associé à la page inscription
-        document.removeEventListener("keydown", action_clavier_explication)
+        if (skiped){document.removeEventListener("keydown", action_clavier_inscription)}
+        else{
+            // on enlève les touches du clavier associé à la page inscription
+            document.removeEventListener("keydown", action_clavier_explication)}
+        
         //init touche clavier
         if(premier_tour_page_vues){
             // init clavier pour les vues

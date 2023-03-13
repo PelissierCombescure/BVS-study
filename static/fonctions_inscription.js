@@ -55,6 +55,34 @@ function action_bouton_commencer_inscription(){
 }
 
 //////////////////////////////////////////////////////////////
+/// BOUTON COMMENCER SKIP (POUUR ALLER VERS LE TUTO)
+
+function afficher_bouton_skip_inscription(){
+    w_bouton_skip = scale_bouton_commencer*boutons["commencer_tuto"].width
+    h_bouton_skip = scale_bouton_commencer*boutons["commencer_tuto"].height
+    x_bouton_skip = (window.innerWidth/2)-(w_bouton_skip/2)
+    y_bouton_skip =  (window.innerHeight/2) + (h_bouton_skip/2) + 20
+
+    // Bouton commencer
+    ctx.drawImage(boutons["commencer_tuto"], x_bouton_skip, y_bouton_skip , w_bouton_skip, h_bouton_skip)
+
+    // Survol
+    if(xyMouseMove.x >= x_bouton_skip && xyMouseMove.x <= x_bouton_skip + w_bouton_skip && xyMouseMove.y > y_bouton_skip && xyMouseMove.y < y_bouton_skip + h_bouton_skip){
+        draw_rectangle(x_bouton_skip, y_bouton_skip , w_bouton_skip, h_bouton_skip, "rgb(200, 200, 200)", 0.6)
+    }
+}
+
+function action_bouton_skip_inscription(){
+    page_inscription = false 
+    page_vues = true
+    skiped = true
+    interactions.push({"time": new Date().getTime(), "type": "Skip tutorial -- Debut choix vues"})
+    //gestion des données personnelle de l'utilisateur
+    //gestion_donnees_personnelles()
+        
+}
+
+//////////////////////////////////////////////////////////////
 /// BOUTON SUIVANT INSCRIPTION
 function afficher_bouton_suivant_inscription(){
     w_bouton_suivant = scale_bouton_suivant*boutons["suivant_grand"].width
@@ -255,11 +283,16 @@ function traitement_inscription(){
         ctx.fillText(texte, (window.innerWidth/2)- (largeur/2), 100)
         ctx.fillText(texte2, (window.innerWidth/2)- (largeur2/2), 160)
         //print_text(handle_text(texte, (window.innerWidth/2) - (window.innerWidth/2)/2,  (window.innerHeight/4), font, (window.innerWidth/2), color="#FFFFFF", interligne=50))
-        // affichager le bouton commencer
+        // affichager le bouton commencer tutorial
         afficher_bouton_commencer_inscription()
-        // si on appuie 
+        // affichager le bouton skipi
+        afficher_bouton_skip_inscription()
+        // si on appuie sur start tutorial
         if (clicked && click_inside(xyMouseDown, x_bouton_commencer, y_bouton_commencer , w_bouton_commencer, h_bouton_commencer)){
             action_bouton_commencer_inscription()
+        }
+        if (clicked && click_inside(xyMouseDown, x_bouton_skip, y_bouton_skip , w_bouton_skip, h_bouton_skip)){
+            action_bouton_skip_inscription()
         }
         
 

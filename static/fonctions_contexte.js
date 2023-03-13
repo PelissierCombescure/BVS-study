@@ -170,21 +170,22 @@ color_blanc = "rgb(255,255,255)"
 color_rouge = "rgb(239, 71, 111)"
 textes={
 "texte0":{"t":"Hello, I am Marie Pelissier, a 3rd year PhD student. I work in the field of computer science and more precisely in computer vision.", "y": window.innerHeight*0.15, "c": color_blanc},
-"texte1":{"t":"You are currently participating in my user study which will allow me to collect data. These data are precious because they will be used to demonstrate the effectiveness of my work. Unfortunately, such data are not available today in the scientific literature.", "y":window.innerHeight*0.35, "c": color_blanc},
+"texte1":{"t":"You are currently participating in my user study which will allow me to collect data related to my research. These data are precious because they will be used to demonstrate the effectiveness of my work. Unfortunately, such data are not available today in the scientific literature.", "y":window.innerHeight*0.35, "c": color_blanc},
 "texte2":{"t":"My work is dedicated to the automatic selection of the best viewpoint for a given 3D object. I will give you more details.", "y":window.innerHeight*0.65, "c": color_blanc},
 "texte3":{"t":"What is a viewpoint? ", "y": window.innerHeight*0.15, "c": color_rouge},
 "texte4":{"t":"> A point of view of a object corresponds to the position from which we observe a object.", "y": window.innerHeight*0.2, "c": color_blanc},
-"texte5":{"t":"Depending on this position, we can observe different parts of this object. However, from any position, it is often not possible to observe all the parts of this object. Some of them, are not visible because they form the 'back' of the object.", "y": window.innerHeight*0.32, "c": color_blanc},
+"texte5":{"t":"Depending on this position, we can observe different parts of this object. However, from any position, it is often not possible to observe all the parts of this object.", "y": window.innerHeight*0.32, "c": color_blanc},
+//"texte5":{"t":"Depending on this position, we can observe different parts of this object. However, from any position, it is often not possible to observe all the parts of this object. Some of them, are not visible because they form the 'back' of the object.", "y": window.innerHeight*0.32, "c": color_blanc},
 "texte6":{"t":"For example, let's look at this object (which represents a wolf) from this position/viewpoint. Here we cannot see the head of the wolf  but its four legs and tail are visible.", "y": window.innerHeight*0.55, "c": color_blanc},
 "texte7":{"t":"There, we cannot see its right eye, left rear leg and tail but the head of the wolf is visible.", "y": window.innerHeight*0.75, "c": color_blanc},
 "texte8":{"t":"What is a good viewpoint?", "y": window.innerHeight*0.15, "c": color_rouge},
-"texte9":{"t":"> A good point of view corresponds to the position from which we can observe representative parts of our objects that allow us to identify it at first. But also to observe the most salient elements. The more characteristic elements a viewpoint contains, the better the viewpoint will be considered.", "y": window.innerHeight*0.2, "c": color_blanc},
-"texte10":{"t":"The purpose of this study is to ask you, for a given object, which are for you the best viewpoints and why. The answers will of course be subjective because everyone will have their own opinion. It is this subjective information that interests me.", "y": window.innerHeight*0.45, "c": color_blanc},
+"texte9":{"t":"> A good point of view corresponds to a position from which we can observe representative parts of an object that allow us to identify it. And also to observe the most salient elements. The more characteristic elements a viewpoint contains, the better the viewpoint will be considered.", "y": window.innerHeight*0.2, "c": color_blanc},
+"texte10":{"t":"The purpose of this study is to ask you, for a given object, which are for you the best viewpoints and why. The answers will of course be subjective because everyone has their own opinion. Thsi subjective information is what I am interested in.", "y": window.innerHeight*0.45, "c": color_blanc},
 "texte11":{"t":"Now that you know the context of this study, here are the instructions:", "y": window.innerHeight*0.15, "c": color_blanc},
 "texte12":{"t":"- you will study "+nb_mesh+" different objects,", "y": window.innerHeight*0.25, "c": color_blanc},
-"texte13":{"t":"- for each of them, you will have to select "+nb_choix_demande+" viewpoints,", "y": window.innerHeight*0.30, "c": color_blanc},
-"texte14":{"t":"- once this is done, you will have to fill in a questionnaire to justify your choice of viewpoint.", "y": window.innerHeight*0.35, "c": color_blanc},
-"texte15":{"t":"To learn how to use this interface and make your viewpoint selection correctly, a tutorial has been created. But first, you have to register.", "y": window.innerHeight*0.5, "c": color_blanc},
+"texte13":{"t":"- for each of them, you will have to select the "+nb_choix_demande+" best viewpoints in your opinion,", "y": window.innerHeight*0.35, "c": color_blanc},
+"texte14":{"t":"- once this is done, you will have to fill in a questionnaire to justify your choice of viewpoint.", "y": window.innerHeight*0.47, "c": color_blanc},
+"texte15":{"t":"To learn how to use this interface and make your viewpoint selection correctly, a tutorial has been created. But first, you have to register.", "y": window.innerHeight*0.65, "c": color_blanc},
 }
 
 textes_page_1 = [textes["texte0"], textes["texte1"], textes["texte2"]]
