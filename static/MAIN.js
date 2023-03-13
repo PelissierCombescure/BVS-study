@@ -83,9 +83,9 @@ function init_variable(premier_appel){
 
     // Enchainement des pages
     if (premier_appel){
-        page_contexte = true
+        page_contexte = false
         page_inscription = false // true
-        page_explication = false
+        page_explication = true
         page_warning = false
         page_explication_bis = false
         page_vues = false // false
@@ -386,7 +386,7 @@ function animate() {
     }
     // page warning
     if(page_warning){
-        console.log("warning")
+        //console.log("warning")
         if (premier_tour_page_warning){
             init_textes_warnings()
             premier_tour_page_warning = false}

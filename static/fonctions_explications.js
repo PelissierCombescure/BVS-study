@@ -103,7 +103,7 @@ function init_explication(){
         // 3.3 :  clique sur fleche bas
         {"t":"Let's imagine that you choose this viewpoint. You have to select it with the button. (PRESS SELECT BUTTON)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
         // 4 :  
-        {"t":"You have chosen your first viewpoint. It is displayed on your right. This one has become gray on the 3D screen. You can no longer select it. (PRESS NEXT BUTTON)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
+        {"t":"You have chosen your first viewpoint among the "+nb_choix_demande+" asked. It is displayed on your right. This one has become gray on the 3D screen. You can no longer select it. (PRESS NEXT BUTTON)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.009, "l":l_texte_max, "c":color_texte, "i":50},
         //5
         {"t":"To go faster, the interaction part with the tutorial interface is finished. Now, you can just look and press the next button when it says here. (PRESS NEXT BUTTON)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
         // 6.1 
@@ -313,6 +313,7 @@ function init_explication(){
 
 function traitement_explications(idx_i_explication, idx_j_explication){
     temps_pop = 8000
+    console.log(num_action)
 
     // Pour déplacer le mesh, il faut initialiser ces deux variables 
     if (num_action==0){
@@ -324,16 +325,17 @@ function traitement_explications(idx_i_explication, idx_j_explication){
         draw_rectangle(0, 0, window.innerWidth, window.innerHeight, "rgb(3, 26, 33)", 1)
     }
     // Rendre le recap inatif à partir de l'étape 14
-    if(num_action<= 14){
+    if(num_action< 14){
         afficher_recap()
         // Affichage texte recap
         for (p=0; p<liste_poses.length; p++){affichage_texte_recap(p)}}
 
-    if(num_action>14){
+    // interface devient inactive
+    if(num_action>=14){
         afficher_recap_inactif()
         for (p=0; p<liste_poses.length; p++){affichage_texte_recap(p)}}        
 
-    // remplir les canvasMins pour l'eemple quand on est a un num_action précis
+    // remplir les canvasMins pour l'exemple quand on est a un num_action précis
     if (num_action == 15){
         nb_choix_fait = 3
         liste_poses = [['choix1', 1.5707963267948966, 2.356194490192345, 3, 0],['choix2', 0.7853981633974483, 2.356194490192345, 3, 1],['choix3', 0.7853981633974483, 3.141592653589793, 4, 1]]
@@ -409,7 +411,6 @@ function traitement_explications(idx_i_explication, idx_j_explication){
         //////// Si on clique sur PREVIOUS
         //if (condition_suivant.type =="bouton" && num_action >0 && clicked && click_inside(xyMouseDown, condition_suivant.x- w_bouton_suivant - marge_texte_x, condition_suivant.y, condition_suivant.w, condition_suivant.h)){
         if (num_action >0 && clicked && click_inside(xyMouseDown, position_bouton.x- w_bouton_suivant - marge_texte_x, position_bouton.y, position_bouton.w, position_bouton.h)){    
-            //console.log("previous")
             action_previous_explication()
         }
         // Si on clique sur Fleche droite
@@ -443,6 +444,7 @@ function traitement_explications(idx_i_explication, idx_j_explication){
     
 }
 
+// bouton commencer etude après les warnings
 function commencer_etude(){
     draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1) // ou + clair 4, 38, 48
     ctx.strokeStyle = "rgb(255, 255, 255)" // Pour que le contour soit rouge
@@ -465,7 +467,7 @@ function commencer_etude(){
 ////////////////////////////////////////////////////////////////////////////////
 
 function action_fin_explication(){
-    console.log("explications finies")
+    //console.log("explications finies")
     choix_courant = {}
     liste_poses = []
     nb_choix_fait = 0
@@ -483,6 +485,13 @@ function action_previous_explication(){
     if ((num_action == 8) ){action_fleche_bas(); update_mesh(idx_i, idx_j)}
     if ((num_action == 10) || (num_action == 11)  ){action_fleche_haut(); update_mesh(idx_i, idx_j)}
     if (num_action == 13){action_bouton_retirer()}
+    if (num_action ==15){
+    choix_courant = {}
+    liste_poses = []
+    nb_choix_fait = 0
+    for (let i = 0; i < nb_choix_demande; i++) {
+        ctxMins[i].clearRect(0, 0, canvasMins[i].width, canvasMins[i].height)
+    }}
     action_precedente()   
     
 }
@@ -555,10 +564,8 @@ function action_clavier_explication(event){
             break;
         case  'Backspace':
             if (num_action > 0){
-                if (num_action == 7){action_fleche_gauche(); update_mesh(idx_i, idx_j)}
-                if ((num_action == 8) ){action_fleche_bas(); update_mesh(idx_i, idx_j)}
-                //console.log("previous clavier")
-                action_precedente()}                        
+                action_previous_explication()
+            }
             break;
 
         case 'ArrowRight' :
