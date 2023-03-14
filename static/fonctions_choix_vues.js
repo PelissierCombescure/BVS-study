@@ -2,17 +2,21 @@
 // bouton
 function init_variable_fonction(dict_boutons, dict_imgs ){
     // fleche
-    scale_fleche = 0.065
+    //scale_fleche = 0.065
     dy = 0.03*H_3D
     DY = 2*dy
-    a = scale_fleche*dict_imgs["gauche"].height
-    b = scale_fleche*dict_imgs["gauche"].width
+    a = 0.05*window.innerHeight//scale_fleche*dict_imgs["gauche"].height
+    ratio_fleche = a/dict_imgs["gauche"].height
+    b = ratio_fleche*dict_imgs["gauche"].width
+
     // bouton
-    scale_bouton = 0.3
-    h_bouton = scale_bouton*dict_boutons["choix_pose"].height
-    w_bouton = scale_bouton*dict_boutons["choix_pose"].width
+    //scale_bouton = 0.3
+    h_bouton = 0.08*window.innerHeight//scale_bouton*dict_boutons["choix_pose"].height
+    ratio = h_bouton/dict_boutons["choix_pose"].height
+    w_bouton = ratio*dict_boutons["choix_pose"].width
     pos_bouton =  ((W_3D*0.2+a+b)/W_3D)+0.1
     ecart_bouton =  0.1*w_bouton
+
     // Couleur
     alpha_bloque = 0.6
 
@@ -21,14 +25,19 @@ function init_variable_fonction(dict_boutons, dict_imgs ){
     y_progress_bar = 0
     w_progress_bar = window.innerWidth - W_3D*0.1
     h_progress_bar = H_3D*0.04  
+
     // image recap
     dx = 20
-    ecart_recap  = 50
+    ecart_recap  = 0.055*window.innerHeight
+    y0_recap = (2*h_progress_bar + ecart_recap)
     
     // Message pop up
     x_pop_up = W_3D*pos_bouton+w_bouton*2+ecart_bouton+30
     y_pop_up = H_3D +dy*4
     ecart = 40
+
+    // texte
+    taille_texte = (0.01*window.innerWidth)
     
 }
 
@@ -40,11 +49,10 @@ function bloquer_pose(L_poses){
         // Si on est en train de voir une pose déjà choisie
         if (idx_i== idx_i_p && idx_j==idx_j_p){
             draw_rectangle(0, h_progress_bar, W_3D, H_3D-h_progress_bar, "rgb(0, 0, 0)", alpha_bloque)
-            print_text(handle_text("Viewpoint already selected", 10, H_3D, "16pt Courier", H_3D, "#118AB2")) 
+            print_text(handle_text("Viewpoint already selected", 10, H_3D, taille_texte+"pt Courier", H_3D, "#118AB2")) 
         }
     }
 }
-
 
 function pose_deja_choisie(L_poses, i_choix, j_choix){
     deja_choisie = false
@@ -74,23 +82,21 @@ function swapElements(arr, i1, i2) {
 
 // legende des nb_demande recap
 function affichage_texte_recap(pos){
-    y_image = 100+(20+ H_3D/3.5)*pos
+    y_image = y0_recap+(20+ H_3D/3.5)*pos
     ctx.strokeStyle = "rgb(255, 255, 255)"; ctx.fillStyle = "rgb(255, 255, 255)"
-    if (pos==0){print_text(handle_text("Best viewpoint:", W_3D+dx, (H_3D/3.5)*0.4 + y_image, "20pt Courier", longueur_max_recap))}
-    if (pos==1){print_text(handle_text("2nd viewpoint:", W_3D+dx, (H_3D/3.5)*0.4 + y_image, "20pt Courier", longueur_max_recap))}
-    if (pos==2){print_text(handle_text("3rd viewpoint:", W_3D+dx, (H_3D/3.5)*0.4 + y_image, "20pt Courier", longueur_max_recap))}
+    if (pos==0){print_text(handle_text("Best viewpoint:", W_3D+dx, (H_3D/3.5)*0.4 + y_image, 1.1*taille_texte+"pt Courier", longueur_max_recap))}
+    if (pos==1){print_text(handle_text("2nd viewpoint:", W_3D+dx, (H_3D/3.5)*0.4 + y_image, 1.1*taille_texte+"pt Courier", longueur_max_recap))}
+    if (pos==2){print_text(handle_text("3rd viewpoint:", W_3D+dx, (H_3D/3.5)*0.4 + y_image, 1.1*taille_texte+"pt Courier", longueur_max_recap))}
 }
 
 function afficher_recap(){
     w_recap = window.innerWidth-W_3D
-    // texte du haut
-    //print_text(handle_text("Selected Viewpoints:",   W_3D +(window.innerWidth-W_3D)/4,  h_progress_bar + ecart_recap, "24pt Courier", 500))
     // fleche swap haut
-    x_fleche_h = W_3D+ w_recap/2.5 
+    x_fleche_h = W_3D + w_recap/2 - 30 
     w_fleche_h = 20
     h_fleche_h = 20
     // fleche swap bas
-    x_fleche_b = W_3D+ w_recap/2.5 
+    x_fleche_b = W_3D + w_recap/2 - 30 
     w_fleche_b = 20
     h_fleche_b = 20
     // croix
@@ -100,11 +106,12 @@ function afficher_recap(){
     // pour chaque recap
     for (let i = 0 ; i < canvasMins.length; i++) {
         // Draw les images des contextes
-        y_image = 100+(20+ H_3D/3.5)*i
-        ctx.drawImage(canvasMins[i],W_3D+ w_recap/2, y_image, H_3D/3.5, H_3D/3.5)
+        y_image =  y0_recap + (10 + H_3D/3.5)*i
+        ctx.drawImage(canvasMins[i], W_3D + w_recap/2, y_image, H_3D/3.5, H_3D/3.5)
+
         //Fleche pour Switch haut
         if (nb_choix_fait > 1 && i > 0 && i < nb_choix_fait) {
-            y_fleche_h = (H_3D/3.5)*0.4 + y_image
+            y_fleche_h = (H_3D/3.5)*0.35 + y_image
             ctx.drawImage(imgs["haut"], x_fleche_h, y_fleche_h, w_fleche_h, h_fleche_h)
             if (clicked && click_inside(xyMouseDown, x_fleche_h, y_fleche_h, w_fleche_h, h_fleche_h)) {
                 swapElements(canvasMins, i, i-1)
@@ -116,7 +123,7 @@ function afficher_recap(){
         }
         // Fleche pour Switch bas
         if (nb_choix_fait > 1 && i < nb_choix_fait-1) {
-            y_fleche_b =  (H_3D/3.5)*0.6 + y_image
+            y_fleche_b =  (H_3D/3.5)*0.65 + y_image
             ctx.drawImage(imgs["bas"], x_fleche_b, y_fleche_b, w_fleche_b, h_fleche_b)
             if (clicked && click_inside(xyMouseDown, x_fleche_b, y_fleche_b, w_fleche_b, h_fleche_b)) {
                 swapElements(canvasMins, i, i+1)
@@ -264,7 +271,16 @@ function action_fleche_bas(){
 ///////////////////////////////////////////////////////////////
 ///////////////////// BOUTON
 function afficher_bouton(dict_boutons){
-    print_text(handle_text("Selected Viewpoints:",   W_3D +(window.innerWidth-W_3D)/4,  h_progress_bar + ecart_recap, "24pt Courier", 500))
+    // Partie selection vue
+    ctx.strokeStyle = "rgb(255, 255, 255)" // Pour que le contour soit rouge
+    ctx.fillStyle = "rgb(255, 255, 255)" // Pour que l'intérieur soit bleu
+    ctx.font = 2*taille_texte+"pt Courier"
+    texte = "Selected Viewpoints:"
+    largeur = ctx.measureText(texte).width
+    ctx.fillText(texte, W_3D + ((window.innerWidth-W_3D)/2)- (largeur/2), h_progress_bar + ecart_recap)
+    //print_text(handle_text("Selected Viewpoints:",   W_3D +(window.innerWidth-W_3D)/5,  h_progress_bar + ecart_recap, 2*taille_texte+"pt Courier", 500))
+
+    // BOUTONS
     // image, posx, posy, W, H
     ctx.drawImage(dict_boutons["choix_pose"], W_3D*pos_bouton, H_3D+dy*2, w_bouton, h_bouton)
     ctx.drawImage(dict_boutons["retirer"], W_3D*pos_bouton+w_bouton+ecart_bouton, H_3D+dy*2, w_bouton, h_bouton)
@@ -433,15 +449,18 @@ function action_bouton_valider(){
 }
 
 function action_bouton_raz(){
+    x_texte_raz = -(1.2*w_bouton)/4+W_3D + w_bouton*1.2 +10
+    y_texte_raz = H_3D+dy*2+h_bouton
+    l_max_raz = window.innerWidth-w_bouton-10 - x_texte_raz
     //on efface les autres textes pop
     texte_temporaire = {}
     //affichage du message 
-    print_text(handle_text("Do you really want to restart the study?",   window.innerWidth-w_bouton*2.1, window.innerHeight-h_bouton*2, "18pt Courier", 300))
+    print_text(handle_text("Do you really want to restart the study?", x_texte_raz, y_texte_raz, taille_texte+"pt Courier", l_max_raz, color="#FFFFFF", interligne=0.045*window.innerHeight))
     // affichage 
-    ctx.drawImage(imgs['croix'], (window.innerWidth-w_bouton*2.1)+w_bouton*0.65, window.innerHeight-h_bouton +10,  60,50)
-    ctx.drawImage(imgs['check'], (window.innerWidth-w_bouton*2.1)+w_bouton*0.15, window.innerHeight-h_bouton +10,  50,50)
+    ctx.drawImage(imgs['croix'], x_texte_raz+ l_max_raz*0.2, window.innerHeight-h_bouton +10,  h_bouton/2, h_bouton/2)
+    ctx.drawImage(imgs['check'], x_texte_raz+ l_max_raz*0.6, window.innerHeight-h_bouton +10,  h_bouton/2, h_bouton/2)
     // si on veut raz
-    if (clicked && is_inside(xyMouseMove, (window.innerWidth-w_bouton*2.1)+w_bouton*0.15, window.innerHeight-h_bouton +10,  50,50)){
+    if (clicked && is_inside(xyMouseMove, x_texte_raz+ l_max_raz*0.6, window.innerHeight-h_bouton +10, h_bouton/2, h_bouton/2)){
         init_variable(false); 
         idx_i_init = Math.floor(Math.random()*8); idx_j_init = Math.floor(Math.random()*5)
         setUp_3D(indice_mesh, idx_i_init, idx_j_init)

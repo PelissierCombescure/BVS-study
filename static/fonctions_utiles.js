@@ -80,6 +80,15 @@ function print_text(dialogue, c= true) {
 
 }
 
+function affichage_titre(titre, font, color, yt = 0.08*window.innerHeight){
+    ctx.strokeStyle =color
+    ctx.fillStyle =color
+    ctx.font = font
+    largeur = ctx.measureText(titre).width
+    // au milieu 
+    ctx.fillText(titre, (window.innerWidth/2)- (largeur/2), yt)
+}
+
 function handle_text(dialogue, x_start, y_start, font, l_max, color="#FFFFFF", interligne=40) {
     let s = dialogue
 
@@ -133,7 +142,7 @@ function handle_text(dialogue, x_start, y_start, font, l_max, color="#FFFFFF", i
 }
 
 
-function progress_bar(N_tache, N_mesh){
+function progress_bar(N_tache, N_mesh, font = (0.01*window.innerWidth)){
     if (N_tache<=N_mesh){
         // background
         draw_rectangle(x_progress_bar, y_progress_bar, w_progress_bar, h_progress_bar, "rgb(255,255,255)", 1)
@@ -143,7 +152,7 @@ function progress_bar(N_tache, N_mesh){
         // // numero de tache
         ctx.strokeStyle = "rgb(255, 255, 255)" // Pour que le contour soit rouge
         ctx.fillStyle = "rgb(255, 255, 255)" // Pour que l'intérieur soit bleu
-        ctx.font = "18pt Courier";
+        ctx.font = font+"pt Courier";
         ctx.fillText((N_tache)+"/"+(N_mesh), x_progress_bar+w_progress_bar+10, h_progress_bar)
     }
 }

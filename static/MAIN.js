@@ -84,7 +84,7 @@ function init_variable(premier_appel){
 
     // Enchainement des pages
     if (premier_appel){
-        page_contexte = true
+        page_contexte = false
         page_inscription = false
         page_explication = false
         page_warning = false
@@ -312,8 +312,8 @@ function animate() {
     // Temps à chaque animate
     time_animate = new Date().getTime()
     // shorcut
-    w_Bshortcut = 122
-    h_Bshortcut = 40
+    h_Bshortcut = 0.05*window.innerHeight ; ratio_shorcut = h_Bshortcut/imgs["clavier_vues"].height
+    w_Bshortcut = ratio_shorcut*imgs["clavier_vues"].width
     x_Bshortcut = 10
     y_Bshortcut = window.innerHeight-h_Bshortcut-10
 ////////////////////////////////////////////////////////////////////////////////
@@ -365,10 +365,10 @@ function animate() {
         // Affichage message pop
          if (Object.keys(texte_temporaire).length >0){
             if (time_animate > texte_temporaire.t_end){texte_temporaire = {}}
-            else{print_text(handle_text(texte_temporaire.text, texte_temporaire.x, texte_temporaire.y, "  18pt Courier", longueur_max_error, "#118AB2"))}
+            else{print_text(handle_text(texte_temporaire.text, texte_temporaire.x, texte_temporaire.y, taille_texte+"pt Courier", longueur_max_error, "#118AB2"))}
         }
         // progress bar
-        progress_bar(0, 1)
+        progress_bar(0, 1, taille_texte)
         // Affichage fleche
         afficher_fleche(imgs)
         // affichage de sboutons
@@ -427,10 +427,10 @@ function animate() {
         // Affichage message pop
          if (Object.keys(texte_temporaire).length >0){
             if (time_animate > texte_temporaire.t_end){texte_temporaire = {}}
-            else{print_text(handle_text(texte_temporaire.text, texte_temporaire.x, texte_temporaire.y, "  18pt Courier", longueur_max_error, "#118AB2"))}
+            else{print_text(handle_text(texte_temporaire.text, texte_temporaire.x, texte_temporaire.y, taille_texte+"pt Courier", longueur_max_error, "#118AB2"))}
         }
         // progress bar
-        progress_bar(num_tache-1, nb_mesh)
+        progress_bar(num_tache-1, nb_mesh, taille_texte)
         // Affichage fleche
         afficher_fleche(imgs)
         // affichage de sboutons
@@ -450,7 +450,7 @@ function animate() {
         bloquer_pose(liste_poses)
         // raccourcis
         // raccourcis bouton et fleche
-        shortcuts(xyMouseMove, imgs['clavier_vues'], window.innerWidth/2 -(imgs['clavier_vues'].width/2), window.innerHeight/2 -(imgs['clavier_vues'].height/2), imgs['clavier_vues'].width, imgs['clavier_vues'].height, boutons['raccourcis'], x_Bshortcut, y_Bshortcut, w_Bshortcut, h_Bshortcut)
+        shortcuts(xyMouseMove, imgs['clavier_vues'], window.innerWidth/2 -(0.7*window.innerWidth/2), window.innerHeight/2 -(0.35*innerHeight/2), 0.7*window.innerWidth, 0.35*innerHeight, boutons['raccourcis'], x_Bshortcut, y_Bshortcut, w_Bshortcut, h_Bshortcut)
 
     }
 ////////////////////////////////////////////////////////////////////////////////
@@ -478,7 +478,7 @@ function animate() {
         ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
         draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1)
         // Texte 
-        affichage_texte_fin(message_fin, envoie_termine)
+        affichage_texte_fin(message_fin)
         // ECRITURE DES RESULTATS
         choix['Analyse'] = checkbox_clicked
         choix['Interactions'] = interactions
@@ -494,9 +494,8 @@ function animate() {
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                 console.log(xhr.responseText);
                 message_fin = "> It's done. You can close the web page."
-                //print_text(handle_text(message_fin, (window.innerWidth/2)-450, innerHeight/2+150 , "26pt Courier", 1000))
                 envoie_termine = true
-                affichage_texte_fin(message_fin, envoie_termine)
+                update_texte_fin(message_fin)
                 return;
             }
         }

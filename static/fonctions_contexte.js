@@ -1,4 +1,5 @@
-scale_bouton_commencer_contexte = 0.6
+//scale_bouton_commencer_contexte = 0.6
+h_bouton_contexte = 0.1*window.innerHeight
 num_texte = 0
 
 
@@ -7,18 +8,10 @@ function affichage_texte_contexte(texte, font, color, xt, yt, l_max_texte){
     ctx.strokeStyle = color // Pour que le contour soit rouge
     ctx.fillStyle = color // Pour que l'intérieur soit bleu
     ctx.font = font
-    print_text(handle_text(texte, xt, yt, font, l_max_texte), false)  
+    print_text(handle_text(texte, xt, yt, font, l_max_texte, color="#FFFFFF", interligne=0.045*window.innerHeight), false)  
     
 }
 
-function affichage_titre_contexte(titre, font, color, yt){
-    ctx.strokeStyle =color
-    ctx.fillStyle =color
-    ctx.font = font
-    largeur = ctx.measureText(titre).width
-    // au milieu 
-    ctx.fillText(titre, (window.innerWidth/2)- (largeur/2), yt)
-}
 
 ////////////////////////////////////////////////////////////////////
 ///// BOUTON COMMENCER 
@@ -74,8 +67,11 @@ function action_bouton_avant_contexte(){
 }
 
 function afficher_bouton_suivant_contexte(){
-    w_bouton_suivant = scale_bouton_commencer_contexte*boutons["suivant"].width
-    h_bouton_suivant = scale_bouton_commencer_contexte*boutons["suivant"].height
+    //w_bouton_suivant = scale_bouton_commencer_contexte*boutons["suivant"].width
+    //h_bouton_suivant = scale_bouton_commencer_contexte*boutons["suivant"].height
+    ratio_bouton_contexte = h_bouton_contexte/boutons["suivant"].height
+    w_bouton_suivant = ratio_bouton_contexte*boutons["suivant"].width
+    h_bouton_suivant = h_bouton_contexte
     x_bouton_suivant = (window.innerWidth/2)+ 5
     y_bouton_suivant = window.innerHeight - h_bouton_suivant - 20
     // Bouton commencer
@@ -105,21 +101,21 @@ function afficher_bouton_avant_contexte(){
 ///// MAIN 
 
 function traitement_contexte(){
-    console.log(num_texte)
+    //console.log(num_texte)
     ctx.clearRect(0, 0, canvas.width, canvas.height) 
     // variable position             
-    x_texte = window.innerWidth*(1/8)
-    w_texte = window.innerWidth*(6/8)
+    x_texte = window.innerWidth*(1/10)
+    w_texte = window.innerWidth*(8/10)
     font_texte = (0.012*window.innerWidth)+"pt Courier" 
     // titre commun à chaque page 
-    affichage_titre_contexte(titre, (0.018*window.innerWidth)+"pt Courier", "#EF476F", y_titre)
+    affichage_titre(titre, (0.018*window.innerWidth)+"pt Courier", "#EF476F")
     // affichage texte 
     for(let p=0; p<texte_a_afficher.length; p++){
         dict_texte = texte_a_afficher[p]
-        if ((num_texte == 7 || num_texte == 6) && (p == (textes_page_2.length)-1 ||  p == ( textes_page_2.length)-2)){w_texte = window.innerWidth*(4/8)}
-        if ((num_texte == 10 || num_texte == 11) && (p == (textes_page_3.length)-2)){w_texte = window.innerWidth*(4/8)}
+        if ((num_texte == 7 || num_texte == 6) && (p == (textes_page_2.length)-1 ||  p == ( textes_page_2.length)-2)){w_texte = window.innerWidth*(5/10)}
+        if ((num_texte == 10 || num_texte == 11) && (p == (textes_page_3.length)-2)){w_texte = window.innerWidth*(5/10)}
         affichage_texte_contexte(dict_texte.t, font_texte, dict_texte.c, x_texte, dict_texte.y, w_texte)
-        w_texte = window.innerWidth*(6/8)
+        w_texte = window.innerWidth*(8/10)
     }
       
     if (num_texte < ((textes_page_1.length + textes_page_2.length + textes_page_3.length +textes_page_4.length))-2){
@@ -152,15 +148,15 @@ function traitement_contexte(){
     }
     // affichage image 
     if(num_texte==6){
-        ctx.drawImage(imgs['exemple1'], x_bouton_suivant + w_bouton_suivant + 100, textes["texte6"].y - 100, window.innerWidth*(2/8), window.innerWidth*(2/8))
+        ctx.drawImage(imgs['exemple1'], x_bouton_suivant + w_bouton_suivant + 100, (textes["texte6"].y + textes["texte5"].y)/2, window.innerWidth*(2/8), window.innerWidth*(2/8))
     }
     if(num_texte==7){
-        ctx.drawImage(imgs['exemple2'], x_bouton_suivant + w_bouton_suivant + 100, textes["texte6"].y - 100, window.innerWidth*(2/8), window.innerWidth*(2/8))
+        ctx.drawImage(imgs['exemple2'], x_bouton_suivant + w_bouton_suivant + 100, (textes["texte6"].y + textes["texte5"].y)/2 , window.innerWidth*(2/8), window.innerWidth*(2/8))
     }  
     if(num_texte==10 || num_texte==11){
-        affichage_texte_contexte("Which viewpoint would you choose between both?", font_texte, "rgb(255, 209, 102)", x_texte, textes["texte10"].y + 100, window.innerWidth*(4/8))
-        ctx.drawImage(imgs['exemple1'], x_bouton_suivant + w_bouton_suivant , textes["texte10"].y - 100, window.innerWidth*(1/8), window.innerWidth*(1/8))
-        ctx.drawImage(imgs['exemple2'], x_bouton_suivant + window.innerWidth*(1/8) + + w_bouton_suivant+20, textes["texte10"].y -100 , window.innerWidth*(1/8), window.innerWidth*(1/8))
+        affichage_texte_contexte("Which viewpoint would you choose between both?", font_texte, "rgb(255, 209, 102)", x_texte, (textes["texte10"].y + textes["texte11"].y)/2, window.innerWidth*(4/8))
+        ctx.drawImage(imgs['exemple1'], window.innerWidth*(6/10)+20 , textes["texte10"].y - 50, window.innerWidth*(1/8), window.innerWidth*(1/8))
+        ctx.drawImage(imgs['exemple2'], window.innerWidth*(6/10) +  window.innerWidth*(1/8) + 40, textes["texte10"].y - 50 , window.innerWidth*(1/8), window.innerWidth*(1/8))
     }             
     
      
@@ -171,7 +167,6 @@ function traitement_contexte(){
 ///// Textes
 
 function init_textes_contexte(){
-y_titre = 50
 titre = "User study : Best view selection"
 color_blanc = "rgb(255,255,255)"
 color_rouge = "rgb(239, 71, 111)"
@@ -181,7 +176,7 @@ textes={
 "texte2":{"t":"That’s where you come into play, I need you to answer a few question in order to build a dataset of human-chosen viewpoints of objects. Let me get into the details...", "y":window.innerHeight*0.65, "c": color_blanc},
 "texte3":{"t":"What is a viewpoint? ", "y": window.innerHeight*0.15, "c": color_rouge},
 "texte4":{"t":"> The viewpoint of an object is the position from which we observe the object.", "y": window.innerHeight*0.2, "c": color_blanc},
-"texte5":{"t":"A viewpoint will always highlight some parts and obscure other parts of an object.", "y": window.innerHeight*0.3, "c": color_blanc},
+"texte5":{"t":"A viewpoint will always highlight some parts and obscure other parts of an object.", "y": window.innerHeight*0.25, "c": color_blanc},
 "texte6":{"t":"For example, this is wolf. This perspective highlights the tail and the hind legs, but obscures the head and face.", "y": window.innerHeight*0.45, "c": color_blanc},
 "texte7":{"t":"This viewpoint reveal the head, face, and front legs but hides the tail and barely shows the hind legs.", "y": window.innerHeight*0.6, "c": color_blanc},
 "texte8":{"t":"What is a good viewpoint?", "y": window.innerHeight*0.15, "c": color_rouge},

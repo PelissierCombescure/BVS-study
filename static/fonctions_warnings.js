@@ -1,4 +1,5 @@
-scale_bouton_commencer_warning = 0.6
+//scale_bouton_commencer_warning = 0.6
+h_bouton_warning = 0.1*window.innerHeight
 num_warning = 0
 
 
@@ -7,18 +8,18 @@ function affichage_texte_warning(texte, font, color, xt, yt, l_max_texte){
     ctx.strokeStyle = color // Pour que le contour soit rouge
     ctx.fillStyle = color // Pour que l'intérieur soit bleu
     ctx.font = font
-    print_text(handle_text(texte, xt, yt, font, l_max_texte), false)  
+    print_text(handle_text(texte, xt, yt, font, l_max_texte, color="#FFFFFF", interligne=0.045*window.innerHeight), false)  
     
 }
 
-function affichage_titre_warning(titre, font, color, yt){
-    ctx.strokeStyle =color
-    ctx.fillStyle =color
-    ctx.font = font
-    largeur = ctx.measureText(titre).width
-    // au milieu 
-    ctx.fillText(titre, (window.innerWidth/2)- (largeur/2), yt)
-}
+// function affichage_titre_warning(titre, font, color, yt){
+//     ctx.strokeStyle =color
+//     ctx.fillStyle =color
+//     ctx.font = font
+//     largeur = ctx.measureText(titre).width
+//     // au milieu 
+//     ctx.fillText(titre, (window.innerWidth/2)- (largeur/2), yt)
+// }
 
 ////////////////////////////////////////////////////////////////////
 ///// BOUTON COMMENCER 
@@ -60,8 +61,9 @@ function action_bouton_avant_warning(){
 }
 
 function afficher_bouton_suivant_warning(){
-    w_bouton_suivant = scale_bouton_commencer_warning*boutons["suivant"].width
-    h_bouton_suivant = scale_bouton_commencer_warning*boutons["suivant"].height
+    ratio_bouton_warning = h_bouton_warning/boutons["suivant"].height
+    w_bouton_suivant = ratio_bouton_warning*boutons["suivant"].width
+    h_bouton_suivant = h_bouton_contexte
     x_bouton_suivant = (window.innerWidth/2)+ 5
     y_bouton_suivant = window.innerHeight - h_bouton_suivant - 20
     // Bouton commencer
@@ -94,12 +96,12 @@ function traitement_warnings(){
     ctx.clearRect(0, 0, canvas.width, canvas.height) 
     draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1) // ou + clair 4, 38, 48
     // variable position             
-    x_texte = window.innerWidth*(1/8)
-    w_texte = window.innerWidth*(6/8)
+    x_texte = window.innerWidth*(1/10)
+    w_texte = window.innerWidth*(8/10)
     font_texte = (0.012*window.innerWidth)+"pt Courier" 
-
+    
     // titre commun à chaque page 
-    affichage_titre_warning(titre, (0.018*window.innerWidth)+"pt Courier", "#EF476F", y_titre)
+    affichage_titre(titre, (0.018*window.innerWidth)+"pt Courier", "#EF476F")
     // affichage texte 
     for(let p=0; p<warnings_a_afficher.length; p++){
         dict_texte = warnings_a_afficher[p]
