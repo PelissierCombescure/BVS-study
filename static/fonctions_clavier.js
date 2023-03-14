@@ -10,7 +10,7 @@ function action_clavier_contexte(event){
         // break;
         // valider
         case  'Enter':  
-        if (num_texte < ((textes_page_1.length + textes_page_2.length + textes_page_3.length +textes_page_4.length))-1){
+        if (num_texte < ((textes_page_1.length + textes_page_2.length + textes_page_3.length +textes_page_4.length))-2){
             action_bouton_suivant_contexte()}
         else{
             action_bouton_commencer_contexte()

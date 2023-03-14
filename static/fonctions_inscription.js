@@ -138,7 +138,7 @@ function afficher_champs_inscription() {
     nb_caract_max = 30
     x_texte_zone = (window.innerWidth/3) 
     y_texte_zone = 200
-    ecart_texte_zone = 160
+    ecart_texte_zone = 120
 
     // Zone de texte : Firstname
     var input = document.createElement('input');
