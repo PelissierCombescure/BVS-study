@@ -150,7 +150,7 @@ color_blanc = "rgb(255,255,255)"
 color_rouge = "rgb(239, 71, 111)"
 warnings={
 "texte0":{"t":"The following is a list of warnings to keep in mind during the study:", "y": window.innerHeight*0.15, "c": color_blanc},
-"texte1":{"t":"- When you have launched the web page, you should not change the size of the web page or computer screen. Changing the size may cause annoyance.", "y":window.innerHeight*0.25, "c": color_blanc},
+"texte1":{"t":"- During the study, you should not change the size of the web page or computer screen. Changing the size may cause annoyance.", "y":window.innerHeight*0.25, "c": color_blanc},
 "texte2":{"t":"- The loading time of the objects can take time. The 3D screen may be completely black for a few seconds. Be patient, the objects will appear.", "y":window.innerHeight*0.38, "c": color_blanc},
 "texte3":{"t":"- Once you have finished the study, wait a few seconds before leaving the web page, to allow time for the data to fully commit to the server. A message will indicate when the registration is complete.", "y": window.innerHeight*0.52, "c": color_blanc},
 "texte4":{"t":"- If during the study there are some problems that you can't solve with the interface features, you can refresh the web page.All your data will be lost and you will have to start all over again. ", "y": window.innerHeight*0.68, "c": color_blanc},

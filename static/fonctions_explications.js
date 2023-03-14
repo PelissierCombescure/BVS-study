@@ -81,7 +81,7 @@ function init_explication(){
         // 0
         {"t":"Here is how the interface looks like. (PRESS NEXT BUTTON)", "x": ecrans[0].x + marge_texte_x, "y": ecrans[0].y + marge_texte_y, "f":0.010, "l":l_texte_max, "c":color_texte, "i":50},
         // 1.1 : ecran 3D
-        {"t":"You have: A screen to view the 3D object. (PRESS NEXT BUTTON)", "x": ecrans[1].x + marge_texte_x, "y": ecrans[1].y + marge_texte_y, "f":0.010, "l":l_texte_max, "c":color_texte, "i":50},
+        {"t":"You have: A screen to view the 3D object. Do not be surprised by the initial position of the object, it appears from a random viewpoint. (PRESS NEXT BUTTON)", "x": ecrans[1].x + marge_texte_x, "y": ecrans[1].y + marge_texte_y, "f":0.010, "l":l_texte_max, "c":color_texte, "i":50},
         // 1.2 : fleche 
         {"t":"You have: Arrows to move the 3D object. (PRESS NEXT BUTTON)", "x": ecrans[2].x + marge_texte_x, "y": ecrans[2].y + marge_texte_y, "f":0.010, "l":l_texte_max, "c":color_texte, "i":50},
         // 1.3 : bouton 
@@ -115,7 +115,7 @@ function init_explication(){
         // 6.4
         {"t":"With the REMOVE button, we can remove the last selected viewpoint. (PRESS NEXT BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
         // 6.5
-        {"t":"With the RESET SELECTION button, we can rmove all selected viewpoints. (PRESS NEXT BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
+        {"t":"With the RESET SELECTION button, we can remove all selected viewpoints. (PRESS NEXT BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
         // 6.6
         {"t":"With the RESET STUDY button, we can start from the beginning. (PRESS NEXT BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":0.01, "l":l_texte_max, "c":color_texte, "i":50},
         // 6.7

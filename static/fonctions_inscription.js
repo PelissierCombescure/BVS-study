@@ -19,7 +19,7 @@ function affichage_inscription(){
     ctx.fillText("Firstname:", x_texte_zone, parseInt(document.getElementById("Firstname").style.top) -12)
     ctx.fillText("Name:", x_texte_zone, parseInt(document.getElementById("Name").style.top) - 12)
     ctx.fillText("Age:", x_texte_zone, parseInt(document.getElementById("Age").style.top) - 12)
-    ctx.fillText("Sex:", parseInt(document.getElementById("SexeM").style.left), parseInt(document.getElementById("SexeM").style.top) - 22)
+    ctx.fillText("Gender:", parseInt(document.getElementById("SexeM").style.left), parseInt(document.getElementById("SexeM").style.top) - 22)
     ctx.font = "24pt Courier"
     ctx.fillText("Male", parseInt(document.getElementById("SexeM").style.left)+40, parseInt(document.getElementById("SexeM").style.top)+24)
     ctx.fillText("Female", parseInt(document.getElementById("SexeF").style.left)+40, parseInt(document.getElementById("SexeM").style.top)+24)
@@ -179,7 +179,7 @@ function afficher_champs_inscription() {
     input3.id = 'Age';
     input3.min = 1
     input3.max = 99
-    input3.size = w_text_zone
+    input3.size = 10
     // style 
     input3.style.position = 'fixed';   
     input3.style.left = x_texte_zone+'px';
@@ -198,8 +198,8 @@ function afficher_champs_inscription() {
     //input4.size = w_text_zone
     // style 
     input4.style.position = 'fixed';   
-    input4.style.left = x_texte_zone + 250;
-    input4.style.top = 10+ 2*ecart_texte_zone + y_texte_zone+'px';
+    input4.style.left = x_texte_zone+'px';
+    input4.style.top = 3*ecart_texte_zone + y_texte_zone+'px';
     input4.style.height = 20
     input4.style.width = 20
     document.body.appendChild(input4);
@@ -212,8 +212,8 @@ function afficher_champs_inscription() {
     //input4.size = w_text_zone
     // style 
     input5.style.position = 'fixed';   
-    input5.style.left = x_texte_zone + 400;
-    input5.style.top = 10 + 2*ecart_texte_zone + y_texte_zone+'px';
+    input5.style.left = 200 + x_texte_zone+'px';
+    input5.style.top = 3*ecart_texte_zone + y_texte_zone+'px';
     input5.style.height = 20
     input5.style.width = 20
     document.body.appendChild(input5);
@@ -226,8 +226,8 @@ function afficher_champs_inscription() {
     //input4.size = w_text_zone
     // style 
     input6.style.position = 'fixed';   
-    input6.style.left = x_texte_zone + 600;
-    input6.style.top = 10 + 2*ecart_texte_zone + y_texte_zone+'px';
+    input6.style.left = 400 + x_texte_zone+'px';
+    input6.style.top = 3*ecart_texte_zone + y_texte_zone+'px';
     input6.style.height = 20
     input6.style.width = 20
     document.body.appendChild(input6);
