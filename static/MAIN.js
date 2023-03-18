@@ -84,12 +84,12 @@ function init_variable(premier_appel){
 
     // Enchainement des pages
     if (premier_appel){
-        page_contexte = false
+        page_contexte = true
         page_inscription = false
         page_explication = false
         page_warning = false
         page_explication_bis = false
-        page_vues = true // false
+        page_vues = false // false
         page_explication_analyse = false 
         page_analyse = false
     // cas raz : on recommence juste la partie vues
@@ -296,6 +296,7 @@ function init_data(){
     boutons["avant"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_avant.png')
     boutons["raccourcis"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_raccourcis.png')
     boutons["skip"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_skip_tutorial.png')
+    boutons["envoie_data"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_envoie_data.png')
 
     // Mouse
     xyMouseMove = {"x": -1, "y": -1}
