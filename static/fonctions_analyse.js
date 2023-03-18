@@ -14,6 +14,8 @@ function init_variable_analyse(){
     // Analayse des choix avec les checkboxs
     keywords = ["1. De face", "2. De profil", "3. Debout", "4. Eyes contact", "5. toto"]
     
+    w_bouton = 50
+    h_bouton = 50
     w_valider = w_bouton*1.2
     h_valider = h_bouton*1.2
     x_valider = (window.innerWidth/2)-w_valider/2
@@ -169,7 +171,7 @@ function draw_check(){
 ///////////////////////////////////////////////////////////////
 ///////////////////// MAIN 
 function traitement_fin(){
-    if (num_analyse < nb_analyse_demande){
+    if ((num_analyse < nb_analyse_demande)){
         // affiche les textes de la page sauf les ceheckbox
         affichage_texte()
         // afficher les checkbox et gerer les click ou declick

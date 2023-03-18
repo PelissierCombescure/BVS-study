@@ -410,7 +410,8 @@ function action_bouton_valider(){
         all_canvasMins['tache_N'+num_tache] = [mesh_courant,canvasMins]
         //checkbox_clicked['tache_N'+num_tache] = checkbox_clicked_courant
         num_tache = num_tache+1
-        page_analyse = true
+        //page_analyse = true
+        page_explication_analyse = true
         page_vues = false
         interactions.push({"time": new Date().getTime(), "type": "fin des choix."})
     }

@@ -84,12 +84,13 @@ function init_variable(premier_appel){
 
     // Enchainement des pages
     if (premier_appel){
-        page_contexte = true
+        page_contexte = false
         page_inscription = false
         page_explication = false
         page_warning = false
         page_explication_bis = false
         page_vues = false // false
+        page_explication_analyse = true 
         page_analyse = false
     // cas raz : on recommence juste la partie vues
     } else {
@@ -454,23 +455,40 @@ function animate() {
 
     }
 ////////////////////////////////////////////////////////////////////////////////
-    // page analyse
-    if (page_analyse){
-        //console.log("boucle analyse")
+    // page explication analyse
+    if (page_explication_analyse){
+        console.log("boucle explication analyse")
         // on enlève les touches du clavier associé à la page vues
         document.removeEventListener("keydown", action_clavier_vues)
         // inti clavier
         if(premier_tour_page_analyse){
             interactions.push({"time": new Date().getTime(), "type": "Début analyse n°1"})
             init_clavier_analyse()
+            init_textes_explication_analyses()
             premier_tour_page_analyse = false}
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        traitement_explication_analyses()
+    }
+
+////////////////////////////////////////////////////////////////////////////////
+    // page analyse
+    if (page_analyse){
+        console.log("boucle analyse")
+        // // inti clavier
+        // if(premier_tour_page_analyse){
+        //     interactions.push({"time": new Date().getTime(), "type": "Début analyse n°1"})
+        //     init_clavier_analyse()
+        //     premier_tour_page_analyse = false}
+
+        //ctx.clearRect(0, 0, canvas.width, canvas.height)
         init_variable_analyse()
         traitement_fin()
         
     }
 ////////////////////////////////////////////////////////////////////////////////
     // page fin
-    if (!page_contexte && !page_inscription && !page_explication && !page_warning && !page_explication_bis && !page_vues && !page_analyse){
+    if (!page_contexte && !page_inscription && !page_explication && !page_warning && !page_explication_bis && !page_vues && !page_explication_analyse && !page_analyse){
         //console.log("boucle fin")
         // on enlève les touches du clavier associé à la page vues
         document.removeEventListener("keydown", action_clavier_analyse)
