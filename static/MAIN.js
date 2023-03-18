@@ -43,12 +43,12 @@ function init_variable(premier_appel){
     indice_mesh = 0 // indice du premier mesh à visionner
     mesh_courant = "nope" // nom des mesh 
     // nombre de mesh a visionner AU TOTAL
-    nb_mesh = 4 //3
+    nb_mesh = 2 //3
     // random nom mesh 
     obj_file = shuffle(['dragon_update_user_study_normed.obj', 'camel_update_user_study_normed.obj', 'gorgoile_update_user_study_centered_normed.obj', 'horse_update_user_study_normed.obj'])
     
     // nb analyse demandé
-    nb_analyse_demande = 3
+    nb_analyse_demande = 2
     list_idx_tache =[]
     for (let p=0; p<nb_mesh; p++){list_idx_tache.push(p+1)}
     list_idx_tache = shuffle(list_idx_tache)
@@ -89,8 +89,8 @@ function init_variable(premier_appel){
         page_explication = false
         page_warning = false
         page_explication_bis = false
-        page_vues = false // false
-        page_explication_analyse = true 
+        page_vues = true // false
+        page_explication_analyse = false 
         page_analyse = false
     // cas raz : on recommence juste la partie vues
     } else {
@@ -113,6 +113,7 @@ function init_variable(premier_appel){
     premier_tour_page_explications = true
     premier_tour_page_warning = true
     premier_tour_page_vues = true
+    premier_tour_page_explication_analyse = true
     premier_tour_page_analyse = true 
 
     // message de fin 
@@ -285,6 +286,7 @@ function init_data(){
     boutons["choix_pose"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_pose.png')
     boutons["retirer"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_retirer.png')
     boutons["commencer"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_commencer.png')
+    boutons["commencer_petit"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_commencer_petit.png')
     boutons["commencer_choix"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_commencer_choix.png')
     boutons["commencer_tuto"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_commencer_tuto.png')
     boutons["commencer_inscription"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_commencer_inscription.png')
@@ -461,11 +463,11 @@ function animate() {
         // on enlève les touches du clavier associé à la page vues
         document.removeEventListener("keydown", action_clavier_vues)
         // inti clavier
-        if(premier_tour_page_analyse){
-            interactions.push({"time": new Date().getTime(), "type": "Début analyse n°1"})
-            init_clavier_analyse()
+        if(premier_tour_page_explication_analyse){
+            interactions.push({"time": new Date().getTime(), "type": "Début explication analyse"})
+            init_clavier_explication_analyse()
             init_textes_explication_analyses()
-            premier_tour_page_analyse = false}
+            premier_tour_page_explication_analyse = false}
 
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         traitement_explication_analyses()
@@ -475,14 +477,16 @@ function animate() {
     // page analyse
     if (page_analyse){
         console.log("boucle analyse")
-        // // inti clavier
-        // if(premier_tour_page_analyse){
-        //     interactions.push({"time": new Date().getTime(), "type": "Début analyse n°1"})
-        //     init_clavier_analyse()
-        //     premier_tour_page_analyse = false}
+        // on enlève les touches du clavier associé à la page vues
+        document.removeEventListener("keydown", action_clavier_explication_analyse)
+        // inti clavier
+        if(premier_tour_page_analyse){
+            interactions.push({"time": new Date().getTime(), "type": "Début analyse n°1"})
+            init_clavier_analyse()
+            init_variable_analyse()
+            premier_tour_page_analyse = false}
 
-        //ctx.clearRect(0, 0, canvas.width, canvas.height)
-        init_variable_analyse()
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
         traitement_fin()
         
     }

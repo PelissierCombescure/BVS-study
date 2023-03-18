@@ -84,6 +84,9 @@ function action_clavier_vues(event){
     }
 }
 
+
+
+
 function action_clavier_analyse(event){
     switch (event.key){
         // selectionner pose
@@ -91,21 +94,21 @@ function action_clavier_analyse(event){
         case  'Enter':
             action_bouton_valider_analyse()             
             break;
-        case  '1':
-            check_ou_decheck(0)           
-            break;
-        case  '2':
-            check_ou_decheck(1)           
-            break;
-        case  '3':
-            check_ou_decheck(2)           
-            break;
-        case  '4':
-            check_ou_decheck(3)           
-            break;
-        case  '5':
-            check_ou_decheck(4)           
-            break;
+        // case  '1':
+        //     check_ou_decheck(0)           
+        //     break;
+        // case  '2':
+        //     check_ou_decheck(1)           
+        //     break;
+        // case  '3':
+        //     check_ou_decheck(2)           
+        //     break;
+        // case  '4':
+        //     check_ou_decheck(3)           
+        //     break;
+        // case  '5':
+        //     check_ou_decheck(4)           
+        //     break;
     }
 }
 
@@ -126,6 +129,11 @@ function init_clavier_explication(){
 function init_clavier_vues(){
     document.addEventListener("keydown", action_clavier_vues)
 }
+
+function init_clavier_explication_analyse(){
+    document.addEventListener("keydown", action_clavier_explication_analyse)
+}
+
 
 function init_clavier_analyse(){
     document.addEventListener("keydown", action_clavier_analyse)

@@ -19,7 +19,7 @@ function action_bouton_commencer_explication_analyse(){
     page_explication_analyse = false 
     page_analyse = true 
     //page_vues = true
-    interactions.push({"time": new Date().getTime(), "type": "Fin warning"})
+    interactions.push({"time": new Date().getTime(), "type": "Fin explication analyse"})
 }
 
 function afficher_bouton_commencer_explication_analyse(){
@@ -28,7 +28,7 @@ function afficher_bouton_commencer_explication_analyse(){
     x_bouton_commencer = x_bouton_suivant
     y_bouton_commencer = y_bouton_suivant
     // Bouton commencer
-    ctx.drawImage(boutons["commencer"], x_bouton_commencer, y_bouton_commencer , w_bouton_commencer, h_bouton_commencer)
+    ctx.drawImage(boutons["commencer_petit"], x_bouton_commencer, y_bouton_commencer , w_bouton_commencer, h_bouton_commencer)
 
     // Survol
     if(xyMouseMove.x >= x_bouton_commencer && xyMouseMove.x <= x_bouton_commencer + w_bouton_commencer && xyMouseMove.y > y_bouton_commencer && xyMouseMove.y < y_bouton_commencer + h_bouton_commencer){
@@ -132,6 +132,26 @@ function traitement_explication_analyses(){
      
 }
 
+
+
+function action_clavier_explication_analyse(event){
+    switch (event.key){
+        // selectionner pose
+        // valider
+        case  'Enter':
+            if (num_explication_analyse < (explications_analyse_page_1.length)-1){
+                action_bouton_suivant_explication_analyse()}
+            else{
+                action_bouton_commencer_explication_analyse()
+            }          
+            break;
+        case  'Backspace':
+            if(num_explication_analyse > 0){
+                action_bouton_avant_explication_analyse()
+            }           
+            break;
+    }
+}
 
 ////////////////////////////////////////////////////////////////////
 ///// Textes
