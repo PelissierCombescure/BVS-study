@@ -138,7 +138,7 @@ function value_non_vide(V){
 
 function afficher_champs_inscription() {
     inscription_finie = false
-    w_text_zone = 0.025*window.innerWidth
+    w_text_zone = 0.015*window.innerWidth
     h_text_zone = 0.05*window.innerHeight
     nb_caract_min = 1
     nb_caract_max = 30
