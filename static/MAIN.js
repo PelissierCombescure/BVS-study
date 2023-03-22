@@ -337,6 +337,7 @@ function animate() {
 ////////////////////////////////////////////////////////////////////////////////
     if (page_contexte){
         //console.log("boucle contexte")
+        document.removeEventListener("keydown", action_clavier_avertissement)
         //init touche clavier
         if (premier_tour_page_contexte){
             init_clavier_contexte()

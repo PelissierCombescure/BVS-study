@@ -147,8 +147,8 @@ titre = "BEFORE TO START --> User study : Best view selection"
 color_blanc = "rgb(255,255,255)"
 color_rouge = "rgb(239, 71, 111)"
 avertissements={
-"texte0":{"t": "Before we begin, make sure your browser window is big enough, and if you are using multiple displays, place your window on the display you will work on.", "y": window.innerHeight*0.32, "c": color_blanc},
-"texte1":{"t": "If necessary, you can refresh this page to resize everything but doing so will lose all of your progress, so make sure everything feels right before proceding.", "y":window.innerHeight*0.52, "c": color_blanc},
+"texte0":{"t": "Before we begin, make sure your BROWSER WINDOW IS BIG ENOUGH, and if you are using multiple displays, place your window on the display you will work on.", "y": window.innerHeight*0.32, "c": color_blanc},
+"texte1":{"t": "If necessary, you can REFRESH this page to resize everything but doing so will lose all of your progress, so make sure everything feels right before proceding.", "y":window.innerHeight*0.52, "c": color_blanc},
 "texte2":{"t":"All your data will be sent at the very end, so losing your progress will not mess up our data, but you will have do start from the begining.", "y":window.innerHeight*0.72, "c": color_blanc},
 }
 
