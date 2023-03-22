@@ -66,6 +66,26 @@ function pose_deja_choisie(L_poses, i_choix, j_choix){
     }
 }
 
+function show_consignes(){
+    w_consigne = 0.02*window.innerWidth
+    h_consigne = w_consigne
+    ctx.drawImage(imgs["exemple1"], W_3D + 10, h_progress_bar + 10, w_consigne, h_consigne)
+    // survol
+    x_consigne = W_3D + 10
+    y_consigne =  h_progress_bar + 10
+    if (is_inside(xyMouseMove, x_consigne, y_consigne, w_consigne, h_consigne)){
+        x_ecran = W_3D 
+        y_ecran =  0.15*window.innerHeight
+        w_ecran = window.innerWidth-W_3D
+        h_ecran = H_3D/2
+        draw_rectangle(x_ecran, y_ecran, w_ecran, h_ecran, "rgb(255, 255, 255)", 1)
+        // Texte
+        tt = {"t":"- You will be presented "+nb_mesh+" different objects."}
+       ff = {"t":"- For each of them, you will chose a viewpoint you find most representative of the given object. You will have to do this "+nb_choix_demande+" times."}
+        print_text(handle_text(tt.t,  x_ecran + 20, y_ecran+ 0.2*h_ecran, (0.01*window.innerWidth)+"pt Courier", w_ecran-20, "rgb(0,0,0)"))
+        print_text(handle_text(ff.t,  x_ecran + 20, y_ecran+0.4*h_ecran, (0.01*window.innerWidth)+"pt Courier", w_ecran-20, "rgb(0,0,0)"))
+    }
+}
 
 ///////////////////////////////////////////////////////////////
 ///////////////////// Recap 
