@@ -79,10 +79,15 @@ function afficher_bouton_skip_inscription(){
 
 function action_bouton_skip_inscription(){
     page_inscription = false 
-    page_explication_bis = true
+    //page_explication_bis = true
+    page_warning = true
     //page_vues = true
     skiped = true
-    interactions.push({"time": new Date().getTime(), "type": "skip tutorial - bouton commencer choix vues"})
+    interactions.push({"time": new Date().getTime(), "type": "skip tutorial - debut warning"})
+    document.removeEventListener("keydown", action_clavier_inscription)
+    num_action = 0
+    nb_action = 1
+    init_clavier_explication()
     //gestion des données personnelle de l'utilisateur
     //gestion_donnees_personnelles()
         

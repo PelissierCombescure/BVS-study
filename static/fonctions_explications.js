@@ -320,7 +320,7 @@ function init_explication(){
 
 function traitement_explications(idx_i_explication, idx_j_explication){
     temps_pop = 8000
-    console.log(num_action)
+    //console.log(num_action)
 
     // Pour déplacer le mesh, il faut initialiser ces deux variables 
     if (num_action==0){
@@ -553,15 +553,17 @@ function action_clavier_explication(event){
 
         // valider
         case  'Enter': 
-        console.log('clavier') 
+        //console.log('clavier') 
             if (num_action == nb_action && page_explication){
                 action_fin_explication()
             }   
             if (page_explication_bis){
                 action_bouton_commencer_explication()
             }
-            if (num_action < nb_action && condition_suivant.type =="bouton"){
-                action_suivante()}
+            if (page_explication && num_action < nb_action){
+                if(condition_suivant.type =="bouton"){
+                    action_suivante()}
+            }
 
             if (page_warning && num_warning < (warnings_page_1.length-1)){
                 action_bouton_suivant_warning()}
@@ -571,8 +573,11 @@ function action_clavier_explication(event){
                         
             break;
         case  'Backspace':
-            if (num_action > 0){
+            if (num_action > 0 && page_explication){
                 action_previous_explication()
+            }
+            if (num_warning>0 && page_warning){
+                action_bouton_avant_warning()
             }
             break;
 

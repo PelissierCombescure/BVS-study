@@ -476,7 +476,7 @@ function animate() {
 ////////////////////////////////////////////////////////////////////////////////
     // page explication analyse
     if (page_explication_analyse){
-        console.log("boucle explication analyse")
+        //console.log("boucle explication analyse")
         // on enlève les touches du clavier associé à la page vues
         document.removeEventListener("keydown", action_clavier_vues)
         // inti clavier
@@ -493,7 +493,7 @@ function animate() {
 ////////////////////////////////////////////////////////////////////////////////
     // page analyse
     if (page_analyse){
-        console.log("boucle analyse")
+        //console.log("boucle analyse")
         // on enlève les touches du clavier associé à la page vues
         document.removeEventListener("keydown", action_clavier_explication_analyse)
         // inti clavier
