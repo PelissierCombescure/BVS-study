@@ -255,7 +255,7 @@ function action_fleche_haut(){
     interactions.push({"time": new Date().getTime(), "type": "fleche haut"})
     if (idx_j == 0){
         texte_temporaire = {"text": "You can't go any further, GO BACK DOWN.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
-        interactions.push({"time": new Date().getTime(), "type": "Affichage error à cause de fleche haut"})
+        interactions.push({"time": new Date().getTime(), "type": "Affichage error a cause de fleche haut"})
     }
     idx_j = Math.max(idx_j-1,0)
     }
@@ -263,7 +263,7 @@ function action_fleche_bas(){
     interactions.push({"time": new Date().getTime(), "type": "fleche bas"})
     if (idx_j == 4){
         texte_temporaire = {"text": "You can't go any further, GO UP.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
-        interactions.push({"time": new Date().getTime(), "type": "Affichage error à cause de fleche bas"})
+        interactions.push({"time": new Date().getTime(), "type": "Affichage error a cause de fleche bas"})
     }
     idx_j = Math.min(idx_j+1,4)
     }
@@ -347,13 +347,13 @@ function action_bouton_pose(){
     if (deja_choisie && !(nb_choix_fait == nb_choix_demande)){
         //console.log("Cette pose a déjà été sélectionnée.")
         texte_temporaire = {"text": "This viewpoint has already been selected.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
-        interactions.push({"time": new Date().getTime(), "type": "Affichage error pose déjà sélectionnée"})}
+        interactions.push({"time": new Date().getTime(), "type": "Affichage error pose deja sélectionnee"})}
     
         // plus de choix possible
     if (nb_choix_fait == nb_choix_demande) {
         //console.log("Tu as déjà fait tes "+nb_choix_demande+" choix.")
         texte_temporaire = {"text": "You have already selected your "+nb_choix_demande+" viewpoints.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
-        interactions.push({"time": new Date().getTime(), "type": "Affichage error "+nb_choix_demande+" déjà fait"})}
+        interactions.push({"time": new Date().getTime(), "type": "Affichage error "+nb_choix_demande+" deja fait"})}
     
         // si on a pas encore choisie toutes nos poses, on peut en ajouter
     if (nb_choix_fait < nb_choix_demande && !(deja_choisie)){
@@ -380,7 +380,7 @@ function action_bouton_retirer(){
     else {
         //console.log("Il n'y a pas de pose à retirer.")
         texte_temporaire = {"text": "There are no selected viewpoints to remove.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
-        interactions.push({"time": new Date().getTime(), "type": "Affichage error pas de pose à retirer"})
+        interactions.push({"time": new Date().getTime(), "type": "Affichage error pas de pose a retirer"})
     }
 }
 
@@ -413,7 +413,7 @@ function action_bouton_valider(){
         //page_analyse = true
         page_explication_analyse = true
         page_vues = false
-        interactions.push({"time": new Date().getTime(), "type": "fin des choix."})
+        interactions.push({"time": new Date().getTime(), "type": "fin choix vues - debut explication analyse"})
     }
 
     // Si le nombre de vue demandé a été fait et que ce n'est pas le dernier mesh à voir
@@ -441,7 +441,7 @@ function action_bouton_valider(){
     else if (nb_choix_fait < nb_choix_demande){
         //console.log("Tu n'as pas fait tes 3 choix")
         texte_temporaire = {"text": "You did not select your "+nb_choix_demande+" viewpoints.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
-        interactions.push({"time": new Date().getTime(), "type": "Affichage error à cause du bouton valider"})
+        interactions.push({"time": new Date().getTime(), "type": "Affichage error a cause du bouton valider"})
     }
     // Error : un pbl à identifier
     else{

@@ -21,7 +21,7 @@ function action_bouton_commencer_contexte(){
     page_contexte = false 
     page_inscription = true 
     //page_vues = true
-    interactions.push({"time": new Date().getTime(), "type": "Fin contexte"})
+    interactions.push({"time": new Date().getTime(), "type": "fin contexte - debut inscription"})
 }
 
 function afficher_bouton_commencer_contexte(){
@@ -179,6 +179,7 @@ function action_revenir_page_avant_contexte(){
     num_avertissement = avertissements_a_afficher.length-1
     init_clavier_avertissement()
     document.removeEventListener("keydown", action_clavier_contexte)
+    interactions.push({"time": new Date().getTime(), "type": "retour avertissement"})
 }
 
 ////////////////////////////////////////////////////////////////////

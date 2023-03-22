@@ -84,9 +84,9 @@ function init_variable(premier_appel){
 
     // Enchainement des pages
     if (premier_appel){
-        page_avertissement = false
+        page_avertissement = true
         page_contexte = false
-        page_inscription = true
+        page_inscription = false
         page_explication = false
         page_warning = false
         page_explication_bis = false
@@ -481,7 +481,7 @@ function animate() {
         document.removeEventListener("keydown", action_clavier_vues)
         // inti clavier
         if(premier_tour_page_explication_analyse){
-            interactions.push({"time": new Date().getTime(), "type": "Début explication analyse"})
+            //interactions.push({"time": new Date().getTime(), "type": "Début explication analyse"})
             init_clavier_explication_analyse()
             init_textes_explication_analyses()
             premier_tour_page_explication_analyse = false}
@@ -498,7 +498,7 @@ function animate() {
         document.removeEventListener("keydown", action_clavier_explication_analyse)
         // inti clavier
         if(premier_tour_page_analyse){
-            interactions.push({"time": new Date().getTime(), "type": "Début analyse n°1"})
+            interactions.push({"time": new Date().getTime(), "type": "debut analyse n°1"})
             init_clavier_analyse()
             init_variable_analyse()
             premier_tour_page_analyse = false}
@@ -535,6 +535,7 @@ function animate() {
                 message_fin = "> It's done. You can close the web page."
                 envoie_termine = true
                 update_texte_fin(message_fin)
+                interactions.push({"time": new Date().getTime(), "type": "fin etude"})
                 return;
             }
         }

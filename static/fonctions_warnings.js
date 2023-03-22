@@ -28,7 +28,7 @@ function action_bouton_commencer_warning(){
     page_warning = false 
     page_explication_bis = true 
     //page_vues = true
-    interactions.push({"time": new Date().getTime(), "type": "Fin warning"})
+    interactions.push({"time": new Date().getTime(), "type": "fin warning - bouton commencer choix vues"})
 }
 
 function afficher_bouton_commencer_warning(){

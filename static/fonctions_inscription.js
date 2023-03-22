@@ -53,7 +53,7 @@ function action_bouton_commencer_inscription(){
     page_inscription = false 
     //page_vues = true 
     page_explication = true
-    interactions.push({"time": new Date().getTime(), "type": "Début explications"})
+    interactions.push({"time": new Date().getTime(), "type": "debut tutorial"})
     //gestion des données personnelle de l'utilisateur
     //gestion_donnees_personnelles()
         
@@ -79,9 +79,10 @@ function afficher_bouton_skip_inscription(){
 
 function action_bouton_skip_inscription(){
     page_inscription = false 
-    page_vues = true
+    page_explication_bis = true
+    //page_vues = true
     skiped = true
-    interactions.push({"time": new Date().getTime(), "type": "Skip tutorial -- Debut choix vues"})
+    interactions.push({"time": new Date().getTime(), "type": "skip tutorial - bouton commencer choix vues"})
     //gestion des données personnelle de l'utilisateur
     //gestion_donnees_personnelles()
         
@@ -108,7 +109,7 @@ function action_bouton_suivant_inscription(){
     inscription_finie = true 
     gestion_donnees_personnelles()
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    interactions.push({"time": new Date().getTime(), "type": "Fin inscription"})
+    interactions.push({"time": new Date().getTime(), "type": "fin inscription - choix tutorial"})
 }
 
 

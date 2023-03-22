@@ -101,7 +101,7 @@ function condition_valider(){
 }
 
 function action_bouton_valider_analyse(){
-    interactions.push({"time": new Date().getTime(), "type": "Bouton valider analyse."})
+    interactions.push({"time": new Date().getTime(), "type": "bouton valider analyse"})
     // si au moins un mot est coché et qu'il reste des analyse à faire
     if (condition_valider()){
         // sauvegarde des checkbox clikée et les mesh 
@@ -116,7 +116,7 @@ function action_bouton_valider_analyse(){
         // indice mesh da l'analyse suivante
         idx_tache = idx_tache + 1
         if (num_analyse<nb_analyse_demande){
-        interactions.push({"time": new Date().getTime(), "type": "Début analyse n°"+(num_analyse+1)})}
+        interactions.push({"time": new Date().getTime(), "type": "debut analyse n°"+(num_analyse+1)})}
     } 
 }
 
@@ -201,7 +201,7 @@ function traitement_fin(){
     }
     else{
        page_analyse = false
-       interactions.push({"time": new Date().getTime(), "type": "Fin analyse"})
+       interactions.push({"time": new Date().getTime(), "type": "fin analyse"})
     }
 
 }

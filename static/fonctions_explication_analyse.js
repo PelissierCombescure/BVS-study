@@ -19,7 +19,7 @@ function action_bouton_commencer_explication_analyse(){
     page_explication_analyse = false 
     page_analyse = true 
     //page_vues = true
-    interactions.push({"time": new Date().getTime(), "type": "Fin explication analyse"})
+    interactions.push({"time": new Date().getTime(), "type": "fin explication analyse - debut analyse"})
 }
 
 function afficher_bouton_commencer_explication_analyse(){
