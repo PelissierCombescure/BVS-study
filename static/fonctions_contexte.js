@@ -1,6 +1,7 @@
 //scale_bouton_commencer_contexte = 0.6
-h_bouton_contexte = 0.1*window.innerHeight
 num_texte = 0
+h_bouton_contexte = 0.1*window.innerHeight
+
 
 
 function affichage_texte_contexte(texte, font, color, xt, yt, l_max_texte){
@@ -113,7 +114,7 @@ function traitement_contexte(){
     for(let p=0; p<texte_a_afficher.length; p++){
         dict_texte = texte_a_afficher[p]
         if ((num_texte == 7 || num_texte == 6) && (p == (textes_page_2.length)-1 ||  p == ( textes_page_2.length)-2)){w_texte = window.innerWidth*(5/10)}
-        if ((num_texte == 10 || num_texte == 11) && (p == (textes_page_3.length)-2)){w_texte = window.innerWidth*(5/10)}
+        //if ((num_texte == 10 || num_texte == 11) && (p == (textes_page_3.length)-2)){w_texte = window.innerWidth*(5/10)}
         affichage_texte_contexte(dict_texte.t, font_texte, dict_texte.c, x_texte, dict_texte.y, w_texte)
         w_texte = window.innerWidth*(8/10)
     }
@@ -154,9 +155,13 @@ function traitement_contexte(){
         ctx.drawImage(imgs['exemple2'], x_bouton_suivant + w_bouton_suivant + 100, (textes["texte6"].y + textes["texte5"].y)/2 , window.innerWidth*(2/8), window.innerWidth*(2/8))
     }  
     if(num_texte==10 || num_texte==11){
-        affichage_texte_contexte("Which viewpoint would you choose between both?", font_texte, "rgb(255, 209, 102)", x_texte, (textes["texte10"].y + textes["texte11"].y)/2, window.innerWidth*(4/8))
-        ctx.drawImage(imgs['exemple1'], window.innerWidth*(6/10)+20 , textes["texte10"].y - 50, window.innerWidth*(1/8), window.innerWidth*(1/8))
-        ctx.drawImage(imgs['exemple2'], window.innerWidth*(6/10) +  window.innerWidth*(1/8) + 40, textes["texte10"].y - 50 , window.innerWidth*(1/8), window.innerWidth*(1/8))
+        //affichage_texte_contexte("Which viewpoint would you choose between both?", font_texte, "rgb(255, 209, 102)", x_texte, (textes["texte10"].y + textes["texte11"].y)/2, window.innerWidth*(4/8))
+        //ctx.drawImage(imgs['exemple1'], window.innerWidth*(6/10)+20 , textes["texte10"].y - 50, window.innerWidth*(1/8), window.innerWidth*(1/8))
+        //ctx.drawImage(imgs['exemple2'], window.innerWidth*(6/10) +  window.innerWidth*(1/8) + 40, textes["texte10"].y - 50 , window.innerWidth*(1/8), window.innerWidth*(1/8))
+        w_exemple =  window.innerWidth*(1/8)
+        h_exemple = w_exemple
+        ctx.drawImage(imgs['exemple1'], window.innerWidth/2 - w_exemple/2 -10, (textes["texte10"].y + textes["texte11"].y)/2 - h_exemple/2 , w_exemple, h_exemple)
+        ctx.drawImage(imgs['exemple2'], window.innerWidth/2 + w_exemple/2 +10, (textes["texte10"].y + textes["texte11"].y)/2 -h_exemple/2, w_exemple, h_exemple)
     }             
     
      
@@ -180,12 +185,13 @@ textes={
 "texte6":{"t":"For example, this is wolf. This perspective highlights the tail and the hind legs, but obscures the head and face.", "y": window.innerHeight*0.45, "c": color_blanc},
 "texte7":{"t":"This viewpoint reveal the head, face, and front legs but hides the tail and barely shows the hind legs.", "y": window.innerHeight*0.6, "c": color_blanc},
 "texte8":{"t":"What is a good viewpoint?", "y": window.innerHeight*0.15, "c": color_rouge},
-"texte9":{"t":"> A good viewpoint is one that offers a pleasant view of the object. A more geometrical definition: a good viewpoint is a position from which most representative characteristics of an object (i.e. the parts that make the object the most identifiable), are visible.", "y": window.innerHeight*0.2, "c": color_blanc},
-"texte10":{"t":"Let's imagine that you have to create an advertising display to promote the movie Dances with Wolves.", "y": window.innerHeight*0.45, "c": color_blanc},
-"texte11":{"t":"The purpose of this study is to ask you, for a given object, which are for you the best viewpoints and why. The answers will of course be subjective because everyone has their own opinion. This subjective information is what I am interested in.", "y": window.innerHeight*0.7, "c": color_blanc},
+"texte9":{"t":"> A good viewpoint is one that offers a relevant view of the object. The one that best showcases the object.", "y": window.innerHeight*0.2, "c": color_blanc},//A more geometrical definition: a good viewpoint is a position from which most representative characteristics of an object (i.e. the parts that make the object the most identifiable), are visible.", "y": window.innerHeight*0.2, "c": color_blanc},
+"texte10":{"t":"Let's imagine that you have to create an advertising display to promote the movie Dances with Wolves.", "y": window.innerHeight*0.35, "c": color_blanc},
+//"texte11":{"t":"The purpose of this study is to ask you, for a given object, which are for you the best viewpoints and why. The answers will of course be subjective because everyone has their own opinion. This subjective information is what I am interested in.", "y": window.innerHeight*0.7, "c": color_blanc},
+"texte11": {"t":"Which viewpoint would you choose between both?", "y": window.innerHeight*0.8, "c": "rgb(255, 209, 102)"},
 "texte12":{"t":"Now that you are up to speed, here are the instructions of the study:", "y": window.innerHeight*0.15, "c": color_blanc},
 "texte13":{"t":"- You will be presented "+nb_mesh+" different objects.", "y": window.innerHeight*0.25, "c": color_blanc},
-"texte14":{"t":"- For each of them, you will chose "+nb_choix_demande+" viewpoints you find most representative of the given object.", "y": window.innerHeight*0.35, "c": color_blanc},
+"texte14":{"t":"- For each of them, you will chose a viewpoint you find most representative of the given object. You will have to do this "+nb_choix_demande+" times.", "y": window.innerHeight*0.35, "c": color_blanc},
 "texte15":{"t":"- Afterward, you will answer a few questions to justify your choices.", "y": window.innerHeight*0.5, "c": color_blanc},
 "texte16":{"t":"As a mean for you to get familiar with the interface, and make your selection easier, we have set up a quick tutorial.", "y": window.innerHeight*0.6, "c": color_blanc},
 "texte17":{"t":"But before anything, we need you to register in order to save your answers.", "y": window.innerHeight*0.7, "c": color_blanc},

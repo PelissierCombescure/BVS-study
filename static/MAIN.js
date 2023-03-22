@@ -84,7 +84,8 @@ function init_variable(premier_appel){
 
     // Enchainement des pages
     if (premier_appel){
-        page_contexte = true
+        page_avertissement = true
+        page_contexte = false
         page_inscription = false
         page_explication = false
         page_warning = false
@@ -94,6 +95,7 @@ function init_variable(premier_appel){
         page_analyse = false
     // cas raz : on recommence juste la partie vues
     } else {
+        page_avertissement = false
         page_contexte = false
         page_inscription = false // true
         page_explication = false
@@ -108,6 +110,7 @@ function init_variable(premier_appel){
     all_canvasMins = {}
 
     // pour initialiser les claviers à chaque page
+    premier_tour_page_avertissements = true
     premier_tour_page_contexte = true
     premier_tour_page_inscription = true 
     premier_tour_page_explications = true
@@ -275,11 +278,12 @@ function init_data(){
     imgs["marie"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/Autres/marie.png')
     imgs["clavier_vues"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/clavier_vues.png')
     imgs["clavier_enter"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/clavier_enter.png')
-    imgs["exemple1"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Tutorial/exemple1.png')
+    imgs["exemple1"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Tutorial/exemple3.png')
     imgs["exemple2"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Tutorial/exemple2.png')
     imgs["recap1"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Tutorial/recap1.png')
     imgs["recap2"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Tutorial/recap2.png')
     imgs["recap3"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Tutorial/recap3.png')
+    imgs["avertissement"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Autres/avertissement2.png')
     boutons = {}
     boutons["reinitialiser"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_reinitialiser.png')
     boutons["valider"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_valider.png')
@@ -320,6 +324,16 @@ function animate() {
     w_Bshortcut = ratio_shorcut*imgs["clavier_vues"].width
     x_Bshortcut = 10
     y_Bshortcut = window.innerHeight-h_Bshortcut-10
+////////////////////////////////////////////////////////////////////////////////
+    if (page_avertissement){
+        if (premier_tour_page_avertissements){
+            //init_clavier_avertissement()
+            init_textes_avertissements()
+            premier_tour_page_avertissements = false
+        }
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
+        traitement_avertissements()
+    }
 ////////////////////////////////////////////////////////////////////////////////
     if (page_contexte){
         //console.log("boucle contexte")
@@ -493,7 +507,7 @@ function animate() {
     }
 ////////////////////////////////////////////////////////////////////////////////
     // page fin
-    if (!page_contexte && !page_inscription && !page_explication && !page_warning && !page_explication_bis && !page_vues && !page_explication_analyse && !page_analyse){
+    if (!page_avertissement && !page_contexte && !page_inscription && !page_explication && !page_warning && !page_explication_bis && !page_vues && !page_explication_analyse && !page_analyse){
         //console.log("boucle fin")
         // on enlève les touches du clavier associé à la page vues
         document.removeEventListener("keydown", action_clavier_analyse)
