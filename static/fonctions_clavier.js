@@ -2,6 +2,22 @@
 ////////////////////////////////////////
 //            CLAVIER
 
+function action_clavier_avertissement(event){
+    switch (event.key){
+        case  'Enter':  
+        if (num_avertissement < ((avertissements_page_1.length))-1){
+            action_bouton_suivant_avertissement()}
+        else{
+            action_bouton_commencer_avertissement()
+        }
+            break;
+        case 'Backspace':
+            if (num_avertissement>0){
+                action_bouton_avant_avertissement()}
+            break;
+    }
+}
+
 function action_clavier_contexte(event){
     switch (event.key){
         // selectionner pose
@@ -85,8 +101,6 @@ function action_clavier_vues(event){
 }
 
 
-
-
 function action_clavier_analyse(event){
     switch (event.key){
         // selectionner pose
@@ -110,6 +124,10 @@ function action_clavier_analyse(event){
         //     check_ou_decheck(4)           
         //     break;
     }
+}
+
+function init_clavier_avertissement(){
+    document.addEventListener("keydown", action_clavier_avertissement)
 }
 
 function init_clavier_contexte(){

@@ -327,7 +327,7 @@ function animate() {
 ////////////////////////////////////////////////////////////////////////////////
     if (page_avertissement){
         if (premier_tour_page_avertissements){
-            //init_clavier_avertissement()
+            init_clavier_avertissement()
             init_textes_avertissements()
             premier_tour_page_avertissements = false
         }
