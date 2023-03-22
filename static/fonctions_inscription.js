@@ -22,8 +22,8 @@ function affichage_inscription(){
     ctx.strokeStyle = "rgb(255, 255, 255)" 
     ctx.fillStyle = "rgb(255, 255, 255)" 
     ctx.font = taille_texte_inscription+"pt Courier"
-    ctx.fillText("Firstname:", x_texte_zone, parseInt(document.getElementById("Firstname").style.top) -12)
-    ctx.fillText("Name:", x_texte_zone, parseInt(document.getElementById("Name").style.top) - 12)
+    //ctx.fillText("Firstname:", x_texte_zone, parseInt(document.getElementById("Firstname").style.top) -12)
+    ctx.fillText("Pseudo:", x_texte_zone, parseInt(document.getElementById("Pseudo").style.top) - 12)
     ctx.fillText("Age:", x_texte_zone, parseInt(document.getElementById("Age").style.top) - 12)
     ctx.fillText("Gender:", parseInt(document.getElementById("SexeM").style.left), parseInt(document.getElementById("SexeM").style.top) - 22)
     ctx.fillText("Male", parseInt(document.getElementById("SexeM").style.left)+40, parseInt(document.getElementById("SexeM").style.top)+24)
@@ -117,15 +117,16 @@ function action_bouton_suivant_inscription(){
 /// CHAMPS INSCRIPTION
 
 function champs_remplis_correctment(){
-    firstname_ok = false
+    //firstname_ok = false
     name_ok = false
     age_ok = false
     sexe_ok = false
-    if ((document.getElementById("Firstname").value.length >0) && (value_non_vide(document.getElementById("Firstname").value))){firstname_ok = true}
-    if (document.getElementById("Name").value.length >0 && (value_non_vide(document.getElementById("Name").value))){name_ok = true}
+    //if ((document.getElementById("Firstname").value.length >0) && (value_non_vide(document.getElementById("Firstname").value))){firstname_ok = true}
+    if (document.getElementById("Pseudo").value.length >0 && (value_non_vide(document.getElementById("Pseudo").value))){name_ok = true}
     if ((document.getElementById("Age").value >0) && (document.getElementById("Age").value.length >0) && (value_non_vide(document.getElementById("Age").value))){age_ok = true}
     if (document.getElementById("SexeM").checked || document.getElementById("SexeF").checked || document.getElementById("SexeA").checked){ sexe_ok= true}
-    return firstname_ok && name_ok && age_ok && sexe_ok
+    //return firstname_ok && name_ok && age_ok && sexe_ok
+    return name_ok && age_ok && sexe_ok
 }
 
 function value_non_vide(V){
@@ -144,36 +145,36 @@ function afficher_champs_inscription() {
     nb_caract_max = 30
     x_texte_zone = (window.innerWidth/4) 
     y_texte_zone = 0.20*window.innerHeight
-    ecart_texte_zone = 0.15*window.innerHeight
+    ecart_texte_zone = 0.2*window.innerHeight
     
 
-    // Zone de texte : Firstname
-    var input = document.createElement('input');
-    input.type = 'text';
-    input.id = 'Firstname';
-    input.minLength = nb_caract_min
-    input.maxLength = nb_caract_max
-    input.size = w_text_zone
-    input.style.position = 'fixed';   
-    input.style.left = x_texte_zone+'px';
-    input.style.top = y_texte_zone+'px';
-    input.style.textAlign = 'left'
-    input.style.height = h_text_zone
-    input.style.font = taille_texte_inscription+"pt Courier"  
-    document.body.appendChild(input);
-    input.focus();
+    // // Zone de texte : Firstname
+    // var input = document.createElement('input');
+    // input.type = 'text';
+    // input.id = 'Firstname';
+    // input.minLength = nb_caract_min
+    // input.maxLength = nb_caract_max
+    // input.size = w_text_zone
+    // input.style.position = 'fixed';   
+    // input.style.left = x_texte_zone+'px';
+    // input.style.top = y_texte_zone+'px';
+    // input.style.textAlign = 'left'
+    // input.style.height = h_text_zone
+    // input.style.font = taille_texte_inscription+"pt Courier"  
+    // document.body.appendChild(input);
+    // input.focus();
 
     // Zone de texte : Name
     var input2 = document.createElement('input');
     input2.type = 'text';
-    input2.id = 'Name';
+    input2.id = 'Pseudo';
     input2.minLength = nb_caract_min
     input2.maxLength = nb_caract_max
     input2.size = w_text_zone
     // style 
     input2.style.position = 'fixed';   
     input2.style.left = x_texte_zone+'px';
-    input2.style.top = ecart_texte_zone+y_texte_zone+'px';
+    input2.style.top = y_texte_zone+'px';//ecart_texte_zone+y_texte_zone+'px';
     input2.style.textAlign = 'left'
     input2.style.height = h_text_zone
     input2.style.font =  taille_texte_inscription+"pt Courier"    
@@ -190,7 +191,7 @@ function afficher_champs_inscription() {
     // style 
     input3.style.position = 'fixed';   
     input3.style.left = x_texte_zone+'px';
-    input3.style.top = 2*ecart_texte_zone + y_texte_zone+'px';
+    input3.style.top = ecart_texte_zone+y_texte_zone+'px';//2*ecart_texte_zone + y_texte_zone+'px';
     input3.style.textAlign = 'left'
     input3.style.height = h_text_zone
     input3.style.font =  taille_texte_inscription+"pt Courier"    
@@ -206,7 +207,7 @@ function afficher_champs_inscription() {
     // style 
     input4.style.position = 'fixed';   
     input4.style.left = x_texte_zone+'px';
-    input4.style.top = 3*ecart_texte_zone + y_texte_zone+'px';
+    input4.style.top = 2*ecart_texte_zone + y_texte_zone+'px';//3*ecart_texte_zone + y_texte_zone+'px';
     input4.style.height = 20
     input4.style.width = 20
     document.body.appendChild(input4);
@@ -220,7 +221,7 @@ function afficher_champs_inscription() {
     // style 
     input5.style.position = 'fixed';   
     input5.style.left = window.innerWidth*0.1 + x_texte_zone+'px';
-    input5.style.top = 3*ecart_texte_zone + y_texte_zone+'px';
+    input5.style.top = 2*ecart_texte_zone + y_texte_zone+'px';//3*ecart_texte_zone + y_texte_zone+'px';
     input5.style.height = 20
     input5.style.width = 20
     document.body.appendChild(input5);
@@ -234,7 +235,7 @@ function afficher_champs_inscription() {
     // style 
     input6.style.position = 'fixed';   
     input6.style.left = window.innerWidth*0.22 + x_texte_zone+'px';
-    input6.style.top = 3*ecart_texte_zone + y_texte_zone+'px';
+    input6.style.top = 2*ecart_texte_zone + y_texte_zone+'px';//3*ecart_texte_zone + y_texte_zone+'px';
     input6.style.height = 20
     input6.style.width = 20
     document.body.appendChild(input6);
@@ -249,12 +250,12 @@ function gestion_donnees_personnelles(){
     else if (document.getElementById("SexeF").checked){sexe = "F"}
     else if (document.getElementById("SexeM").checked){sexe = "M"}
     else {sexe='None'}  
-    choix['identite'] = {"Firstname":document.getElementById("Firstname").value,
-                        "Name": document.getElementById("Name").value,
+    choix['identite'] = {//"Firstname":document.getElementById("Firstname").value,
+                        "Pseudo": document.getElementById("Pseudo").value,
                         "Age": document.getElementById("Age").value,
                         "Sexe": sexe}
-    document.getElementById("Firstname").style.display = 'none'
-    document.getElementById("Name").style.display = 'none'
+    //document.getElementById("Firstname").style.display = 'none'
+    document.getElementById("Pseudo").style.display = 'none'
     document.getElementById("Age").style.display = 'none'
     document.getElementById("SexeM").style.display = 'none'
     document.getElementById("SexeF").style.display = 'none'
