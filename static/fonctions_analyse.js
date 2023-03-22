@@ -14,7 +14,8 @@ function init_variable_analyse(){
     // }
     checkbox_clicked_courant = {idx_checkbox:[], mots:[]}
     // Analayse des choix avec les checkboxs
-    keywords = shuffle(["Side view", "Front view", "Global view", "Eyes contact", "Pleasant", "Recognizable"]).concat(["Other:"])
+    keywords_init = ["Side view", "Front view", "Global view", "Eyes contact", "Pleasant", "Recognizable"]
+    keywords = shuffle(keywords_init).concat(["Other:"])
     
     y_recap = 0.2*window.innerHeight
     taille_texte_explication = 0.01*window.innerWidth
@@ -47,8 +48,8 @@ function affichage_analyse(idx_tache){
     for (let i=0; i<nb_choix_demande; i++){
         affichage_legende(i)
         x_recap = (i+1)*x_recap_init + i*(H_3D/2)
-        //ctx.drawImage(canvasMins[i], x_recap, y_recap, H_3D/2, H_3D/2)
-        draw_contour( x_recap, y_recap, H_3D/2, H_3D/2, "rgb(255,0,0)")
+        ctx.drawImage(canvasMins[i], x_recap, y_recap, H_3D/2, H_3D/2)
+        //draw_contour( x_recap, y_recap, H_3D/2, H_3D/2, "rgb(255,0,0)")
     }  
 }
 
@@ -117,7 +118,7 @@ function action_bouton_valider_analyse(){
         }
         //RAZ pour la prochaine analyse
         checkbox_clicked_courant = {idx_checkbox:[], mots:[]}
-        keywords = shuffle(keywords).concat(["Other:"])
+        keywords = shuffle(keywords_init).concat(["Other:"])
         toto = document.getElementById('texte_area')
             if (toto!=  null){toto.parentElement.removeChild(toto)} 
         // analyse suivant

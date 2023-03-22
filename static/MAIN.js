@@ -510,7 +510,11 @@ function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         
         traitement_analyse()
-        
+        try {
+            if (!input2.matches(":focus")) {
+                input2.focus()
+            }
+        } catch (e) {}       
         
     }
 ////////////////////////////////////////////////////////////////////////////////

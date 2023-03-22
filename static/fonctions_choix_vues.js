@@ -378,7 +378,7 @@ function action_bouton_pose(){
     
         // si on a pas encore choisie toutes nos poses, on peut en ajouter
     if (nb_choix_fait < nb_choix_demande && !(deja_choisie)){
-        liste_poses.push(['choix'+(nb_choix_fait+1), theta, delta, idx_i, idx_j])
+        liste_poses.push(['choix'+(nb_choix_fait+1), {'theta':theta}, {"delta":delta}, {'idx_i':idx_i}, {'idx_j':idx_j}])
         // affichage de la vue sélectionnée dans le recap
         ctxMins[nb_choix_fait].drawImage(canvasRenderer, 0.5*canvasRenderer.width-0.5*canvasRenderer.height, 0, canvasRenderer.height, canvasRenderer.height, 0, 0, canvasMins[0].width, canvasMins[0].height)//canvasRenderer.height*0.3, canvasRenderer.height*0.25)
         nb_choix_fait = nb_choix_fait+1
