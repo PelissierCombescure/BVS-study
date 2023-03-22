@@ -54,7 +54,7 @@ function action_bouton_suivant_contexte(){
 }
 
 function action_bouton_avant_contexte(){
-    if (num_texte>0){
+    if (num_texte>=0){
         if (num_texte == textes_page_1.length){
             texte_a_afficher = JSON.parse(JSON.stringify(textes_page_1))}
         else if (num_texte == (textes_page_1.length + textes_page_2.length)){
@@ -126,6 +126,7 @@ function traitement_contexte(){
         if (clicked && click_inside(xyMouseDown, x_bouton_suivant, y_bouton_suivant , w_bouton_suivant, h_bouton_suivant)){
             // on passe aux texte suivant 
             action_bouton_suivant_contexte() 
+           
         } 
     } else {
         // affichage bouton next
@@ -138,13 +139,17 @@ function traitement_contexte(){
     }
     
     //affichage bouton previous dès le deuxièeme texte 
-    if(num_texte > 0){
+    if(num_texte >= 0){
         // affichage bouton next
         afficher_bouton_avant_contexte()
         //si on clique sur previous
         if (clicked && click_inside(xyMouseDown, x_bouton_avant, y_bouton_avant , w_bouton_avant, h_bouton_avant)){
+            if(num_texte == 0){
+                action_revenir_page_avant_contexte()
+
+            }
             // on passe aux texte suivant 
-            action_bouton_avant_contexte()    
+            else {action_bouton_avant_contexte()}
         } 
     }
     // affichage image 
@@ -166,7 +171,15 @@ function traitement_contexte(){
     
      
 }
-
+function action_revenir_page_avant_contexte(){
+    page_contexte = false 
+    page_avertissement = true
+    init_textes_avertissements()
+    avertissements_a_afficher = [avertissements["texte0"], avertissements["texte1"], avertissements["texte2"]]
+    num_avertissement = avertissements_a_afficher.length-1
+    init_clavier_avertissement()
+    document.removeEventListener("keydown", action_clavier_contexte)
+}
 
 ////////////////////////////////////////////////////////////////////
 ///// Textes

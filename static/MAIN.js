@@ -344,6 +344,7 @@ function animate() {
             init_textes_contexte()
             premier_tour_page_contexte = false
         }
+        init_clavier_contexte()
         traitement_contexte()  
     }
 ////////////////////////////////////////////////////////////////////////////////

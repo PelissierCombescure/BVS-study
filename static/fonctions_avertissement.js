@@ -120,6 +120,7 @@ function traitement_avertissements(){
         if (clicked && click_inside(xyMouseDown, x_bouton_commencer, y_bouton_commencer , w_bouton_commencer, h_bouton_commencer)){
             // on passe aux texte suivant 
             action_bouton_commencer_avertissement() 
+            clicked = false
         } 
     }
     
@@ -136,7 +137,6 @@ function traitement_avertissements(){
      
      
 }
-
 
 ////////////////////////////////////////////////////////////////////
 ///// Textes

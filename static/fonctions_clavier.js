@@ -20,11 +20,6 @@ function action_clavier_avertissement(event){
 
 function action_clavier_contexte(event){
     switch (event.key){
-        // selectionner pose
-        // case ' ' :
-        //     action_bouton_commencer_contexte('clavier')
-        // break;
-        // valider
         case  'Enter':  
         if (num_texte < ((textes_page_1.length + textes_page_2.length + textes_page_3.length +textes_page_4.length))-2){
             action_bouton_suivant_contexte()}
@@ -33,6 +28,9 @@ function action_clavier_contexte(event){
         }
             break;
         case 'Backspace':
+            if (num_texte==0){
+                action_revenir_page_avant_contexte()
+            }
             if (num_texte>0){
             action_bouton_avant_contexte()}
             break;
