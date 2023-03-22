@@ -84,13 +84,13 @@ function init_variable(premier_appel){
 
     // Enchainement des pages
     if (premier_appel){
-        page_avertissement = true
+        page_avertissement = false
         page_contexte = false
         page_inscription = false
         page_explication = false
         page_warning = false
         page_explication_bis = false
-        page_vues = false // false
+        page_vues = true // false
         page_explication_analyse = false 
         page_analyse = false
     // cas raz : on recommence juste la partie vues
@@ -102,6 +102,7 @@ function init_variable(premier_appel){
         page_warning = false
         page_explication_bis = false
         page_vues = true // false
+        page_explication_analyse = false 
         page_analyse = false
     }
 
@@ -427,7 +428,6 @@ function animate() {
         else{
             // on enlève les touches du clavier associé à la page inscription
             document.removeEventListener("keydown", action_clavier_explication)}
-        
         //init touche clavier
         if(premier_tour_page_vues){
             // init clavier pour les vues
@@ -501,10 +501,15 @@ function animate() {
             interactions.push({"time": new Date().getTime(), "type": "debut analyse n°1"})
             init_clavier_analyse()
             init_variable_analyse()
+            old_renderer = document.getElementById('renderer')
+            if (old_renderer!=  null){
+                old_renderer.parentElement.removeChild(old_renderer)
+            }
             premier_tour_page_analyse = false}
-
         ctx.clearRect(0, 0, canvas.width, canvas.height)
-        traitement_fin()
+        
+        traitement_analyse()
+        
         
     }
 ////////////////////////////////////////////////////////////////////////////////

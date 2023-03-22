@@ -8,13 +8,13 @@ h_bouton_analyse = 0.1*window.innerHeight
 // Variable 
 function init_variable_analyse(){
     // liste des checkbox clické pour chaque recap
-    checkbox_clicked_courant = {}
-    for (let p=0; p<nb_choix_demande; p++){
-        checkbox_clicked_courant["Viewpoint_"+(p+1)] = {idx_checkbox:[], mots:[]}
-    }
-
-       // Analayse des choix avec les checkboxs
-    keywords = ["1. De face", "2. De profil", "3. Debout", "4. Eyes contact", "5. toto"]
+    //checkbox_clicked_courant = {}
+    // for (let p=0; p<nb_choix_demande; p++){
+    //     checkbox_clicked_courant["Viewpoint_"+(p+1)] = {idx_checkbox:[], mots:[]}
+    // }
+    checkbox_clicked_courant = {idx_checkbox:[], mots:[]}
+    // Analayse des choix avec les checkboxs
+    keywords = shuffle(["Side view", "Front view", "Global view", "Eyes contact", "Pleasant", "Recognizable"]).concat(["Other:"])
     
     y_recap = 0.2*window.innerHeight
     taille_texte_explication = 0.01*window.innerWidth
@@ -37,18 +37,18 @@ function affichage_legende(pos){
 
 function affichage_texte(){
     // Texte
-    draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1) // ou + clair 4, 38, 48
-    affichage_titre("Analysis your choices", (0.018*window.innerWidth)+"pt Courier", "#EF476F", yt =  0.1*window.innerHeight)
+    //draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1) // ou + clair 4, 38, 48
+    affichage_titre("Analysis your selections: why did you choose these viewpoints?", (0.015*window.innerWidth)+"pt Courier", "#EF476F", yt =  0.1*window.innerHeight)
 }
 
 // idx_tache est la num de la tache à aller chercher dans all_ctxMins
 function affichage_analyse(idx_tache){
-    canvasMins = all_canvasMins['tache_N'+list_idx_tache[idx_tache]][1]
+    //canvasMins = all_canvasMins['tache_N'+list_idx_tache[idx_tache]][1]
     for (let i=0; i<nb_choix_demande; i++){
         affichage_legende(i)
         x_recap = (i+1)*x_recap_init + i*(H_3D/2)
-        ctx.drawImage(canvasMins[i], x_recap, y_recap, H_3D/2, H_3D/2)
-        //draw_contour(dx + (ecart_analyse+ W_3D/2.5)*i, 250,  H_3D/2.5, H_3D/2.5, "rgb(255,0,0)")
+        //ctx.drawImage(canvasMins[i], x_recap, y_recap, H_3D/2, H_3D/2)
+        draw_contour( x_recap, y_recap, H_3D/2, H_3D/2, "rgb(255,0,0)")
     }  
 }
 
@@ -66,7 +66,6 @@ function progress_bar_analyse(N_analyse, N_analyse_total){
         ctx.fillText((N_analyse)+"/"+(N_analyse_total), x_progress_bar+w_progress_bar+10, h_progress_bar)
     }
 }
-
 
 ///////////////////////////////////////////////////////////////
 ///////////////////// Bouton
@@ -92,10 +91,15 @@ function affichage_bouton_valider_analyse(m){
 }
 
 function condition_valider(){
-    for(let k=0; k<nb_choix_demande;k++){
-        if (checkbox_clicked_courant['Viewpoint_'+(k+1)].idx_checkbox.length == 0){
+    //S'il n'y a pas de checkbox cochée
+    if (checkbox_clicked_courant.idx_checkbox.length == 0){
+        return false
+    }
+    //il y a Other: other --> texte non vide
+    if (checkbox_clicked_courant.idx_checkbox.indexOf(keywords.length-1)!=-1){
+        if(document.getElementById('texte_area').value.length == 0){
             return false
-        }     
+        }
     }
     return true
 }
@@ -105,12 +109,17 @@ function action_bouton_valider_analyse(){
     // si au moins un mot est coché et qu'il reste des analyse à faire
     if (condition_valider()){
         // sauvegarde des checkbox clikée et les mesh 
-        checkbox_clicked['Analyse_N'+(num_analyse+1)] = {"mesh" : choix["tache_N"+list_idx_tache[idx_tache]].mesh ,"Checkbox" : checkbox_clicked_courant}
-        //RAZ pour la prochaine analyse
-        checkbox_clicked_courant = {}
-        for (let p=0; p<nb_choix_demande; p++){
-            checkbox_clicked_courant["Viewpoint_"+(p+1)] = {idx_checkbox:[], mots:[]}
+        if (checkbox_clicked_courant.idx_checkbox.indexOf(keywords.length-1)!=-1){
+            texte_toto = lecture_zone_texte()
+            checkbox_clicked['Analyse_N'+(num_analyse+1)] = {"mesh" : choix["tache_N"+list_idx_tache[idx_tache]].mesh ,"Checkbox" : checkbox_clicked_courant, "Texte_other":texte_toto}
+        } else {
+            checkbox_clicked['Analyse_N'+(num_analyse+1)] = {"mesh" : choix["tache_N"+list_idx_tache[idx_tache]].mesh ,"Checkbox" : checkbox_clicked_courant}
         }
+        //RAZ pour la prochaine analyse
+        checkbox_clicked_courant = {idx_checkbox:[], mots:[]}
+        keywords = shuffle(keywords).concat(["Other:"])
+        toto = document.getElementById('texte_area')
+            if (toto!=  null){toto.parentElement.removeChild(toto)} 
         // analyse suivant
         num_analyse = num_analyse + 1
         // indice mesh da l'analyse suivante
@@ -123,60 +132,116 @@ function action_bouton_valider_analyse(){
 
 ///////////////////////////////////////////////////////////////
 ///////////////////// Checkbox
+function measure_largeur(pos){
+    if (pos>=0){
+    l = 0
+    for (let p = 0; p<=pos; p++){
+        l = l + ctx.measureText(keywords[p]).width + 0.05*window.innerWidth
+    }
+    return l
+    }
+    else{return 0}
+}
 
 function traitement_empty_checkbox(){
-    for(let p=0; p<nb_choix_demande; p++){    
+    //for(let p=0; p<nb_choix_demande; p++){    
         for (let i = 0 ; i < keywords.length; i++){
             // checkbox vide
-            x_checkbox = (p+1)*x_recap_init + p*(H_3D/2)
-            y_checkbox = y_checkbox_init + (h_checkbox* 1.5)*i
+              //i*((window.innerWidth * 8/10)/6)
+            if(i<keywords.length-1){x_checkbox = window.innerWidth*1/10 + measure_largeur(i-1); y_checkbox = y_checkbox_init}
+            else {x_checkbox = window.innerWidth*1/10; y_checkbox = y_checkbox_init + 2*h_checkbox}
             ctx.drawImage(imgs["checkbox"], x_checkbox , y_checkbox, w_checkbox, h_checkbox)
             // Texte 
-            print_text(handle_text(keywords[i], x_checkbox + w_checkbox + 30, y_checkbox + 20, taille_texte_explication+"pt Courier", longueur_max_error))
+            print_text(handle_text(keywords[i], x_checkbox + w_checkbox + 10, y_checkbox + 18, taille_texte_explication+"pt Courier", longueur_max_error))
             // survol
             if (is_inside(xyMouseMove, x_checkbox, y_checkbox, w_checkbox, h_checkbox)){
                 draw_rectangle(x_checkbox, y_checkbox, w_checkbox, h_checkbox, "rgb(0, 255, 0)", alpha_survol)
             }
             // clicked
             if (clicked && is_inside(xyMouseMove, x_checkbox, y_checkbox, w_checkbox, h_checkbox)){
-                check_ou_decheck(i,p)
+                check_ou_decheck(i)
             }
+        }
+        
+
+    }
+//}
+
+function check_ou_decheck(i_mot){
+    //s'il n'y a pas deja un check dessus
+    if (checkbox_clicked_courant.idx_checkbox.indexOf(i_mot) == -1){
+        checkbox_clicked_courant.idx_checkbox.push(i_mot)
+        checkbox_clicked_courant.mots.push(keywords[i_mot])
+        interactions.push({"time": new Date().getTime(), "type": "ajout check sur : analyse n°"+(num_analyse+1)+", mot "+keywords[i_mot]+" à "})
+        console.log("ajout "+keywords[i_mot])
+        // checkbox Other
+        if (i_mot == keywords.length-1){
+            zone_texte()
+        }
+    }
+    else{
+        position_i = checkbox_clicked_courant.idx_checkbox.indexOf(i_mot)
+        checkbox_clicked_courant.idx_checkbox.splice(position_i,1)
+        checkbox_clicked_courant.mots.splice(position_i,1)
+        console.log("retrait "+keywords[i_mot])
+        interactions.push({"time": new Date().getTime(), "type": "retrait check sur : analyse n°"+(num_analyse+1)+", mot "+keywords[i_mot]+" à "})
+        if (i_mot == keywords.length-1){
+            toto = document.getElementById('texte_area')
+            if (toto!=  null){toto.parentElement.removeChild(toto)}            
         }
     }
 }
 
-function check_ou_decheck(i_mot, p_vue){
-     //s'il n'y a pas deja un check dessus
-    if (checkbox_clicked_courant["Viewpoint_"+(p_vue+1)].idx_checkbox.indexOf(i_mot) == -1){
-        checkbox_clicked_courant["Viewpoint_"+(p_vue+1)].idx_checkbox.push(i_mot)
-        checkbox_clicked_courant["Viewpoint_"+(p_vue+1)].mots.push(keywords[i_mot])
-        interactions.push({"time": new Date().getTime(), "type": "ajout check sur : analyse n°"+(num_analyse+1)+", mot "+keywords[i_mot]+" à "+(p_vue+1)+"e vues"})
-        console.log("ajout "+keywords[i_mot]+" à "+(p_vue+1)+"e vues")
-    }
-    
-    else{
-        position_i = checkbox_clicked_courant["Viewpoint_"+(p_vue+1)].idx_checkbox.indexOf(i_mot)
-        checkbox_clicked_courant["Viewpoint_"+(p_vue+1)].idx_checkbox.splice(position_i,1)
-        checkbox_clicked_courant["Viewpoint_"+(p_vue+1)].mots.splice(position_i,1)
-        console.log("retrait "+keywords[i_mot]+" à "+(p_vue+1)+"e vues")
-        interactions.push({"time": new Date().getTime(), "type": "retrait check sur : analyse n°"+(num_analyse+1)+", mot "+keywords[i_mot]+" à "+(p_vue+1)+"e vues"})
-    }
-}
-
-function draw_check(p_vue){
-    idx_check = checkbox_clicked_courant["Viewpoint_"+(p_vue+1)].idx_checkbox
+function draw_check(){
+    idx_check = checkbox_clicked_courant.idx_checkbox
     // pour chacune de ces checkbox cliquée on affiche un check
     for (let i = 0 ; i < idx_check.length; i++){
         pos = idx_check[i]
-        x_checkbox = (p_vue+1)*x_recap_init + p_vue*(H_3D/2)
-        y_checkbox = y_checkbox_init + (h_checkbox* 1.5)*pos
+        if (pos == keywords.length-1){x_checkbox = window.innerWidth*1/10; y_checkbox = y_checkbox_init + 2*h_checkbox}
+        else{
+            x_checkbox =  window.innerWidth*1/10 + measure_largeur(pos-1)
+            y_checkbox = y_checkbox_init 
+        }
         ctx.drawImage(imgs["check"], x_checkbox-5 , y_checkbox-5, w_checkbox+10, h_checkbox+10)
     }
 }
 
+function zone_texte(){
+        inscription_finie = false
+        h_text_zone = 0.15*window.innerHeight
+        nb_caract_min = 1
+        nb_caract_max = 250
+        x_texte_zone = (window.innerWidth/4) 
+        y_texte_zone = y_checkbox_init + 3*h_checkbox
+        ecart_texte_zone = 0.2*window.innerHeight
+    
+        // Zone de texte : Name
+        input2 = document.createElement('textarea');
+        input2.type = 'text';
+        input2.id = 'texte_area';
+        input2.maxLength = nb_caract_max
+        input2.cols = 0.02*window.innerWidth
+        // style 
+        input2.style.position = 'fixed';   
+        input2.style.left = x_texte_zone+'px';
+        input2.style.top = y_texte_zone+'px';//ecart_texte_zone+y_texte_zone+'px';
+        input2.style.textAlign = 'left'
+        input2.style.height = h_text_zone
+        input2.style.display = true
+        input2.style.font =  taille_texte_inscription+"pt Courier"    
+        document.body.appendChild(input2);
+        //input2.focus();
+ }
+
+ function lecture_zone_texte(){
+    toto = document.getElementById('texte_area')
+    if(toto.value != null){
+        return toto.value
+    }
+ }
 ///////////////////////////////////////////////////////////////
 ///////////////////// MAIN 
-function traitement_fin(){
+function traitement_analyse(){
     if ((num_analyse < nb_analyse_demande)){
         // affiche les textes de la page sauf les ceheckbox
         affichage_texte()
@@ -187,7 +252,7 @@ function traitement_fin(){
         // affiche les nb_demande_choix images recap 
         affichage_analyse(idx_tache)
         // affiche progress bar
-        progress_bar_analyse(num_analyse, nb_analyse_demande)
+        //progress_bar_analyse(num_analyse, nb_analyse_demande)
         if (num_analyse < nb_analyse_demande-1){
             // bouton valider 
             affichage_bouton_valider_analyse("en_cours")}
