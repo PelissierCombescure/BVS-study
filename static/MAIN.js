@@ -255,8 +255,8 @@ function setUp_3D(idx_mesh, idx_i_init, idx_j_init, explication=false){
     choix_courant['delta_init'] = delta_init
 
     // pour savoir quel mesh on affiche
-    interactions.push({"time": new Date().getTime(), "type": get_message('affichage_mesh_IJ', [mesh_courant, idx_i_init, idx_j_init])})
-    interactions.push({"time": new Date().getTime(), "type": get_message('affichage_mesh_TD', [mesh_courant, theta_init, delta_init])})//"Affichage Mesh random : "+mesh_courant+" en theta, delta : ("+theta_init+", "+delta_init+")"})
+    interactions.push({"time": new Date().getTime(), "type": get_message('affichage_mesh_IJ', [num_tache, nb_choix_fait, mesh_courant, idx_i_init, idx_j_init])})
+    interactions.push({"time": new Date().getTime(), "type": get_message('affichage_mesh_TD', [num_tache, nb_choix_fait, mesh_courant, theta_init, delta_init])})//"Affichage Mesh random : "+mesh_courant+" en theta, delta : ("+theta_init+", "+delta_init+")"})
 }
 
 ////////////////////////////////////////

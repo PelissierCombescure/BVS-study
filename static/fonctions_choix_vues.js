@@ -138,6 +138,8 @@ function afficher_recap(){
                 swapElements(canvasMins, i, i-1)
                 swapElements(ctxMins, i, i-1)
                 swapElements(liste_poses, i, i-1)
+                liste_poses[i-1][0] = 'choix'+(i)
+                liste_poses[i][0] = 'choix'+(i+1)
                 interactions.push({"time": new Date().getTime(), "type": get_message('switch_haut_i', [num_tache, nb_choix_fait, i])})
                 clicked = false
             }
@@ -150,6 +152,8 @@ function afficher_recap(){
                 swapElements(canvasMins, i, i+1)
                 swapElements(ctxMins, i, i+1)
                 swapElements(liste_poses, i, i+1)
+                liste_poses[i][0] = 'choix'+(i+1)
+                liste_poses[i+1][0] = 'choix'+(i+2)
                 interactions.push({"time": new Date().getTime(), "type": get_message('switch_bas_i', [num_tache, nb_choix_fait, i])})
                 clicked = false
             }
@@ -162,11 +166,14 @@ function afficher_recap(){
             if (clicked && click_inside(xyMouseDown, x_croix, y_croix, w_croix, h_croix)) {
                 liste_poses.splice(i, 1)
                 nb_choix_fait = nb_choix_fait-1
-                interactions.push({"time": new Date().getTime(), "type": get_message('supp_pose_i', [i])})
+                interactions.push({"time": new Date().getTime(), "type": get_message('supp_pose_i', [num_tache, nb_choix_fait,i])})
                 ctxMins[i].clearRect(0, 0, canvasMins[i].width, canvasMins[i].height)
                 for (let j = i; j < nb_choix_demande-1; j++) {
                     swapElements(canvasMins, j, j+1)
                     swapElements(ctxMins, j, j+1)
+                }
+                for (let j = i; j < liste_poses.length; j++) {
+                    liste_poses[j][0] = 'choix'+(j+1)
                 }
             }
         }
@@ -276,7 +283,7 @@ function action_fleche_haut(){
     interactions.push({"time": new Date().getTime(), "type": get_message('FH', [num_tache, nb_choix_fait, idx_i, idx_j])})
     if (idx_j == 0){
         texte_temporaire = {"text": "You can't go any further, GO BACK DOWN.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
-        interactions.push({"time": new Date().getTime(), "type": get_message("erreur_FH", []) })
+        interactions.push({"time": new Date().getTime(), "type": get_message("erreur_FH", [num_tache, nb_choix_fait]) })
     }
     idx_j = Math.max(idx_j-1,0)
     }
@@ -284,7 +291,7 @@ function action_fleche_bas(){
     interactions.push({"time": new Date().getTime(), "type": get_message('FB', [num_tache, nb_choix_fait, idx_i, idx_j])})
     if (idx_j == 4){
         texte_temporaire = {"text": "You can't go any further, GO UP.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
-        interactions.push({"time": new Date().getTime(), "type": get_message("erreur_FB", []) })
+        interactions.push({"time": new Date().getTime(), "type": get_message("erreur_FB", [num_tache, nb_choix_fait]) })
     }
     idx_j = Math.min(idx_j+1,4)
     }
@@ -368,21 +375,21 @@ function action_bouton_pose(){
     if (deja_choisie && !(nb_choix_fait == nb_choix_demande)){
         //console.log("Cette pose a déjà été sélectionnée.")
         texte_temporaire = {"text": "This viewpoint has already been selected.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
-        interactions.push({"time": new Date().getTime(), "type": get_message("erreur_pose_selectionnee", [])})}
+        interactions.push({"time": new Date().getTime(), "type": get_message("erreur_pose_selectionnee", [num_tache, nb_choix_fait])})}
     
         // plus de choix possible
     if (nb_choix_fait == nb_choix_demande) {
         //console.log("Tu as déjà fait tes "+nb_choix_demande+" choix.")
         texte_temporaire = {"text": "You have already selected your "+nb_choix_demande+" viewpoints.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
-        interactions.push({"time": new Date().getTime(), "type": get_message("erreur_choix_fait", [nb_choix_fait])})}
+        interactions.push({"time": new Date().getTime(), "type": get_message("erreur_choix_fait", [num_tache, nb_choix_fait, nb_choix_fait])})}
     
         // si on a pas encore choisie toutes nos poses, on peut en ajouter
     if (nb_choix_fait < nb_choix_demande && !(deja_choisie)){
-        interactions.push({"time": new Date().getTime(), "type": get_message("bouton_select", [num_tache, nb_choix_fait, nb_choix_fait, idx_i, idx_j])})
         liste_poses.push(['choix'+(nb_choix_fait+1), {'theta':theta}, {"delta":delta}, {'idx_i':idx_i}, {'idx_j':idx_j}])
         // affichage de la vue sélectionnée dans le recap
         ctxMins[nb_choix_fait].drawImage(canvasRenderer, 0.5*canvasRenderer.width-0.5*canvasRenderer.height, 0, canvasRenderer.height, canvasRenderer.height, 0, 0, canvasMins[0].width, canvasMins[0].height)//canvasRenderer.height*0.3, canvasRenderer.height*0.25)
         nb_choix_fait = nb_choix_fait+1
+        interactions.push({"time": new Date().getTime(), "type": get_message("bouton_select", [num_tache, nb_choix_fait, nb_choix_fait, idx_i, idx_j])})
     }
 }
 
@@ -402,7 +409,7 @@ function action_bouton_retirer(){
     else {
         //console.log("Il n'y a pas de pose à retirer.")
         texte_temporaire = {"text": "There are no selected viewpoints to remove.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
-        interactions.push({"time": new Date().getTime(), "type": get_message("erreur_pas_de_pose", [])})
+        interactions.push({"time": new Date().getTime(), "type": get_message("erreur_pas_de_pose", [num_tache, nb_choix_fait])})
     }
 }
 
@@ -418,7 +425,7 @@ function action_bouton_reinitialiser(){
     }
     else {//console.log("Il n'y a pas de pose à reintialiser.")
         texte_temporaire = {"text": "There are no selected viewpoints to resart.", "x":x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
-    interactions.push({"time": new Date().getTime(), "type": get_message("erreur_reset_impossible", [])})}
+    interactions.push({"time": new Date().getTime(), "type": get_message("erreur_reset_impossible", [num_tache, nb_choix_fait])})}
 }
 
 function action_bouton_valider(){
@@ -467,7 +474,7 @@ function action_bouton_valider(){
     else if (nb_choix_fait < nb_choix_demande){
         //console.log("Tu n'as pas fait tes 3 choix")
         texte_temporaire = {"text": "You did not select your "+nb_choix_demande+" viewpoints.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
-        interactions.push({"time": new Date().getTime(), "type": get_message("erreur_valider", [])})
+        interactions.push({"time": new Date().getTime(), "type": get_message("erreur_valider", [num_tache, nb_choix_fait])})
     }
     // Error : un pbl à identifier
     else{
