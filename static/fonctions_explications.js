@@ -485,7 +485,7 @@ function action_fin_explication(){
     page_explication = false
     //page_explication_bis = true
     page_warning = true
-    interactions.push({"time": new Date().getTime(), "type": "fin tutorial - debut warning"})
+    interactions.push({"time": new Date().getTime(), "type": get_message("fin_tutorial", [])})
 }
 
 function action_previous_explication(){
@@ -629,7 +629,7 @@ function afficher_bouton_commencer_explication(){
 function action_bouton_commencer_explication(){
     page_explication_bis = false 
     page_vues = true 
-    interactions.push({"time": new Date().getTime(), "type": "debut choix vues"})
+    interactions.push({"time": new Date().getTime(), "type": get_message("debut_choix", []) })
         
 }
 

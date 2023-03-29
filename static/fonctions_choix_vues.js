@@ -44,8 +44,8 @@ function init_variable_fonction(dict_boutons, dict_imgs ){
 
 function bloquer_pose(L_poses){
     for (p=0; p<L_poses.length; p++){
-        idx_i_p = L_poses[p][3]
-        idx_j_p = L_poses[p][4]
+        idx_i_p = L_poses[p][3].idx_i
+        idx_j_p = L_poses[p][4].idx_j
         // Si on est en train de voir une pose déjà choisie
         if (idx_i== idx_i_p && idx_j==idx_j_p){
             draw_rectangle(0, h_progress_bar, W_3D, H_3D-h_progress_bar, "rgb(0, 0, 0)", alpha_bloque)
@@ -57,8 +57,8 @@ function bloquer_pose(L_poses){
 function pose_deja_choisie(L_poses, i_choix, j_choix){
     deja_choisie = false
     for (p=0; p<L_poses.length; p++){
-        idx_i_p = L_poses[p][3]
-        idx_j_p = L_poses[p][4]
+        idx_i_p = L_poses[p][3].idx_i
+        idx_j_p = L_poses[p][4].idx_j
         // Si on est en train de voir une pose déjà choisie
         if (i_choix == idx_i_p && j_choix==idx_j_p){
             deja_choisie = true
@@ -138,7 +138,7 @@ function afficher_recap(){
                 swapElements(canvasMins, i, i-1)
                 swapElements(ctxMins, i, i-1)
                 swapElements(liste_poses, i, i-1)
-                interactions.push({"time": new Date().getTime(), "type": "fleche switch haut de la pose n°"+(i+1)})
+                interactions.push({"time": new Date().getTime(), "type": get_message('switch_haut_i', [num_tache, nb_choix_fait, i])})
                 clicked = false
             }
         }
@@ -150,7 +150,7 @@ function afficher_recap(){
                 swapElements(canvasMins, i, i+1)
                 swapElements(ctxMins, i, i+1)
                 swapElements(liste_poses, i, i+1)
-                interactions.push({"time": new Date().getTime(), "type": "fleche switch bas de la pose n°"+(i+1)})
+                interactions.push({"time": new Date().getTime(), "type": get_message('switch_bas_i', [num_tache, nb_choix_fait, i])})
                 clicked = false
             }
         }
@@ -162,7 +162,7 @@ function afficher_recap(){
             if (clicked && click_inside(xyMouseDown, x_croix, y_croix, w_croix, h_croix)) {
                 liste_poses.splice(i, 1)
                 nb_choix_fait = nb_choix_fait-1
-                interactions.push({"time": new Date().getTime(), "type": "suppression de la pose n°"+(i+1)})
+                interactions.push({"time": new Date().getTime(), "type": get_message('supp_pose_i', [i])})
                 ctxMins[i].clearRect(0, 0, canvasMins[i].width, canvasMins[i].height)
                 for (let j = i; j < nb_choix_demande-1; j++) {
                     swapElements(canvasMins, j, j+1)
@@ -268,23 +268,23 @@ function traitement_fleche(){
 
 function action_fleche_gauche(){
     idx_i = (idx_i+1)%8
-    interactions.push({"time": new Date().getTime(), "type": "fleche gauche"})}
+    interactions.push({"time": new Date().getTime(), "type": get_message('FG', [num_tache, nb_choix_fait, idx_i, idx_j])})}
 function action_fleche_droite(){
     idx_i = (idx_i+7)%8
-    interactions.push({"time": new Date().getTime(), "type": "fleche droite"})}
+    interactions.push({"time": new Date().getTime(), "type": get_message('FD', [num_tache, nb_choix_fait, idx_i, idx_j])})}
 function action_fleche_haut(){
-    interactions.push({"time": new Date().getTime(), "type": "fleche haut"})
+    interactions.push({"time": new Date().getTime(), "type": get_message('FH', [num_tache, nb_choix_fait, idx_i, idx_j])})
     if (idx_j == 0){
         texte_temporaire = {"text": "You can't go any further, GO BACK DOWN.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
-        interactions.push({"time": new Date().getTime(), "type": "Affichage error a cause de fleche haut"})
+        interactions.push({"time": new Date().getTime(), "type": get_message("erreur_FH", []) })
     }
     idx_j = Math.max(idx_j-1,0)
     }
 function action_fleche_bas(){
-    interactions.push({"time": new Date().getTime(), "type": "fleche bas"})
+    interactions.push({"time": new Date().getTime(), "type": get_message('FB', [num_tache, nb_choix_fait, idx_i, idx_j])})
     if (idx_j == 4){
         texte_temporaire = {"text": "You can't go any further, GO UP.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
-        interactions.push({"time": new Date().getTime(), "type": "Affichage error a cause de fleche bas"})
+        interactions.push({"time": new Date().getTime(), "type": get_message("erreur_FB", []) })
     }
     idx_j = Math.min(idx_j+1,4)
     }
@@ -357,27 +357,28 @@ function get_clicked_bouton(){
     }
     if (clicked && click_inside(xyMouseMove, window.innerWidth-w_bouton-10, window.innerHeight-h_bouton-10, w_bouton, h_bouton)) {      
         which_clicked_bouton = "bouton_raz"
-        interactions.push({"time": new Date().getTime(), "type": "bouton raz"})
+        interactions.push({"time": new Date().getTime(), "type": get_message("bouton_raz", [num_tache, nb_choix_fait])})
     }
 }
 
 function action_bouton_pose(){
-    interactions.push({"time": new Date().getTime(), "type": "bouton pose n°"+(nb_choix_fait+1)})
     // on regarde si la pose sélectionnée n'a pas déjà été choisie avant
     pose_deja_choisie(liste_poses, idx_i, idx_j)
+
     if (deja_choisie && !(nb_choix_fait == nb_choix_demande)){
         //console.log("Cette pose a déjà été sélectionnée.")
         texte_temporaire = {"text": "This viewpoint has already been selected.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
-        interactions.push({"time": new Date().getTime(), "type": "Affichage error pose deja sélectionnee"})}
+        interactions.push({"time": new Date().getTime(), "type": get_message("erreur_pose_selectionnee", [])})}
     
         // plus de choix possible
     if (nb_choix_fait == nb_choix_demande) {
         //console.log("Tu as déjà fait tes "+nb_choix_demande+" choix.")
         texte_temporaire = {"text": "You have already selected your "+nb_choix_demande+" viewpoints.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
-        interactions.push({"time": new Date().getTime(), "type": "Affichage error "+nb_choix_demande+" deja fait"})}
+        interactions.push({"time": new Date().getTime(), "type": get_message("erreur_choix_fait", [nb_choix_fait])})}
     
         // si on a pas encore choisie toutes nos poses, on peut en ajouter
     if (nb_choix_fait < nb_choix_demande && !(deja_choisie)){
+        interactions.push({"time": new Date().getTime(), "type": get_message("bouton_select", [num_tache, nb_choix_fait, nb_choix_fait, idx_i, idx_j])})
         liste_poses.push(['choix'+(nb_choix_fait+1), {'theta':theta}, {"delta":delta}, {'idx_i':idx_i}, {'idx_j':idx_j}])
         // affichage de la vue sélectionnée dans le recap
         ctxMins[nb_choix_fait].drawImage(canvasRenderer, 0.5*canvasRenderer.width-0.5*canvasRenderer.height, 0, canvasRenderer.height, canvasRenderer.height, 0, 0, canvasMins[0].width, canvasMins[0].height)//canvasRenderer.height*0.3, canvasRenderer.height*0.25)
@@ -386,7 +387,7 @@ function action_bouton_pose(){
 }
 
 function action_bouton_retirer(){
-    interactions.push({"time": new Date().getTime(), "type": "bouton retirer"})
+    interactions.push({"time": new Date().getTime(), "type": get_message('bouton_remove', [num_tache, nb_choix_fait])})
     // il y a des poses à retirer
     if (liste_poses.length > 0){
         liste_poses.pop()
@@ -401,12 +402,12 @@ function action_bouton_retirer(){
     else {
         //console.log("Il n'y a pas de pose à retirer.")
         texte_temporaire = {"text": "There are no selected viewpoints to remove.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
-        interactions.push({"time": new Date().getTime(), "type": "Affichage error pas de pose a retirer"})
+        interactions.push({"time": new Date().getTime(), "type": get_message("erreur_pas_de_pose", [])})
     }
 }
 
 function action_bouton_reinitialiser(){
-    interactions.push({"time": new Date().getTime(), "type": "bouton renitialiser"})
+    interactions.push({"time": new Date().getTime(), "type": get_message("bouton_reset", [num_tache, nb_choix_fait])})
     if (liste_poses.length>0){
         liste_poses = []
         nb_choix_fait = 0
@@ -417,11 +418,11 @@ function action_bouton_reinitialiser(){
     }
     else {//console.log("Il n'y a pas de pose à reintialiser.")
         texte_temporaire = {"text": "There are no selected viewpoints to resart.", "x":x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
-    interactions.push({"time": new Date().getTime(), "type": "Affichage error aucun choix fait donc pas de reinitialisation possible"})}
+    interactions.push({"time": new Date().getTime(), "type": get_message("erreur_reset_impossible", [])})}
 }
 
 function action_bouton_valider(){
-    interactions.push({"time": new Date().getTime(), "type": "bouton valider"})
+    interactions.push({"time": new Date().getTime(), "type": get_message("bouton_valider", [num_tache, nb_choix_fait])})
     // Si tous les mesh ont été vu
     if (num_tache == nb_mesh && nb_choix_demande==nb_choix_fait){
         choix_courant['choix_poses'] = liste_poses
@@ -434,7 +435,8 @@ function action_bouton_valider(){
         //page_analyse = true
         page_explication_analyse = true
         page_vues = false
-        interactions.push({"time": new Date().getTime(), "type": "fin choix vues - debut explication analyse"})
+        interactions.push({"time": new Date().getTime(), "type": get_message('fin_tache_i', [num_tache-1])})
+        interactions.push({"time": new Date().getTime(), "type": get_message("fin_choix", [])})
     }
 
     // Si le nombre de vue demandé a été fait et que ce n'est pas le dernier mesh à voir
@@ -455,14 +457,17 @@ function action_bouton_valider(){
         indice_mesh = indice_mesh + 1
         num_tache = num_tache+1
         idx_i_init = Math.floor(Math.random()*8); idx_j_init = Math.floor(Math.random()*5)
-        setUp_3D(indice_mesh, idx_i_init, idx_j_init)  
+        interactions.push({"time": new Date().getTime(), "type": get_message('fin_tache_i', [num_tache-1])})
+        interactions.push({"time": new Date().getTime(), "type": get_message('debut_tache_i', [num_tache])})
+        setUp_3D(indice_mesh, idx_i_init, idx_j_init) 
+
     }
 
     // Error : il reste des vues à sélectionner
     else if (nb_choix_fait < nb_choix_demande){
         //console.log("Tu n'as pas fait tes 3 choix")
         texte_temporaire = {"text": "You did not select your "+nb_choix_demande+" viewpoints.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
-        interactions.push({"time": new Date().getTime(), "type": "Affichage error a cause du bouton valider"})
+        interactions.push({"time": new Date().getTime(), "type": get_message("erreur_valider", [])})
     }
     // Error : un pbl à identifier
     else{
@@ -486,11 +491,11 @@ function action_bouton_raz(){
         init_variable(false); 
         idx_i_init = Math.floor(Math.random()*8); idx_j_init = Math.floor(Math.random()*5)
         setUp_3D(indice_mesh, idx_i_init, idx_j_init)
-        interactions.push({"time": new Date().getTime(), "type": "bouton raz check"})}
+        interactions.push({"time": new Date().getTime(), "type": get_message("bouton_raz_check", [num_tache, nb_choix_fait])})}
     // click sur la croix ou ailleurs : on clear
     if(clicked){
         bouton_raz_clicked = false
-        interactions.push({"time": new Date().getTime(), "type": "bouton raz croix"})}
+        interactions.push({"time": new Date().getTime(), "type": get_message("bouton_raz_croix", [num_tache, nb_choix_fait])})}
 
 
 }

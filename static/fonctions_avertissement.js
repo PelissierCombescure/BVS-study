@@ -20,7 +20,7 @@ function action_bouton_commencer_avertissement(){
     page_avertissement = false 
     page_contexte = true 
     //page_vues = true
-    interactions.push({"time": new Date().getTime(), "type": "fin avertissement - debut contexte"})
+    interactions.push({"time": new Date().getTime(), "type": get_message("fin_avertissement", [])})
 }
 
 function afficher_bouton_commencer_avertissement(){

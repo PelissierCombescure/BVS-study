@@ -53,7 +53,7 @@ function action_bouton_commencer_inscription(){
     page_inscription = false 
     //page_vues = true 
     page_explication = true
-    interactions.push({"time": new Date().getTime(), "type": "debut tutorial"})
+    interactions.push({"time": new Date().getTime(), "type": get_message("debut_tutorial", [])})
     //gestion des données personnelle de l'utilisateur
     //gestion_donnees_personnelles()
         
@@ -83,7 +83,7 @@ function action_bouton_skip_inscription(){
     page_warning = true
     //page_vues = true
     skiped = true
-    interactions.push({"time": new Date().getTime(), "type": "skip tutorial - debut warning"})
+    interactions.push({"time": new Date().getTime(), "type": get_message("skip", []) })
     document.removeEventListener("keydown", action_clavier_inscription)
     num_action = 0
     nb_action = 1
@@ -114,7 +114,7 @@ function action_bouton_suivant_inscription(){
     inscription_finie = true 
     gestion_donnees_personnelles()
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    interactions.push({"time": new Date().getTime(), "type": "fin inscription - choix tutorial"})
+    interactions.push({"time": new Date().getTime(), "type":get_message("fin_inscription", []) })
 }
 
 

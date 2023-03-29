@@ -34,7 +34,7 @@ function init_variable(premier_appel){
     skiped = false
 
     // Au premier appel on init : les interactions
-    if (premier_appel){interactions = [{"time" : new Date().getTime(), "type": "start"}]}
+    if (premier_appel){interactions = [{"time" : new Date().getTime(), "type": get_message("debut_etude", [])}]}
 
     // Couleur
     alpha_survol = 0.3
@@ -43,7 +43,7 @@ function init_variable(premier_appel){
     indice_mesh = 0 // indice du premier mesh à visionner
     mesh_courant = "nope" // nom des mesh 
     // nombre de mesh a visionner AU TOTAL
-    nb_mesh = 2 //3
+    nb_mesh = 4
     // random nom mesh 
     obj_file = shuffle(['dragon_update_user_study_normed.obj', 'camel_update_user_study_normed.obj', 'gorgoile_update_user_study_centered_normed.obj', 'horse_update_user_study_normed.obj'])
     
@@ -255,8 +255,8 @@ function setUp_3D(idx_mesh, idx_i_init, idx_j_init, explication=false){
     choix_courant['delta_init'] = delta_init
 
     // pour savoir quel mesh on affiche
-    interactions.push({"time": new Date().getTime(), "type": "Affichage Mesh random : "+mesh_courant+" en idx_i, idx_j : ("+idx_i_init+", "+idx_j_init+")"})
-    interactions.push({"time": new Date().getTime(), "type": "Affichage Mesh random : "+mesh_courant+" en theta, delta : ("+theta_init+", "+delta_init+")"})
+    interactions.push({"time": new Date().getTime(), "type": get_message('affichage_mesh_IJ', [mesh_courant, idx_i_init, idx_j_init])})
+    interactions.push({"time": new Date().getTime(), "type": get_message('affichage_mesh_TD', [mesh_courant, theta_init, delta_init])})//"Affichage Mesh random : "+mesh_courant+" en theta, delta : ("+theta_init+", "+delta_init+")"})
 }
 
 ////////////////////////////////////////
@@ -425,7 +425,8 @@ function animate() {
     // page de choix
     if (page_vues && num_tache <= nb_mesh){
         //console.log("boucle choix")
-        if (skiped){document.removeEventListener("keydown", action_clavier_inscription)}
+        if (skiped){document.removeEventListener("keydown", action_clavier_inscription)
+                    document.removeEventListener("keydown", action_clavier_explication)}
         else{
             // on enlève les touches du clavier associé à la page inscription
             document.removeEventListener("keydown", action_clavier_explication)}
@@ -436,6 +437,7 @@ function animate() {
             // affichage ecran 3D de manière aléatoire
             idx_i_init = Math.floor(Math.random()*8)
             idx_j_init = Math.floor(Math.random()*5)
+            interactions.push({"time": new Date().getTime(), "type": get_message('debut_tache_i', [num_tache])})
             setUp_3D(indice_mesh, idx_i_init, idx_j_init)
             premier_tour_page_vues = false
         }
@@ -499,7 +501,7 @@ function animate() {
         document.removeEventListener("keydown", action_clavier_explication_analyse)
         // inti clavier
         if(premier_tour_page_analyse){
-            interactions.push({"time": new Date().getTime(), "type": "debut analyse n°1"})
+            interactions.push({"time": new Date().getTime(), "type": get_message("debut_analyse", [])})
             init_clavier_analyse()
             init_variable_analyse()
             old_renderer = document.getElementById('renderer')
@@ -539,13 +541,14 @@ function animate() {
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         // Ajout du listener pour déclencer la suite lorsque la requête sera terminée.
         xhr.onreadystatechange = function() {
+            //interactions.push({"time": new Date().getTime(), "type": get_message("fin_eetude", [])})
             // Si la requête est terminée, et que la réponse n'est pas une erreur.
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                 console.log(xhr.responseText);
                 message_fin = "> It's done. You can close the web page."
                 envoie_termine = true
                 update_texte_fin(message_fin)
-                interactions.push({"time": new Date().getTime(), "type": "fin etude"})
+                interactions.push({"time": new Date().getTime(), "type": get_message("fin_etude", [])})
                 return;
             }
         }

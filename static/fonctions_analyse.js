@@ -39,7 +39,7 @@ function affichage_legende(pos){
 function affichage_texte(){
     // Texte
     //draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1) // ou + clair 4, 38, 48
-    affichage_titre("Analysis your selections: why did you choose these viewpoints?", (0.015*window.innerWidth)+"pt Courier", "#EF476F", yt =  0.1*window.innerHeight)
+    affichage_titre("Analysis your selections: Why did you choose these viewpoints?", (0.015*window.innerWidth)+"pt Courier", "#EF476F", yt =  0.1*window.innerHeight)
 }
 
 // idx_tache est la num de la tache à aller chercher dans all_ctxMins
@@ -106,7 +106,7 @@ function condition_valider(){
 }
 
 function action_bouton_valider_analyse(){
-    interactions.push({"time": new Date().getTime(), "type": "bouton valider analyse"})
+    interactions.push({"time": new Date().getTime(), "type": get_message("bouton_valider_analyse", []) })
     // si au moins un mot est coché et qu'il reste des analyse à faire
     if (condition_valider()){
         // sauvegarde des checkbox clikée et les mesh 
@@ -126,7 +126,7 @@ function action_bouton_valider_analyse(){
         // indice mesh da l'analyse suivante
         idx_tache = idx_tache + 1
         if (num_analyse<nb_analyse_demande){
-        interactions.push({"time": new Date().getTime(), "type": "debut analyse n°"+(num_analyse+1)})}
+        interactions.push({"time": new Date().getTime(), "type": get_message("debut_analyse_i", [num_analyse]) })}
     } 
 }
 
@@ -173,7 +173,7 @@ function check_ou_decheck(i_mot){
     if (checkbox_clicked_courant.idx_checkbox.indexOf(i_mot) == -1){
         checkbox_clicked_courant.idx_checkbox.push(i_mot)
         checkbox_clicked_courant.mots.push(keywords[i_mot])
-        interactions.push({"time": new Date().getTime(), "type": "ajout check sur : analyse n°"+(num_analyse+1)+", mot "+keywords[i_mot]+" à "})
+        interactions.push({"time": new Date().getTime(), "type": get_message("ajout_check", [num_analyse, keywords[i_mot]])})
         console.log("ajout "+keywords[i_mot])
         // checkbox Other
         if (i_mot == keywords.length-1){
@@ -185,7 +185,7 @@ function check_ou_decheck(i_mot){
         checkbox_clicked_courant.idx_checkbox.splice(position_i,1)
         checkbox_clicked_courant.mots.splice(position_i,1)
         console.log("retrait "+keywords[i_mot])
-        interactions.push({"time": new Date().getTime(), "type": "retrait check sur : analyse n°"+(num_analyse+1)+", mot "+keywords[i_mot]+" à "})
+        interactions.push({"time": new Date().getTime(), "type": get_message("retrait_check", [num_analyse, keywords[i_mot]])})
         if (i_mot == keywords.length-1){
             toto = document.getElementById('texte_area')
             if (toto!=  null){toto.parentElement.removeChild(toto)}            
@@ -267,7 +267,7 @@ function traitement_analyse(){
     }
     else{
        page_analyse = false
-       interactions.push({"time": new Date().getTime(), "type": "fin analyse"})
+       interactions.push({"time": new Date().getTime(), "type": get_message("fin_etude", [])})
     }
 
 }
