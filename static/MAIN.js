@@ -457,7 +457,7 @@ function animate() {
             else{print_text(handle_text(texte_temporaire.text, texte_temporaire.x, texte_temporaire.y, taille_texte+"pt Courier", longueur_max_error, "#118AB2"))}
         }
         // progress bar
-        progress_bar(num_tache, nb_mesh, taille_texte)
+        progress_bar(num_tache-1, nb_mesh, taille_texte)
         // Affichage fleche
         afficher_fleche(imgs)
         // affichage de sboutons
