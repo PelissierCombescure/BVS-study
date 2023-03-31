@@ -86,13 +86,13 @@ function init_variable(premier_appel){
 
     // Enchainement des pages
     if (premier_appel){
-        page_avertissement = false
+        page_avertissement = true
         page_contexte = false
         page_inscription = false
         page_explication = false
         page_warning = false
         page_explication_bis = false
-        page_vues = true // false
+        page_vues = false // false
         page_explication_analyse = false 
         page_analyse = false
     // cas raz : on recommence juste la partie vues
