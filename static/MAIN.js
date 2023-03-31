@@ -82,17 +82,17 @@ function init_variable(premier_appel){
     H_3D = window.innerHeight*scale_H_3D
 
     // Rayon pour les cameras
-    R = 2.5
+    R = 2.2
 
     // Enchainement des pages
     if (premier_appel){
-        page_avertissement = true
+        page_avertissement = false
         page_contexte = false
         page_inscription = false
         page_explication = false
         page_warning = false
         page_explication_bis = false
-        page_vues = false // false
+        page_vues = true // false
         page_explication_analyse = false 
         page_analyse = false
     // cas raz : on recommence juste la partie vues
