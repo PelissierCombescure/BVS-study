@@ -83,8 +83,8 @@ function show_consignes(){
         // Texte
         //tt = {"t":"- You will be presented "+nb_mesh+" different objects."}
         //ff = {"t":"- For each of them, you will chose a viewpoint you find most representative of the given object. You will have to do this "+nb_choix_demande+" times."}
-        print_text(handle_text(textes['texte13'].t,  x_ecran + 20, y_ecran+ 0.2*h_ecran, (0.01*window.innerWidth)+"pt Courier", w_ecran-20, "rgb(0,0,0)"))
-        print_text(handle_text(textes['texte14'].t,  x_ecran + 20, y_ecran+0.4*h_ecran, (0.01*window.innerWidth)+"pt Courier", w_ecran-20, "rgb(0,0,0)"))
+        print_text(handle_text(textes_contexte['texte13'].t,  x_ecran + 20, y_ecran+ 0.2*h_ecran, (0.01*window.innerWidth)+"pt Courier", w_ecran-20, "rgb(0,0,0)"))
+        print_text(handle_text(textes_contexte['texte14'].t,  x_ecran + 20, y_ecran+0.4*h_ecran, (0.01*window.innerWidth)+"pt Courier", w_ecran-20, "rgb(0,0,0)"))
     }
 }
 

@@ -49,7 +49,7 @@ function action_bouton_suivant_contexte(){
         texte_a_afficher = []}
     if (num_texte == (textes_page_1.length + textes_page_2.length + textes_page_3.length)){
         texte_a_afficher = []}
-    texte_a_afficher.push(textes["texte"+num_texte])
+    texte_a_afficher.push(textes_contexte["texte"+num_texte])
 
 }
 
@@ -154,19 +154,19 @@ function traitement_contexte(){
     }
     // affichage image 
     if(num_texte==6){
-        ctx.drawImage(imgs['exemple1'], x_bouton_suivant + w_bouton_suivant + 100, (textes["texte6"].y + textes["texte5"].y)/2, window.innerWidth*(2/8), window.innerWidth*(2/8))
+        ctx.drawImage(imgs['exemple1'], x_bouton_suivant + w_bouton_suivant + 100, (textes_contexte["texte6"].y + textes_contexte["texte5"].y)/2, window.innerWidth*(2/8), window.innerWidth*(2/8))
     }
     if(num_texte==7){
-        ctx.drawImage(imgs['exemple2'], x_bouton_suivant + w_bouton_suivant + 100, (textes["texte6"].y + textes["texte5"].y)/2 , window.innerWidth*(2/8), window.innerWidth*(2/8))
+        ctx.drawImage(imgs['exemple2'], x_bouton_suivant + w_bouton_suivant + 100, (textes_contexte["texte6"].y + textes_contexte["texte5"].y)/2 , window.innerWidth*(2/8), window.innerWidth*(2/8))
     }  
     if(num_texte==10 || num_texte==11){
-        //affichage_texte_contexte("Which viewpoint would you choose between both?", font_texte, "rgb(255, 209, 102)", x_texte, (textes["texte10"].y + textes["texte11"].y)/2, window.innerWidth*(4/8))
-        //ctx.drawImage(imgs['exemple1'], window.innerWidth*(6/10)+20 , textes["texte10"].y - 50, window.innerWidth*(1/8), window.innerWidth*(1/8))
-        //ctx.drawImage(imgs['exemple2'], window.innerWidth*(6/10) +  window.innerWidth*(1/8) + 40, textes["texte10"].y - 50 , window.innerWidth*(1/8), window.innerWidth*(1/8))
+        //affichage_texte_contexte("Which viewpoint would you choose between both?", font_texte, "rgb(255, 209, 102)", x_texte, (textes_contexte["texte10"].y + textes_contexte["texte11"].y)/2, window.innerWidth*(4/8))
+        //ctx.drawImage(imgs['exemple1'], window.innerWidth*(6/10)+20 , textes_contexte["texte10"].y - 50, window.innerWidth*(1/8), window.innerWidth*(1/8))
+        //ctx.drawImage(imgs['exemple2'], window.innerWidth*(6/10) +  window.innerWidth*(1/8) + 40, textes_contexte["texte10"].y - 50 , window.innerWidth*(1/8), window.innerWidth*(1/8))
         w_exemple =  window.innerWidth*(1/8)
         h_exemple = w_exemple
-        ctx.drawImage(imgs['exemple1'], window.innerWidth/2 - w_exemple/2 -10, (textes["texte10"].y + textes["texte11"].y)/2 - h_exemple/2 , w_exemple, h_exemple)
-        ctx.drawImage(imgs['exemple2'], window.innerWidth/2 + w_exemple/2 +10, (textes["texte10"].y + textes["texte11"].y)/2 -h_exemple/2, w_exemple, h_exemple)
+        ctx.drawImage(imgs['exemple1'], window.innerWidth/2 - w_exemple/2 -10, (textes_contexte["texte10"].y + textes_contexte["texte11"].y)/2 - h_exemple/2 , w_exemple, h_exemple)
+        ctx.drawImage(imgs['exemple2'], window.innerWidth/2 + w_exemple/2 +10, (textes_contexte["texte10"].y + textes_contexte["texte11"].y)/2 -h_exemple/2, w_exemple, h_exemple)
     }             
     
      
@@ -189,7 +189,7 @@ function init_textes_contexte(){
 titre = "User study : Best view selection"
 color_blanc = "rgb(255,255,255)"
 color_rouge = "rgb(239, 71, 111)"
-textes={
+textes_contexte={
 "texte0":{"t":"Hello! I am Marie Pelissier, a 3rd year PhD student. I work on computer vision, a subfield of computer science, and you are about to help me with my research.", "y": window.innerHeight*0.15, "c": color_blanc},
 "texte1":{"t":"First, thank you for participating in my study. Then, I am collecting data in order to evaluate how well a computer does against actual human opinion in the mattter of finding the best viewpoint to look at an object. Unfortunatly, it seems that no one in the scientific community has yet proposed a dataset for this purpouse.", "y":window.innerHeight*0.35, "c": color_blanc},
 "texte2":{"t":"That’s where you come into play, I need you to answer a few question in order to build a dataset of human-chosen viewpoints of objects. Let me get into the details...", "y":window.innerHeight*0.65, "c": color_blanc},
@@ -211,11 +211,11 @@ textes={
 "texte17":{"t":"But before anything, we need you to register in order to save your answers.", "y": window.innerHeight*0.7, "c": color_blanc},
 }
 
-textes_page_1 = [textes["texte0"], textes["texte1"], textes["texte2"]]
-textes_page_2 = [textes["texte3"], textes["texte4"], textes["texte5"], textes["texte6"], textes["texte7"]]
-textes_page_3 = [textes["texte8"], textes["texte9"], textes["texte10"], textes["texte11"]]
-textes_page_4 = [textes["texte12"], textes["texte13"], textes["texte14"], textes["texte15"], textes["texte16"], , textes["texte17"]]
-texte_a_afficher = [textes["texte0"]]
+textes_page_1 = [textes_contexte["texte0"], textes_contexte["texte1"], textes_contexte["texte2"]]
+textes_page_2 = [textes_contexte["texte3"], textes_contexte["texte4"], textes_contexte["texte5"], textes_contexte["texte6"], textes_contexte["texte7"]]
+textes_page_3 = [textes_contexte["texte8"], textes_contexte["texte9"], textes_contexte["texte10"], textes_contexte["texte11"]]
+textes_page_4 = [textes_contexte["texte12"], textes_contexte["texte13"], textes_contexte["texte14"], textes_contexte["texte15"], textes_contexte["texte16"], , textes_contexte["texte17"]]
+texte_a_afficher = [textes_contexte["texte0"]]
 }
 
 
