@@ -42,11 +42,13 @@ function init_variable(premier_appel){
     // DATA github
     indice_mesh = 0 // indice du premier mesh à visionner
     mesh_courant = "nope" // nom des mesh 
-    // nombre de mesh a visionner AU TOTAL
-    nb_mesh = 4
     // random nom mesh 
-    obj_file = shuffle(['dragon_update_user_study_normed.obj', 'camel_update_user_study_normed.obj', 'gorgoile_update_user_study_centered_normed.obj', 'horse_update_user_study_normed.obj'])
-    
+    //obj_file_random = shuffle(['backpack_regulier_tri_centered_user_study_normed.obj', 'dragon_update_user_study_normed.obj', 'camel_update_user_study_normed.obj', 'gorgoile_update_user_study_centered_normed.obj', 'horse_update_user_study_normed.obj'])
+    obj_file_random = shuffle(obj_names)
+
+    // nombre de mesh a visionner AU TOTAL
+    nb_mesh = obj_file_random.length
+
     // nb analyse demandé
     nb_analyse_demande = 2
     list_idx_tache =[]
@@ -229,25 +231,26 @@ function setUp_3D(idx_mesh, idx_i_init, idx_j_init, explication=false){
     setUp_light(R)
 
     // Data 3D
-    //obj_file = shuffle(['dragon_update_user_study_normed.obj', 'camel_update_user_study_normed.obj', 'gorgoile_update_user_study_centered_normed.obj', 'horse_update_user_study_normed.obj'])
+    //obj_file_random = shuffle(['dragon_update_user_study_normed.obj', 'camel_update_user_study_normed.obj', 'gorgoile_update_user_study_centered_normed.obj', 'horse_update_user_study_normed.obj'])
     const objLoader = new THREE.OBJLoader2();
 
-        // Si on load le mesh 3d dans les explicationq, on imporse que ce soit le dragon
+    // Si on load le mesh 3d dans les explication, on importe que ce soit le dragon
     if (explication){
-        objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/3DMesh/dragon_update_user_study_normed.obj', (event) => {    
+        //objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/3DMesh/dragon_update_user_study_normed.obj', (event) => {  
+        objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/3DMesh/dragon_update_normed_centered_user_study.obj', (event) => {       
             const root = event.detail.loaderRootNode;
             scene.add(root);
         });
     // sinon on est dans l'étide dans on fait du random entre tous les mesh dispo sur le git
     } else {
-        //objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/3DMesh/'+obj_file[idx_mesh], (event) => {
-        objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/3DMesh/'+obj_file[idx_mesh], (event) => {    
+        //objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/3DMesh/'+obj_file_random[idx_mesh], (event) => {
+        objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/3DMesh/'+obj_file_random[idx_mesh], (event) => {    
             const root = event.detail.loaderRootNode;
             scene.add(root);
         });
     }
-    mesh_courant = obj_file[idx_mesh].split('_')[0]
-    choix_courant['obj_file'] = obj_file[idx_mesh]
+    mesh_courant = obj_file_random[idx_mesh].split('_')[0]
+    choix_courant['obj_file_random'] = obj_file_random[idx_mesh]
     choix_courant['mesh'] = mesh_courant
     choix_courant['position_init_idx_i'] = idx_i_init
     choix_courant['position_init_idx_j'] =idx_j_init
@@ -255,6 +258,7 @@ function setUp_3D(idx_mesh, idx_i_init, idx_j_init, explication=false){
     choix_courant['delta_init'] = delta_init
 
     // pour savoir quel mesh on affiche
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  "+obj_file_random[idx_mesh])
     interactions.push({"time": new Date().getTime(), "type": get_message('affichage_mesh_IJ', [num_tache, nb_choix_fait, mesh_courant, idx_i_init, idx_j_init])})
     interactions.push({"time": new Date().getTime(), "type": get_message('affichage_mesh_TD', [num_tache, nb_choix_fait, mesh_courant, theta_init, delta_init])})//"Affichage Mesh random : "+mesh_courant+" en theta, delta : ("+theta_init+", "+delta_init+")"})
 }
@@ -453,7 +457,7 @@ function animate() {
             else{print_text(handle_text(texte_temporaire.text, texte_temporaire.x, texte_temporaire.y, taille_texte+"pt Courier", longueur_max_error, "#118AB2"))}
         }
         // progress bar
-        progress_bar(num_tache-1, nb_mesh, taille_texte)
+        progress_bar(num_tache, nb_mesh, taille_texte)
         // Affichage fleche
         afficher_fleche(imgs)
         // affichage de sboutons

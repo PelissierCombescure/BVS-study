@@ -2,3 +2,5 @@ node_modules
 grahics/Tutorial/wolf*
 graphics/Tutorial/wolf*.png
 outputs/*
+
+get_3dmesh_names.ipynb
