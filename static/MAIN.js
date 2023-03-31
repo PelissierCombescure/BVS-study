@@ -501,7 +501,7 @@ function animate() {
         document.removeEventListener("keydown", action_clavier_explication_analyse)
         // inti clavier
         if(premier_tour_page_analyse){
-            interactions.push({"time": new Date().getTime(), "type": get_message("debut_analyse", [])})
+            interactions.push({"time": new Date().getTime(), "type": get_message("debut_analyse_i", [num_analyse, choix["tache_N"+list_idx_tache[idx_tache]].mesh])})
             init_clavier_analyse()
             init_variable_analyse()
             old_renderer = document.getElementById('renderer')

@@ -44,11 +44,13 @@ function get_message(message_nom, arguments){
     interaction_messages['erreur_valider'] = "T"+arguments[0]+" Ch_fait"+arguments[1]+" Affichage error a cause du bouton valider"
 
     interaction_messages['fin_explication_analyse'] =  "fin explication analyse - debut analyse"
-    interaction_messages['debut_analyse'] = "debut analyse n°1"
-    interaction_messages['bouton_valider_analyse'] = "bouton valider analyse"
-    interaction_messages['debut_analyse_i'] = "debut analyse n°"+(arguments[0]+1)
-    interaction_messages['ajout_check'] = "ajout check sur : analyse n°"+(arguments[0]+1)+", mot "+arguments[1]
-    interaction_messages['retrait_check'] = "retrait check sur : analyse n°"+(arguments[0]+1)+", mot "+arguments[1]
+    interaction_messages['debut_analyse'] = "debut analyse"
+
+    interaction_messages['bouton_valider_analyse'] =  "A"+arguments[0]+" bouton valider analyse"
+    interaction_messages['debut_analyse_i'] = "debut analyse n°"+(arguments[0])+", mesh : "+arguments[1]
+    interaction_messages['fin_analyse_i'] = "fin analyse n°"+(arguments[0])
+    interaction_messages['ajout_check'] = "A"+arguments[0]+" ajout check sur : analyse n°"+(arguments[0])+", mot "+arguments[1]
+    interaction_messages['retrait_check'] = "A"+arguments[0]+" retrait check sur : analyse n°"+(arguments[0])+", mot "+arguments[1]
     interaction_messages['fin_analyse'] =  "fin analyse"
     interaction_messages['fin_etude'] = "envoie des donnees - fin etude"
 

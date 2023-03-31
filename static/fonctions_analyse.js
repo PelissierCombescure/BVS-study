@@ -1,5 +1,5 @@
 // nuemro init de l'analyse
-num_analyse = 0
+num_analyse = 1
 idx_tache = 0 // ATTENTION ça commence à 1
 
 h_bouton_analyse = 0.1*window.innerHeight
@@ -44,7 +44,7 @@ function affichage_texte(){
 
 // idx_tache est la num de la tache à aller chercher dans all_ctxMins
 function affichage_analyse(idx_tache){
-    //canvasMins = all_canvasMins['tache_N'+list_idx_tache[idx_tache]][1]
+    canvasMins = all_canvasMins['tache_N'+list_idx_tache[idx_tache]][1]
     for (let i=0; i<nb_choix_demande; i++){
         affichage_legende(i)
         x_recap = (i+1)*x_recap_init + i*(H_3D/2)
@@ -106,15 +106,15 @@ function condition_valider(){
 }
 
 function action_bouton_valider_analyse(){
-    interactions.push({"time": new Date().getTime(), "type": get_message("bouton_valider_analyse", []) })
+    interactions.push({"time": new Date().getTime(), "type": get_message("bouton_valider_analyse", [num_analyse]) })
     // si au moins un mot est coché et qu'il reste des analyse à faire
     if (condition_valider()){
         // sauvegarde des checkbox clikée et les mesh 
         if (checkbox_clicked_courant.idx_checkbox.indexOf(keywords.length-1)!=-1){
             texte_toto = lecture_zone_texte()
-            checkbox_clicked['Analyse_N'+(num_analyse+1)] = {"mesh" : choix["tache_N"+list_idx_tache[idx_tache]].mesh ,"Checkbox" : checkbox_clicked_courant, "Texte_other":texte_toto}
+            checkbox_clicked['Analyse_N'+(num_analyse)] = {"mesh" : choix["tache_N"+list_idx_tache[idx_tache]].mesh ,"Checkbox" : checkbox_clicked_courant, "Texte_other":texte_toto}
         } else {
-            checkbox_clicked['Analyse_N'+(num_analyse+1)] = {"mesh" : choix["tache_N"+list_idx_tache[idx_tache]].mesh ,"Checkbox" : checkbox_clicked_courant}
+            checkbox_clicked['Analyse_N'+(num_analyse)] = {"mesh" : choix["tache_N"+list_idx_tache[idx_tache]].mesh ,"Checkbox" : checkbox_clicked_courant}
         }
         //RAZ pour la prochaine analyse
         checkbox_clicked_courant = {idx_checkbox:[], mots:[]}
@@ -125,8 +125,9 @@ function action_bouton_valider_analyse(){
         num_analyse = num_analyse + 1
         // indice mesh da l'analyse suivante
         idx_tache = idx_tache + 1
-        if (num_analyse<nb_analyse_demande){
-        interactions.push({"time": new Date().getTime(), "type": get_message("debut_analyse_i", [num_analyse]) })}
+        if (num_analyse<=nb_analyse_demande){
+        interactions.push({"time": new Date().getTime(), "type": get_message("fin_analyse_i", [num_analyse-1]) })
+        interactions.push({"time": new Date().getTime(), "type": get_message("debut_analyse_i", [num_analyse, choix["tache_N"+list_idx_tache[idx_tache]].mesh,]) })}
     } 
 }
 
@@ -243,7 +244,7 @@ function zone_texte(){
 ///////////////////////////////////////////////////////////////
 ///////////////////// MAIN 
 function traitement_analyse(){
-    if ((num_analyse < nb_analyse_demande)){
+    if ((num_analyse <= nb_analyse_demande)){
         // affiche les textes de la page sauf les ceheckbox
         affichage_texte()
         // afficher les checkbox et gerer les click ou declick
@@ -254,7 +255,7 @@ function traitement_analyse(){
         affichage_analyse(idx_tache)
         // affiche progress bar
         //progress_bar_analyse(num_analyse, nb_analyse_demande)
-        if (num_analyse < nb_analyse_demande-1){
+        if (num_analyse <= nb_analyse_demande-1){
             // bouton valider 
             affichage_bouton_valider_analyse("en_cours")}
         else{
@@ -267,54 +268,9 @@ function traitement_analyse(){
     }
     else{
        page_analyse = false
+       interactions.push({"time": new Date().getTime(), "type": get_message("fin_analyse_i", [num_analyse-1]) })
        interactions.push({"time": new Date().getTime(), "type": get_message("fin_etude", [])})
     }
 
 }
 
-
-// function draw_empty_checkbox(y_img_recap, num_recap){
-//     // croix
-//     x_checkbox = W_3D+dx*2+longueur_max_recap+w_fleche_b+canvasMins[0].width+w_croix*2
-//     w_checkbox = 20
-//     h_checkbox = 20
-//     dx_checkbox = 0
-//     for (let i = 0 ; i < keywords.length; i++){
-//         if (i%2 == 0){dx_checkbox = i/2 * 180}
-//         // checkbox vide
-//         y_checkbox = 20 + y_img_recap + 80*(i%2)
-//         ctx.drawImage(imgs["checkbox"], x_checkbox + dx_checkbox , y_checkbox, w_checkbox, h_checkbox)
-//         print_text(handle_text(keywords[i], x_checkbox + dx_checkbox + 30, y_checkbox + 20, "14pt Courier", longueur_max_error))
-//         // survol
-//         if (xyMouseMove.x >= x_checkbox + dx_checkbox  && xyMouseMove.x <= x_checkbox + dx_checkbox + w_checkbox && xyMouseMove.y > y_checkbox && xyMouseMove.y < y_checkbox+h_checkbox ){
-//             draw_rectangle(x_checkbox + dx_checkbox, y_checkbox, w_checkbox, h_checkbox, "rgb(0, 255, 0)", alpha_survol)
-//         }
-//         // clicked
-//         if (clicked && xyMouseMove.x >= x_checkbox + dx_checkbox  && xyMouseMove.x <= x_checkbox + dx_checkbox + w_checkbox && xyMouseMove.y > y_checkbox && xyMouseMove.y < y_checkbox+h_checkbox ){
-//             // s'il n'y a pas deja un check dessus
-//             if (checkbox_clicked_courant[num_recap].idx_checkbox.indexOf(i) == -1){
-//                 checkbox_clicked_courant[num_recap].idx_checkbox.push(i)
-//                 checkbox_clicked_courant[num_recap].mots.push(keywords[i])
-//                 interactions.push({"time": new Date().getTime(), "type": "ajout check sur : recap n°"+(num_recap+1)+", mot "+keywords[i]})}
-//             else{
-//                 position_i = checkbox_clicked_courant[num_recap].idx_checkbox.indexOf(i)
-//                 checkbox_clicked_courant[num_recap].idx_checkbox.splice(position_i,1)
-//                 checkbox_clicked_courant[num_recap].mots.splice(position_i,1)
-//                 interactions.push({"time": new Date().getTime(), "type": "retrait check sur : recap n°"+(num_recap+1)+", mot "+keywords[i]})}
-//         }
-//     }
-// }
-
-// // affichage des check pour le recap n°num_recap qui a un y = y_img_recap
-// function afficher_check(liste_check, num_recap, y_img_recap){
-//     dx_checkbox = 0
-//     idx_check = liste_check[num_recap].idx_checkbox
-//     // pour chacune de ces checkbox cliquée on affiche un check
-//     for (let i = 0 ; i < idx_check.length; i++){
-//         pos = idx_check[i]
-//         if (pos%2 == 0){dx_checkbox = pos/2 * 180}
-//         else{dx_checkbox = (pos-1)/2 * 180}
-//         y_checkbox = 20 + y_img_recap + 80*(pos%2)
-//         ctx.drawImage(imgs["check"], x_checkbox + dx_checkbox , y_checkbox, w_checkbox, h_checkbox)
-//     }
-// }

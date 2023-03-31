@@ -394,13 +394,13 @@ function action_bouton_pose(){
 }
 
 function action_bouton_retirer(){
-    interactions.push({"time": new Date().getTime(), "type": get_message('bouton_remove', [num_tache, nb_choix_fait])})
     // il y a des poses à retirer
     if (liste_poses.length > 0){
         liste_poses.pop()
         nb_choix_fait = nb_choix_fait-1
         // RAZ du contexte liée à la dernière vue ajoutée
         ctxMins[nb_choix_fait].clearRect(0, 0, canvasMins[nb_choix_fait].width, canvasMins[nb_choix_fait].height)
+        interactions.push({"time": new Date().getTime(), "type": get_message('bouton_remove', [num_tache, nb_choix_fait])})
         // On retire toutes les checkbox des checkbox
         //checkbox_clicked_courant[nb_choix_fait].idx_checkbox = []
         //checkbox_clicked_courant[nb_choix_fait].mots = []
@@ -414,10 +414,10 @@ function action_bouton_retirer(){
 }
 
 function action_bouton_reinitialiser(){
-    interactions.push({"time": new Date().getTime(), "type": get_message("bouton_reset", [num_tache, nb_choix_fait])})
     if (liste_poses.length>0){
         liste_poses = []
         nb_choix_fait = 0
+        interactions.push({"time": new Date().getTime(), "type": get_message("bouton_reset", [num_tache, nb_choix_fait])})
         // RAZ de tous les contexte : on ne les surrpime pas, on les nettoie
         for (let i = 0; i < nb_choix_demande; i++) {
             ctxMins[i].clearRect(0, 0, canvasMins[i].width, canvasMins[i].height)
