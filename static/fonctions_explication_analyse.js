@@ -165,7 +165,7 @@ explications_analyse={
 "texte0":{"t":"You have finished selecting the best viewpoints for each object.", "y": window.innerHeight*0.15, "c": color_blanc},
 "texte1":{"t":"Now I ask you to justify your choices.", "y":window.innerHeight*0.25, "c": color_blanc},
 "texte2":{"t":"For this, for some objects, the views you have chosen will reappear.", "y":window.innerHeight*0.38, "c": color_blanc},
-"texte3":{"t":"For each of the viewpoints, you will have to select one or more reasons that made you decide to select these viewpoints.", "y": window.innerHeight*0.52, "c": color_blanc},
+"texte3":{"t":"For each of the viewpoints, you will have to select one or more reasons that made you decide to select these viewpoints. And order them from the most significant to the least.", "y": window.innerHeight*0.52, "c": color_blanc},
 }
 
 explications_analyse_page_1 = [explications_analyse["texte0"], explications_analyse["texte1"], explications_analyse["texte2"], explications_analyse["texte3"]]

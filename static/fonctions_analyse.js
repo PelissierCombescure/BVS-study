@@ -14,16 +14,22 @@ function init_variable_analyse(){
     // }
     checkbox_clicked_courant = {idx_checkbox:[], mots:[]}
     // Analayse des choix avec les checkboxs
-    keywords_init = ["Side view", "Front view", "Global view", "Eyes contact", "Pleasant", "Recognizable"]
+    keywords_init = ["Side view", "Front view", "Global view", "Eyes contact", "Pleasant", "Recognizable", "3/4 view"]
     keywords = shuffle(keywords_init).concat(["Other:"])
     
+    l_keyword_max = 0
+    for (let p = 0; p<=keywords.length; p++){
+        if (l_keyword_max < ctx.measureText(keywords[p])) {l_keyword_max = ctx.measureText(keywords[p])}
+    }
+    l_keyword_max = l_keyword_max +10
+
     y_recap = 0.2*window.innerHeight
     taille_texte_explication = 0.01*window.innerWidth
     x_recap_init = (window.innerWidth - nb_choix_demande*(H_3D/2))/(nb_choix_demande+1)
 
     // checkbox
-    w_checkbox = 20
-    h_checkbox = 20
+    w_checkbox = 2*taille_texte_explication
+    h_checkbox = 2*taille_texte_explication
     y_checkbox_init = y_recap + H_3D/2 + h_checkbox
 }
 
@@ -39,7 +45,9 @@ function affichage_legende(pos){
 function affichage_texte(){
     // Texte
     //draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1) // ou + clair 4, 38, 48
-    affichage_titre("Analysis your selections: Why did you choose these viewpoints?", (0.015*window.innerWidth)+"pt Courier", "#EF476F", yt =  0.1*window.innerHeight)
+    affichage_titre("Analysis your selections:", (0.015*window.innerWidth)+"pt Courier", "#EF476F", yt =  0.05*window.innerHeight)
+    affichage_titre("Select the characteristics that have allowed to select these viewpoints, from the most important to the least.", (0.01*window.innerWidth)+"pt Courier", "#EF476F", yt =  0.1*window.innerHeight)
+    
 }
 
 // idx_tache est la num de la tache à aller chercher dans all_ctxMins
@@ -82,7 +90,7 @@ function affichage_bouton_valider_analyse(m){
         // affichage bouton valider
         if (m == "en_cours")
         {ctx.drawImage(boutons["valider"], x_bouton_analyse, y_bouton_analyse, w_bouton_analyse, h_bouton_analyse)}
-        else{ctx.drawImage(boutons["envoie_data"], x_bouton_analyse, y_bouton_analyse, w_bouton_analyse, h_bouton_analyse)}
+        else{ctx.drawImage(boutons["suivant_grand"], x_bouton_analyse, y_bouton_analyse, w_bouton_analyse, h_bouton_analyse)}
         // survol
         if(is_inside(xyMouseMove, x_bouton_analyse, y_bouton_analyse, w_bouton_analyse, h_bouton_analyse)){
             draw_rectangle(x_bouton_analyse, y_bouton_analyse, w_bouton_analyse, h_bouton_analyse, "rgb(200, 200, 200)", 0.6)
@@ -134,15 +142,15 @@ function action_bouton_valider_analyse(){
 
 ///////////////////////////////////////////////////////////////
 ///////////////////// Checkbox
-function measure_largeur(pos){
+function measure_largeur(debut, pos){
     if (pos>=0){
     l = 0
-    for (let p = 0; p<=pos; p++){
-        l = l + ctx.measureText(keywords[p]).width + 0.05*window.innerWidth
+    for (let p = debut; p<=debut+pos; p++){
+        l = l + ctx.measureText(keywords[p]).width + 0.05*window.innerWidth 
     }
     return l
     }
-    else{return 0}
+    else{return 15}
 }
 
 function traitement_empty_checkbox(){
@@ -150,11 +158,14 @@ function traitement_empty_checkbox(){
         for (let i = 0 ; i < keywords.length; i++){
             // checkbox vide
               //i*((window.innerWidth * 8/10)/6)
-            if(i<keywords.length-1){x_checkbox = window.innerWidth*1/10 + measure_largeur(i-1); y_checkbox = y_checkbox_init}
-            else {x_checkbox = window.innerWidth*1/10; y_checkbox = y_checkbox_init + 2*h_checkbox}
+            if(i<=5){x_checkbox = window.innerWidth*1/10 + measure_largeur(0, i-1); 
+                    y_checkbox = y_checkbox_init}
+            else {p = (i%5)-1; 
+                    x_checkbox = window.innerWidth*1/10 + measure_largeur(6, p-1); 
+                    y_checkbox = y_checkbox_init + 2*h_checkbox}
             ctx.drawImage(imgs["checkbox"], x_checkbox , y_checkbox, w_checkbox, h_checkbox)
             // Texte 
-            print_text(handle_text(keywords[i], x_checkbox + w_checkbox + 10, y_checkbox + 18, taille_texte_explication+"pt Courier", longueur_max_error))
+            print_text(handle_text(keywords[i], x_checkbox + w_checkbox + 10, y_checkbox + h_checkbox*0.75, taille_texte_explication+"pt Courier", longueur_max_error))
             // survol
             if (is_inside(xyMouseMove, x_checkbox, y_checkbox, w_checkbox, h_checkbox)){
                 draw_rectangle(x_checkbox, y_checkbox, w_checkbox, h_checkbox, "rgb(0, 255, 0)", alpha_survol)
@@ -199,12 +210,14 @@ function draw_check(){
     // pour chacune de ces checkbox cliquée on affiche un check
     for (let i = 0 ; i < idx_check.length; i++){
         pos = idx_check[i]
-        if (pos == keywords.length-1){x_checkbox = window.innerWidth*1/10; y_checkbox = y_checkbox_init + 2*h_checkbox}
+        if (pos > 5){p = (pos%5)-1; x_checkbox = window.innerWidth*1/10 + measure_largeur(6, p-1); y_checkbox = y_checkbox_init + 2*h_checkbox}
         else{
-            x_checkbox =  window.innerWidth*1/10 + measure_largeur(pos-1)
+            x_checkbox =  window.innerWidth*1/10 + measure_largeur(0, pos-1) 
             y_checkbox = y_checkbox_init 
         }
-        ctx.drawImage(imgs["check"], x_checkbox-5 , y_checkbox-5, w_checkbox+10, h_checkbox+10)
+        //ctx.drawImage(imgs["check"], x_checkbox-5 , y_checkbox-5, w_checkbox+10, h_checkbox+10)
+        print_text(handle_text(""+(i+1), x_checkbox + 0.2*w_checkbox, y_checkbox + h_checkbox*0.75, taille_texte_explication+"pt Courier", longueur_max_error, '#EF476F'))
+
     }
 }
 
@@ -213,8 +226,8 @@ function zone_texte(){
         h_text_zone = 0.15*window.innerHeight
         nb_caract_min = 1
         nb_caract_max = 250
-        x_texte_zone = (window.innerWidth/4) 
-        y_texte_zone = y_checkbox_init + 3*h_checkbox
+        x_texte_zone = (window.innerWidth/3) 
+        y_texte_zone = y_checkbox_init + 2*h_checkbox
         ecart_texte_zone = 0.2*window.innerHeight
     
         // Zone de texte : Name

@@ -47,10 +47,10 @@ function init_variable(premier_appel){
     obj_file_random = shuffle(obj_names)
 
     // nombre de mesh a visionner AU TOTAL
-    nb_mesh = 10 //obj_file_random.length
+    nb_mesh = 3 //obj_file_random.length
 
     // nb analyse demandé
-    nb_analyse_demande = 5
+    nb_analyse_demande = 2
     list_idx_tache =[]
     for (let p=0; p<nb_mesh; p++){list_idx_tache.push(p+1)}
     list_idx_tache = shuffle(list_idx_tache)
@@ -505,7 +505,7 @@ function animate() {
         document.removeEventListener("keydown", action_clavier_explication_analyse)
         // inti clavier
         if(premier_tour_page_analyse){
-            interactions.push({"time": new Date().getTime(), "type": get_message("debut_analyse_i", [num_analyse, choix["tache_N"+list_idx_tache[idx_tache]].mesh])})
+            //interactions.push({"time": new Date().getTime(), "type": get_message("debut_analyse_i", [num_analyse, choix["tache_N"+list_idx_tache[idx_tache]].mesh])})
             init_clavier_analyse()
             init_variable_analyse()
             old_renderer = document.getElementById('renderer')
