@@ -4,3 +4,4 @@ graphics/Tutorial/wolf*.png
 outputs/*
 
 get_3dmesh_names.ipynb
+get_json.sh
