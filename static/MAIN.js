@@ -406,6 +406,10 @@ function animate() {
         traitement_explications(idx_i_explication, idx_j_explication)
         // affichage 3D
         renderer.render( scene, camera );
+        // raccourcis bouton et fleche
+        if (num_action >= 1){
+        shortcuts(xyMouseMove, imgs['clavier_vues'], window.innerWidth/2 -(0.7*window.innerWidth/2), window.innerHeight/2 -(0.35*innerHeight/2), 0.7*window.innerWidth, 0.35*innerHeight, boutons['raccourcis'], x_Bshortcut, y_Bshortcut, w_Bshortcut, h_Bshortcut)}
+
         // RAZ
         clicked = false
         which_clicked_fleche = -1
