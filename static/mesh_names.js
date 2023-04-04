@@ -93,7 +93,7 @@
  //'bicycle_regulier_tri_normed_centered_user_study.obj',
  //'coffee_regulier_tri_normed_centered_user_study.obj',
  //'boat_regulier_tri_normed_centered_user_study.obj',
- 'ashtray_regulier2_tri.obj',
+ 'ashtray_regulier2_tri_normed_centered_user_study.obj',
  //'eraser_regulier_tri_normed_centered_user_study.obj',
  //'bucket_regulier_tri_normed_centered_user_study.obj',
  //'bench_regulier_tri_normed_centered_user_study.obj',
