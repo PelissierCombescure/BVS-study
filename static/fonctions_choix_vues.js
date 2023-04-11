@@ -276,24 +276,27 @@ function traitement_fleche(){
 function action_fleche_gauche(){
     idx_i = (idx_i+1)%8
     interactions.push({"time": new Date().getTime(), "type": get_message('FG', [num_tache, nb_choix_fait, idx_i, idx_j])})}
+
 function action_fleche_droite(){
     idx_i = (idx_i+7)%8
     interactions.push({"time": new Date().getTime(), "type": get_message('FD', [num_tache, nb_choix_fait, idx_i, idx_j])})}
+
 function action_fleche_haut(){
-    interactions.push({"time": new Date().getTime(), "type": get_message('FH', [num_tache, nb_choix_fait, idx_i, idx_j])})
     if (idx_j == 0){
         texte_temporaire = {"text": "You can't go any further, GO BACK DOWN.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
-        interactions.push({"time": new Date().getTime(), "type": get_message("erreur_FH", [num_tache, nb_choix_fait]) })
-    }
+        interactions.push({"time": new Date().getTime(), "type": get_message("erreur_FH", [num_tache, nb_choix_fait]) })}
+    
     idx_j = Math.max(idx_j-1,0)
+    interactions.push({"time": new Date().getTime(), "type": get_message('FH', [num_tache, nb_choix_fait, idx_i, idx_j])})
     }
+
 function action_fleche_bas(){
-    interactions.push({"time": new Date().getTime(), "type": get_message('FB', [num_tache, nb_choix_fait, idx_i, idx_j])})
     if (idx_j == 4){
         texte_temporaire = {"text": "You can't go any further, GO UP.", "x": x_pop_up, "y": y_pop_up, "t_end": new Date().getTime()+temps_pop}
         interactions.push({"time": new Date().getTime(), "type": get_message("erreur_FB", [num_tache, nb_choix_fait]) })
     }
     idx_j = Math.min(idx_j+1,4)
+    interactions.push({"time": new Date().getTime(), "type": get_message('FB', [num_tache, nb_choix_fait, idx_i, idx_j])})
     }
 
 ///////////////////////////////////////////////////////////////
