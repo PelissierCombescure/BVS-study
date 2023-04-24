@@ -565,9 +565,11 @@ function action_clavier_explication(event){
                     action_suivante()}
             }
 
-            if (page_warning && num_warning < (warnings_page_1.length-1)){
+            if (page_warning && num_warning < (warnings_page_1.length)){
+                console.log("cc")
                 action_bouton_suivant_warning()}
-            if (page_warning && num_warning == (warnings_page_1.length-1)){
+            if (page_warning && num_warning == (warnings_page_1.length)){
+                console.log("ee")
                 action_bouton_commencer_warning()
             }
                         
