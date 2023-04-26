@@ -86,7 +86,7 @@ function init_variable(premier_appel){
 
     // Enchainement des pages
     if (premier_appel){
-        page_avertissement = false
+        page_avertissement = true
         page_contexte = false
         page_inscription = false
         page_explication = false
