@@ -51,7 +51,7 @@ function init_variable(premier_appel){
 
     // ---> nb analyse demandé
     nb_analyse_demande = 5
-    
+
     list_idx_tache =[]
     for (let p=0; p<nb_mesh; p++){list_idx_tache.push(p+1)}
     list_idx_tache = shuffle(list_idx_tache)

@@ -22,13 +22,18 @@ function affichage_inscription(){
     ctx.strokeStyle = "rgb(255, 255, 255)" 
     ctx.fillStyle = "rgb(255, 255, 255)" 
     ctx.font = taille_texte_inscription+"pt Courier"
+
     //ctx.fillText("Firstname:", x_texte_zone, parseInt(document.getElementById("Firstname").style.top) -12)
-    ctx.fillText("Please enter your Prolific ID:", x_texte_zone, parseInt(document.getElementById("Pseudo").style.top) - 12)
-    ctx.fillText("Age:", x_texte_zone, parseInt(document.getElementById("Age").style.top) - 12)
-    ctx.fillText("Gender:", parseInt(document.getElementById("SexeM").style.left), parseInt(document.getElementById("SexeM").style.top) - 22)
-    ctx.fillText("Male", parseInt(document.getElementById("SexeM").style.left)+40, parseInt(document.getElementById("SexeM").style.top)+24)
-    ctx.fillText("Female", parseInt(document.getElementById("SexeF").style.left)+40, parseInt(document.getElementById("SexeM").style.top)+24)
-    ctx.fillText("None of these above", parseInt(document.getElementById("SexeA").style.left)+40, parseInt(document.getElementById("SexeA").style.top)+24)
+    //Prolificctx.fillText("Pseudo:", x_texte_zone, parseInt(document.getElementById("Pseudo").style.top) - 12)
+    //Prolific ctx.fillText("Age:", x_texte_zone, parseInt(document.getElementById("Age").style.top) - 12)
+    //Prolific ctx.fillText("Gender:", parseInt(document.getElementById("SexeM").style.left), parseInt(document.getElementById("SexeM").style.top) - 22)
+    //Prolific ctx.fillText("Male", parseInt(document.getElementById("SexeM").style.left)+40, parseInt(document.getElementById("SexeM").style.top)+24)
+    //Prolific ctx.fillText("Female", parseInt(document.getElementById("SexeF").style.left)+40, parseInt(document.getElementById("SexeM").style.top)+24)
+    //Prolific ctx.fillText("None of these above", parseInt(document.getElementById("SexeA").style.left)+40, parseInt(document.getElementById("SexeA").style.top)+24)
+
+    //Prolific
+    ctx.fillText("Please enter your Prolific ID:", x_texte_zone, parseInt(document.getElementById("Pseudo").style.top) - 20)
+    
 }
 
 //////////////////////////////////////////////////////////////
@@ -128,11 +133,15 @@ function champs_remplis_correctment(){
     age_ok = false
     sexe_ok = false
     //if ((document.getElementById("Firstname").value.length >0) && (value_non_vide(document.getElementById("Firstname").value))){firstname_ok = true}
-    if (document.getElementById("Pseudo").value.length >0 && (value_non_vide(document.getElementById("Pseudo").value))){name_ok = true}
-    if ((document.getElementById("Age").value >0) && (document.getElementById("Age").value.length >0) && (value_non_vide(document.getElementById("Age").value))){age_ok = true}
-    if (document.getElementById("SexeM").checked || document.getElementById("SexeF").checked || document.getElementById("SexeA").checked){ sexe_ok= true}
+    //Prolific if (document.getElementById("Pseudo").value.length > 10 && (value_non_vide(document.getElementById("Pseudo").value))){name_ok = true} //Prolific on a mis 24 au lieu de 0
+    //Prolific if ((document.getElementById("Age").value >0) && (document.getElementById("Age").value.length >0) && (value_non_vide(document.getElementById("Age").value))){age_ok = true}
+    //Prolific if (document.getElementById("SexeM").checked || document.getElementById("SexeF").checked || document.getElementById("SexeA").checked){ sexe_ok= true}
     //return firstname_ok && name_ok && age_ok && sexe_ok
-    return name_ok && age_ok && sexe_ok
+    //Prolific return name_ok  && age_ok && sexe_ok
+    
+    //Prolific
+    if (document.getElementById("Pseudo").value.length == 24 && (value_non_vide(document.getElementById("Pseudo").value))){name_ok = true} //Prolific on a mis 24 au lieu de 0
+    return name_ok 
 }
 
 function value_non_vide(V){
@@ -145,12 +154,12 @@ function value_non_vide(V){
 
 function afficher_champs_inscription() {
     inscription_finie = false
-    w_text_zone = 0.015*window.innerWidth
+    w_text_zone = 0.02*window.innerWidth
     h_text_zone = 0.05*window.innerHeight
     nb_caract_min = 1
     nb_caract_max = 30
     x_texte_zone = (window.innerWidth/4) 
-    y_texte_zone = 0.20*window.innerHeight
+    y_texte_zone = 0.40*window.innerHeight
     ecart_texte_zone = 0.2*window.innerHeight
     
 
@@ -187,85 +196,90 @@ function afficher_champs_inscription() {
     document.body.appendChild(input2);
     input2.focus();
 
-    // Zone de texte : Age
-    var input3 = document.createElement('input');
-    input3.type = 'number';
-    input3.id = 'Age';
-    input3.min = 1
-    input3.max = 99
-    input3.size = 10
-    // style 
-    input3.style.position = 'fixed';   
-    input3.style.left = x_texte_zone+'px';
-    input3.style.top = ecart_texte_zone+y_texte_zone+'px';//2*ecart_texte_zone + y_texte_zone+'px';
-    input3.style.textAlign = 'left'
-    input3.style.height = h_text_zone
-    input3.style.font =  taille_texte_inscription+"pt Courier"    
-    document.body.appendChild(input3);
-    input3.focus();
+    //Prolific 
+    // // Zone de texte : Age
+    // var input3 = document.createElement('input');
+    // input3.type = 'number';
+    // input3.id = 'Age';
+    // input3.min = 1
+    // input3.max = 99
+    // input3.size = 10
+    // // style 
+    // input3.style.position = 'fixed';   
+    // input3.style.left = x_texte_zone+'px';
+    // input3.style.top = ecart_texte_zone+y_texte_zone+'px';//2*ecart_texte_zone + y_texte_zone+'px';
+    // input3.style.textAlign = 'left'
+    // input3.style.height = h_text_zone
+    // input3.style.font =  taille_texte_inscription+"pt Courier"    
+    // document.body.appendChild(input3);
+    // input3.focus();
 
-    // Zone de texte : Sexe
-    var input4 = document.createElement('input');
-    input4.type = 'radio';
-    input4.id = 'SexeM';
-    input4.name = "sexe"
-    //input4.size = w_text_zone
-    // style 
-    input4.style.position = 'fixed';   
-    input4.style.left = x_texte_zone+'px';
-    input4.style.top = 2*ecart_texte_zone + y_texte_zone+'px';//3*ecart_texte_zone + y_texte_zone+'px';
-    input4.style.height = 20
-    input4.style.width = 20
-    document.body.appendChild(input4);
-    input4.focus();
+    //Prolific 
+    // // Zone de texte : Sexe
+    // var input4 = document.createElement('input');
+    // input4.type = 'radio';
+    // input4.id = 'SexeM';
+    // input4.name = "sexe"
+    // //input4.size = w_text_zone
+    // // style 
+    // input4.style.position = 'fixed';   
+    // input4.style.left = x_texte_zone+'px';
+    // input4.style.top = 2*ecart_texte_zone + y_texte_zone+'px';//3*ecart_texte_zone + y_texte_zone+'px';
+    // input4.style.height = 20
+    // input4.style.width = 20
+    // document.body.appendChild(input4);
+    // input4.focus();
 
-    var input5 = document.createElement('input');
-    input5.type = 'radio';
-    input5.id = 'SexeF';
-    input5.name = "sexe"
-    //input4.size = w_text_zone
-    // style 
-    input5.style.position = 'fixed';   
-    input5.style.left = window.innerWidth*0.1 + x_texte_zone+'px';
-    input5.style.top = 2*ecart_texte_zone + y_texte_zone+'px';//3*ecart_texte_zone + y_texte_zone+'px';
-    input5.style.height = 20
-    input5.style.width = 20
-    document.body.appendChild(input5);
-    input5.focus();
+    //Prolific 
+    // var input5 = document.createElement('input');
+    // input5.type = 'radio';
+    // input5.id = 'SexeF';
+    // input5.name = "sexe"
+    // //input4.size = w_text_zone
+    // // style 
+    // input5.style.position = 'fixed';   
+    // input5.style.left = window.innerWidth*0.1 + x_texte_zone+'px';
+    // input5.style.top = 2*ecart_texte_zone + y_texte_zone+'px';//3*ecart_texte_zone + y_texte_zone+'px';
+    // input5.style.height = 20
+    // input5.style.width = 20
+    // document.body.appendChild(input5);
+    // input5.focus();
 
-    var input6 = document.createElement('input');
-    input6.type = 'radio';
-    input6.id = 'SexeA';
-    input6.name = "sexe"
-    //input4.size = w_text_zone
-    // style 
-    input6.style.position = 'fixed';   
-    input6.style.left = window.innerWidth*0.22 + x_texte_zone+'px';
-    input6.style.top = 2*ecart_texte_zone + y_texte_zone+'px';//3*ecart_texte_zone + y_texte_zone+'px';
-    input6.style.height = 20
-    input6.style.width = 20
-    document.body.appendChild(input6);
-    input6.focus();
+    //Prolific 
+    // var input6 = document.createElement('input');
+    // input6.type = 'radio';
+    // input6.id = 'SexeA';
+    // input6.name = "sexe"
+    // //input4.size = w_text_zone
+    // // style 
+    // input6.style.position = 'fixed';   
+    // input6.style.left = window.innerWidth*0.22 + x_texte_zone+'px';
+    // input6.style.top = 2*ecart_texte_zone + y_texte_zone+'px';//3*ecart_texte_zone + y_texte_zone+'px';
+    // input6.style.height = 20
+    // input6.style.width = 20
+    // document.body.appendChild(input6);
+    // input6.focus();
 
 
 }
 
 function gestion_donnees_personnelles(){
     // Sauvegarde des infos  
-    if (document.getElementById("SexeM").checked){sexe = "M"}
-    else if (document.getElementById("SexeF").checked){sexe = "F"}
-    else if (document.getElementById("SexeM").checked){sexe = "M"}
-    else {sexe='None'}  
+    //Prolific if (document.getElementById("SexeM").checked){sexe = "M"}
+    //Prolific else if (document.getElementById("SexeF").checked){sexe = "F"}
+    //Prolific else if (document.getElementById("SexeM").checked){sexe = "M"}
+    //Prolific else {sexe='None'}  
     choix['identite'] = {//"Firstname":document.getElementById("Firstname").value,
                         "Pseudo": document.getElementById("Pseudo").value,
-                        "Age": document.getElementById("Age").value,
-                        "Sexe": sexe}
+                        //Prolific "Age": document.getElementById("Age").value,
+                        //Prolific "Sexe": sexe
+                    }
     //document.getElementById("Firstname").style.display = 'none'
     document.getElementById("Pseudo").style.display = 'none'
-    document.getElementById("Age").style.display = 'none'
-    document.getElementById("SexeM").style.display = 'none'
-    document.getElementById("SexeF").style.display = 'none'
-    document.getElementById("SexeA").style.display = 'none'
+    //Prolific document.getElementById("Age").style.display = 'none'
+    //Prolific document.getElementById("SexeM").style.display = 'none'
+    //Prolific document.getElementById("SexeF").style.display = 'none'
+    //Prolific document.getElementById("SexeA").style.display = 'none'
                     
 }
 
