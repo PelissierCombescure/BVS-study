@@ -46,11 +46,12 @@ function init_variable(premier_appel){
     //obj_file_random = shuffle(['backpack_regulier_tri_centered_user_study_normed.obj', 'dragon_update_user_study_normed.obj', 'camel_update_user_study_normed.obj', 'gorgoile_update_user_study_centered_normed.obj', 'horse_update_user_study_normed.obj'])
     obj_file_random = shuffle(obj_names)
 
-    // nombre de mesh a visionner AU TOTAL
+    // ---> nombre de mesh a visionner AU TOTAL
     nb_mesh = 10//obj_file_random.length
 
-    // nb analyse demandé
+    // ---> nb analyse demandé
     nb_analyse_demande = 5
+    
     list_idx_tache =[]
     for (let p=0; p<nb_mesh; p++){list_idx_tache.push(p+1)}
     list_idx_tache = shuffle(list_idx_tache)
