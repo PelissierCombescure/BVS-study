@@ -86,7 +86,7 @@ function init_variable(premier_appel){
 
     // Enchainement des pages
     if (premier_appel){
-        page_avertissement = true
+        page_avertissement = false
         page_contexte = false
         page_inscription = false
         page_explication = false
@@ -553,7 +553,7 @@ function animate() {
             // Si la requête est terminée, et que la réponse n'est pas une erreur.
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                 console.log(xhr.responseText);
-                message_fin = "> It's done. You can close the web page."
+                message_fin = "> It's done. Your submission has been recorded."
                 envoie_termine = true
                 update_texte_fin(message_fin)
                 interactions.push({"time": new Date().getTime(), "type": get_message("fin_etude", [])})

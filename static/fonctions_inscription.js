@@ -15,7 +15,7 @@ function affichage_inscription(){
     // ctx.font = font
     // largeur = ctx.measureText(texte).width
     // ctx.fillText(texte, (window.innerWidth/2)- (largeur/2), 100)
-    titre = "Personal Information"
+    titre = "Information"
     affichage_titre(titre, taille_titre_insription+"pt Courier", "#EF476F")
 
     // Pour les zones de textes
@@ -23,7 +23,7 @@ function affichage_inscription(){
     ctx.fillStyle = "rgb(255, 255, 255)" 
     ctx.font = taille_texte_inscription+"pt Courier"
     //ctx.fillText("Firstname:", x_texte_zone, parseInt(document.getElementById("Firstname").style.top) -12)
-    ctx.fillText("Pseudo:", x_texte_zone, parseInt(document.getElementById("Pseudo").style.top) - 12)
+    ctx.fillText("Please enter your Prolific ID:", x_texte_zone, parseInt(document.getElementById("Pseudo").style.top) - 12)
     ctx.fillText("Age:", x_texte_zone, parseInt(document.getElementById("Age").style.top) - 12)
     ctx.fillText("Gender:", parseInt(document.getElementById("SexeM").style.left), parseInt(document.getElementById("SexeM").style.top) - 22)
     ctx.fillText("Male", parseInt(document.getElementById("SexeM").style.left)+40, parseInt(document.getElementById("SexeM").style.top)+24)

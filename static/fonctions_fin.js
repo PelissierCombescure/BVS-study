@@ -37,6 +37,8 @@ function affichage_texte_fin(M_fin){
 
     affichage_titre(M_fin, (0.02*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.6*window.innerHeight)
 
+    affichage_titre("Your completion code is : C30H3F5I", (0.02*window.innerWidth)+"pt Courier", "#EF476F", yt=0.8*window.innerHeight)
+
 }
 
 function update_texte_fin(M_fin){
