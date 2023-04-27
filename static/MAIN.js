@@ -19,7 +19,7 @@ function init_variable(premier_appel){
     ///////////////////////////////////////////////////////
     // CE QUE L'ON RECUPERE A LA FIN
     // dictionnaire avec les choix pour TOUS les mesh
-    if (premier_appel){choix = {}}
+    if (premier_appel){choix = { uuid: window.uuid }}
     // dictionnaire avec les checkbox pour TOUS les mesh
     checkbox_clicked = {}
     ///////////////////////////////////////////////////////
@@ -35,14 +35,15 @@ function init_variable(premier_appel){
 
     // Au premier appel on init : les interactions
     if (premier_appel){interactions = [{"time" : new Date().getTime(), "type": get_message("debut_etude", [])}]}
+    choix.Interactions = interactions;
 
     // Couleur
     alpha_survol = 0.3
 
     // DATA github
     indice_mesh = 0 // indice du premier mesh à visionner
-    mesh_courant = "nope" // nom des mesh 
-    // random nom mesh 
+    mesh_courant = "nope" // nom des mesh
+    // random nom mesh
     //obj_file_random = shuffle(['backpack_regulier_tri_centered_user_study_normed.obj', 'dragon_update_user_study_normed.obj', 'camel_update_user_study_normed.obj', 'gorgoile_update_user_study_centered_normed.obj', 'horse_update_user_study_normed.obj'])
     obj_file_random = shuffle(obj_names)
 
@@ -71,9 +72,9 @@ function init_variable(premier_appel){
     texte_temporaire = {}
     // temps de pop des messages
     temps_pop = 2000
-    // text qui correspond à des erreurs de bouton 
+    // text qui correspond à des erreurs de bouton
     longueur_max_error = 700
-    // text 
+    // text
     longueur_max_recap = 350
 
     // Fenetre 3D
@@ -94,7 +95,7 @@ function init_variable(premier_appel){
         page_warning = false
         page_explication_bis = false
         page_vues = false // false
-        page_explication_analyse = false 
+        page_explication_analyse = false
         page_analyse = false
     // cas raz : on recommence juste la partie vues
     } else {
@@ -105,7 +106,7 @@ function init_variable(premier_appel){
         page_warning = false
         page_explication_bis = false
         page_vues = true // false
-        page_explication_analyse = false 
+        page_explication_analyse = false
         page_analyse = false
     }
 
@@ -116,14 +117,14 @@ function init_variable(premier_appel){
     // pour initialiser les claviers à chaque page
     premier_tour_page_avertissements = true
     premier_tour_page_contexte = true
-    premier_tour_page_inscription = true 
+    premier_tour_page_inscription = true
     premier_tour_page_explications = true
     premier_tour_page_warning = true
     premier_tour_page_vues = true
     premier_tour_page_explication_analyse = true
-    premier_tour_page_analyse = true 
+    premier_tour_page_analyse = true
 
-    // message de fin 
+    // message de fin
     message_fin = "> Sending data in progress ..."
     envoie_termine = false
 
@@ -138,29 +139,29 @@ function setUp_light(rayon){
     const intensity = 0.22;
     // Light
     const light1 = new THREE.AmbientLight( 0x404040 ); // soft white light
-    scene.add( light1 );    
-    const dir_light1 = new THREE.DirectionalLight(color, intensity);   
+    scene.add( light1 );
+    const dir_light1 = new THREE.DirectionalLight(color, intensity);
     dir_light1.position.set(rayon, 0, 0);
     scene.add(dir_light1);
 
     const light2 = new THREE.AmbientLight( 0x404040 ); // soft white light
-    scene.add( light2 );    
-    const dir_light2 = new THREE.DirectionalLight(color, intensity);   
+    scene.add( light2 );
+    const dir_light2 = new THREE.DirectionalLight(color, intensity);
     dir_light2.position.set(-rayon, 0, -0);
     scene.add(dir_light2);
 
     const light3 = new THREE.AmbientLight( 0x404040 ); // soft white light
-    scene.add( light3 );    
-    const dir_light3 = new THREE.DirectionalLight(color, intensity);   
+    scene.add( light3 );
+    const dir_light3 = new THREE.DirectionalLight(color, intensity);
     dir_light3.position.set(0, -rayon, 0);
     scene.add(dir_light3);
 
     const light4 = new THREE.AmbientLight( 0x404040 ); // soft white light
-    scene.add( light4 );    
-    const dir_light4 = new THREE.DirectionalLight(color, intensity);   
+    scene.add( light4 );
+    const dir_light4 = new THREE.DirectionalLight(color, intensity);
     dir_light4.position.set(0, rayon, -0);
     scene.add(dir_light4);
- 
+
 }
 
 // idx_mesh : position du premier mesh a visuionner --> version aléatoire ???
@@ -171,7 +172,7 @@ function setUp_3D(idx_mesh, idx_i_init, idx_j_init, explication=false){
     theta_init = 2*Math.PI * ( (2/8)*(idx_j_init==0) + (1/8)*(idx_j_init==1) + (-1/8)*(idx_j_init==3) + (-2/8)*(idx_j_init==4))
     delta_init = 2*Math.PI * (idx_i_init/8)
 
-    // initialisation 
+    // initialisation
     idx_i = idx_i_init
     idx_j = idx_j_init
 
@@ -190,7 +191,7 @@ function setUp_3D(idx_mesh, idx_i_init, idx_j_init, explication=false){
         preserveDrawingBuffer: true } );
 
     renderer.setSize(W_3D , H_3D);
-    
+
     old_renderer = document.getElementById('renderer')
     if (old_renderer!=  null){
         old_renderer.parentElement.removeChild(old_renderer)
@@ -214,10 +215,10 @@ function setUp_3D(idx_mesh, idx_i_init, idx_j_init, explication=false){
     canvas.height = window.innerHeight;
     ctx = canvas.getContext("2d")
 
-  
+
     // On crée autant de canvas que de choix demandé,
     // ces canvas seront vide tant qu'il n'y a pas de vue sélectionnée
-    // puis updates en fonction des actions faites 
+    // puis updates en fonction des actions faites
     canvasMins = []
     ctxMins = []
     for (let i = 0; i < nb_choix_demande; i++) {
@@ -237,15 +238,15 @@ function setUp_3D(idx_mesh, idx_i_init, idx_j_init, explication=false){
 
     // Si on load le mesh 3d dans les explication, on importe que ce soit le dragon
     if (explication){
-        //objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/3DMesh/dragon_update_user_study_normed.obj', (event) => {  
-        objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/3DMesh/dragon_update_normed_centered_user_study.obj', (event) => {       
+        //objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/3DMesh/dragon_update_user_study_normed.obj', (event) => {
+        objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/3DMesh/dragon_update_normed_centered_user_study.obj', (event) => {
             const root = event.detail.loaderRootNode;
             scene.add(root);
         });
     // sinon on est dans l'étide dans on fait du random entre tous les mesh dispo sur le git
     } else {
         //objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/User_study/main/3DMesh/'+obj_file_random[idx_mesh], (event) => {
-        objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/3DMesh/'+obj_file_random[idx_mesh], (event) => {    
+        objLoader.load('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/3DMesh/'+obj_file_random[idx_mesh], (event) => {
             const root = event.detail.loaderRootNode;
             scene.add(root);
         });
@@ -275,7 +276,7 @@ function init_data(){
     // Data 2D
     imgs = {}
     imgs["droite"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Arrows/fleche_droite.png')
-    imgs["gauche"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Arrows/fleche_gauche.png') 
+    imgs["gauche"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Arrows/fleche_gauche.png')
     imgs["bas"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Arrows/fleche_bas.png')
     imgs["haut"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Arrows/fleche_haut.png')
     imgs["croix"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Choices/croix.png')
@@ -322,6 +323,26 @@ function init_data(){
 
 }
 
+function enregistrement(callback) {
+    // Création de la requête HTTP à envoyer au serveur.
+    let xhr = new XMLHttpRequest();
+    // Préparation de la requête pour l'envoi en POST vers l'url.
+    xhr.open('POST', '/outputs');
+    // Si on envoie les données de manière classique, il faut configurer le header de cette façon.
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    // Ajout du listener pour déclencer la suite lorsque la requête sera terminée.
+    xhr.onreadystatechange = function() {
+        //interactions.push({"time": new Date().getTime(), "type": get_message("fin_eetude", [])})
+        // Si la requête est terminée, et que la réponse n'est pas une erreur.
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            if (typeof callback === 'function') {
+                callback(xhr);
+            }
+        }
+    }
+    // Envoi de la requête vers le serveur, avec les données.
+    xhr.send(JSON.stringify(choix));
+}
 
 function animate() {
     // Temps à chaque animate
@@ -352,7 +373,7 @@ function animate() {
             premier_tour_page_contexte = false
         }
         init_clavier_contexte()
-        traitement_contexte()  
+        traitement_contexte()
     }
 ////////////////////////////////////////////////////////////////////////////////
     // page inscription
@@ -365,7 +386,7 @@ function animate() {
             init_clavier_inscription()
             afficher_champs_inscription()
             premier_tour_page_inscription=false}
-        traitement_inscription()        
+        traitement_inscription()
     }
 ////////////////////////////////////////////////////////////////////////////////
     if (page_explication){
@@ -385,7 +406,7 @@ function animate() {
             setUp_3D(indice_mesh, idx_i_explication, idx_j_explication, explication=true)
             premier_tour_page_explications = false
         }
-        // Nettoyage 
+        // Nettoyage
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         // Affichage bouton RAZ
         if (bouton_raz_clicked == true){action_bouton_raz()}
@@ -414,7 +435,7 @@ function animate() {
         // RAZ
         clicked = false
         which_clicked_fleche = -1
-        which_clicked_bouton = -1 
+        which_clicked_bouton = -1
     }
     // page warning
     if(page_warning){
@@ -428,7 +449,7 @@ function animate() {
     if (page_explication_bis){
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         //console.log("boucle explication2")
-        commencer_etude()        
+        commencer_etude()
     }
 ////////////////////////////////////////////////////////////////////////////////
     // page de choix
@@ -471,7 +492,7 @@ function animate() {
         // traitement fleche (surval + click)
         traitement_fleche()
         // traitement bouton : (survol + click)
-        traitement_bouton() 
+        traitement_bouton()
         // afficher + maj du recap de pose choisie : affichage des vue des poses
         afficher_recap()
         // Affichage texte recap
@@ -493,6 +514,7 @@ function animate() {
         document.removeEventListener("keydown", action_clavier_vues)
         // inti clavier
         if(premier_tour_page_explication_analyse){
+            enregistrement();
             //interactions.push({"time": new Date().getTime(), "type": "Début explication analyse"})
             init_clavier_explication_analyse()
             init_textes_explication_analyses()
@@ -519,14 +541,14 @@ function animate() {
             }
             premier_tour_page_analyse = false}
         ctx.clearRect(0, 0, canvas.width, canvas.height)
-        
+
         traitement_analyse()
         try {
             if (!input2.matches(":focus")) {
                 input2.focus()
             }
-        } catch (e) {}       
-        
+        } catch (e) {}
+
     }
 ////////////////////////////////////////////////////////////////////////////////
     // page fin
@@ -534,39 +556,26 @@ function animate() {
         //console.log("boucle fin")
         // on enlève les touches du clavier associé à la page vues
         document.removeEventListener("keydown", action_clavier_analyse)
-        // clear la fenetre 
+        // clear la fenetre
         ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
         draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1)
-        // Texte 
+        // Texte
         affichage_texte_fin(message_fin)
         // ECRITURE DES RESULTATS
         choix['Analyse'] = checkbox_clicked
-        choix['Interactions'] = interactions
-        // Création de la requête HTTP à envoyer au serveur.
-        let xhr = new XMLHttpRequest();
-        // Préparation de la requête pour l'envoi en POST vers l'url.
-        xhr.open('POST', '/outputs');
-        // Si on envoie les données de manière classique, il faut configurer le header de cette façon.
-        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        // Ajout du listener pour déclencer la suite lorsque la requête sera terminée.
-        xhr.onreadystatechange = function() {
-            //interactions.push({"time": new Date().getTime(), "type": get_message("fin_eetude", [])})
-            // Si la requête est terminée, et que la réponse n'est pas une erreur.
-            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-                console.log(xhr.responseText);
-                message_fin = "> It's done. Your submission has been recorded."
-                envoie_termine = true
-                update_texte_fin(message_fin)
-                interactions.push({"time": new Date().getTime(), "type": get_message("fin_etude", [])})
-                return;
-            }
-        }
-        // Envoi de la requête vers le serveur, avec les données.
-        xhr.send(JSON.stringify(choix));
+
+        enregistrement(function(xhr) {
+            console.log(xhr.responseText);
+            message_fin = "> It's done. Your submission has been recorded."
+            envoie_termine = true
+            update_texte_fin(message_fin)
+            interactions.push({"time": new Date().getTime(), "type": get_message("fin_etude", [])})
+            return;
+        });
 
         return
 
-        
+
     }
 ////////////////////////////////////////////////////////////////////////////////
     // Boucle sur animate

@@ -9,6 +9,9 @@ async function main() {
 
     const app = express();
 
+    const HTML_BEGINNING = await fs.readFile(__dirname + '/html/index3D-beginning.html');
+    const HTML_END = await fs.readFile(__dirname + '/html/index3D-end.html');
+
     //let id = 1;
 
     // Permet de récupérer les données venant du client.
@@ -16,17 +19,16 @@ async function main() {
     app.use(bodyParser.json());
 
     // Page d'accueil.
-    app.get('/', function(req, res) {
-        // On envoie le contenu du fichier index.html.
-        return res.sendFile(__dirname + '/html/index3D.html');
+    app.get('/', async function(req, res) {
+        // On envoie le contenu du fichier index.html avec le uuid généré par le server.
+        let uuidScript = '<script>window.uuid = "' + uuid() + '";</script>';
+        return res.send(HTML_BEGINNING + uuidScript + HTML_END);
     });
 
     // Route de récupération des données.
     app.post('/outputs', async function(req, res) {
-        let id = uuid();
-
         // Ouverture du fichier en mode append.
-        let file = await fs.open(__dirname + '/outputs/' + id + '.json', 'a');
+        let file = await fs.open(__dirname + '/outputs/' + req.body.uuid + '.json', 'w');
 
         // Ajout d'une ligne.
         file.write(JSON.stringify(req.body, undefined, 4));
