@@ -1,7 +1,12 @@
 node_modules
 grahics/Tutorial/wolf*
 graphics/Tutorial/wolf*.png
-outputs/*
+
+outputs/crash_test1
+outputs/Prolific1
+outputs/test
+outputs/*.json
+outputs/get_json_file_from_server.txt
 
 get_3dmesh_names.ipynb
 get_json.sh
