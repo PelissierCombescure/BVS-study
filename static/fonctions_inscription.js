@@ -32,7 +32,7 @@ function affichage_inscription(){
     //Prolific ctx.fillText("None of these above", parseInt(document.getElementById("SexeA").style.left)+40, parseInt(document.getElementById("SexeA").style.top)+24)
 
     //Prolific
-    ctx.fillText("Please enter your Prolific ID:", x_texte_zone, parseInt(document.getElementById("Pseudo").style.top) - 20)
+    ctx.fillText("Please enter your Prolific ID:", x_texte_zone, parseInt(document.getElementById("ProlificID").style.top) - 20)
     
 }
 
@@ -140,7 +140,7 @@ function champs_remplis_correctment(){
     //Prolific return name_ok  && age_ok && sexe_ok
     
     //Prolific
-    if (document.getElementById("Pseudo").value.length == 24 && (value_non_vide(document.getElementById("Pseudo").value))){name_ok = true} //Prolific on a mis 24 au lieu de 0
+    if (document.getElementById("ProlificID").value.length == 24 && (value_non_vide(document.getElementById("ProlificID").value))){name_ok = true} //Prolific on a mis 24 au lieu de 0
     return name_ok 
 }
 
@@ -182,7 +182,7 @@ function afficher_champs_inscription() {
     // Zone de texte : Name
     var input2 = document.createElement('input');
     input2.type = 'text';
-    input2.id = 'Pseudo';
+    input2.id = 'ProlificID';
     input2.minLength = nb_caract_min
     input2.maxLength = nb_caract_max
     input2.size = w_text_zone
@@ -270,12 +270,12 @@ function gestion_donnees_personnelles(){
     //Prolific else if (document.getElementById("SexeM").checked){sexe = "M"}
     //Prolific else {sexe='None'}  
     choix['identite'] = {//"Firstname":document.getElementById("Firstname").value,
-                        "Pseudo": document.getElementById("Pseudo").value,
+                        "ProlificID": document.getElementById("ProlificID").value,
                         //Prolific "Age": document.getElementById("Age").value,
                         //Prolific "Sexe": sexe
                     }
     //document.getElementById("Firstname").style.display = 'none'
-    document.getElementById("Pseudo").style.display = 'none'
+    document.getElementById("ProlificID").style.display = 'none'
     //Prolific document.getElementById("Age").style.display = 'none'
     //Prolific document.getElementById("SexeM").style.display = 'none'
     //Prolific document.getElementById("SexeF").style.display = 'none'
