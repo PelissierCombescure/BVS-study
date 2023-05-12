@@ -92,7 +92,7 @@ function traitement_avertissements(){
     w_texte = window.innerWidth*(8/10)
     font_texte = (0.012*window.innerWidth)+"pt Courier" 
     // titre commun à chaque page 
-    affichage_titre(titre, (0.018*window.innerWidth)+"pt Courier", "#EF476F")
+    affichage_titre(titre, (0.018*window.innerWidth)+"pt Courier", "#FFD166")
     // affichage warning
     w_avertissement = 0.15*window.innerHeight
     h_avertissement = w_avertissement
@@ -143,13 +143,13 @@ function traitement_avertissements(){
 
 function init_textes_avertissements(){
 y_titre = 50
-titre = "BEFORE TO START --> User study : Best view selection"
+titre = "READ CAREFULLY BEFORE STARTING"// --> User study : Best view selection"
 color_blanc = "rgb(255,255,255)"
 color_rouge = "rgb(239, 71, 111)"
 avertissements={
-"texte0":{"t": "Before we begin, make sure your BROWSER WINDOW IS BIG ENOUGH, and if you are using multiple displays, place your window on the display you will work on.", "y": window.innerHeight*0.32, "c": color_blanc},
-"texte1":{"t": "If necessary, you can REFRESH this page to resize everything but doing so will lose all of your progress, so make sure everything feels right before proceding.", "y":window.innerHeight*0.52, "c": color_blanc},
-"texte2":{"t":"All your data will be sent at the very end, so losing your progress will not mess up our data, but you will have do start from the begining.", "y":window.innerHeight*0.72, "c": color_blanc},
+"texte0":{"t": "Before we begin, make sure your BROWSER WINDOW IS BIG ENOUGH, and if you are using multiple screens, place your window on the screen you will work on. Your computer should be plugged in.", "y": window.innerHeight*0.32, "c": color_blanc},
+"texte1":{"t": "If necessary, you can REFRESH this page to resize everything but doing so will resume the study and take you back at the start, so make sure everything feels right before you start.", "y":window.innerHeight*0.52, "c": color_blanc},
+"texte2":{"t":"All your data will be sent at the very end, so restarting will not mess up our data, but you will have do start from the begining.", "y":window.innerHeight*0.72, "c": color_blanc},
 }
 
 avertissements_page_1 = [avertissements["texte0"], avertissements["texte1"], avertissements["texte2"]]

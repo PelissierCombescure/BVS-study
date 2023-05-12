@@ -92,7 +92,7 @@ function traitement_explication_analyses(){
     font_texte = (0.012*window.innerWidth)+"pt Courier" 
     
     // titre commun à chaque page 
-    affichage_titre(titre, (0.018*window.innerWidth)+"pt Courier", "#EF476F")
+    affichage_titre(titre, (0.018*window.innerWidth)+"pt Courier", "#FFD166")
     // affichage texte 
     for(let p=0; p<explications_analyse_a_afficher.length; p++){
         dict_texte = explications_analyse_a_afficher[p]
@@ -127,11 +127,9 @@ function traitement_explication_analyses(){
             action_bouton_avant_explication_analyse()    
         } 
     }
-  
     
      
 }
-
 
 
 function action_clavier_explication_analyse(event){
@@ -162,10 +160,10 @@ titre = "Analyze your choices"
 color_blanc = "rgb(255,255,255)"
 color_rouge = "rgb(239, 71, 111)"
 explications_analyse={
-"texte0":{"t":"You have finished selecting the best viewpoints for each object.", "y": window.innerHeight*0.15, "c": color_blanc},
+"texte0":{"t":"You are done selecting the best viewpoints for each object.", "y": window.innerHeight*0.15, "c": color_blanc},
 "texte1":{"t":"Now I ask you to JUSTIFY your choices.", "y":window.innerHeight*0.25, "c": color_blanc},
-"texte2":{"t":"For this, for some objects, the views you have chosen will reappear.", "y":window.innerHeight*0.38, "c": color_blanc},
-"texte3":{"t":"For each of the viewpoints, you will have to SELECT ONE OR MORE reasons that made you decide to select these viewpoints. And ORDER them from the most significant to the least.", "y": window.innerHeight*0.52, "c": color_blanc},
+"texte2":{"t":"For this, for some objects, the viewpoints you have chosen will reappear.", "y":window.innerHeight*0.38, "c": color_blanc},
+"texte3":{"t":"For each of the viewpoints, you will have to SELECT ONE OR MORE criteria that made you decide to select these viewpoints. You should ORDER them from the most significant to the least.", "y": window.innerHeight*0.52, "c": color_blanc},
 }
 
 explications_analyse_page_1 = [explications_analyse["texte0"], explications_analyse["texte1"], explications_analyse["texte2"], explications_analyse["texte3"]]

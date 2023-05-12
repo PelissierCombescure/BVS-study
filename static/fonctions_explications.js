@@ -84,51 +84,51 @@ function init_explication(){
 
     textes = [
         //-1
-        {"t":"This is where the instructions will appear to take control of the interface to select your "+nb_choix_demande+" best viewpoints. Now let's display the interface. (PRESS NEXT BUTTON)", "x": ecrans[0].x + marge_texte_x, "y": ecrans[0].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"This is where the instructions for the interface will appear in order to select your "+nb_choix_demande+" best viewpoints. Now let is display the interface. (PRESS 'NEXT' BUTTON)", "x": ecrans[0].x + marge_texte_x, "y": ecrans[0].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         // 0
-        {"t":"Here is how the interface looks like. (PRESS NEXT BUTTON)", "x": ecrans[0].x + marge_texte_x, "y": ecrans[0].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"Here is how the interface looks like. (PRESS 'NEXT' BUTTON)", "x": ecrans[0].x + marge_texte_x, "y": ecrans[0].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         // 1.1 : ecran 3D
-        {"t":"You have: A screen to view the 3D object. Do not be surprised by the initial position of the object, it appears from a random viewpoint. (PRESS NEXT BUTTON)", "x": ecrans[1].x + marge_texte_x, "y": ecrans[1].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"You have: A screen to view the 3D object. Do not be surprised by the initial position of the object, it appears with a random viewpoint. (PRESS  'NEXT' BUTTON)", "x": ecrans[1].x + marge_texte_x, "y": ecrans[1].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         // 1.2 : fleche 
-        {"t":"You have: Arrows to move the 3D object. (PRESS NEXT BUTTON)", "x": ecrans[2].x + marge_texte_x, "y": ecrans[2].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"You have: Arrows to move the 3D object. (PRESS 'NEXT' BUTTON)", "x": ecrans[2].x + marge_texte_x, "y": ecrans[2].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         // 1.3 : bouton 
-        {"t":"You have: Buttons to make your selection. (PRESS NEXT BUTTON)", "x": ecrans[3].x + marge_texte_x, "y": ecrans[3].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"You have: Buttons to make your selection. (PRESS 'NEXT' BUTTON)", "x": ecrans[3].x + marge_texte_x, "y": ecrans[3].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         // 2.1 : Selection 1er vues 
-        {"t":"Let's try to select your first viewpoint. To do this, let's move the 3D model. (PRESS NEXT BUTTON) ", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"Let is try to select your first viewpoint. To do this, let is move the 3D model. (PRESS  'NEXT' BUTTON) ", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         // 2.2 : clique sur fleche droite 
-        {"t":"Let's try to select your first viewpoint. To do this, let's move the 3D model. (PRESS RIGHT ARROW)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"Let is try to select your first viewpoint. To do this, let move the 3D model. (PRESS RIGHT ARROW)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         // 2.3 : clique sur fleche haut
-        {"t":"Let's try to select your first viewpoint. To do this, let's move the 3D model. (PRESS UP ARROW)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"Let is try to select your first viewpoint. To do this, let is move the 3D model. (PRESS UP ARROW)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         // 2.4 : clique sur fleche haut 
         {"t":"ArrowUp once again. (PRESS UP ARROW)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         // 2.5 :  PBL trop haut
-        {"t":"You can't go further. Error messages may appear if you make impossible manipulations. Now let's try again to select our first viewpoint : GO DOWN. (PRESS DOWN ARROW)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"You can not go further. Error messages may appear if you request an impossible move. Now let is try again to select our first viewpoint : GO DOWN. (PRESS DOWN ARROW)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         // 3.1 :  clique sur fleche bas
-        {"t":"It's better. Once again. (PRESS DOWN ARROW)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"It is better. Once again. (PRESS DOWN ARROW)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         // 3.2 :  clique sur fleche bas
-        {"t":"It's better. Go to the right. (PRESS RIGHT ARROW)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"It is better. Go to the right. (PRESS RIGHT ARROW)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         // 3.3 :  clique sur fleche bas
-        {"t":"Let's imagine that you choose this viewpoint. You have to select it with the button. (PRESS SELECT BUTTON)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"Let is imagine that you choose this viewpoint. You have to select it with the 'SELECT' button. (PRESS 'SELECT' BUTTON)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         // 4 :  
-        {"t":"You have chosen your first viewpoint among the "+nb_choix_demande+" asked. It is displayed on your right. This one has become gray on the 3D screen. You can no longer select it. (PRESS NEXT BUTTON)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"You have chosen your first viewpoint among the "+nb_choix_demande+". It is displayed on your right. This one has become gray on the 3D screen. You can no longer select it. (PRESS 'NEXT' BUTTON)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         //5
-        {"t":"To go faster, the interaction part with the tutorial interface is finished. Now, you can just look and press the next button when it says here. (PRESS NEXT BUTTON)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"To go faster, the interaction part with the tutorial interface is finished. Now, you can just look and press the 'NEXT' button when it instructed. (PRESS 'NEXT' BUTTON)", "x": ecrans[4].x + marge_texte_x, "y": ecrans[4].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         // 6.1 
-        {"t":"Let's imagine that you have chosen these "+nb_choix_demande+" viewpoints. (PRESS NEXT BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"Let is imagine that you have chosen these "+nb_choix_demande+" viewpoints. (PRESS 'NEXT' BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         // 6.2
-        {"t":"With the little arrows, we can switch your selected viewpoints. (PRESS NEXT BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"With the little arrows, we can switch your selected viewpoints according to your preferences. (PRESS 'NEXT' BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         // 6.3
-        {"t":"With the little red cross, we can remove your the selected viewpoint of your choice. (PRESS NEXT BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"With the little red cross, we can remove a selected viewpoint. (PRESS 'NEXT' BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         // 6.4
-        {"t":"With the REMOVE button, we can remove the last selected viewpoint. (PRESS NEXT BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"With the 'REMOVE' button, we can remove the last selected viewpoint. (PRESS 'NEXT' BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         // 6.5
-        {"t":"With the RESET SELECTION button, we can remove all selected viewpoints. (PRESS NEXT BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"With the 'RESET SELECTION' button, we can remove all selected viewpoints. (PRESS 'NEXT' BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         // 6.6
-        {"t":"With the RESET STUDY button, we can start from the beginning. (PRESS NEXT BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"With the 'RESET STUDY' button, we can start from the beginning. (PRESS 'NEXT' BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         // 6.7
-        {"t":"When you have chosen your "+nb_choix_demande+" viewpoints, the VALIDATE button appears. You can validate your selection and go to the next mesh. (PRESS NEXT BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"When you have chosen your "+nb_choix_demande+" viewpoints, the 'VALIDATE' button appears. You can validate your selection and go to the  'NEXT' mesh. (PRESS 'NEXT' BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
         // 7
-        {"t":"The tutorial is finished, you now know the basic interactions of this interface. (PRESS NEXT BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
+        {"t":"The tutorial is finished, you now know the basic interactions of this interface. (PRESS 'NEXT' BUTTON)", "x": ecrans[15].x + marge_texte_x, "y": ecrans[15].y + marge_texte_y, "f":taille_texte_explication, "l":l_texte_max, "c":color_texte, "i":interligne},
    
     ]
 
@@ -456,12 +456,12 @@ function commencer_etude(){
     draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1) // ou + clair 4, 38, 48
     // ctx.strokeStyle = "rgb(255, 255, 255)" // Pour que le contour soit rouge
     // ctx.fillStyle = "rgb(255, 255, 255)" // Pour que l'intérieur soit bleu
-    titre = "Are  you ready to start the study?" 
+    titre = "Now you are ready to start the study" 
     // font = "40pt Courier"
     // ctx.font = font
     // largeur = ctx.measureText(texte).width
     // ctx.fillText(texte, (window.innerWidth/2)- (largeur/2), 100)
-    affichage_titre(titre, (0.018*window.innerWidth)+"pt Courier", "#EF476F")
+    affichage_titre(titre, (0.018*window.innerWidth)+"pt Courier", "#FFD166")
     // affichager le bouton commencer
     afficher_bouton_commencer_explication()
     // si on appuie 

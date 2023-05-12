@@ -45,8 +45,8 @@ function affichage_legende(pos){
 function affichage_texte(){
     // Texte
     //draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1) // ou + clair 4, 38, 48
-    affichage_titre("Analysis your selections:", (0.015*window.innerWidth)+"pt Courier", "#EF476F", yt =  0.05*window.innerHeight)
-    affichage_titre("Select the characteristics that have allowed to select these viewpoints, from the most important to the least.", (0.01*window.innerWidth)+"pt Courier", "#EF476F", yt =  0.1*window.innerHeight)
+    affichage_titre("Analyze your selection:", (0.015*window.innerWidth)+"pt Courier", "#FFD166", yt =  0.05*window.innerHeight)
+    affichage_titre("Select the criteria you used to select these viewpoints, from the most important to the least.", (0.01*window.innerWidth)+"pt Courier", "#FFD166", yt =  0.1*window.innerHeight)
     
 }
 

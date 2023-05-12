@@ -109,7 +109,7 @@ function traitement_contexte(){
     w_texte = window.innerWidth*(8/10)
     font_texte = (0.012*window.innerWidth)+"pt Courier" 
     // titre commun à chaque page 
-    affichage_titre(titre, (0.018*window.innerWidth)+"pt Courier", "#EF476F")
+    affichage_titre(titre, (0.018*window.innerWidth)+"pt Courier", "#FFD166")
     // affichage texte 
     for(let p=0; p<texte_a_afficher.length; p++){
         dict_texte = texte_a_afficher[p]
@@ -189,28 +189,29 @@ function init_textes_contexte(){
 titre = "User study : Best view selection"
 color_blanc = "rgb(255,255,255)"
 color_rouge = "rgb(239, 71, 111)"
+color_jaune = "rgb(255, 209, 102)"
 textes_contexte={
-"texte0":{"t":"Hello! I am Marie Pelissier, a 3rd year PhD student. I work on computer vision, a subfield of computer science, and you are about to help me with my research.", "y": window.innerHeight*0.15, "c": color_blanc},
-"texte1":{"t":"First, thank you for participating in my study. Then, I am collecting data in order to evaluate how well a computer does against actual human opinion in the mattter of finding the best viewpoint to look at an object. Unfortunatly, it seems that no one in the scientific community has yet proposed a dataset for this purpouse.", "y":window.innerHeight*0.35, "c": color_blanc},
-"texte2":{"t":"That’s where you come into play, I need you to answer a few question in order to build a dataset of human-chosen viewpoints of objects. Let me get into the details...", "y":window.innerHeight*0.65, "c": color_blanc},
-"texte3":{"t":"What is a viewpoint? ", "y": window.innerHeight*0.15, "c": color_rouge},
+"texte0":{"t":"Hello! I am Marie Pelissier, a 3rd year Ph.D. student. I work in computer vision, a subfield of computer science, and you are about to help me with my research.", "y": window.innerHeight*0.15, "c": color_blanc},
+"texte1":{"t":"First, thank you for participating in my study. I am collecting data in order to evaluate how well a computer compares to actual human opinion in the matter of finding the best viewpoint to look at an object (here an object is a 3D mesh). It seems that no one in the scientific community has yet proposed a dataset for this purpose.", "y":window.innerHeight*0.35, "c": color_blanc},
+"texte2":{"t":"That is where you come into play, I need you to answer a few questions in order to build a dataset of human-chosen viewpoints of objects. Let me get into the details...", "y":window.innerHeight*0.65, "c": color_blanc},
+"texte3":{"t":"What is a viewpoint? ", "y": window.innerHeight*0.15, "c": color_jaune},
 "texte4":{"t":"> The viewpoint of an object is the position from which we observe the object.", "y": window.innerHeight*0.2, "c": color_blanc},
-"texte5":{"t":"A viewpoint will always highlight some parts and obscure other parts of an object.", "y": window.innerHeight*0.25, "c": color_blanc},
-"texte6":{"t":"For example, this is wolf. This perspective highlights the tail and the hind legs, but obscures the head and face.", "y": window.innerHeight*0.45, "c": color_blanc},
-"texte7":{"t":"This viewpoint reveal the head, face, and front legs but hides the tail and barely shows the hind legs.", "y": window.innerHeight*0.6, "c": color_blanc},
-"texte8":{"t":"What is a good viewpoint?", "y": window.innerHeight*0.15, "c": color_rouge},
+"texte5":{"t":"A viewpoint will always highlight some parts and discard other parts of an object.", "y": window.innerHeight*0.25, "c": color_blanc},
+"texte6":{"t":"For example, this is a wolf. This perspective highlights its tail and its hind legs, but discards its head and its face.", "y": window.innerHeight*0.45, "c": color_blanc},
+"texte7":{"t":"This viewpoint reveal its head, face, and front legs but hides its tail and barely shows its hind legs.", "y": window.innerHeight*0.6, "c": color_blanc},
+"texte8":{"t":"What is a good viewpoint?", "y": window.innerHeight*0.15, "c": color_jaune},
 "texte9":{"t":"> A good viewpoint is one that offers a RELEVANT view of the object. The one that BEST showcases/highlights the object and the one that is the most REPRESENTATIVE of the object. ", "y": window.innerHeight*0.2, "c": color_blanc},//A more geometrical definition: a good viewpoint is a position from which most representative characteristics of an object (i.e. the parts that make the object the most identifiable), are visible.", "y": window.innerHeight*0.2, "c": color_blanc},
 //"texte10":{"t":"Let's imagine that you have to create an advertising display to promote the movie Dances with Wolves.", "y": window.innerHeight*0.35, "c": color_blanc},
-"texte10":{"t":"If you had to choose between these two viewpoints:.", "y": window.innerHeight*0.35, "c": color_blanc},
+"texte10":{"t":"If you had to choose between these two viewpoints:", "y": window.innerHeight*0.35, "c": color_blanc},
 //"texte11":{"t":"The purpose of this study is to ask you, for a given object, which are for you the best viewpoints and why. The answers will of course be subjective because everyone has their own opinion. This subjective information is what I am interested in.", "y": window.innerHeight*0.7, "c": color_blanc},
-"texte11": {"t":"Which viewpoint allows you to EASILY RECOGNIZE that this object is a wolf?", "y": window.innerHeight*0.8, "c": "rgb(255, 209, 102)"},
-//"texte11": {"t":"Which viewpoint would you choose between both?", "y": window.innerHeight*0.8, "c": "rgb(255, 209, 102)"},
+"texte11": {"t":"Which viewpoint do you prefer to both SHOWCASE and RECOGNIZE the wolf?", "y": window.innerHeight*0.8, "c": color_jaune},
+//"texte11": {"t":"Which viewpoint allows you to EASILY RECOGNIZE that this object is a wolf??", "y": window.innerHeight*0.8, "c": "rgb(255, 209, 102)"},
 "texte12":{"t":"Now that you are up to speed, here are the instructions of the study:", "y": window.innerHeight*0.15, "c": color_blanc},
 "texte13":{"t":"- You will be presented "+nb_mesh+" different objects.", "y": window.innerHeight*0.25, "c": color_blanc},
-"texte14":{"t":"- For each of them, you will chose a viewpoint you find most representative of the given object. You will have to do this "+nb_choix_demande+" times.", "y": window.innerHeight*0.35, "c": color_blanc},
-"texte15":{"t":"- Afterward, you will answer a few questions to justify your choices.", "y": window.innerHeight*0.5, "c": color_blanc},
-"texte16":{"t":"As a mean for you to get familiar with the interface, and make your selection easier, we have set up a quick tutorial.", "y": window.innerHeight*0.6, "c": color_blanc},
-"texte17":{"t":"But before anything, we need you to register in order to save your answers.", "y": window.innerHeight*0.7, "c": color_blanc},
+"texte14":{"t":"- For each object, you will chose a viewpoint you prefer to both showcase and recognize the object. You will have to do this "+nb_choix_demande+" times.", "y": window.innerHeight*0.35, "c": color_blanc},
+"texte15":{"t":"- Afterwards, you will answer a few questions to justify your choices.", "y": window.innerHeight*0.5, "c": color_blanc},
+"texte16":{"t":"As a mean for you to get familiar with the interface, and ease your experience, we have set up a quick tutorial.", "y": window.innerHeight*0.6, "c": color_blanc},
+"texte17":{"t":"But before anything, we need you to register your Prolific ID in order to save your answers.", "y": window.innerHeight*0.7, "c": color_blanc},
 }
 
 textes_page_1 = [textes_contexte["texte0"], textes_contexte["texte1"], textes_contexte["texte2"]]

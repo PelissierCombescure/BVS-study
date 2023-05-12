@@ -566,7 +566,7 @@ function animate() {
 
         enregistrement(function(xhr) {
             console.log(xhr.responseText);
-            message_fin = "> It's done. Your submission has been recorded."
+            message_fin = "> It is done. Your submission has been recorded."
             envoie_termine = true
             update_texte_fin(message_fin)
             interactions.push({"time": new Date().getTime(), "type": get_message("fin_etude", [])})

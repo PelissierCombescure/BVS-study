@@ -16,7 +16,7 @@ function affichage_inscription(){
     // largeur = ctx.measureText(texte).width
     // ctx.fillText(texte, (window.innerWidth/2)- (largeur/2), 100)
     titre = "Information"
-    affichage_titre(titre, taille_titre_insription+"pt Courier", "#EF476F")
+    affichage_titre(titre, taille_titre_insription+"pt Courier", "#FFD166")
 
     // Pour les zones de textes
     ctx.strokeStyle = "rgb(255, 255, 255)" 
@@ -301,10 +301,10 @@ function traitement_inscription(){
     // les champs sont remplie et on a appuyé sur le bouton next
     } else {
         draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1)
-        texte = "Are  you ready to start the tutorial to learn" 
-        texte2 = "how to use the interface of the study?"
-        ctx.strokeStyle = "#EF476F"
-        ctx.fillStyle = "#EF476F"
+        texte = "Now you are ready to start the tutorial to learn" 
+        texte2 = "how to use the interface of the study"
+        ctx.strokeStyle = "#FFD166"
+        ctx.fillStyle = "#FFD166"
         ctx.font = taille_titre_insription+"pt Courier"
         largeur = ctx.measureText(texte).width
         largeur2 = ctx.measureText(texte2).width

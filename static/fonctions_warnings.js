@@ -101,13 +101,13 @@ function traitement_warnings(){
     font_texte = (0.012*window.innerWidth)+"pt Courier" 
     
     // titre commun à chaque page 
-    affichage_titre(titre, (0.018*window.innerWidth)+"pt Courier", "#EF476F")
+    affichage_titre(titre, (0.018*window.innerWidth)+"pt Courier", "#FFD166")
     // affichage texte 
     for(let p=0; p<warnings_a_afficher.length; p++){
         dict_texte = warnings_a_afficher[p]
         // message : problems --> refresh
         if (p==4){
-            affichage_titre(dict_texte.t, (0.016*window.innerWidth)+"pt Courier", "#EF476F",  dict_texte.y)
+            affichage_titre(dict_texte.t, (0.016*window.innerWidth)+"pt Courier", "#FFD166",  dict_texte.y)
             //affichage_texte_warning(dict_texte.t, font_texte, "#EF476F", x_texte, dict_texte.y, w_texte)
         }
         else if (p==5){
@@ -162,11 +162,11 @@ color_blanc = "rgb(255,255,255)"
 color_rouge = "rgb(239, 71, 111)"
 warnings={
 "texte0":{"t":"The following is a list of warnings to keep in mind during the study:", "y": window.innerHeight*0.15, "c": color_blanc},
-"texte1":{"t":"- During the study, you should NOT CHANGE the size of the web page or computer screen. Changing the size may cause annoyance.", "y":window.innerHeight*0.25, "c": color_blanc},
-"texte2":{"t":"- The loading time of the objects can take time. The 3D screen may be completely black for a few seconds. BE PATIENT, the objects will appear.", "y":window.innerHeight*0.38, "c": color_blanc},
-"texte3":{"t":"- Once you have finished the study, WAIT A FEW before leaving the web page, to allow time for the data to fully commit to the server. A message will indicate when the registration is complete.", "y": window.innerHeight*0.52, "c": color_blanc},
+"texte1":{"t":"- During the study, you should NOT CHANGE the size of the web page or computer screen. Changing the size may cause visual bugs and disturb you.", "y":window.innerHeight*0.25, "c": color_blanc},
+"texte2":{"t":"- Loading a object may TAKE TIME. The 3D screen may be completely black for a few seconds. BE PATIENT, the object will appear.", "y":window.innerHeight*0.38, "c": color_blanc},
+"texte3":{"t":"- Once you have finished the study, WAIT A FEW seconds before leaving the web page, to allow time for the data to fully record on the server. A message will indicate when the registration is complete.", "y": window.innerHeight*0.52, "c": color_blanc},
 //"texte4":{"t":"- If during the study there are some PROBLEMS that you can't solve with the interface features, you can REFRESH the web page. All your data will be lost and you will have to start all over again. ", "y": window.innerHeight*0.68, "c": color_blanc},
-"texte4":{"t":"If ANY PROBLEMS occur during the study --> REFRESH your web page", "y": window.innerHeight*0.72, "c": color_blanc},
+"texte4":{"t":"If you have ANY PROBLEMS during the study --> REFRESH your web page", "y": window.innerHeight*0.72, "c": color_blanc},
 "texte5":{"t":"(don't be afraid, you will start all over again)", "y": window.innerHeight*0.78, "c": color_blanc}
 }
 
