@@ -50,12 +50,14 @@ function update_texte_fin_siOK(M_fin1, M_fin2){
 
 }
 
-function update_texte_fin_siPASOK(M_fin1, M_fin2, M_fin3, M_fin4, M_fin5){
+function update_texte_fin_siPASOK(M_fin1, M_fin21, M_fin22, M_fin3, M_fin4, M_fin51, M_fin52){
     affichage_titre(M_fin1, (0.018*window.innerWidth)+"pt Courier", "#FFD166", yt=0.45*window.innerHeight)
-    affichage_titre(M_fin2, (0.018*window.innerWidth)+"pt Courier", "#EF476F", yt=0.55*window.innerHeight)
+    affichage_titre(M_fin21, (0.018*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.55*window.innerHeight)
+    affichage_titre(M_fin22, (0.018*window.innerWidth)+"pt Courier", "#EF476F", yt=0.55*window.innerHeight)
     affichage_titre(M_fin3, (0.015*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.6*window.innerHeight)
     affichage_titre(M_fin4, (0.015*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.65*window.innerHeight)
-    affichage_titre(M_fin5, (0.018*window.innerWidth)+"pt Courier", "#EF476F", yt=0.70*window.innerHeight)
+    affichage_titre(M_fin51, (0.018*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.70*window.innerHeight)
+    affichage_titre(M_fin52, (0.018*window.innerWidth)+"pt Courier", "#EF476F", yt=0.70*window.innerHeight)
 
 }
 

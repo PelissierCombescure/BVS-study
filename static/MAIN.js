@@ -608,18 +608,20 @@ function animate() {
         draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1)
         affichage_texte_fin(message_fin)
         message_fin1 = "> Your submission could not be saved."
-        message_fin2 = "Click on the button below to DOWNLOAD the data"
+        message_fin21 = "Click on the button below to DOWNLOAD the data"
+        message_fin22 = "Click                        DOWNLOAD         "
         message_fin3 = "(please DO NOT CHANGE the name of the downloaded json file)"
         message_fin4 = "and"
-        message_fin5 = "UPLOAD it to my nextcloud folder, please :)"
-        update_texte_fin_siPASOK(message_fin1, message_fin2, message_fin3, message_fin4, message_fin5)
+        message_fin52 = "UPLOAD                                      "
+        message_fin51 = "       it to my nextcloud folder, please :)"
+        update_texte_fin_siPASOK(message_fin1, message_fin21,message_fin22, message_fin3, message_fin4, message_fin51, message_fin52)
 
         // TODO : Ajouter bouton et lien
         traitement_fin_enregistrement()  
         
         if (download_ok){
             // affichage du ccompletion code 
-            affichage_titre(message_completion_code, (0.018*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.8*window.innerHeight)
+            affichage_titre(message_completion_code, (0.018*window.innerWidth)+"pt Courier", "#EF476F", yt=0.8*window.innerHeight)
             traitement_fin_lien()
         }   
 
