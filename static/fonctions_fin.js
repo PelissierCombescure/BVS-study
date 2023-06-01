@@ -1,3 +1,6 @@
+h_bouton_fin = 0.1*window.innerHeight
+download_ok = false
+
 function affichage_texte_fin(M_fin){
     // ctx.strokeStyle = "rgb(255, 255, 255)"
     // ctx.fillStyle = "rgb(255, 255, 255)"
@@ -35,13 +38,82 @@ function affichage_texte_fin(M_fin){
     titre = "    WAIT      "
     affichage_titre(titre, (0.05*window.innerWidth)+"pt Courier", "#EF476F", yt=0.35*window.innerHeight)
 
-    affichage_titre(M_fin, (0.02*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.6*window.innerHeight)
+    affichage_titre(M_fin, (0.02*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.48*window.innerHeight)
 
     // affichage_titre("Your completion code is : C6HDHXRT", (0.02*window.innerWidth)+"pt Courier", "#EF476F", yt=0.8*window.innerHeight)
 
 }
 
-function update_texte_fin(M_fin){
-    affichage_titre(M_fin, (0.02*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.7*window.innerHeight)
+function update_texte_fin_siOK(M_fin1, M_fin2){
+    affichage_titre(M_fin1, (0.02*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.6*window.innerHeight)
+    affichage_titre(M_fin2, (0.024*window.innerWidth)+"pt Courier", "#EF476F", yt=0.7*window.innerHeight)
 
 }
+
+function update_texte_fin_siPASOK(M_fin1, M_fin2, M_fin3){
+    affichage_titre(M_fin1, (0.018*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.53*window.innerHeight)
+    affichage_titre(M_fin2, (0.018*window.innerWidth)+"pt Courier", "#EF476F", yt=0.6*window.innerHeight)
+    affichage_titre(M_fin3, (0.018*window.innerWidth)+"pt Courier", "#EF476F", yt=0.65*window.innerHeight)
+
+}
+
+
+function action_bouton_lien(){
+    interactions.push({"time": new Date().getTime(), "type": get_message("lien_next_cloud", [])})
+    // A appeler quand l'utilisateur clique sur le lien
+    window.open('https://nextcloud.tforgione.fr/s/REJ9qHH5eSaWNGr', '_blank');
+ 
+}
+function afficher_bouton_lien(){
+    ratio_bouton_fin = h_bouton_fin/boutons["suivant"].height
+    w_bouton_fin = ratio_bouton_fin*boutons["suivant"].width
+    h_bouton_fin = h_bouton_fin
+    x_bouton_fin2 = 3*(window.innerWidth/4)+ 5 - w_bouton_fin
+    y_bouton_fin = window.innerHeight - h_bouton_suivant - 20
+    // Bouton commencer
+    ctx.drawImage(boutons["suivant"], x_bouton_fin2, y_bouton_fin , w_bouton_fin, h_bouton_fin)
+}
+
+function traitement_fin_lien(){
+    afficher_bouton_lien()
+    if(is_inside(xyMouseMove, x_bouton_fin2, y_bouton_fin , w_bouton_fin, h_bouton_fin)){
+        draw_rectangle(x_bouton_fin2, y_bouton_fin , w_bouton_fin, h_bouton_fin, "rgb(200, 200, 200)", 0.6)
+    }
+
+    if (clicked && click_inside(xyMouseDown, x_bouton_fin2, y_bouton_fin , w_bouton_fin, h_bouton_fin)){
+        action_bouton_lien()
+    }
+}
+
+function action_bouton_download(){
+    interactions.push({"time": new Date().getTime(), "type": get_message("enregistrement_json", [])})
+    // A appeler quand l'utilisateur clique sur le bouton pour télécharger les données
+    let data = new File([JSON.stringify(choix, undefined, 4)], "data_BVS-study_prolific.json", {type: "text/plain;charset=utf-8"});
+    saveAs(data, 'data_BVS-study_prolific.json');
+    download_ok = true
+}
+
+function afficher_bouton_download(){
+    ratio_bouton_fin = h_bouton_fin/boutons["suivant"].height
+    w_bouton_fin = ratio_bouton_fin*boutons["suivant"].width
+    h_bouton_fin = h_bouton_fin
+    x_bouton_fin = (window.innerWidth/4)+ 5
+    y_bouton_fin = window.innerHeight - h_bouton_suivant - 20
+    // Bouton commencer
+    ctx.drawImage(boutons["suivant"], x_bouton_fin, y_bouton_fin , w_bouton_fin, h_bouton_fin)
+}
+
+function traitement_fin_enregistrement(){
+    afficher_bouton_download()
+     // Survol
+    if(is_inside(xyMouseMove, x_bouton_fin, y_bouton_fin , w_bouton_fin, h_bouton_fin)){
+        draw_rectangle(x_bouton_fin, y_bouton_fin , w_bouton_fin, h_bouton_fin, "rgb(200, 200, 200)", 0.6)
+    }
+
+    if (clicked && click_inside(xyMouseDown, x_bouton_fin, y_bouton_fin , w_bouton_fin, h_bouton_fin)){
+        action_bouton_download()
+    }
+}
+
+
+

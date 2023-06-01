@@ -47,11 +47,21 @@ function init_variable(premier_appel){
     //obj_file_random = shuffle(['backpack_regulier_tri_centered_user_study_normed.obj', 'dragon_update_user_study_normed.obj', 'camel_update_user_study_normed.obj', 'gorgoile_update_user_study_centered_normed.obj', 'horse_update_user_study_normed.obj'])
     obj_file_random = shuffle(obj_names)
 
+    // --------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------
     // ---> nombre de mesh a visionner AU TOTAL
-    nb_mesh = 10//obj_file_random.length
+    nb_mesh = 1//10//obj_file_random.length
 
     // ---> nb analyse demandé
-    nb_analyse_demande = 5
+    nb_analyse_demande = 1//5
+
+    message_completion_code = "Your completion code is: C7BG2ZFV"
+    // --------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------
+
+    envoie_data = false
 
     list_idx_tache =[]
     for (let p=0; p<nb_mesh; p++){list_idx_tache.push(p+1)}
@@ -88,15 +98,16 @@ function init_variable(premier_appel){
 
     // Enchainement des pages
     if (premier_appel){
-        page_avertissement = true
+        page_avertissement = false
         page_contexte = false
         page_inscription = false
         page_explication = false
         page_warning = false
         page_explication_bis = false
-        page_vues = false // false
+        page_vues = true // false
         page_explication_analyse = false
         page_analyse = false
+        page_fin_probleme = false
     // cas raz : on recommence juste la partie vues
     } else {
         page_avertissement = false
@@ -108,6 +119,7 @@ function init_variable(premier_appel){
         page_vues = true // false
         page_explication_analyse = false
         page_analyse = false
+        page_fin_probleme = false
     }
 
     // Pour afiicher les recap dans la partie analys,e on les conserve tous
@@ -563,7 +575,7 @@ function animate() {
     }
 ////////////////////////////////////////////////////////////////////////////////
     // page fin
-    if (!page_avertissement && !page_contexte && !page_inscription && !page_explication && !page_warning && !page_explication_bis && !page_vues && !page_explication_analyse && !page_analyse){
+    if (!envoie_data && !page_avertissement && !page_contexte && !page_inscription && !page_explication && !page_warning && !page_explication_bis && !page_vues && !page_explication_analyse && !page_analyse){
         //console.log("boucle fin")
         // on enlève les touches du clavier associé à la page vues
         document.removeEventListener("keydown", action_clavier_analyse)
@@ -577,30 +589,35 @@ function animate() {
 
         enregistrement(function(xhr) {
             console.log(xhr.responseText);
-            message_fin = "> Your submission has been recorded. Your completion code is : C6HDHXRT"
+            message_fin1 = "> Your submission has been recorded."
+            message_fin2 = message_completion_code
             envoie_termine = true
-            update_texte_fin(message_fin)
-            interactions.push({"time": new Date().getTime(), "type": get_message("fin_etude", [])})
+            update_texte_fin_siOK(message_fin1, message_fin2)
             return;
         }, function(xhr) {
-            message_fin = "> Your submission could not be saved. Click on the button below to donwload the data and upload it to"
-            update_texte_fin(message_fin)
-
-            // TODO : Ajouter bouton et lien
-
-            // A appeler quand l'utilisateur clique sur le bouton pour télécharger les données
-            let data = new File([JSON.stringify(choix)], "data.json", {type: "text/plain;charset=utf-8"});
-            saveAs(data, 'data.json');
-
-            // A appeler quand l'utilisateur clique sur le lien
-            window.open('https://nextcloud.tforgione.fr/s/REJ9qHH5eSaWNGr', '_blank');
-
-            // TODO : Afficher le completion code a l'utilisateur : Your completion code is : C6HDHXRT
-
+            page_fin_probleme = true  
+            interactions.push({"time": new Date().getTime(), "type": get_message("pbl_enregistrement_final", [num_analyse-1]) })
         });
+        envoie_data = true        
+    }
 
-        return
+    if (page_fin_probleme){
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
+        draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1)
+        affichage_texte_fin(message_fin)
+        message_fin1 = "> Your submission could not be saved."
+        message_fin2 = "Click on the button below to DOWNLOAD the data and"
+        message_fin3 = "UPLOAD it to my nextcloud folder, please :)"
+        update_texte_fin_siPASOK(message_fin1, message_fin2, message_fin3)
 
+        // TODO : Ajouter bouton et lien
+        traitement_fin_enregistrement()  
+        
+        if (download_ok){
+            // affichage du ccompletion code 
+            affichage_titre(message_completion_code, (0.018*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.75*window.innerHeight)
+            traitement_fin_lien()
+        }   
 
     }
 ////////////////////////////////////////////////////////////////////////////////

@@ -53,6 +53,9 @@ function get_message(message_nom, arguments){
     interaction_messages['retrait_check'] = "A"+arguments[0]+" retrait check sur : analyse n°"+(arguments[0])+", mot "+arguments[1]
     interaction_messages['fin_analyse'] =  "fin analyse"
     interaction_messages['fin_etude'] = "envoie des donnees - fin etude"
+    interaction_messages['pbl_enregistrement_final'] = "Probleme lors de l'enregistrement final"
+    interaction_messages['enregistrement_json'] = "enregistrement en local du json"
+    interaction_messages['lien_next_cloud'] = "click sur lien nextcloud"
 
     return interaction_messages[message_nom]
 
