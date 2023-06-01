@@ -31,7 +31,10 @@ async function main() {
         let file = await fs.open(__dirname + '/outputs/' + req.body.uuid + '.json', 'w');
 
         // Ajout d'une ligne.
-        file.write(JSON.stringify(req.body, undefined, 4));
+        await file.write(JSON.stringify(req.body, undefined, 4));
+
+        // Fermeture du fichier
+        await file.close();
 
         // Envoi de la réponse pour terminer la requête.
         res.send('Enregistrement terminé.');

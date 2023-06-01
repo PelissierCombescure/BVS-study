@@ -235,6 +235,10 @@ function setUp_3D(idx_mesh, idx_i_init, idx_j_init, explication=false){
     // Data 3D
     //obj_file_random = shuffle(['dragon_update_user_study_normed.obj', 'camel_update_user_study_normed.obj', 'gorgoile_update_user_study_centered_normed.obj', 'horse_update_user_study_normed.obj'])
     const objLoader = new THREE.OBJLoader2();
+    objLoader.callbacks.onReportError = () => {
+        // TODO : Gestion de l'erreur en cas de chargement de modele impossible
+        alert("Failed to load model");
+    };
 
     // Si on load le mesh 3d dans les explication, on importe que ce soit le dragon
     if (explication){
@@ -323,7 +327,7 @@ function init_data(){
 
 }
 
-function enregistrement(callback) {
+function enregistrement(onsuccess, onerror) {
     // Création de la requête HTTP à envoyer au serveur.
     let xhr = new XMLHttpRequest();
     // Préparation de la requête pour l'envoi en POST vers l'url.
@@ -334,9 +338,16 @@ function enregistrement(callback) {
     xhr.onreadystatechange = function() {
         //interactions.push({"time": new Date().getTime(), "type": get_message("fin_eetude", [])})
         // Si la requête est terminée, et que la réponse n'est pas une erreur.
-        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-            if (typeof callback === 'function') {
-                callback(xhr);
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                if (typeof onsuccess === 'function') {
+                    onsuccess(xhr);
+                }
+            } else {
+                console.log("wtf js");
+                if (typeof onerror === 'function') {
+                    onerror(xhr);
+                }
             }
         }
     }
@@ -566,11 +577,26 @@ function animate() {
 
         enregistrement(function(xhr) {
             console.log(xhr.responseText);
-            message_fin = "> It is done. Your submission has been recorded."
+            message_fin = "> Your submission has been recorded. Your completion code is : C6HDHXRT"
             envoie_termine = true
             update_texte_fin(message_fin)
             interactions.push({"time": new Date().getTime(), "type": get_message("fin_etude", [])})
             return;
+        }, function(xhr) {
+            message_fin = "> Your submission could not be saved. Click on the button below to donwload the data and upload it to"
+            update_texte_fin(message_fin)
+
+            // TODO : Ajouter bouton et lien
+
+            // A appeler quand l'utilisateur clique sur le bouton pour télécharger les données
+            let data = new File([JSON.stringify(choix)], "data.json", {type: "text/plain;charset=utf-8"});
+            saveAs(data, 'data.json');
+
+            // A appeler quand l'utilisateur clique sur le lien
+            window.open('https://nextcloud.tforgione.fr/s/REJ9qHH5eSaWNGr', '_blank');
+
+            // TODO : Afficher le completion code a l'utilisateur : Your completion code is : C6HDHXRT
+
         });
 
         return
