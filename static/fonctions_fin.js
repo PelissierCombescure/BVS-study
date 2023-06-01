@@ -33,27 +33,29 @@ function affichage_texte_fin(M_fin){
     affichage_titre(titre, (0.05*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.15*window.innerHeight)
 
     titre = "Please      a moment"
-    affichage_titre(titre, (0.05*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.35*window.innerHeight)
+    affichage_titre(titre, (0.05*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.3*window.innerHeight)
 
     titre = "    WAIT      "
-    affichage_titre(titre, (0.05*window.innerWidth)+"pt Courier", "#EF476F", yt=0.35*window.innerHeight)
+    affichage_titre(titre, (0.05*window.innerWidth)+"pt Courier", "#EF476F", yt=0.3*window.innerHeight)
 
-    affichage_titre(M_fin, (0.02*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.48*window.innerHeight)
+    affichage_titre(M_fin, (0.016*window.innerWidth)+"pt Courier", "#FFD166", yt=0.4*window.innerHeight)
 
     // affichage_titre("Your completion code is : C6HDHXRT", (0.02*window.innerWidth)+"pt Courier", "#EF476F", yt=0.8*window.innerHeight)
 
 }
 
 function update_texte_fin_siOK(M_fin1, M_fin2){
-    affichage_titre(M_fin1, (0.02*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.6*window.innerHeight)
+    affichage_titre(M_fin1, (0.02*window.innerWidth)+"pt Courier", "#FFD166", yt=0.6*window.innerHeight)
     affichage_titre(M_fin2, (0.024*window.innerWidth)+"pt Courier", "#EF476F", yt=0.7*window.innerHeight)
 
 }
 
-function update_texte_fin_siPASOK(M_fin1, M_fin2, M_fin3){
-    affichage_titre(M_fin1, (0.018*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.53*window.innerHeight)
-    affichage_titre(M_fin2, (0.018*window.innerWidth)+"pt Courier", "#EF476F", yt=0.6*window.innerHeight)
-    affichage_titre(M_fin3, (0.018*window.innerWidth)+"pt Courier", "#EF476F", yt=0.65*window.innerHeight)
+function update_texte_fin_siPASOK(M_fin1, M_fin2, M_fin3, M_fin4, M_fin5){
+    affichage_titre(M_fin1, (0.018*window.innerWidth)+"pt Courier", "#FFD166", yt=0.45*window.innerHeight)
+    affichage_titre(M_fin2, (0.018*window.innerWidth)+"pt Courier", "#EF476F", yt=0.55*window.innerHeight)
+    affichage_titre(M_fin3, (0.015*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.6*window.innerHeight)
+    affichage_titre(M_fin4, (0.015*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.65*window.innerHeight)
+    affichage_titre(M_fin5, (0.018*window.innerWidth)+"pt Courier", "#EF476F", yt=0.70*window.innerHeight)
 
 }
 
@@ -65,13 +67,13 @@ function action_bouton_lien(){
  
 }
 function afficher_bouton_lien(){
-    ratio_bouton_fin = h_bouton_fin/boutons["suivant"].height
-    w_bouton_fin = ratio_bouton_fin*boutons["suivant"].width
+    ratio_bouton_fin = h_bouton_fin/boutons["depot"].height
+    w_bouton_fin = ratio_bouton_fin*boutons["depot"].width
     h_bouton_fin = h_bouton_fin
     x_bouton_fin2 = 3*(window.innerWidth/4)+ 5 - w_bouton_fin
     y_bouton_fin = window.innerHeight - h_bouton_suivant - 20
     // Bouton commencer
-    ctx.drawImage(boutons["suivant"], x_bouton_fin2, y_bouton_fin , w_bouton_fin, h_bouton_fin)
+    ctx.drawImage(boutons["depot"], x_bouton_fin2, y_bouton_fin , w_bouton_fin, h_bouton_fin)
 }
 
 function traitement_fin_lien(){
@@ -88,19 +90,19 @@ function traitement_fin_lien(){
 function action_bouton_download(){
     interactions.push({"time": new Date().getTime(), "type": get_message("enregistrement_json", [])})
     // A appeler quand l'utilisateur clique sur le bouton pour télécharger les données
-    let data = new File([JSON.stringify(choix, undefined, 4)], "data_BVS-study_prolific.json", {type: "text/plain;charset=utf-8"});
-    saveAs(data, 'data_BVS-study_prolific.json');
+    let data = new File([JSON.stringify(choix, undefined, 4)], choix.uuid+'.json', {type: "text/plain;charset=utf-8"});
+    saveAs(data, choix.uuid+'.json');
     download_ok = true
 }
 
 function afficher_bouton_download(){
-    ratio_bouton_fin = h_bouton_fin/boutons["suivant"].height
-    w_bouton_fin = ratio_bouton_fin*boutons["suivant"].width
+    ratio_bouton_fin = h_bouton_fin/boutons["enregistrement"].height
+    w_bouton_fin = ratio_bouton_fin*boutons["enregistrement"].width
     h_bouton_fin = h_bouton_fin
     x_bouton_fin = (window.innerWidth/4)+ 5
     y_bouton_fin = window.innerHeight - h_bouton_suivant - 20
     // Bouton commencer
-    ctx.drawImage(boutons["suivant"], x_bouton_fin, y_bouton_fin , w_bouton_fin, h_bouton_fin)
+    ctx.drawImage(boutons["enregistrement"], x_bouton_fin, y_bouton_fin , w_bouton_fin, h_bouton_fin)
 }
 
 function traitement_fin_enregistrement(){

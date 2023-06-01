@@ -51,10 +51,10 @@ function init_variable(premier_appel){
     // --------------------------------------------------------------------------------
     // --------------------------------------------------------------------------------
     // ---> nombre de mesh a visionner AU TOTAL
-    nb_mesh = 1//10//obj_file_random.length
+    nb_mesh = 10//obj_file_random.length
 
     // ---> nb analyse demandé
-    nb_analyse_demande = 1//5
+    nb_analyse_demande = 5
 
     message_completion_code = "Your completion code is: C7BG2ZFV"
     // --------------------------------------------------------------------------------
@@ -98,13 +98,13 @@ function init_variable(premier_appel){
 
     // Enchainement des pages
     if (premier_appel){
-        page_avertissement = false
+        page_avertissement = true
         page_contexte = false
         page_inscription = false
         page_explication = false
         page_warning = false
         page_explication_bis = false
-        page_vues = true // false
+        page_vues = false // false
         page_explication_analyse = false
         page_analyse = false
         page_fin_probleme = false
@@ -249,7 +249,7 @@ function setUp_3D(idx_mesh, idx_i_init, idx_j_init, explication=false){
     const objLoader = new THREE.OBJLoader2();
     objLoader.callbacks.onReportError = () => {
         // TODO : Gestion de l'erreur en cas de chargement de modele impossible
-        alert("Failed to load model");
+        alert("Failed to load model. Please check your internet connection then refresh the page to restart the study.");
     };
 
     // Si on load le mesh 3d dans les explication, on importe que ce soit le dragon
@@ -325,6 +325,8 @@ function init_data(){
     boutons["skip"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_skip_tutorial.png')
     boutons["envoie_data"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_envoie_data.png')
     boutons["consigne"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_consigne.png')
+    boutons["enregistrement"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_enregistrement.png')
+    boutons["depot"] = new_image('https://raw.githubusercontent.com/PelissierCombescure/BVS-study/main/graphics/Boutons/bouton_depot.png')
 
     // Mouse
     xyMouseMove = {"x": -1, "y": -1}
@@ -606,16 +608,18 @@ function animate() {
         draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1)
         affichage_texte_fin(message_fin)
         message_fin1 = "> Your submission could not be saved."
-        message_fin2 = "Click on the button below to DOWNLOAD the data and"
-        message_fin3 = "UPLOAD it to my nextcloud folder, please :)"
-        update_texte_fin_siPASOK(message_fin1, message_fin2, message_fin3)
+        message_fin2 = "Click on the button below to DOWNLOAD the data"
+        message_fin3 = "(please DO NOT CHANGE the name of the downloaded json file)"
+        message_fin4 = "and"
+        message_fin5 = "UPLOAD it to my nextcloud folder, please :)"
+        update_texte_fin_siPASOK(message_fin1, message_fin2, message_fin3, message_fin4, message_fin5)
 
         // TODO : Ajouter bouton et lien
         traitement_fin_enregistrement()  
         
         if (download_ok){
             // affichage du ccompletion code 
-            affichage_titre(message_completion_code, (0.018*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.75*window.innerHeight)
+            affichage_titre(message_completion_code, (0.018*window.innerWidth)+"pt Courier", "#FFFFFF", yt=0.8*window.innerHeight)
             traitement_fin_lien()
         }   
 
