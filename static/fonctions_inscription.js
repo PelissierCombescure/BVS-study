@@ -32,8 +32,41 @@ function affichage_inscription(){
     //Prolific ctx.fillText("None of these above", parseInt(document.getElementById("SexeA").style.left)+40, parseInt(document.getElementById("SexeA").style.top)+24)
 
     //Prolific
-    ctx.fillText("Please enter your Prolific ID:", x_texte_zone, parseInt(document.getElementById("ProlificID").style.top) - 20)
+    //ctx.fillText("Please enter your Prolific ID:", x_texte_zone, parseInt(document.getElementById("ProlificID").style.top) - 20)
+    c_vive = '#EF476F'
+
+    consigne = "Please enter your ¤Prolific ID:¤"
+    yt =   parseInt(document.getElementById("ProlificID").style.top) - 20
+    print_text(handle_text(consigne, x_texte_zone, yt=yt, (0.018*window.innerWidth)+"pt Courier", window.innerWidth, color="#FFFFFF", interligne=0.045*window.innerHeight), false, c_base ="#FFFFFF", c_vive)  
     
+    ctx.strokeStyle = "rgb(255, 255, 255)" 
+    ctx.fillStyle = "rgb(255, 255, 255)"
+    consigne = "This is the second time we propose the same study:"
+    yt =  parseInt(document.getElementById("nv_participant").style.top) - 85
+    print_text(handle_text(consigne, x_texte_zone, yt=yt, (0.018*window.innerWidth)+"pt Courier", window.innerWidth, color="#FFFFFF", interligne=0.045*window.innerHeight), false, c_base ="#FFFFFF", c_vive)  
+    
+    ctx.strokeStyle = "rgb(255, 255, 255)" 
+    ctx.fillStyle = "rgb(255, 255, 255)"
+    consigne = "Are you a ¤NEW¤ participant?"
+    yt =  parseInt(document.getElementById("nv_participant").style.top) - 40
+    print_text(handle_text(consigne, x_texte_zone, yt=yt, (0.018*window.innerWidth)+"pt Courier", window.innerWidth, color="#FFFFFF", interligne=0.045*window.innerHeight), false, c_base ="#FFFFFF", c_vive)  
+
+    ctx.strokeStyle = "rgb(255, 255, 255)" 
+    ctx.fillStyle = "rgb(255, 255, 255)"
+    consigne = "Yes"
+    yt =  parseInt(document.getElementById("nv_participant").style.top) + 24
+    xt_yes = parseInt(document.getElementById("nv_participant").style.left) + 40
+    print_text(handle_text(consigne, xt_yes, yt=yt, (0.018*window.innerWidth)+"pt Courier", window.innerWidth, color="#FFFFFF", interligne=0.045*window.innerHeight), false, c_base ="#FFFFFF", c_vive)  
+
+    ctx.strokeStyle = "rgb(255, 255, 255)" 
+    ctx.fillStyle = "rgb(255, 255, 255)"
+    consigne = "No"
+    yt =  parseInt(document.getElementById("Pas_nv_participant").style.top) + 24
+    xt_yes = parseInt(document.getElementById("Pas_nv_participant").style.left) + 40
+    print_text(handle_text(consigne, xt_yes, yt=yt, (0.018*window.innerWidth)+"pt Courier", window.innerWidth, color="#FFFFFF", interligne=0.045*window.innerHeight), false, c_base ="#FFFFFF", c_vive)  
+
+    consigne = "(Be careful, non-new participants will not be paid.)"
+    affichage_titre(consigne, (0.013*window.innerWidth)+"pt Courier", "#FFD166", yt= 0.65*window.innerHeight)
 }
 
 //////////////////////////////////////////////////////////////
@@ -132,6 +165,7 @@ function champs_remplis_correctment(){
     name_ok = false
     age_ok = false
     sexe_ok = false
+    nv_participant_ok = false
     //if ((document.getElementById("Firstname").value.length >0) && (value_non_vide(document.getElementById("Firstname").value))){firstname_ok = true}
     //Prolific if (document.getElementById("Pseudo").value.length > 10 && (value_non_vide(document.getElementById("Pseudo").value))){name_ok = true} //Prolific on a mis 24 au lieu de 0
     //Prolific if ((document.getElementById("Age").value >0) && (document.getElementById("Age").value.length >0) && (value_non_vide(document.getElementById("Age").value))){age_ok = true}
@@ -141,7 +175,8 @@ function champs_remplis_correctment(){
     
     //Prolific
     if (document.getElementById("ProlificID").value.length == 24 && (value_non_vide(document.getElementById("ProlificID").value))){name_ok = true} //Prolific on a mis 24 au lieu de 0
-    return name_ok 
+    if (document.getElementById("nv_participant").checked || document.getElementById("Pas_nv_participant").checked){ nv_participant_ok= true}
+    return name_ok && nv_participant_ok
 }
 
 function value_non_vide(V){
@@ -158,8 +193,8 @@ function afficher_champs_inscription() {
     h_text_zone = 0.05*window.innerHeight
     nb_caract_min = 1
     nb_caract_max = 30
-    x_texte_zone = (window.innerWidth/4) 
-    y_texte_zone = 0.40*window.innerHeight
+    x_texte_zone = (window.innerWidth/6) 
+    y_texte_zone = 0.2*window.innerHeight
     ecart_texte_zone = 0.2*window.innerHeight
     
 
@@ -215,35 +250,35 @@ function afficher_champs_inscription() {
     // input3.focus();
 
     //Prolific 
-    // // Zone de texte : Sexe
-    // var input4 = document.createElement('input');
-    // input4.type = 'radio';
-    // input4.id = 'SexeM';
-    // input4.name = "sexe"
-    // //input4.size = w_text_zone
-    // // style 
-    // input4.style.position = 'fixed';   
-    // input4.style.left = x_texte_zone+'px';
-    // input4.style.top = 2*ecart_texte_zone + y_texte_zone+'px';//3*ecart_texte_zone + y_texte_zone+'px';
-    // input4.style.height = 20
-    // input4.style.width = 20
-    // document.body.appendChild(input4);
-    // input4.focus();
+    // Zone de texte : Sexe
+    var input4 = document.createElement('input');
+    input4.type = 'radio';
+    input4.id = 'nv_participant';
+    input4.name = "utilisateur"
+    //input4.size = w_text_zone
+    // style 
+    input4.style.position = 'fixed';   
+    input4.style.left = x_texte_zone+'px';
+    input4.style.top = 1.6*ecart_texte_zone + y_texte_zone+'px';//3*ecart_texte_zone + y_texte_zone+'px';
+    input4.style.height = 20
+    input4.style.width = 20
+    document.body.appendChild(input4);
+    input4.focus();
 
     //Prolific 
-    // var input5 = document.createElement('input');
-    // input5.type = 'radio';
-    // input5.id = 'SexeF';
-    // input5.name = "sexe"
-    // //input4.size = w_text_zone
-    // // style 
-    // input5.style.position = 'fixed';   
-    // input5.style.left = window.innerWidth*0.1 + x_texte_zone+'px';
-    // input5.style.top = 2*ecart_texte_zone + y_texte_zone+'px';//3*ecart_texte_zone + y_texte_zone+'px';
-    // input5.style.height = 20
-    // input5.style.width = 20
-    // document.body.appendChild(input5);
-    // input5.focus();
+    var input5 = document.createElement('input');
+    input5.type = 'radio';
+    input5.id = 'Pas_nv_participant';
+    input5.name = "utilisateur"
+    //input4.size = w_text_zone
+    // style 
+    input5.style.position = 'fixed';   
+    input5.style.left = window.innerWidth*0.2 + x_texte_zone+'px';
+    input5.style.top = 1.6*ecart_texte_zone + y_texte_zone+'px';//3*ecart_texte_zone + y_texte_zone+'px';
+    input5.style.height = 20
+    input5.style.width = 20
+    document.body.appendChild(input5);
+    input5.focus();
 
     //Prolific 
     // var input6 = document.createElement('input');
@@ -265,20 +300,21 @@ function afficher_champs_inscription() {
 
 function gestion_donnees_personnelles(){
     // Sauvegarde des infos  
-    //Prolific if (document.getElementById("SexeM").checked){sexe = "M"}
-    //Prolific else if (document.getElementById("SexeF").checked){sexe = "F"}
+    if (document.getElementById("nv_participant").checked){participant = "nouveau"}
+    else if (document.getElementById("Pas_nv_participant").checked){participant = "pas_nouveau"}
+    else{participant = "None"}
     //Prolific else if (document.getElementById("SexeM").checked){sexe = "M"}
     //Prolific else {sexe='None'}  
     choix['identite'] = {//"Firstname":document.getElementById("Firstname").value,
                         "ProlificID": document.getElementById("ProlificID").value,
                         //Prolific "Age": document.getElementById("Age").value,
-                        //Prolific "Sexe": sexe
+                        "Utilisateur": participant
                     }
     //document.getElementById("Firstname").style.display = 'none'
     document.getElementById("ProlificID").style.display = 'none'
     //Prolific document.getElementById("Age").style.display = 'none'
-    //Prolific document.getElementById("SexeM").style.display = 'none'
-    //Prolific document.getElementById("SexeF").style.display = 'none'
+    document.getElementById("nv_participant").style.display = 'none'
+    document.getElementById("Pas_nv_participant").style.display = 'none'
     //Prolific document.getElementById("SexeA").style.display = 'none'
                     
 }

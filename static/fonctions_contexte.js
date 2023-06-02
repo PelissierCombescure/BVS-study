@@ -4,12 +4,12 @@ h_bouton_contexte = 0.1*window.innerHeight
 
 
 
-function affichage_texte_contexte(texte, font, color, xt, yt, l_max_texte){
+function affichage_texte_contexte(texte, font, color, xt, yt, l_max_texte, c_vive){
     // Texte
     ctx.strokeStyle = color // Pour que le contour soit rouge
     ctx.fillStyle = color // Pour que l'intérieur soit bleu
     ctx.font = font
-    print_text(handle_text(texte, xt, yt, font, l_max_texte, color="#FFFFFF", interligne=0.045*window.innerHeight), false)  
+    print_text(handle_text(texte, xt, yt, font, l_max_texte, color="#FFFFFF", interligne=0.045*window.innerHeight), false, c_base ="#FFFFFF", c_vive)    
     
 }
 
@@ -105,18 +105,22 @@ function traitement_contexte(){
     //console.log(num_texte)
     ctx.clearRect(0, 0, canvas.width, canvas.height) 
     // variable position             
-    x_texte = window.innerWidth*(1/10)
-    w_texte = window.innerWidth*(8/10)
+    x_texte = window.innerWidth*(0.05)
+    w_texte = window.innerWidth*(9/10)
     font_texte = (0.012*window.innerWidth)+"pt Courier" 
     // titre commun à chaque page 
     affichage_titre(titre, (0.018*window.innerWidth)+"pt Courier", "#FFD166")
     // affichage texte 
     for(let p=0; p<texte_a_afficher.length; p++){
         dict_texte = texte_a_afficher[p]
-        if ((num_texte == 7 || num_texte == 6) && (p == (textes_page_2.length)-1 ||  p == ( textes_page_2.length)-2)){w_texte = window.innerWidth*(5/10)}
+        if ((num_texte == 7 || num_texte == 6) && (p == (textes_page_2.length)-1 ||  p == ( textes_page_2.length)-2)){w_texte = window.innerWidth*(5/10); console.log('rr')}
         //if ((num_texte == 10 || num_texte == 11) && (p == (textes_page_3.length)-2)){w_texte = window.innerWidth*(5/10)}
-        affichage_texte_contexte(dict_texte.t, font_texte, dict_texte.c, x_texte, dict_texte.y, w_texte)
-        w_texte = window.innerWidth*(8/10)
+        // question de l'étude ne plus gros
+        if ((num_texte == 11) && p == (textes_page_3.length)-1){font_texte = (dict_texte.fontsize*window.innerWidth)+"pt Courier" }
+
+        affichage_texte_contexte(dict_texte.t, font_texte, dict_texte.c, x_texte, dict_texte.y, w_texte, c_vive='#FFD166')
+        w_texte = window.innerWidth*(9/10)
+        font_texte = (0.012*window.innerWidth)+"pt Courier" 
     }
       
     if (num_texte < ((textes_page_1.length + textes_page_2.length + textes_page_3.length +textes_page_4.length))-2){
@@ -200,16 +204,16 @@ textes_contexte={
 "texte6":{"t":"For example, this is a wolf. This perspective highlights its tail and its hind legs, but discards its head and its face.", "y": window.innerHeight*0.45, "c": color_blanc},
 "texte7":{"t":"This viewpoint reveal its head, face, and front legs but hides its tail and barely shows its hind legs.", "y": window.innerHeight*0.6, "c": color_blanc},
 "texte8":{"t":"What is a good viewpoint?", "y": window.innerHeight*0.15, "c": color_jaune},
-"texte9":{"t":"> A good viewpoint is one that offers a RELEVANT view of the object. The one that BEST showcases/highlights the object and the one that is the most REPRESENTATIVE of the object. ", "y": window.innerHeight*0.2, "c": color_blanc},//A more geometrical definition: a good viewpoint is a position from which most representative characteristics of an object (i.e. the parts that make the object the most identifiable), are visible.", "y": window.innerHeight*0.2, "c": color_blanc},
+"texte9":{"t":"> A good viewpoint is one that offers a ¤RELEVANT¤ view of the object. The one that ¤BEST¤ showcases/highlights the object and the one that is the most ¤REPRESENTATIVE¤ of the object. ", "y": window.innerHeight*0.2, "c": color_blanc},//A more geometrical definition: a good viewpoint is a position from which most representative characteristics of an object (i.e. the parts that make the object the most identifiable), are visible.", "y": window.innerHeight*0.2, "c": color_blanc},
 //"texte10":{"t":"Let's imagine that you have to create an advertising display to promote the movie Dances with Wolves.", "y": window.innerHeight*0.35, "c": color_blanc},
 "texte10":{"t":"If you had to choose between these two viewpoints:", "y": window.innerHeight*0.35, "c": color_blanc},
 //"texte11":{"t":"The purpose of this study is to ask you, for a given object, which are for you the best viewpoints and why. The answers will of course be subjective because everyone has their own opinion. This subjective information is what I am interested in.", "y": window.innerHeight*0.7, "c": color_blanc},
-"texte11": {"t":"Which viewpoint do you prefer to both SHOWCASE and RECOGNIZE the wolf?", "y": window.innerHeight*0.8, "c": color_jaune},
+"texte11": {"t":"Which viewpoint do you prefer to both SHOWCASE and RECOGNIZE the wolf?", "y": window.innerHeight*0.75, "c": color_jaune, 'fontsize':0.015},
 //"texte11": {"t":"Which viewpoint allows you to EASILY RECOGNIZE that this object is a wolf??", "y": window.innerHeight*0.8, "c": "rgb(255, 209, 102)"},
 "texte12":{"t":"Now that you are up to speed, here are the instructions of the study:", "y": window.innerHeight*0.15, "c": color_blanc},
-"texte13":{"t":"- You will be presented "+nb_mesh+" different objects.", "y": window.innerHeight*0.25, "c": color_blanc},
-"texte14":{"t":"- For each object, you will chose a viewpoint you prefer to both showcase and recognize the object. You will have to do this "+nb_choix_demande+" times.", "y": window.innerHeight*0.35, "c": color_blanc},
-"texte15":{"t":"- Afterwards, you will answer a few questions to justify your choices.", "y": window.innerHeight*0.5, "c": color_blanc},
+"texte13":{"t":"- You will be presented ¤"+nb_mesh+" different objects.¤", "y": window.innerHeight*0.25, "c": color_blanc},
+"texte14":{"t":"- For each object, you will chose a viewpoint you prefer to both ¤showcase¤ and ¤recognize¤ the object. You will have to do this "+nb_choix_demande+" times.", "y": window.innerHeight*0.35, "c": color_blanc},
+"texte15":{"t":"- Afterwards, you will answer a ¤few questions¤ to justify your choices.", "y": window.innerHeight*0.5, "c": color_blanc},
 "texte16":{"t":"As a mean for you to get familiar with the interface, and ease your experience, we have set up a quick tutorial.", "y": window.innerHeight*0.6, "c": color_blanc},
 "texte17":{"t":"But before anything, we need you to register your Prolific ID in order to save your answers.", "y": window.innerHeight*0.7, "c": color_blanc},
 }

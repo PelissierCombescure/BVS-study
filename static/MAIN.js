@@ -61,7 +61,7 @@ function init_variable(premier_appel){
     // --------------------------------------------------------------------------------
     // --------------------------------------------------------------------------------
 
-    envoie_data = false
+   
 
     list_idx_tache =[]
     for (let p=0; p<nb_mesh; p++){list_idx_tache.push(p+1)}
@@ -139,6 +139,8 @@ function init_variable(premier_appel){
     // message de fin
     message_fin = "> Sending data in progress ..."
     envoie_termine = false
+    // test qui se met a true si on a testé d'envoyer les donnes sur le serveur à la toute fin
+    envoie_data = false
 
 }
 
@@ -249,7 +251,7 @@ function setUp_3D(idx_mesh, idx_i_init, idx_j_init, explication=false){
     const objLoader = new THREE.OBJLoader2();
     objLoader.callbacks.onReportError = () => {
         // TODO : Gestion de l'erreur en cas de chargement de modele impossible
-        alert("Failed to load model. Please check your internet connection then refresh the page to restart the study.");
+        alert("Failed to load model. Please check your internet connection then refresh the page to restart the study. Please send me a message on the Prolific platform, to notify me.");
     };
 
     // Si on load le mesh 3d dans les explication, on importe que ce soit le dragon
@@ -600,7 +602,9 @@ function animate() {
             page_fin_probleme = true  
             interactions.push({"time": new Date().getTime(), "type": get_message("pbl_enregistrement_final", [num_analyse-1]) })
         });
-        envoie_data = true        
+        envoie_data = true   
+
+        //page_fin_probleme = true     
     }
 
     if (page_fin_probleme){
@@ -608,22 +612,24 @@ function animate() {
         draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1)
         affichage_texte_fin(message_fin)
         message_fin1 = "> Your submission could not be saved."
-        message_fin21 = "Click on the button below to DOWNLOAD the data"
-        message_fin22 = "Click                        DOWNLOAD         "
+        message_fin2 = "==> 1. ¤CLICK¤ on the button below to ¤DOWNLOAD¤ the data"
+        //message_fin22 = "Click                        DOWNLOAD         "
         message_fin3 = "(please DO NOT CHANGE the name of the downloaded json file)"
-        message_fin4 = "and"
-        message_fin52 = "UPLOAD                                      "
-        message_fin51 = "       it to my nextcloud folder, please :)"
-        update_texte_fin_siPASOK(message_fin1, message_fin21,message_fin22, message_fin3, message_fin4, message_fin51, message_fin52)
+        //message_fin4 = "and"
+       // message_fin52 = "UPLOAD                                      "
+        message_fin4 = "==> 2. ¤UPLOAD¤ it to my nextcloud folder"
+        update_texte_fin_siPASOK(message_fin1, message_fin2, message_fin3, message_fin4)
 
         // TODO : Ajouter bouton et lien
         traitement_fin_enregistrement()  
         
         if (download_ok){
             // affichage du ccompletion code 
-            affichage_titre(message_completion_code, (0.018*window.innerWidth)+"pt Courier", "#EF476F", yt=0.8*window.innerHeight)
             traitement_fin_lien()
         }   
+        if (depot_ok){
+            affichage_titre(message_completion_code, (0.018*window.innerWidth)+"pt Courier", "#EF476F", yt=0.8*window.innerHeight)
+        }
 
     }
 ////////////////////////////////////////////////////////////////////////////////

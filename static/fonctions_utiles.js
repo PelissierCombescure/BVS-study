@@ -65,10 +65,27 @@ function afficher_ecran(originex, originey, largeur, hauteur, couleur, alpha){
 }
 
 
-function print_text(dialogue, c= true) {
+function print_text(dialogue, c = true, c_base ="#FFFFFF", c_vive="#FFD166") {
 
     s = dialogue.texte
+    couleur_vive = false
+    mise_en_valeur = false
     for (let i = 0; i < s.length; i++) {
+        if (s[i].lettre == "¤"){
+            mise_en_valeur = true
+            if (couleur_vive){couleur_vive = false}
+            else{couleur_vive = true}
+            continue
+        }
+        if (mise_en_valeur){
+            if (couleur_vive){
+                ctx.strokeStyle = c_vive
+                ctx.fillStyle = c_vive
+            } else {
+                ctx.strokeStyle = c_base
+                ctx.fillStyle = c_base
+            }
+        }
         if (s[i].lettre !== undefined) {
             if (c){
             ctx.strokeStyle = s[i].stroke
@@ -77,6 +94,7 @@ function print_text(dialogue, c= true) {
             ctx.fillText(s[i].lettre, s[i].x, s[i].y)
         }
     }
+    
 
 }
 
@@ -85,9 +103,9 @@ function affichage_titre(titre, font, color, yt = 0.08*window.innerHeight){
     ctx.fillStyle =color
     ctx.font = font
     largeur = ctx.measureText(titre).width
-    // au milieu 
     ctx.fillText(titre, (window.innerWidth/2)- (largeur/2), yt)
 }
+
 
 function handle_text(dialogue, x_start, y_start, font, l_max, color="#FFFFFF", interligne=40) {
     let s = dialogue

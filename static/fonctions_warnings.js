@@ -3,12 +3,12 @@ h_bouton_warning = 0.1*window.innerHeight
 num_warning = 0
 
 
-function affichage_texte_warning(texte, font, color, xt, yt, l_max_texte){
+function affichage_texte_warning(texte, font, color, xt, yt, l_max_texte, c_vive){
     // Texte
     ctx.strokeStyle = color // Pour que le contour soit rouge
     ctx.fillStyle = color // Pour que l'intérieur soit bleu
     ctx.font = font
-    print_text(handle_text(texte, xt, yt, font, l_max_texte, color="#FFFFFF", interligne=0.045*window.innerHeight), false)  
+    print_text(handle_text(texte, xt, yt, font, l_max_texte, color="#FFFFFF", interligne=0.045*window.innerHeight), false, c_base ="#FFFFFF", c_vive)  
     
 }
 
@@ -96,8 +96,8 @@ function traitement_warnings(){
     ctx.clearRect(0, 0, canvas.width, canvas.height) 
     draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1) // ou + clair 4, 38, 48
     // variable position             
-    x_texte = window.innerWidth*(1/10)
-    w_texte = window.innerWidth*(8/10)
+    x_texte = window.innerWidth*(0.05)
+    w_texte = window.innerWidth*(9/10)
     font_texte = (0.012*window.innerWidth)+"pt Courier" 
     
     // titre commun à chaque page 
@@ -106,16 +106,16 @@ function traitement_warnings(){
     for(let p=0; p<warnings_a_afficher.length; p++){
         dict_texte = warnings_a_afficher[p]
         // message : problems --> refresh
-        if (p==4){
+        if (p==warnings_page_1.length-2){
             affichage_titre(dict_texte.t, (0.016*window.innerWidth)+"pt Courier", "#FFD166",  dict_texte.y)
             //affichage_texte_warning(dict_texte.t, font_texte, "#EF476F", x_texte, dict_texte.y, w_texte)
         }
-        else if (p==5){
-            affichage_titre(dict_texte.t, font_texte, dict_texte.c,  dict_texte.y)
+        else if (p==warnings_page_1.length-1){
+            affichage_titre(dict_texte.t, font_texte, dict_texte.c,  dict_texte.y, )
             //affichage_texte_warning(dict_texte.t, font_texte, "#EF476F", x_texte, dict_texte.y, w_texte)
         }
         else {
-        affichage_texte_warning(dict_texte.t, font_texte, dict_texte.c, x_texte, dict_texte.y, w_texte)}
+        affichage_texte_warning(dict_texte.t, font_texte, dict_texte.c, x_texte, dict_texte.y, w_texte, c_vive='#FFD166')}
     }
       
     if (num_warning < (warnings_page_1.length)-1){
@@ -161,16 +161,18 @@ titre = "Warnings"
 color_blanc = "rgb(255,255,255)"
 color_rouge = "rgb(239, 71, 111)"
 warnings={
-"texte0":{"t":"The following is a list of warnings to keep in mind during the study:", "y": window.innerHeight*0.15, "c": color_blanc},
-"texte1":{"t":"- During the study, you should NOT CHANGE the size of the web page or computer screen. Changing the size may cause visual bugs and disturb you.", "y":window.innerHeight*0.25, "c": color_blanc},
-"texte2":{"t":"- Loading a object may TAKE TIME. The 3D screen may be completely black for a few seconds. BE PATIENT, the object will appear.", "y":window.innerHeight*0.38, "c": color_blanc},
-"texte3":{"t":"- Once you have finished the study, WAIT A FEW seconds before leaving the web page, to allow time for the data to fully record on the server. A message will indicate when the registration is complete.", "y": window.innerHeight*0.52, "c": color_blanc},
+"texte0":{"t":"The ¤following¤ is a list of warnings to keep in mind during the study:", "y": window.innerHeight*0.15, "c": color_blanc},
+"texte1":{"t":"- During the study, you should ¤NOT CHANGE¤ the size of the web page or computer screen. Changing the size may cause visual bugs and disturb you.", "y":window.innerHeight*0.23, "c": color_blanc},
+"texte2":{"t":"- Loading a object may ¤TAKE TIME¤. The 3D screen may be completely black for a few seconds. ¤BE PATIENT¤, the object will appear.", "y":window.innerHeight*0.34, "c": color_blanc},
+"texte3":{"t":"- As you saw in the previous tutorial, keyboard shortcuts are available. ¤BE CAREFUL¤ if you already have shortcuts saved on your personal keyboard.", "y": window.innerHeight*0.45, "c": color_blanc},
+"texte4":{"t":"- Once you have finished the study, ¤WAIT A FEW¤ seconds before leaving the web page, to allow time for the data to fully record on the server. A message will indicate when the registration is complete. (If registration was unsuccessful, please follow the ¤2 STEPS¤ of instructions for sending your results.", "y": window.innerHeight*0.56, "c": color_blanc},
 //"texte4":{"t":"- If during the study there are some PROBLEMS that you can't solve with the interface features, you can REFRESH the web page. All your data will be lost and you will have to start all over again. ", "y": window.innerHeight*0.68, "c": color_blanc},
-"texte4":{"t":"If you have ANY PROBLEMS during the study --> REFRESH your web page", "y": window.innerHeight*0.72, "c": color_blanc},
-"texte5":{"t":"(don't be afraid, you will start all over again)", "y": window.innerHeight*0.78, "c": color_blanc}
+"texte5":{"t":"If you have ANY PROBLEMS during the study --> REFRESH your web page", "y": window.innerHeight*0.78, "c": color_blanc},
+//"texte5":{"t":"(don't be afraid, you will start all over again)", "y": window.innerHeight*0.78, "c": color_blanc}
+"texte6":{"t":"(If you do refresh from now on, please send me a message to let me know.)", "y": window.innerHeight*0.82, "c": color_blanc}
 }
 
-warnings_page_1 = [warnings["texte0"], warnings["texte1"], warnings["texte2"], warnings["texte3"], warnings["texte4"], warnings["texte5"]]
+warnings_page_1 = [warnings["texte0"], warnings["texte1"], warnings["texte2"], warnings["texte3"], warnings["texte4"], warnings["texte5"], warnings["texte6"]]
 warnings_a_afficher = [warnings["texte0"]]
 }
 
