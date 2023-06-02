@@ -107,7 +107,7 @@ function traitement_warnings(){
         dict_texte = warnings_a_afficher[p]
         // message : problems --> refresh
         if (p==warnings_page_1.length-2){
-            affichage_titre(dict_texte.t, (0.016*window.innerWidth)+"pt Courier", "#FFD166",  dict_texte.y)
+            affichage_titre(dict_texte.t, (0.014*window.innerWidth)+"pt Courier", "#FFD166",  dict_texte.y)
             //affichage_texte_warning(dict_texte.t, font_texte, "#EF476F", x_texte, dict_texte.y, w_texte)
         }
         else if (p==warnings_page_1.length-1){

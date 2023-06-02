@@ -37,33 +37,33 @@ function affichage_inscription(){
 
     consigne = "Please enter your ¤Prolific ID:¤"
     yt =   parseInt(document.getElementById("ProlificID").style.top) - 20
-    print_text(handle_text(consigne, x_texte_zone, yt=yt, (0.018*window.innerWidth)+"pt Courier", window.innerWidth, color="#FFFFFF", interligne=0.045*window.innerHeight), false, c_base ="#FFFFFF", c_vive)  
+    print_text(handle_text(consigne, x_texte_zone, yt=yt, (0.016*window.innerWidth)+"pt Courier", window.innerWidth, color="#FFFFFF", interligne=0.045*window.innerHeight), false, c_base ="#FFFFFF", c_vive)  
     
     ctx.strokeStyle = "rgb(255, 255, 255)" 
     ctx.fillStyle = "rgb(255, 255, 255)"
     consigne = "This is the second time we propose the same study:"
     yt =  parseInt(document.getElementById("nv_participant").style.top) - 85
-    print_text(handle_text(consigne, x_texte_zone, yt=yt, (0.018*window.innerWidth)+"pt Courier", window.innerWidth, color="#FFFFFF", interligne=0.045*window.innerHeight), false, c_base ="#FFFFFF", c_vive)  
+    print_text(handle_text(consigne, x_texte_zone, yt=yt, (0.016*window.innerWidth)+"pt Courier", window.innerWidth, color="#FFFFFF", interligne=0.045*window.innerHeight), false, c_base ="#FFFFFF", c_vive)  
     
     ctx.strokeStyle = "rgb(255, 255, 255)" 
     ctx.fillStyle = "rgb(255, 255, 255)"
     consigne = "Are you a ¤NEW¤ participant?"
     yt =  parseInt(document.getElementById("nv_participant").style.top) - 40
-    print_text(handle_text(consigne, x_texte_zone, yt=yt, (0.018*window.innerWidth)+"pt Courier", window.innerWidth, color="#FFFFFF", interligne=0.045*window.innerHeight), false, c_base ="#FFFFFF", c_vive)  
+    print_text(handle_text(consigne, x_texte_zone, yt=yt, (0.016*window.innerWidth)+"pt Courier", window.innerWidth, color="#FFFFFF", interligne=0.045*window.innerHeight), false, c_base ="#FFFFFF", c_vive)  
 
     ctx.strokeStyle = "rgb(255, 255, 255)" 
     ctx.fillStyle = "rgb(255, 255, 255)"
     consigne = "Yes"
     yt =  parseInt(document.getElementById("nv_participant").style.top) + 24
     xt_yes = parseInt(document.getElementById("nv_participant").style.left) + 40
-    print_text(handle_text(consigne, xt_yes, yt=yt, (0.018*window.innerWidth)+"pt Courier", window.innerWidth, color="#FFFFFF", interligne=0.045*window.innerHeight), false, c_base ="#FFFFFF", c_vive)  
+    print_text(handle_text(consigne, xt_yes, yt=yt, (0.016*window.innerWidth)+"pt Courier", window.innerWidth, color="#FFFFFF", interligne=0.045*window.innerHeight), false, c_base ="#FFFFFF", c_vive)  
 
     ctx.strokeStyle = "rgb(255, 255, 255)" 
     ctx.fillStyle = "rgb(255, 255, 255)"
     consigne = "No"
     yt =  parseInt(document.getElementById("Pas_nv_participant").style.top) + 24
     xt_yes = parseInt(document.getElementById("Pas_nv_participant").style.left) + 40
-    print_text(handle_text(consigne, xt_yes, yt=yt, (0.018*window.innerWidth)+"pt Courier", window.innerWidth, color="#FFFFFF", interligne=0.045*window.innerHeight), false, c_base ="#FFFFFF", c_vive)  
+    print_text(handle_text(consigne, xt_yes, yt=yt, (0.016*window.innerWidth)+"pt Courier", window.innerWidth, color="#FFFFFF", interligne=0.045*window.innerHeight), false, c_base ="#FFFFFF", c_vive)  
 
     consigne = "(Be careful, non-new participants will not be paid.)"
     affichage_titre(consigne, (0.013*window.innerWidth)+"pt Courier", "#FFD166", yt= 0.65*window.innerHeight)
