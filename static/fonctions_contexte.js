@@ -179,7 +179,7 @@ function action_revenir_page_avant_contexte(){
     page_contexte = false 
     page_avertissement = true
     init_textes_avertissements()
-    avertissements_a_afficher = [avertissements["texte0"], avertissements["texte1"], avertissements["texte2"]]
+    avertissements_a_afficher = [avertissements["texte0"], avertissements["texte1"], avertissements["texte2"], avertissements["texte3"]]
     num_avertissement = avertissements_a_afficher.length-1
     init_clavier_avertissement()
     document.removeEventListener("keydown", action_clavier_contexte)
