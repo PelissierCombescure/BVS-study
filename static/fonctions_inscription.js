@@ -65,7 +65,7 @@ function affichage_inscription(){
     xt_yes = parseInt(document.getElementById("Pas_nv_participant").style.left) + 40
     print_text(handle_text(consigne, xt_yes, yt=yt, (0.016*window.innerWidth)+"pt Courier", window.innerWidth, color="#FFFFFF", interligne=0.045*window.innerHeight), false, c_base ="#FFFFFF", c_vive)  
 
-    consigne = "(Be careful, non-new participants will not be paid.)"
+    consigne = "==> Be careful, only new participants will be paid"
     affichage_titre(consigne, (0.013*window.innerWidth)+"pt Courier", "#FFD166", yt= 0.65*window.innerHeight)
 }
 
