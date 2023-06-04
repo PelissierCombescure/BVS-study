@@ -66,7 +66,7 @@ function affichage_inscription(){
     print_text(handle_text(consigne, xt_yes, yt=yt, (0.016*window.innerWidth)+"pt Courier", window.innerWidth, color="#FFFFFF", interligne=0.045*window.innerHeight), false, c_base ="#FFFFFF", c_vive)  
 
     consigne = "==> Be careful, only new participants will be paid"
-    affichage_titre(consigne, (0.013*window.innerWidth)+"pt Courier", "#FFD166", yt= 0.65*window.innerHeight)
+    affichage_titre(consigne, (0.016*window.innerWidth)+"pt Courier", "#FFD166", yt= 0.65*window.innerHeight)
 }
 
 //////////////////////////////////////////////////////////////
