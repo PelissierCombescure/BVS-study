@@ -343,7 +343,7 @@ function init_data(){
 
 }
 
-function enregistrement(onsuccess, onerror, attempts = 10) {
+function enregistrement(onsuccess, onerror, attempts = 2) {
     // Création de la requête HTTP à envoyer au serveur.
     let xhr = new XMLHttpRequest();
     // Préparation de la requête pour l'envoi en POST vers l'url.
@@ -361,7 +361,7 @@ function enregistrement(onsuccess, onerror, attempts = 10) {
                 }
             } else {
                 if (attempts > 0) {
-                    setTimeout(() => enregistrement(onsuccess, onerror, attempts - 1), 1000);
+                    setTimeout(() => enregistrement(onsuccess, onerror, attempts - 1), 2000);
                 } else {
                     if (typeof onerror === 'function') {
                         onerror(xhr);
@@ -544,7 +544,7 @@ function animate() {
         document.removeEventListener("keydown", action_clavier_vues)
         // inti clavier
         if(premier_tour_page_explication_analyse){
-            enregistrement();
+            enregistrement(undefined, undefined, 0);
             //interactions.push({"time": new Date().getTime(), "type": "Début explication analyse"})
             init_clavier_explication_analyse()
             init_textes_explication_analyses()
