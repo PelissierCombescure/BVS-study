@@ -5,6 +5,8 @@ graphics/Tutorial/wolf*.png
 outputs/crash_test1
 outputs/Prolific1
 outputs/test_Prolific2
+outputs/Prolific2
+outputs/Prolific_all
 outputs/test
 outputs/*.json
 outputs/get_json_file_from_server.txt
