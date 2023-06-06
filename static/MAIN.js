@@ -61,7 +61,7 @@ function init_variable(premier_appel){
     // --------------------------------------------------------------------------------
     // --------------------------------------------------------------------------------
 
-   
+
 
     list_idx_tache =[]
     for (let p=0; p<nb_mesh; p++){list_idx_tache.push(p+1)}
@@ -343,7 +343,7 @@ function init_data(){
 
 }
 
-function enregistrement(onsuccess, onerror) {
+function enregistrement(onsuccess, onerror, attempts = 10) {
     // Création de la requête HTTP à envoyer au serveur.
     let xhr = new XMLHttpRequest();
     // Préparation de la requête pour l'envoi en POST vers l'url.
@@ -360,9 +360,12 @@ function enregistrement(onsuccess, onerror) {
                     onsuccess(xhr);
                 }
             } else {
-                console.log("wtf js");
-                if (typeof onerror === 'function') {
-                    onerror(xhr);
+                if (attempts > 0) {
+                    setTimeout(() => enregistrement(onsuccess, onerror, attempts - 1), 1000);
+                } else {
+                    if (typeof onerror === 'function') {
+                        onerror(xhr);
+                    }
                 }
             }
         }
@@ -599,12 +602,12 @@ function animate() {
             update_texte_fin_siOK(message_fin1, message_fin2)
             return;
         }, function(xhr) {
-            page_fin_probleme = true  
+            page_fin_probleme = true
             interactions.push({"time": new Date().getTime(), "type": get_message("pbl_enregistrement_final", [num_analyse-1]) })
         });
-        envoie_data = true   
+        envoie_data = true
 
-        //page_fin_probleme = true     
+        //page_fin_probleme = true
     }
 
     if (page_fin_probleme){
@@ -621,12 +624,12 @@ function animate() {
         update_texte_fin_siPASOK(message_fin1, message_fin2, message_fin3, message_fin4)
 
         // TODO : Ajouter bouton et lien
-        traitement_fin_enregistrement()  
-        
+        traitement_fin_enregistrement()
+
         if (download_ok){
-            // affichage du ccompletion code 
+            // affichage du ccompletion code
             traitement_fin_lien()
-        }   
+        }
         if (depot_ok){
             affichage_titre(message_completion_code, (0.018*window.innerWidth)+"pt Courier", "#EF476F", yt=0.8*window.innerHeight)
         }
