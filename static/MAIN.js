@@ -595,6 +595,8 @@ function animate() {
         choix['Analyse'] = checkbox_clicked
 
         enregistrement(function(xhr) {
+            ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
+            draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1)
             console.log(xhr.responseText);
             message_fin1 = "> Your submission has been recorded."
             message_fin2 = message_completion_code
@@ -613,7 +615,6 @@ function animate() {
     if (page_fin_probleme){
         ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
         draw_rectangle(0,0,canvas.width, canvas.height, "rgb(3, 26, 33)", 1)
-        affichage_texte_fin(message_fin)
         message_fin1 = "> Your submission could not be saved."
         message_fin2 = "==> 1. ¤CLICK¤ on the button below to ¤DOWNLOAD¤ the data"
         //message_fin22 = "Click                        DOWNLOAD         "
@@ -621,7 +622,8 @@ function animate() {
         //message_fin4 = "and"
        // message_fin52 = "UPLOAD                                      "
         message_fin4 = "==> 2. ¤UPLOAD¤ it to my nextcloud folder"
-        update_texte_fin_siPASOK(message_fin1, message_fin2, message_fin3, message_fin4)
+        message_fin5 = "==> 3. Take your ¤COMPLETION CODE¤ and then you can ¤CLOSE¤ this page."
+        update_texte_fin_siPASOK(message_fin1, message_fin2, message_fin3, message_fin4, message_fin5)
 
         // TODO : Ajouter bouton et lien
         traitement_fin_enregistrement()
